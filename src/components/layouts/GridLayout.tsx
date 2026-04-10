@@ -22,3 +22,4 @@ export default function GridLayout({ children, className }: GridLayoutProps) {
     </main>
   );
 }
+
