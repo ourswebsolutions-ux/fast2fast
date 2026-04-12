@@ -1,13 +1,24 @@
-import GridLayout from "@/components/layouts/GridLayout";
-// import GridLayou
+import React from 'react';
+
+import GuldenHeroSection from '@/components/homePageComponents/GuldenHeroSection';
+import BenefitsSection from '@/components/homePageComponents/BenefitsSection';
+import PreciousMetalsGrid from '@/components/homePageComponents/PreciousMetalsGrid';
+import DealOfTheDay from '@/components/homePageComponents/DealOfTheDay';
+import ProductSlider from '@/components/homePageComponents/ProductSlider';
+import NewsAndCharts from '@/components/homePageComponents/NewsAndCharts';
+import Testimonials from '@/components/homePageComponents/Testimonials';
 export default function Page() {
   return (
-    <GridLayout>
-        <div className="main bg-white lg:col-span-12">
-  {/* <aside className="lg:col-span-3">Left Menu</aside>
-  <section className="lg:col-span-6">Hero</section>
-  <aside className="lg:col-span-3">Right Banners</aside> */}
-  </div>
-</GridLayout>
+    <>
+      <div className="overflow-x-hidden">
+        <GuldenHeroSection />
+        <BenefitsSection />
+        <PreciousMetalsGrid />
+        <DealOfTheDay />
+        <ProductSlider />
+        <NewsAndCharts />
+        <Testimonials />
+      </div>
+    </>
   );
 }
