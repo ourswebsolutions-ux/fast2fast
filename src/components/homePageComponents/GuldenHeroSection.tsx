@@ -35,7 +35,7 @@ const GuldenHeroSection: React.FC = () => {
 
     return (
         <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100">
-            <div className="max-w-[1440px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
+            <div className="max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
 
                 {/* Sidebar */}
                 <div className="col-span-12 md:col-span-3 bg-black text-white">
