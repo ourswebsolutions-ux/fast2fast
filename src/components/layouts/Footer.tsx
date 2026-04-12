@@ -5,7 +5,7 @@ import GridLayout from './GridLayout';
 const Footer = () => {
     return (
         <footer className="w-full bg-black text-white pt-20 pb-6 font-sans mt-28">
-            <div className="w-full max-w-[1350px] mx-auto px-4 md:px-10 lg:px-16 mb-16 relative">
+            <div className="w-full max-w-[1350px] mx-auto px-4  lg:px-16 mb-16 relative">
                 <div className="relative -mt-32 overflow-hidden bg-[#C9B067] p-6 md:p-8 lg:py-8 lg:px-12 shadow-2xl rounded">
 
                     {/* Background Pattern Shapes */}
