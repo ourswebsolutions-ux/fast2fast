@@ -92,7 +92,7 @@ const DealOfTheDay = () => {
                 </div>
               </div>
 
-              <button className="w-full bg-[#C5B367] hover:bg-black text-white py-5 px-8 transition-all duration-500 text-[11px] font-bold uppercase tracking-[0.3em] shadow-md active:scale-95">
+              <button className="w-full bg-[#C5B367] hover:bg-[#b38f4d] text-white py-5 px-8 transition-all duration-500 text-[11px] font-bold uppercase tracking-[0.3em] shadow-md active:scale-95">
                 Zobrazit detail produktu
               </button>
             </div>
