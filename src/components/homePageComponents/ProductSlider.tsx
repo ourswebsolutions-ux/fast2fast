@@ -13,11 +13,7 @@ const productsData = [
 ];
 
 const ProductSlider = () => {
-  const [selectedId, setSelectedId] = useState(null);
-  // State to manage quantities for each product ID
-  const [quantities, setQuantities] = useState(
-    productsData.reduce((acc, product) => ({ ...acc, [product.id]: 1 }), {})
-  );
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
@@ -72,7 +68,7 @@ const ProductSlider = () => {
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-              {productsData.map((product) => (
+              {productsData.map((product ) => (
                 <div 
                   key={product.id} 
                   className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-3"

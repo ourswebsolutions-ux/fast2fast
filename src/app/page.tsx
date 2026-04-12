@@ -1,9 +1,24 @@
-import Image from "next/image";
+import React from 'react';
 
-export default function Home() {
+import GuldenHeroSection from '@/components/homePageComponents/GuldenHeroSection';
+import BenefitsSection from '@/components/homePageComponents/BenefitsSection';
+import PreciousMetalsGrid from '@/components/homePageComponents/PreciousMetalsGrid';
+import DealOfTheDay from '@/components/homePageComponents/DealOfTheDay';
+import ProductSlider from '@/components/homePageComponents/ProductSlider';
+import NewsAndCharts from '@/components/homePageComponents/NewsAndCharts';
+import Testimonials from '@/components/homePageComponents/Testimonials';
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      
-    </div>
+    <>
+      <div className="overflow-x-hidden">
+        <GuldenHeroSection />
+        <BenefitsSection />
+        <PreciousMetalsGrid />
+        <DealOfTheDay />
+        <ProductSlider />
+        <NewsAndCharts />
+        <Testimonials />
+      </div>
+    </>
   );
 }
