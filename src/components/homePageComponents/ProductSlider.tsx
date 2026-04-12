@@ -14,7 +14,7 @@ const productsData = [
 
 const ProductSlider = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
-
+  const [quantities, setQuantities] = useState<Record<number, number>>({});
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { 
       loop: true, 
@@ -33,7 +33,7 @@ const ProductSlider = () => {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  const handleQuantity = (id, type) => {
+  const handleQuantity = (id: number, type: 'inc' | 'dec') => {
     setQuantities(prev => ({
       ...prev,
       [id]: type === 'inc' ? prev[id] + 1 : Math.max(1, prev[id] - 1)
