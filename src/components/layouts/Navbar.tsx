@@ -1,192 +1,253 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import {
   Search,
   Heart,
   User,
-  ShoppingCart,
+  Phone,
   ChevronDown,
-  ArrowDown,
+  TrendingDown,
   TrendingUp,
   LineChart,
+  Menu,
+  X,
+  ShoppingCart,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-/**
- * Updated to match the exact pixel-perfect design provided in the image.
- * Features:
- * - Specific hex colors: #C9B067 (Gold), #FF4D4D (Red), #00E676 (Green)
- * - Exact typography and spacing based on the visual layout.
- */
+// Components Import
+import ActualniCeny from "../topBarComponents/ActualniCeny";
+import MarketControls from "../topBarComponents/MarketControls";
+import ExtendedChart from "../topBarComponents/ExtendedChart";
 
 /* ================= PRICE ITEM COMPONENT ================= */
-const PriceItem = ({
-  label,
-  price,
-  change,
-  isDown,
-  hideSymbol = false,
-}: {
-  label: string;
-  price?: string;
-  change: string;
-  isDown: boolean;
-  hideSymbol?: boolean;
-}) => (
-  <div className="flex items-center gap-2 cursor-pointer">
-    <span className="font-bold text-white text-[13.5px]">{label}</span>
-    {price && <span className="text-white text-[13.5px] ml-0.5">{price}</span>}
-    <div
-      className={`flex items-center text-[13.5px] ml-0.5 font-medium ${
-        isDown ? "text-[#FF4D4D]" : "text-[#00E676]"
-      }`}
-    >
-      {isDown ? (
-        <ArrowDown size={14} className="mr-0.5" />
-      ) : (
-        <TrendingUp size={14} className="mr-0.5" />
-      )}
-      <span>({change})</span>
-    </div>
-    <ChevronDown size={14} className="text-white ml-0.5 font-bold" />
-  </div>
-);
-
-/* ================= NAV ACTION COMPONENT ================= */
-const NavAction = ({
-  icon: Icon,
-  label,
-  badge,
-}: {
-  icon: any;
-  label: string;
-  badge?: string;
-}) => (
-  <div className="flex flex-col items-center justify-center cursor-pointer group px-4">
-    <div className="relative mb-1">
-      <Icon size={24} strokeWidth={1.5} className="text-white" />
-      {badge && (
-        <div className="absolute -top-2 -right-3 bg-[#C9B067] text-black text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center border border-black">
-          {badge}
-        </div>
-      )}
-    </div>
-    <span className="text-white text-[13px] font-medium tracking-wide">
+const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
+  <div 
+    className={cn(
+      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
+      hasDropdown ? "cursor-pointer" : "cursor-default",
+      active ? "text-[#C9B067]" : "text-white"
+    )}
+    onMouseEnter={hasDropdown ? onMouseEnter : undefined}
+    onClick={hasDropdown ? onClick : undefined}
+  >
+    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
+    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
+    <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
+      {isDown ? <TrendingDown size={14} className="mr-0.5" /> : <TrendingUp size={14} className="mr-0.5" />}
+      <span>({change})</span>
+    </div>
+    {showIcon && (
+      <ChevronDown size={14} className={cn("ml-0.5 font-bold transition-transform duration-300", active && "rotate-180")} />
+    )}
   </div>
 );
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  
+  // Independent States for dropdowns
+  const [pricesOpen, setPricesOpen] = useState(false);
+  const [pricesPinned, setPricesPinned] = useState(false);
+
+  const [marketOpen, setMarketOpen] = useState(false);
+  const [marketPinned, setMarketPinned] = useState(false);
+
+  const [chartOpen, setChartOpen] = useState(false);
+  const [chartPinned, setChartPinned] = useState(false);
+
+  const handleMouseLeaveTopBar = () => {
+    if (!pricesPinned) setPricesOpen(false);
+    if (!marketPinned) setMarketOpen(false);
+    if (!chartPinned) setChartOpen(false);
+  };
+
   return (
-    <header className="w-full bg-black font-sans selection:bg-[#C9B067]">
+    <header className="w-full bg-black font-sans selection:bg-[#C9B067] relative">
+      
       {/* 1. TOP TICKER BAR */}
-      <div className="h-[40px]  border-zinc-800 flex items-center px-4 max-w-[1440px] mx-auto justify-between overflow-hidden">
-        <div className="flex items-center gap-9 ml-2">
-          <PriceItem
-            label="Zlato"
-            price="1249,3 USD/oz"
-            change="0,06 $"
-            isDown={true}
-          />
-          <PriceItem
-            label="Stříbro"
-            price="16,39 USD/oz"
-            change="0,54 $"
-            isDown={false}
-          />
+      <div 
+        className="h-[40px] flex items-center border-b border-zinc-200 w-full relative z-[60]"
+        onMouseLeave={handleMouseLeaveTopBar}
+      >
+        <div className="max-w-[1350px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
+          
+          <div className="flex items-center gap-8 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
+            
+            {/* Logic: Zlato opens MarketControls */}
+            <PriceItem 
+              label="Zlato" price="1249,3 USD/oz" change="0,06 $" isDown={true} 
+              hasDropdown={true}
+              active={marketOpen || marketPinned}
+              onMouseEnter={() => { setMarketOpen(true); setPricesOpen(false); setChartOpen(false); }}
+              onClick={() => { setMarketPinned(!marketPinned); setMarketOpen(!marketPinned); }}
+            />
 
-          <div className="flex items-center gap-1.5 cursor-pointer">
-            <LineChart size={16} className="text-white" />
-            <span className="text-white text-[13.5px] font-bold">
-              Aktuální ceny
-            </span>
-            <ChevronDown size={14} className="text-white" />
+            {/* Logic: Stříbro is static but has Icon */}
+            <PriceItem 
+              label="Stříbro" price="16,39 USD/oz" change="0,54 $" isDown={false} 
+              hasDropdown={false} 
+              showIcon={true}
+            />
+
+            {/* Logic: ActualniCeny Trigger */}
+            <div 
+              className={cn(
+                "flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 group transition-colors",
+                (pricesOpen || pricesPinned) ? "text-[#C9B067]" : "text-white"
+              )}
+              onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
+              onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
+            >
+              <LineChart size={16} />
+              <span className="text-[13.5px] font-bold">Aktuální ceny</span>
+              <ChevronDown size={14} className={cn("transition-transform duration-300", (pricesOpen || pricesPinned) && "rotate-180")} />
+            </div>
+
+            {/* Logic: USD opens ExtendedChart */}
+            <PriceItem 
+              label="USD" change="0,06 $" isDown={true} 
+              hasDropdown={true}
+              active={chartOpen || chartPinned}
+              onMouseEnter={() => { setChartOpen(true); setMarketOpen(false); setPricesOpen(false); }}
+              onClick={() => { setChartPinned(!chartPinned); setChartOpen(!chartPinned); }}
+            />
+
+            {/* Logic: EUR and GBP are static but have Icons */}
+            <PriceItem label="EUR" change="0,06 €" isDown={false} hasDropdown={false} showIcon={true} />
+            <PriceItem label="GBP" change="0,06 £" isDown={true} hasDropdown={false} showIcon={true} />
+
+            <div className="flex items-center gap-6 shrink-0 lg:hidden">
+                <div className="flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                  <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
+                  <span className="text-white text-[13px] font-bold">Česky</span>
+                  <ChevronDown size={14} className="text-white" />
+                </div>
+                <div className="flex items-center gap-2 cursor-pointer whitespace-nowrap">
+                  <span className="text-white text-[13px] font-bold">CZK / Kč</span>
+                  <ChevronDown size={14} className="text-white" />
+                </div>
+            </div>
           </div>
 
-          <PriceItem label="USD" change="0,06 $" isDown={true} />
-          <PriceItem label="EUR" change="0,06 €" isDown={false} />
-          <PriceItem label="GBP" change="0,06 £" isDown={true} />
-        </div>
-
-        <div className="flex items-center gap-6">
-          {/* Language Selector */}
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="relative w-5 h-3.5 overflow-hidden rounded-[1px]">
-              <Image
-                src="https://flagcdn.com/cz.svg"
-                alt="Czech Flag"
-                fill
-                className="object-cover"
-              />
+          <div className="hidden lg:flex items-center gap-6 ml-4 shrink-0">
+            <div className="flex items-center gap-2 cursor-pointer">
+              <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
+              <span className="text-white text-[13px] font-bold">Česky</span>
+              <ChevronDown size={14} className="text-white" />
             </div>
-            <span className="text-white text-[13px] font-bold">Česky</span>
-            <ChevronDown size={14} className="text-white" />
-          </div>
-
-          {/* Currency Selector */}
-          <div className="flex items-center gap-2 cursor-pointer">
-            <div className="w-5 h-5 rounded-full border border-zinc-400 flex items-center justify-center">
-              <div className="w-3 h-1.5 border-b-2 border-zinc-400"></div>
+            <div className="flex items-center gap-2 cursor-pointer">
+              <span className="text-white text-[13px] font-bold">CZK / Kč</span>
+              <ChevronDown size={14} className="text-white" />
             </div>
-            <span className="text-white text-[13px] font-bold">CZK / Kč</span>
-            <ChevronDown size={14} className="text-white" />
           </div>
         </div>
       </div>
-<hr className="text-white"></hr>
+
+      {/* DROPDOWN COMPONENTS AREA */}
+      <div className="relative w-full bg-black">
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", marketOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setMarketOpen(true)}
+          onMouseLeave={() => { if (!marketPinned) setMarketOpen(false); }}
+        >
+          <MarketControls />
+        </div>
+
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", pricesOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setPricesOpen(true)}
+          onMouseLeave={() => { if (!pricesPinned) setPricesOpen(false); }}
+        >
+          <ActualniCeny />
+        </div>
+
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", chartOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setChartOpen(true)}
+          onMouseLeave={() => { if (!chartPinned) setChartOpen(false); }}
+        >
+          <ExtendedChart />
+        </div>
+      </div>
+
       {/* 2. MAIN NAVBAR */}
-      <div className="h-[100px] flex items-center px-4 max-w-[1440px] mx-auto">
-        {/* Logo Section */}
-        <div className="flex items-center gap-3 min-w-[220px]">
+      <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1350px] mx-auto justify-between relative z-50 bg-black">
+        <div className="flex items-center gap-3 shrink-0">
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
-          <h1 className="text-white text-4xl font-black tracking-tighter">
-            GULDEN
-          </h1>
+          <h1 className="text-white text-2xl sm:text-4xl font-black tracking-tighter">GULDEN</h1>
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
         </div>
 
-        {/* Phone Section */}
-        <div className="flex items-center gap-3 ml-12">
-          <div className="text-white">
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-            </svg>
+        <div className="hidden lg:flex items-center gap-8 flex-1 justify-center px-10">
+            <div className="flex items-center gap-3">
+              <Phone size={18} className="text-white" strokeWidth={2.5} />
+              <span className="text-white text-lg font-bold">800 01 02 03</span>
+            </div>
+            <div className="flex flex-1 max-w-[500px] h-[45px]">
+              <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
+              <button className="w-[60px] bg-[#C9B067] flex items-center justify-center"><Search className="text-white" size={24} /></button>
+            </div>
+        </div>
+
+        <div className="flex items-center">
+          <div className="hidden lg:flex items-center">
+            <div className="px-4 text-center cursor-pointer text-white group">
+                <Heart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[#C9B067]" />
+                <span className="text-[13px]">Oblíbené</span>
+            </div>
+            <div className="px-4 text-center cursor-pointer text-white group">
+                <User size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[#C9B067]" />
+                <span className="text-[13px]">Přihlášení</span>
+            </div>
+            <div className="px-4 text-center cursor-pointer text-white relative group">
+                <ShoppingCart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[#C9B067]" />
+                <span className="absolute top-[-5px] right-3 bg-[#C9B067] text-black text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center">9</span>
+                <span className="text-[13px]">Košík</span>
+            </div>
           </div>
-          <span className="text-white text-lg  tracking-tight">
-            800 01 02 03
-          </span>
-        </div>
 
-        {/* Search Bar */}
-        <div className="flex-1 max-w-[650px] mx-10 flex h-[45px]">
-          <input
-            type="text"
-            placeholder="Napište co hledáte"
-            className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none"
-          />
-          <button className="w-[60px] bg-[#C9B067] flex items-center justify-center hover:brightness-110 transition-all">
-            <Search className="text-white" size={24} />
+          <button className="lg:hidden text-white" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
-
-        {/* Action Icons */}
-        <div className="flex items-center divide-x divide-transparent ml-auto">
-          <NavAction icon={Heart} label="Oblíbené" />
-          <NavAction icon={User} label="Přihlášení" />
-          <NavAction icon={ShoppingCart} label="Košík" badge="9" />
-        </div>
       </div>
+
+      {menuOpen && (
+        <div className="lg:hidden bg-zinc-900 border-t border-zinc-800 p-4 absolute w-full z-50 shadow-2xl">
+          <div className="flex h-[48px] mb-6">
+            <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-4 text-black outline-none" />
+            <button className="w-[55px] bg-[#C9B067] flex items-center justify-center"><Search className="text-white" size={22} /></button>
+          </div>
+
+          <div className="flex items-center justify-between px-2 pb-2">
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center"><Phone size={20} className="text-[#C9B067]" /></div>
+              <span className="text-[11px] text-zinc-400 font-bold uppercase">Volat</span>
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center"><Heart size={20} className="text-white" /></div>
+              <span className="text-[11px] text-zinc-400 font-bold uppercase">Oblíbené</span>
+            </div>
+            <div className="flex flex-col items-center gap-1.5">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center"><User size={20} className="text-white" /></div>
+              <span className="text-[11px] text-zinc-400 font-bold uppercase">Účet</span>
+            </div>
+            <div className="flex flex-col items-center gap-1.5 relative">
+              <div className="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center">
+                <ShoppingCart size={20} className="text-white" />
+                <span className="absolute top-0 right-0 bg-[#C9B067] text-black text-[9px] font-bold rounded-full w-4 h-4 flex items-center justify-center">9</span>
+              </div>
+              <span className="text-[11px] text-zinc-400 font-bold uppercase">Košík</span>
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }
