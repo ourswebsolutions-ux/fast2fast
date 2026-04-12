@@ -33,9 +33,15 @@ const ProductSlider = () => {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
+  const handleQuantity = (id, type) => {
+    setQuantities(prev => ({
+      ...prev,
+      [id]: type === 'inc' ? prev[id] + 1 : Math.max(1, prev[id] - 1)
+    }));
+  };
+
   return (
     <div className="bg-white py-16 px-4 font-serif">
-      {/* 1350px Fixed Container */}
       <div className="max-w-[1350px] mx-auto">
         
         <div className="text-center mb-10">
@@ -45,9 +51,7 @@ const ProductSlider = () => {
           <h2 className="text-4xl text-gray-800 font-light">Vybrali jsme pro Vás</h2>
         </div>
 
-        {/* Slider Container */}
         <div className="relative group">
-          {/* Navigation Arrows - Original Gold Color */}
           <button 
             onClick={scrollPrev} 
             className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-[#C5B367] p-2 text-white hover:bg-[#b5a256] transition-colors"
@@ -76,7 +80,6 @@ const ProductSlider = () => {
                       : 'border-gray-100 hover:border-gray-300'
                   }`}>
                     
-                    {/* Badges & Wishlist */}
                     <div className="flex justify-between items-start mb-4">
                       <div className="flex flex-col gap-1">
                         {product.badges.map(badge => (
@@ -88,7 +91,6 @@ const ProductSlider = () => {
                       <Heart size={18} className="text-amber-600 hover:fill-amber-600 transition-colors" />
                     </div>
 
-                    {/* Product Image */}
                     <div className="h-48 flex items-center justify-center mb-6 px-4">
                       <img 
                         src={product.image} 
@@ -97,31 +99,39 @@ const ProductSlider = () => {
                       />
                     </div>
 
-                    {/* Rating */}
                     <div className="flex justify-center gap-0.5 mb-3">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className={i < product.rating ? "fill-amber-500 text-amber-500" : "text-gray-200"} />
                       ))}
                     </div>
 
-                    {/* Info */}
                     <div className="text-center flex-grow mb-6">
-                      <h3 className="text-[13px] text-gray-600 uppercase underline decoration-gray-200 underline-offset-4 mb-3 leading-relaxed min-h-[40px] line-clamp-2">
+                      <h3 className="text-[13px] text-gray-600  underline decoration-gray-200 underline-offset-4 mb-3 leading-relaxed min-h-[40px] line-clamp-2">
                         {product.title}
                       </h3>
                       <p className="text-xl text-[#C5A059] font-medium">{product.price}</p>
                     </div>
 
-                    {/* Quantity & Cart - Original Green Color */}
                     <div className="flex items-stretch gap-2 h-11 font-sans mt-auto" onClick={(e) => e.stopPropagation()}>
                       <div className="flex border border-gray-200 rounded-sm overflow-hidden">
-                        <button className="px-3 text-red-500 text-xl hover:bg-gray-50 transition-colors">−</button>
+                        <button 
+                          onClick={() => handleQuantity(product.id, 'dec')}
+                          className="px-3 text-red-500 text-xl hover:bg-gray-50 transition-colors"
+                        >
+                          −
+                        </button>
                         <input 
                           type="text" 
-                          defaultValue="1" 
+                          value={quantities[product.id]} 
+                          readOnly
                           className="w-10 text-center text-sm outline-none border-x border-gray-100" 
                         />
-                        <button className="px-3 text-green-600 text-xl hover:bg-gray-50 transition-colors">+</button>
+                        <button 
+                          onClick={() => handleQuantity(product.id, 'inc')}
+                          className="px-3 text-green-600 text-xl hover:bg-gray-50 transition-colors"
+                        >
+                          +
+                        </button>
                       </div>
                       <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold uppercase tracking-wider transition-all active:scale-95">
                         Přidat do košíku
@@ -133,7 +143,6 @@ const ProductSlider = () => {
             </div>
           </div>
         </div>
-
       </div>
     </div>
   );

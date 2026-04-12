@@ -18,45 +18,110 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+// Components Import
+import ActualniCeny from "../topBarComponents/ActualniCeny";
+import MarketControls from "../topBarComponents/MarketControls";
+import ExtendedChart from "../topBarComponents/ExtendedChart";
+
 /* ================= PRICE ITEM COMPONENT ================= */
-const PriceItem = ({ label, price, change, isDown }: any) => (
-  <div className="flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0">
-    <span className="font-bold text-white text-[13.5px]">{label}</span>
-    {price && <span className="text-white text-[13.5px] ml-0.5">{price}</span>}
+const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
+  <div 
+    className={cn(
+      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
+      hasDropdown ? "cursor-pointer" : "cursor-default",
+      active ? "text-[#C9B067]" : "text-white"
+    )}
+    onMouseEnter={hasDropdown ? onMouseEnter : undefined}
+    onClick={hasDropdown ? onClick : undefined}
+  >
+    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+      {label}
+    </span>
+    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
     <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <TrendingDown size={14} className="mr-0.5" /> : <TrendingUp size={14} className="mr-0.5" />}
       <span>({change})</span>
     </div>
-    <ChevronDown size={14} className="text-white ml-0.5 font-bold" />
+    {showIcon && (
+      <ChevronDown size={14} className={cn("ml-0.5 font-bold transition-transform duration-300", active && "rotate-180")} />
+    )}
   </div>
 );
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  
+  // Independent States for dropdowns
+  const [pricesOpen, setPricesOpen] = useState(false);
+  const [pricesPinned, setPricesPinned] = useState(false);
+
+  const [marketOpen, setMarketOpen] = useState(false);
+  const [marketPinned, setMarketPinned] = useState(false);
+
+  const [chartOpen, setChartOpen] = useState(false);
+  const [chartPinned, setChartPinned] = useState(false);
+
+  const handleMouseLeaveTopBar = () => {
+    if (!pricesPinned) setPricesOpen(false);
+    if (!marketPinned) setMarketOpen(false);
+    if (!chartPinned) setChartOpen(false);
+  };
 
   return (
     <header className="w-full bg-black font-sans selection:bg-[#C9B067] relative">
       
-      {/* 1. TOP TICKER BAR - All Items visible via horizontal scroll on Mobile */}
-      <div className="h-[40px] flex items-center border-b border-zinc-200 w-full">
+      {/* 1. TOP TICKER BAR */}
+      <div 
+        className="h-[40px] flex items-center border-b border-zinc-200 w-full relative z-[60]"
+        onMouseLeave={handleMouseLeaveTopBar}
+      >
         <div className="max-w-[1350px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
           
-          {/* Scrollable Container for ALL items */}
           <div className="flex items-center gap-8 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
-            <PriceItem label="Zlato" price="1249,3 USD/oz" change="0,06 $" isDown={true} />
-            <PriceItem label="Stříbro" price="16,39 USD/oz" change="0,54 $" isDown={false} />
+            
+            {/* Logic: Zlato opens MarketControls */}
+            <PriceItem 
+              label="Zlato" price="1249,3 USD/oz" change="0,06 $" isDown={true} 
+              hasDropdown={true}
+              active={marketOpen || marketPinned}
+              onMouseEnter={() => { setMarketOpen(true); setPricesOpen(false); setChartOpen(false); }}
+              onClick={() => { setMarketPinned(!marketPinned); setMarketOpen(!marketPinned); }}
+            />
 
-            <div className="flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0">
-              <LineChart size={16} className="text-white" />
-              <span className="text-white text-[13.5px] font-bold">Aktuální ceny</span>
-              <ChevronDown size={14} className="text-white" />
+            {/* Logic: Stříbro is static but has Icon */}
+            <PriceItem 
+              label="Stříbro" price="16,39 USD/oz" change="0,54 $" isDown={false} 
+              hasDropdown={false} 
+              showIcon={true}
+            />
+
+            {/* Logic: ActualniCeny Trigger */}
+            <div 
+              className={cn(
+                "flex items-center gap-1.5 cursor-pointer whitespace-nowrap shrink-0 group transition-colors",
+                (pricesOpen || pricesPinned) ? "text-[#C9B067]" : "text-white"
+              )}
+              onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
+              onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
+            >
+              <LineChart size={16} />
+              <span className="text-[13.5px] font-bold">Aktuální ceny</span>
+              <ChevronDown size={14} className={cn("transition-transform duration-300", (pricesOpen || pricesPinned) && "rotate-180")} />
             </div>
 
-            <PriceItem label="USD" change="0,06 $" isDown={true} />
-            <PriceItem label="EUR" change="0,06 €" isDown={false} />
-            <PriceItem label="GBP" change="0,06 £" isDown={true} />
+            {/* Logic: USD opens ExtendedChart */}
+            <PriceItem 
+              label="USD" change="0,06 $" isDown={true} 
+              hasDropdown={true}
+              active={chartOpen || chartPinned}
+              onMouseEnter={() => { setChartOpen(true); setMarketOpen(false); setPricesOpen(false); }}
+              onClick={() => { setChartPinned(!chartPinned); setChartOpen(!chartPinned); }}
+            />
 
-            {/* Added Language & Currency to Mobile Scroll */}
+            {/* Logic: EUR and GBP are static but have Icons */}
+            <PriceItem label="EUR" change="0,06 €" isDown={false} hasDropdown={false} showIcon={true} />
+            <PriceItem label="GBP" change="0,06 £" isDown={true} hasDropdown={false} showIcon={true} />
+
             <div className="flex items-center gap-6 shrink-0 lg:hidden">
                 <div className="flex items-center gap-2 cursor-pointer whitespace-nowrap">
                   <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
@@ -70,7 +135,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Language & Currency (Desktop Only) */}
           <div className="hidden lg:flex items-center gap-6 ml-4 shrink-0">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
@@ -85,8 +149,35 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* DROPDOWN COMPONENTS AREA */}
+      <div className="relative w-full bg-black">
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", marketOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setMarketOpen(true)}
+          onMouseLeave={() => { if (!marketPinned) setMarketOpen(false); }}
+        >
+          <MarketControls />
+        </div>
+
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", pricesOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setPricesOpen(true)}
+          onMouseLeave={() => { if (!pricesPinned) setPricesOpen(false); }}
+        >
+          <ActualniCeny />
+        </div>
+
+        <div 
+          className={cn("w-full overflow-hidden transition-all duration-500 ease-in-out", chartOpen ? "max-h-[1200px] opacity-100 border-b border-zinc-800" : "max-h-0 opacity-0")}
+          onMouseEnter={() => setChartOpen(true)}
+          onMouseLeave={() => { if (!chartPinned) setChartOpen(false); }}
+        >
+          <ExtendedChart />
+        </div>
+      </div>
+
       {/* 2. MAIN NAVBAR */}
-      <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1350px] mx-auto justify-between">
+      <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1350px] mx-auto justify-between relative z-50 bg-black">
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
           <h1 className="text-white text-2xl sm:text-4xl font-black tracking-tighter">GULDEN</h1>
