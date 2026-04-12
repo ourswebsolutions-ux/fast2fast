@@ -82,7 +82,7 @@ const Testimonials = () => {
 
         {/* VIEW ALL BUTTON */}
         <div className="flex justify-center mt-14">
-          <button className="bg-[#C9B067] hover:bg-black text-white px-12 py-4 text-[11px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
+          <button className="bg-[#C9B067] hover:bg-[#b38f4d] text-white px-12 py-4 text-[11px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
             Další 23 hodnocení
           </button>
         </div>

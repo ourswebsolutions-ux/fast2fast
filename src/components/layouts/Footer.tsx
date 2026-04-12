@@ -10,7 +10,7 @@ const Footer = () => {
                 {/* 1. Newsletter Box */}
                 <div className="relative mb-16">
                     <div className="relative -mt-28 overflow-hidden bg-[#C9B067] py-8 px-6 md:px-10 lg:px-12 shadow-2xl rounded">
-                        
+
                         {/* Background Pattern */}
                         <div className="absolute inset-0 z-0 opacity-20">
                             <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-black/20 rotate-45 -translate-y-1/2" />
@@ -127,18 +127,33 @@ const Footer = () => {
                 <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-zinc-500 uppercase tracking-[1px]">
                     <div className="flex items-center gap-6">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-80" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="h-3 opacity-80" />
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4 opacity-80" />
+                        <div className="flex items-center justify-center">
+                            <span className="text-white font-black text-sm tracking-[4px] italic">
+                                VISA
+                            </span>
+                        </div>                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4 opacity-80" />
                     </div>
-                    
+
                     <p className="font-medium text-center md:text-left text-zinc-400">© Copyright 2026 GULDEN. Všechna práva vyhrazena.</p>
-                    
+
                     <div className="flex items-center gap-2 group cursor-pointer">
-                        <div className="flex gap-[1.5px]">
-                            <span className="w-2 h-2 bg-[#FFD700]" />
-                            <span className="w-2 h-2 bg-[#00AEEF]" />
+                        {/* Boxes Container (Triangle Layout) */}
+                        <div className="flex flex-col items-center gap-[1.5px]">
+                            {/* Top Box - Orange/Gold */}
+                            <span className="w-2 h-2 bg-[#F6A119]" />
+
+                            {/* Bottom Row */}
+                            <div className="flex gap-[1.5px]">
+                                {/* Bottom Left - Greenish/Yellow */}
+                                <span className="w-2 h-2 bg-[#93C01F]" />
+                                {/* Bottom Right - Sky Blue */}
+                                <span className="w-2 h-2 bg-[#00AEEF]" />
+                            </div>
                         </div>
-                        <span className="hover:text-white transition-all text-[10px]">Vytvořil Shoptet</span>
+
+                        <span className="hover:text-white transition-all text-[10px] text-gray-400">
+                            Vytvořil Shoptet
+                        </span>
                     </div>
                 </div>
 
