@@ -22,7 +22,7 @@ export default function MarketControls() {
   ];
 
   return (
-    <div className="w-full bg-black p-4 sm:p-6 font-sans">
+    <div className="w-full bg-black p-4 sm:p-6 font-sans select-none text-white">
       <div className="max-w-[1350px] mx-auto">
         
         {/* TABS SELECTOR */}
@@ -47,34 +47,23 @@ export default function MarketControls() {
           </button>
         </div>
 
-        {/* CONTROLS GRID - Stack on mobile, side-by-side on desktop */}
+        {/* CONTROLS GRID */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center mb-8">
-          
-          {/* 1. Select Dropdowns */}
           <div className="w-full lg:col-span-3 flex gap-2">
             <div className="relative flex-1">
-              <select className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none">
+              <select className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none cursor-pointer">
                 <option>Zlato</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={16} />
             </div>
             <div className="relative flex-1">
-              <select className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none">
+              <select className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none cursor-pointer">
                 <option>Kg</option>
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={16} />
             </div>
-            {activeTab === "Tabulka" && (
-                <div className="relative flex-1">
-                <select className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none">
-                  <option>2023</option>
-                </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={16} />
-              </div>
-            )}
           </div>
 
-          {/* 2. Currency Buttons - Grid layout on mobile for better alignment */}
           <div className="w-full lg:col-span-5 flex justify-center">
             {activeTab === "Graf" && (
               <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-2 w-full justify-center">
@@ -94,7 +83,6 @@ export default function MarketControls() {
             )}
           </div>
 
-          {/* 3. AM / PM Buttons - Side by side on mobile */}
           <div className="w-full lg:col-span-4 flex gap-2">
             <button
               onClick={() => setTimeOfDay("AM – Dopolední cena")}
@@ -119,47 +107,61 @@ export default function MarketControls() {
 
         {/* CONDITIONAL CONTENT */}
         {activeTab === "Graf" ? (
-          <>
-            <div className="w-full h-[250px] sm:h-[400px] relative border-b border-zinc-800 mb-6 overflow-hidden">
+          <div className="animate-in fade-in duration-500">
+            <div className="w-full h-[300px] sm:h-[450px] relative mb-4">
               {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
-                <div key={val} className="absolute w-full border-t border-zinc-900/50 flex justify-end" style={{ bottom: `${(val/2000) * 100}%` }}>
-                  <span className="text-zinc-600 text-[9px] sm:text-[10px] pr-2 -mt-2">{val}</span>
+                <div key={val} className="absolute w-full border-t border-zinc-800/60 flex justify-end" style={{ top: `${100 - (val/2000) * 100}%` }}>
+                  <span className="text-zinc-500 text-[10px] pr-2 -mt-2.5 font-mono">{val}</span>
                 </div>
               ))}
-              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" className="w-full h-full stroke-[2] sm:stroke-[1.5] fill-none text-[#C4B06D]">
-                <path d="M0,380 L100,370 L200,350 L280,310 L300,240 L310,250 L350,290 L400,310 L500,320 L600,330 L700,280 L720,180 L800,220 L850,150 L900,60 L950,120 L1000,90" />
+              <svg viewBox="0 0 1000 450" preserveAspectRatio="none" className="w-full h-full relative z-10">
+                <path 
+                  d="M0,430 L50,425 L100,410 L150,350 L180,360 L200,420 L250,415 L300,420 L350,425 L400,420 L450,425 L500,430 L550,420 L600,410 L650,400 L700,350 L720,280 L740,310 L780,250 L820,150 L850,220 L880,180 L920,80 L950,150 L1000,100" 
+                  fill="none" stroke="#C4B06D" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="drop-shadow-[0_0_8px_rgba(196,176,109,0.4)]"
+                />
               </svg>
+              <div className="flex justify-between mt-2 px-2 text-zinc-500 text-[10px] font-mono">
+                <span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span><span>0</span>
+              </div>
             </div>
-            {/* Timeline filters - Scrollable on very small screens */}
-            <div className="flex flex-wrap sm:flex-nowrap gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            <div className="flex flex-wrap gap-2 pt-6">
               {timeFilters.map((f) => (
-                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border whitespace-nowrap rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white")}>
+                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:border-zinc-600")}>
                   {f}
                 </button>
               ))}
             </div>
-          </>
+          </div>
         ) : (
-          /* TABLE VIEW - Mobile Responsive Scroll */
-          <div className="w-full overflow-x-auto bg-white rounded-sm shadow-xl">
+          /* BLACK & WHITE STRIPED TABLE */
+          <div className="w-full overflow-x-auto animate-in slide-in-from-bottom-2 duration-300">
             <table className="min-w-[700px] w-full text-left border-collapse">
               <thead>
-                <tr className="bg-black text-white text-[12px] sm:text-[13px] font-bold">
-                  <th className="p-3 sm:p-4 border-r border-zinc-800">Datum</th>
+                <tr className="bg-black text-white text-[12px] sm:text-[13px] font-bold uppercase tracking-wider">
+                  <th className="p-4">Datum</th>
                   {currencies.map(c => (
-                    <th key={c} className="p-3 sm:p-4 text-center border-r border-zinc-800 last:border-0">{c}</th>
+                    <th key={c} className="p-4 text-center">{c}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {tableData.map((row, idx) => (
-                  <tr key={idx} className={cn("text-[13px] sm:text-[14px] font-medium border-b border-zinc-100 last:border-0", idx % 2 === 0 ? "bg-white text-black" : "bg-zinc-50 text-black")}>
-                    <td className="p-3 sm:p-4 border-r border-zinc-200 font-bold">{row.date}</td>
-                    <td className="p-3 sm:p-4 text-center border-r border-zinc-200">{row.usd}</td>
-                    <td className="p-3 sm:p-4 text-center border-r border-zinc-200">{row.gbp}</td>
-                    <td className="p-3 sm:p-4 text-center border-r border-zinc-200">{row.eur}</td>
-                    <td className="p-3 sm:p-4 text-center border-r border-zinc-200">{row.czk}</td>
-                    <td className="p-3 sm:p-4 text-center">{row.pln}</td>
+                  <tr 
+                    key={idx} 
+                    className={cn(
+                      "text-[13px] sm:text-[14px] font-bold transition-all",
+                      // Stripe Logic: Even (0, 2, 4) black background, Odd (1, 3, 5) white background
+                      idx % 2 === 0 
+                        ? "bg-black text-white hover:bg-zinc-900" 
+                        : "bg-white text-black hover:bg-zinc-100"
+                    )}
+                  >
+                    <td className="p-4 border-none">{row.date}</td>
+                    <td className="p-4 text-center border-none">{row.usd}</td>
+                    <td className="p-4 text-center border-none">{row.gbp}</td>
+                    <td className="p-4 text-center border-none">{row.eur}</td>
+                    <td className="p-4 text-center border-none">{row.czk}</td>
+                    <td className="p-4 text-center border-none">{row.pln}</td>
                   </tr>
                 ))}
               </tbody>

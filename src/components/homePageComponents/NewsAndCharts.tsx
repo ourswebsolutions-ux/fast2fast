@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import PriceChart from './HomeChart';
 
 const NewsAndCharts = () => {
   const [activeTab, setActiveTab] = useState('plan'); 
@@ -139,33 +140,7 @@ const NewsAndCharts = () => {
 
           {/* TAB 3: PRICE CHARTS */}
           {activeTab === 'chart' && (
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="lg:w-1/4 flex flex-col items-center justify-center p-8 bg-[#fdfdfd] border border-gray-100 text-center">
-                <div className="flex w-full mb-12 shadow-sm">
-                  <button 
-                    onClick={() => setMetalToggle('zlato')}
-                    className={`flex-1 py-2 text-sm border ${metalToggle === 'zlato' ? 'bg-[#C5B367] text-white border-[#C5B367]' : 'bg-white border-gray-200 text-gray-600'}`}>
-                    Zlato
-                  </button>
-                  <button 
-                    onClick={() => setMetalToggle('stribro')}
-                    className={`flex-1 py-2 text-sm border ${metalToggle === 'stribro' ? 'bg-[#C5B367] text-white border-[#C5B367]' : 'bg-white border-gray-200 text-gray-600'}`}>
-                    Stříbro
-                  </button>
-                </div>
-                <h3 className="text-2xl font-light text-gray-800 mb-4">Aktuální hodnota:</h3>
-                <div className="bg-[#FF4D4D] text-white text-3xl py-3 px-8 font-sans font-light">
-                  1907.06
-                </div>
-              </div>
-              <div className="lg:w-3/4 bg-white border border-gray-200 p-4 min-h-[400px] flex items-center justify-center">
-                <img
-                  src="/graf.svg"
-                  alt="Price Chart"
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
+           <PriceChart/>
           )}
 
           {/* Load More Button */}

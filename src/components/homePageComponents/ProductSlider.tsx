@@ -8,8 +8,8 @@ const productsData = [
   { id: 1, title: "Zlatá cihla 250 gramů - argor heraeus Švýcarsko", price: "od 332 546 Kč", badges: ["Novinka", "Tip"], image: "/imgcoins232.svg", rating: 5 },
   { id: 2, title: "Velká Británie, 22 € 2018, Britannia, 1 oz.", price: "od 402 Kč", badges: ["Novinka"], image: "/imgcoin.svg", rating: 0 },
   { id: 3, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badges: ["Novinka"], image: "/imgcoin23.svg", rating: 5 },
-  { id: 4, title: "American eagle silver", price: "od 867 Kč", badges: ["Tip"], image: "/imgcoin.svg", rating: 5 },
-  { id: 5, title: "Zlatá cihla 250 gramů - argor heraeus Švýcarsko", price: "od 332 546 Kč", badges: ["Novinka", "Tip"], image: "/imgcoins232.svg", rating: 5 },
+  { id: 4, title: "American eagle silver", price: "od 867 Kč", badges: ["Tip"], image: "/imgcoin432.svg", rating: 5 },
+  
 ];
 
 const ProductSlider = () => {
@@ -33,12 +33,16 @@ const ProductSlider = () => {
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  const handleQuantity = (id: number, type: 'inc' | 'dec') => {
-    setQuantities(prev => ({
+const handleQuantity = (id: number, type: 'inc' | 'dec') => {
+  setQuantities(prev => {
+    const current = prev[id] ?? 1;
+
+    return {
       ...prev,
-      [id]: type === 'inc' ? prev[id] + 1 : Math.max(1, prev[id] - 1)
-    }));
-  };
+      [id]: type === 'inc' ? current + 1 : Math.max(1, current - 1)
+    };
+  });
+};
 
   return (
     <div className="bg-white py-16 px-4 font-serif">
@@ -122,7 +126,7 @@ const ProductSlider = () => {
                         </button>
                         <input 
                           type="text" 
-                          value={quantities[product.id]} 
+                          value={quantities[product.id] ?? 0}
                           readOnly
                           className="w-10 text-center text-sm outline-none border-x border-gray-100" 
                         />
