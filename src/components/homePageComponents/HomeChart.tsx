@@ -184,9 +184,9 @@ const PriceChart = () => {
                             <div className="flex w-full mb-10 border-gray-800 bg-white">
                                 <button
                                     onClick={() => setMetalToggle("zlato")}
-                                    className={`flex-1 py-2 text-[11px] font-bold uppercase ${metalToggle === "zlato"
-                                        ? "bg-[#C5B367] text-white"
-                                        : "text-gray-400"
+                                    className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "zlato"
+                                        ? "bg-[#C5B367] text-white hover:bg-[#b38f4d]"
+                                        : "text-gray-400 hover:text-white hover:bg-[#b38f4d]    border-gray-200"
                                         }`}
                                 >
                                     Zlato
@@ -194,16 +194,16 @@ const PriceChart = () => {
 
                                 <button
                                     onClick={() => setMetalToggle("stribro")}
-                                    className={`flex-1 py-2 text-[11px] font-bold uppercase ${metalToggle === "stribro"
-                                        ? "bg-[#C5B367] text-white"
-                                        : "text-gray-400"
+                                    className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "stribro"
+                                        ? "bg-[#C5B367] text-white border-gray-200"
+                                        : "text-gray-400 hover:bg-[#C5B367] hover:text-white border-gray-200"
                                         }`}
                                 >
                                     Stříbro
                                 </button>
                             </div>
 
-                            <h3 className="text-[10px] font-bold text-gray-400 mb-4 uppercase tracking-[0.25em]">
+                            <h3 className="text-[14px] font-bold-2xl text-black-400 mb-4  tracking-[0.25em]">
                                 Aktuální hodnota
                             </h3>
 
@@ -218,7 +218,7 @@ const PriceChart = () => {
                             {/* TOOLBAR (ONLY RESPONSIVE FIX) */}
                             <div className="flex items-center px-6 py-3 border-b gap-4 overflow-x-auto whitespace-nowrap">
 
-                                <span className="font-black text-[12px] text-black uppercase flex items-center gap-1">
+                                <span className="font-black text-[12px] text-black  flex items-center gap-1">
                                     {metalToggle === "zlato" ? "GOLD" : "SILVER"}
                                     <Plus size={14} />
                                 </span>
