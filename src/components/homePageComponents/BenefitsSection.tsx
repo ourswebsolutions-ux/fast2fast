@@ -2,10 +2,10 @@ import React from 'react';
 
 const BenefitsSection = () => {
   const features = [
-    { icon: <img src="/3d.svg" className="w-7 h-7" />, title: "Doprava zdarma", sub: "nad 5 000 Kč" },
-    { icon: <img src="/star.svg" className="w-7 h-7" />, title: "Nejlepší výkupní", sub: "ceny" },
-    { icon: <img src="/phone.svg" className="w-7 h-7" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
-    { icon: <img src="/arrow.svg" className="w-7 h-7 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
+    { icon: <img src="/3d.svg" className="w-10 h-10" />, title: "Doprava zdarma", sub: "nad 5 000 Kč" },
+    { icon: <img src="/star.svg" className="w-12 h-12" />, title: "Nejlepší výkupní", sub: "ceny" },
+    { icon: <img src="/phone.svg" className="w-10 h-10" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
+    { icon: <img src="/arrow.svg" className="w-10 h-10 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
   ];
 
   return (
@@ -64,7 +64,7 @@ const BenefitsSection = () => {
                   {feature.title}
                 </h3>
 
-                <p className="text-[11px] md:text-[14px] text-[#777777]">
+                <p className="text-[12px] md:text-[15px] text-[#1A1A1A] font-medium leading-tight">
                   {feature.sub}
                 </p>
               </div>

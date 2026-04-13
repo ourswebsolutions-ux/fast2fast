@@ -29,7 +29,7 @@ const Testimonials = () => {
         <div className="flex flex-col items-center mb-14">
           <div className="flex gap-1.5 mb-5">
             <span className="w-1.5 h-1.5 bg-zinc-200 rotate-45" />
-            <span className="w-2 h-2 bg-[#C9B067] rotate-45" />
+            <span className="w-2 h-2 bg-zinc-200 rotate-45" />
             <span className="w-1.5 h-1.5 bg-zinc-200 rotate-45" />
           </div>
 
