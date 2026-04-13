@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChevronRight, BookOpenText, Coins } from 'lucide-react';
+import { ChevronRight, BookOpen, Coins } from 'lucide-react';
+import Image from "next/image";
 
 type NavItem = {
     label: string;
@@ -17,8 +18,9 @@ const GuldenHeroSection: React.FC = () => {
     const navItems: NavItem[] = [
         { label: 'Investiční zlato', icon: 'Au' },
         { label: 'Investiční stříbro', icon: 'Ag' },
-        { label: 'Pro sběratele', icon: <Coins size={14} /> },
-        { label: 'Příslušenství', icon: <BookOpenText size={200} />, active: true },
+        {label: 'Pro sběratele', icon: (
+         <Image src="/sberatele.svg"alt="sberatele" width={20} height={20}  />)},
+        { label: 'Příslušenství', icon: <BookOpen size={200} />, active: true },
         { label: 'Spoření' },
         { label: 'Online rádce' },
         { label: 'Naše prodejny' },
@@ -44,7 +46,7 @@ const GuldenHeroSection: React.FC = () => {
                             <li
                                 key={i}
                                 className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
-                ${item.active ? 'bg-[#C5A059] text-black' : 'hover:bg-gray-900'}`}
+                ${item.active ? 'bg-[#C5A059] text-black' : 'hover:bg-[#b38f4d]'}`}
                             >
                                 <div className="flex items-center gap-2 md:gap-3">
                                     {item.icon && (
@@ -90,7 +92,7 @@ const GuldenHeroSection: React.FC = () => {
                                 alt="Gold Bar"
                                 className="w-40 sm:w-52 md:w-auto drop-shadow-2xl"
                             />
-                            
+
                         </div>
 
                         {/* Banners */}
@@ -98,10 +100,10 @@ const GuldenHeroSection: React.FC = () => {
                             {banners.map((banner, i) => (
                                 <button
                                     key={i}
-                                    className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold uppercase tracking-wider transition-all duration-300 rounded-none
+                                    className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
-                                            ? 'bg-[#C5A059] text-black shadow-lg'
-                                            : 'bg-black text-white hover:bg-[#222]'}`}
+                                            ? 'bg-[#C5A059] hover:bg-[#b38f4d] text-black shadow-lg'
+                                            : 'bg-black text-white hover:bg-[#C5A059] hover:text-black'}`}
                                 >
                                     {banner.label}
 

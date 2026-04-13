@@ -19,15 +19,19 @@ export default function MarketControls() {
     { date: "13-02-2023", usd: "1858,50", gbp: "1544,04", eur: "1740,30", czk: "1544,04", pln: "1740,30" },
     { date: "10-02-2023", usd: "1864,10", gbp: "1540,49", eur: "1740,88", czk: "1540,49", pln: "1740,88" },
     { date: "09-02-2023", usd: "1882,10", gbp: "1549,72", eur: "1748,09", czk: "1549,72", pln: "1748,09" },
+    { date: "08-02-2023", usd: "1880,75", gbp: "1555,76", eur: "1450,04", czk: "1555,76", pln: "1450,04" },
+    { date: "07-02-2023", usd: "1873,80", gbp: "1561,81", eur: "1748,26", czk: "1561,81", pln: "1748,26" },
+    { date: "06-02-2023", usd: "1873,50", gbp: "1556,69", eur: "1739,54", czk: "1556,69", pln: "1739,54" },
+    { date: "03-02-2023", usd: "1910,00", gbp: "1559,71", eur: "1447,27", czk: "1559,71", pln: "1447,27" },
   ];
 
   return (
     <div className="w-full bg-black p-4 sm:p-6 font-sans select-none text-white overflow-hidden">
       <div className="max-w-[1350px] mx-auto">
-        
+
         {/* TABS SELECTOR */}
         <div className="flex gap-6 sm:gap-8 border-b border-zinc-800 mb-6">
-          <button 
+          <button
             onClick={() => setActiveTab("Graf")}
             className={cn(
               "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
@@ -36,7 +40,7 @@ export default function MarketControls() {
           >
             <LineChart size={16} className="sm:w-[18px]" /> Graf
           </button>
-          <button 
+          <button
             onClick={() => setActiveTab("Tabulka")}
             className={cn(
               "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
@@ -111,13 +115,13 @@ export default function MarketControls() {
             {/* GRAPH AREA WITH RIGHT SPACE FOR NUMBERS */}
             <div className="relative w-full pr-14">
               <div className="w-full h-[300px] sm:h-[450px] relative">
-                
+
                 {/* Y-Axis Grid Lines & Numbers (Numbers positioned absolute to the right) */}
                 {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
-                  <div 
-                    key={val} 
-                    className="absolute left-0 w-full border-t border-zinc-800/60 flex justify-end items-center" 
-                    style={{ top: `${100 - (val/2000) * 100}%` }}
+                  <div
+                    key={val}
+                    className="absolute left-0 w-full border-t border-zinc-800/60 flex justify-end items-center"
+                    style={{ top: `${100 - (val / 2000) * 100}%` }}
                   >
                     {/* Numbers on the right side of the line */}
                     <span className="absolute -right-14 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
@@ -128,13 +132,13 @@ export default function MarketControls() {
 
                 {/* SVG Graph - Contained in grid */}
                 <svg viewBox="0 0 1000 450" preserveAspectRatio="none" className="w-full h-full relative z-10 overflow-visible">
-                  <path 
-                    d="M0,430 L50,425 L100,410 L150,350 L180,360 L200,420 L250,415 L300,420 L350,425 L400,420 L450,425 L500,430 L550,420 L600,410 L650,400 L700,350 L720,280 L740,310 L780,250 L820,150 L850,220 L880,180 L920,80 L950,150 L1000,100" 
-                    fill="none" 
-                    stroke="#C4B06D" 
-                    strokeWidth="2.5" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
+                  <path
+                    d="M0,430 L50,425 L100,410 L150,350 L180,360 L200,420 L250,415 L300,420 L350,425 L400,420 L450,425 L500,430 L550,420 L600,410 L650,400 L700,350 L720,280 L740,310 L780,250 L820,150 L850,220 L880,180 L920,80 L950,150 L1000,100"
+                    fill="none"
+                    stroke="#C4B06D"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="drop-shadow-[0_0_8px_rgba(196,176,109,0.4)]"
                   />
                 </svg>
@@ -149,7 +153,7 @@ export default function MarketControls() {
             {/* Time Filter Buttons */}
             <div className="flex flex-wrap gap-2 pt-8">
               {timeFilters.map((f) => (
-                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:border-zinc-600")}>
+                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:bg-[#b38f4d]")}>
                   {f}
                 </button>
               ))}
@@ -157,23 +161,26 @@ export default function MarketControls() {
           </div>
         ) : (
           /* TABLE VIEW */
-          <div className="w-full overflow-x-auto animate-in slide-in-from-bottom-2 duration-300">
+          <div className="w-full overflow-x-auto bg-black p-1">
             <table className="min-w-[700px] w-full text-left border-collapse">
               <thead>
-                <tr className="bg-black text-white text-[12px] sm:text-[13px] font-bold uppercase tracking-wider">
-                  <th className="p-4">Datum</th>
-                  {currencies.map(c => (
-                    <th key={c} className="p-4 text-center">{c}</th>
-                  ))}
+                <tr className="bg-black text-white text-[13px] font-bold">
+                  <th className="p-4 w-[150px]"></th> {/* Empty space for date column alignment */}
+                  <th className="p-4 text-center">USD $</th>
+                  <th className="p-4 text-center">GBP £</th>
+                  <th className="p-4 text-center">EUR €</th>
+                  <th className="p-4 text-center">CZK Kč</th>
+                  <th className="p-4 text-center">PLN zł</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="text-sm">
                 {tableData.map((row, idx) => (
-                  <tr 
-                    key={idx} 
+                  <tr
+                    key={idx}
                     className={cn(
-                      "text-[13px] sm:text-[14px] font-bold transition-all",
-                      idx % 2 === 0 ? "bg-black text-white" : "bg-white text-black"
+                      "text-[14px] font-medium transition-all",
+                      // Image pattern: White row, then Black row
+                      idx % 2 === 0 ? "bg-white text-black" : "bg-black text-white"
                     )}
                   >
                     <td className="p-4 border-none">{row.date}</td>

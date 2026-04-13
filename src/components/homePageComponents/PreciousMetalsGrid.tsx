@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { ChevronRight, ArrowDown, ArrowUp } from 'lucide-react';
 
 const PreciousMetalsGrid = () => {
   const categories = [
@@ -26,7 +26,7 @@ const PreciousMetalsGrid = () => {
       title: "Pro sběratele",
       links: ["Mince České národní banky", "Světové mince a euromince", "Historické mince a bankovky", "Zajímavosti", "Tipy na dárky"],
       image: "/coin.png",
-      borderColor: "border-[#C5B367]/40", 
+      borderColor: "border-[#C5B367]/40",
       isHighlighted: true
     },
     {
@@ -40,35 +40,37 @@ const PreciousMetalsGrid = () => {
   return (
     <div className="bg-white py-16 px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
-        
+
         {/* Header Section */}
         <div className="text-center mb-12">
           <div className="flex justify-center mb-2">
-            <span className="text-gray-300 text-xs gap-1 flex">
-              <span>◆</span><span>◆</span><span>◆</span>
-            </span>
+            <div className="flex items-center gap-1.5 mb-4 md:mb-6">
+              <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
+              <div className="w-2 h-2 bg-[#D1D1D1] rotate-45" />
+              <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
+            </div>
           </div>
-          <h2 className="text-4xl text-gray-800 font-light tracking-wide uppercase">Hlavní kategorie</h2>
+          <h2 className="text-4xl text-gray-800 font-light tracking-wide ">Hlavní kategorie</h2>
         </div>
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {categories.map((cat, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`relative bg-[#0A0A0A] p-10 min-h-[400px] flex flex-row items-stretch border overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[#C5B367]`}
             >
               {/* Left Side: Text Content */}
               <div className="flex-1 z-20 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-1xl text-[#C5B367] font-light mb-8 uppercase tracking-widest">
+                  <h3 className="text-1xl text-[#C5B367] font-light mb-8 tracking-widest">
                     {cat.title}
                   </h3>
                   <ul className="space-y-4">
                     {cat.links.map((link, lIdx) => (
                       <li key={lIdx} className="flex items-center group/link cursor-pointer">
-                        <ChevronRight className="w-3 h-3 text-[#C5B367] mr-3 transition-transform group-hover/link:translate-x-1" />
-                        <span className="text-white/70 text-[13px]  tracking-wider border-b border-transparent group-hover/link:text-white group-hover/link:border-[#C5B367] transition-all">
+                        <ChevronRight className="w-3 h-3 text-white mr-3 transition-transform group-hover/link:translate-x-1" />
+                        <span className="text-white/90 text-[13px] tracking-wider underline underline-offset-4 decoration-white transition-all duration-300 group-hover/link:decoration-[#C5B367] group-hover/link:text-[#C5B367]">
                           {link}
                         </span>
                       </li>
@@ -76,18 +78,17 @@ const PreciousMetalsGrid = () => {
                   </ul>
                 </div>
               </div>
-
               {/* Right Side: Price + Image (Flex Parallel) */}
               <div className="flex-1 z-20 flex flex-col items-end">
                 {/* Price at the very top of image side */}
                 {cat.price ? (
                   <div className="flex items-center gap-3 text-[11px] font-sans mb-4">
-                    <span className="text-white/40 border-b border-white/20 uppercase pb-0.5 tracking-tighter">
-                       {cat.symbol}
+                    <span className="text-[#C5A059] border-b border-white/20  pb-0.5 tracking-tighter">
+                      {cat.symbol}
                     </span>
                     <span className="text-white font-medium">{cat.price}</span>
                     <span className={cat.trend === 'up' ? 'text-green-500' : 'text-red-500'}>
-                      {cat.trend === 'up' ? '▲' : '▼'}
+                      {cat.trend === 'up' ? <ArrowUp size={14} /> : <ArrowDown size={14} />}
                     </span>
                   </div>
                 ) : (
@@ -96,8 +97,8 @@ const PreciousMetalsGrid = () => {
 
                 {/* Image Container */}
                 <div className="relative flex-1 w-full flex items-center justify-end">
-                  <img 
-                    src={cat.image} 
+                  <img
+                    src={cat.image}
                     alt={cat.title}
                     className="object-contain max-h-[220px] w-auto transition-transform duration-700 group-hover:scale-110 group-hover:-rotate-3 drop-shadow-[0_20px_50px_rgba(197,179,103,0.15)]"
                   />

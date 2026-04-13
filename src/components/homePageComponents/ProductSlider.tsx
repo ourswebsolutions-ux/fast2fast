@@ -9,135 +9,120 @@ const productsData = [
   { id: 2, title: "Velká Británie, 22 € 2018, Britannia, 1 oz.", price: "od 402 Kč", badges: ["Novinka"], image: "/imgcoin.svg", rating: 0 },
   { id: 3, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badges: ["Novinka"], image: "/imgcoin23.svg", rating: 5 },
   { id: 4, title: "American eagle silver", price: "od 867 Kč", badges: ["Tip"], image: "/imgcoin432.svg", rating: 5 },
-  
 ];
 
 const ProductSlider = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [quantities, setQuantities] = useState<Record<number, number>>({});
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { 
-      loop: true, 
-      align: 'start',
-      direction: 'ltr' 
-    }, 
-    [
-      Autoplay({ 
-        delay: 3000, 
-        stopOnInteraction: false,
-        playOnInit: true
-      })
-    ]
+    { loop: true, align: 'start' },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-const handleQuantity = (id: number, type: 'inc' | 'dec') => {
-  setQuantities(prev => {
-    const current = prev[id] ?? 1;
-
-    return {
+  const handleQuantity = (id: number, type: 'inc' | 'dec') => {
+    setQuantities(prev => ({
       ...prev,
-      [id]: type === 'inc' ? current + 1 : Math.max(1, current - 1)
-    };
-  });
-};
+      [id]: type === 'inc' ? (prev[id] ?? 1) + 1 : Math.max(1, (prev[id] ?? 1) - 1)
+    }));
+  };
 
   return (
-    <div className="bg-white py-16 px-4 font-serif">
+    <div className=" py-16 px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
-        
-        <div className="text-center mb-10">
-          <div className="flex justify-center mb-2 text-gray-300 text-xs gap-1">
-            <span>◆</span><span>◆</span><span>◆</span>
-          </div>
-          <h2 className="text-4xl text-gray-800 font-light">Vybrali jsme pro Vás</h2>
+
+        {/* Diamond Icons Top Center */}
+        <div className="flex justify-center items-center gap-1.5 mb-4">
+          <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
+          <div className="w-2 h-2 bg-[#D1D1D1] rotate-45" />
+          <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
         </div>
 
-        <div className="relative group">
-          <button 
-            onClick={scrollPrev} 
-            className="absolute -left-4 top-1/2 -translate-y-1/2 z-20 bg-[#C5B367] p-2 text-white hover:bg-[#b5a256] transition-colors"
+        <div className="text-center mb-10">
+          <h2 className="text-4xl text-gray-800 font-light mb-10">Vybrali jsme pro Vás</h2>
+
+          {/* Top Buttons - Full Width (1350px) with Gap */}
+          <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
+            <button className="flex-1 bg-[#C5B367] text-white py-3.5 text-sm tracking-wider hover:bg-[#b5a256] transition-all">Nejnovější výrobky</button>
+            <button className="flex-1 bg-white text-gray-600 border border-gray-200 py-3.5 text-sm tracking-wider hover:bg-[#b5a256] hover:text-white transition-all"> Investiční příležitosti</button>            <button className="flex-1 bg-[#C5B367] text-white py-3.5 text-sm  tracking-wider hover:bg-[#b5a256] transition-all">Oblíbené dárky</button>
+          </div>
+        </div>
+
+        <div className="relative group mt-4">
+          {/* Navigation Arrows - Adjusted for LG screens */}
+          <button
+            onClick={scrollPrev}
+            className="absolute -left-2 lg:-left-6 top-[40%] -translate-y-1/2 z-20 bg-[#C5B367] p-4 text-white hover:bg-[#b5a256] transition-all"
+            style={{ clipPath: 'polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)' }}
           >
-            <ChevronLeft size={32} />
+            <ChevronLeft size={30} />
           </button>
-          
-          <button 
-            onClick={scrollNext} 
-            className="absolute -right-4 top-1/2 -translate-y-1/2 z-20 bg-[#C5B367] p-2 text-white hover:bg-[#b5a256] transition-colors"
+
+          <button
+            onClick={scrollNext}
+            className="absolute -right-2 lg:-right-6 top-[40%] -translate-y-1/2 z-20 bg-[#C5B367] p-4 text-white hover:bg-[#b5a256] transition-all"
+            style={{ clipPath: 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)' }}
           >
-            <ChevronRight size={32} />
+            <ChevronRight size={30} />
           </button>
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
-              {productsData.map((product ) => (
-                <div 
-                  key={product.id} 
-                  className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-3"
-                  onClick={() => setSelectedId(product.id)}
-                >
-                  <div className={`bg-white p-6 border h-full flex flex-col cursor-pointer transition-all duration-300 ${
-                    selectedId === product.id 
-                      ? 'border-[#C5B367] ring-1 ring-[#C5B367] shadow-lg' 
-                      : 'border-gray-100 hover:border-gray-300'
-                  }`}>
-                    
-                    <div className="flex justify-between items-start mb-4">
-                      <div className="flex flex-col gap-1">
-                        {product.badges.map(badge => (
-                          <span key={badge} className="text-[10px] bg-gray-50 border border-gray-200 px-2 py-0.5 text-gray-500 font-sans uppercase tracking-tighter">
-                            {badge}
-                          </span>
-                        ))}
-                      </div>
-                      <Heart size={18} className="text-amber-600 hover:fill-amber-600 transition-colors" />
-                    </div>
-
-                    <div className="h-48 flex items-center justify-center mb-6 px-4">
-                      <img 
-                        src={product.image} 
-                        alt={product.title} 
-                        className="max-h-full max-w-full object-contain pointer-events-none hover:scale-105 transition-transform duration-500" 
-                      />
-                    </div>
-
-                    <div className="flex justify-center gap-0.5 mb-3">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={14} className={i < product.rating ? "fill-amber-500 text-amber-500" : "text-gray-200"} />
+              {productsData.map((product) => (
+                <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
+                  <div
+                    className={`bg-white p-6 border h-full flex flex-col relative transition-all duration-300 ${product.id === 2 ? 'border-[#C5B367] ring-[0.5px] ring-[#C5B367]' : 'border-gray-100'
+                      } ${selectedId === product.id ? 'shadow-lg' : ''}`}
+                    onClick={() => setSelectedId(product.id)}
+                  >
+                    {/* Badge Container - Fixed height for alignment */}
+                    <div className="flex flex-col gap-1.5 h-14">
+                      {product.badges.map(badge => (
+                        <span key={badge} className="w-fit text-[10px] bg-white border border-gray-200 px-3 py-0.5 text-gray-500 font-sans ">
+                          {badge}
+                        </span>
                       ))}
                     </div>
 
-                    <div className="text-center flex-grow mb-6">
-                      <h3 className="text-[13px] text-gray-600  underline decoration-gray-200 underline-offset-4 mb-3 leading-relaxed min-h-[40px] line-clamp-2">
-                        {product.title}
-                      </h3>
-                      <p className="text-xl text-[#C5A059] font-medium">{product.price}</p>
+                    {/* Image Wrapper - Center Aligned */}
+                    <div className="h-52 flex flex-col items-center justify-center relative mb-4">
+                      <img
+                        src={product.image}
+                        alt={product.title}
+                        className="max-h-full max-w-[180px] object-contain transition-transform hover:scale-105"
+                      />
+                      <Heart
+                        size={20}
+                        className={`absolute bottom-0 right-0 cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
+                          }`}
+                      />
                     </div>
 
-                    <div className="flex items-stretch gap-2 h-11 font-sans mt-auto" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex border border-gray-200 rounded-sm overflow-hidden">
-                        <button 
-                          onClick={() => handleQuantity(product.id, 'dec')}
-                          className="px-3 text-red-500 text-xl hover:bg-gray-50 transition-colors"
-                        >
-                          −
-                        </button>
-                        <input 
-                          type="text" 
-                          value={quantities[product.id] ?? 0}
-                          readOnly
-                          className="w-10 text-center text-sm outline-none border-x border-gray-100" 
-                        />
-                        <button 
-                          onClick={() => handleQuantity(product.id, 'inc')}
-                          className="px-3 text-green-600 text-xl hover:bg-gray-50 transition-colors"
-                        >
-                          +
-                        </button>
+                    {/* Rating Section - Fixed height to prevent shift */}
+                    <div className="flex justify-center gap-0.5 mb-4 h-4">
+                      {product.rating > 0 && [...Array(5)].map((_, i) => (
+                        <Star key={i} size={14} className="fill-[#f8dc61] text-[#C5B367]" />
+                      ))}
+                    </div>
+
+                    {/* Title & Price */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1">
+                        {product.title}
+                      </h3>
+                      <p className="text-xl text-[#C5A059] font-medium tracking-tight  font-sans">{product.price}</p>
+                    </div>
+
+                    {/* Footer Actions */}
+                    <div className="flex items-stretch gap-2 h-11 mt-auto" onClick={(e) => e.stopPropagation()}>
+                      <div className="flex border border-gray-200 items-center bg-white">
+                        <button onClick={() => handleQuantity(product.id, 'dec')} className="px-3 text-red-400 text-xl">−</button>
+                        <input type="text" value={quantities[product.id] ?? 1} readOnly className="w-8 text-center text-sm outline-none" />
+                        <button onClick={() => handleQuantity(product.id, 'inc')} className="px-3 text-green-500 text-xl">+</button>
                       </div>
-                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold uppercase tracking-wider transition-all active:scale-95">
+                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold  tracking-wider transition-colors">
                         Přidat do košíku
                       </button>
                     </div>
