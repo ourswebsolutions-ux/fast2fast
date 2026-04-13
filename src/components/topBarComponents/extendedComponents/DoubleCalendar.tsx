@@ -1,112 +1,164 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const DoubleCalendar = ({ onCancel, onConfirm }: { onCancel: () => void, onConfirm: () => void }) => {
-  const days = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
+const days = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
 
-  const isSelected = (month: string, day: number) => {
-    if (month === "March" && day >= 26) return true;
-    if (month === "April" && day <= 31) return true;
-    return false;
+const monthNames = [
+  "Leden", "Únor", "Březen", "Duben", "Květen", "Červen",
+  "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"
+];
+
+const DoubleCalendar = ({
+  onCancel,
+  onConfirm,
+  initialRange,
+}: {
+  onCancel: () => void;
+  onConfirm: (range: { start: Date | null; end: Date | null }) => void;
+  initialRange?: { start: Date | null; end: Date | null };
+}) => {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [range, setRange] = useState<{
+    start: Date | null;
+    end: Date | null;
+  }>(initialRange || { start: null, end: null });
+
+  const getMonthData = (year: number, month: number) => {
+    const firstDay = new Date(year, month, 1);
+    let startDay = firstDay.getDay();
+    startDay = startDay === 0 ? 6 : startDay - 1;
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    return { startDay, daysInMonth };
   };
 
-  const DayBox = ({ day, month }: { day: number; month: string }) => {
-    const selected = isSelected(month, day);
+  const addMonths = (date: Date, count: number) => {
+    const newDate = new Date(date);
+    newDate.setMonth(newDate.getMonth() + count);
+    return newDate;
+  };
+
+  const handleDateClick = (date: Date) => {
+    if (!range.start || (range.start && range.end)) {
+      setRange({ start: date, end: null });
+    } else {
+      if (date < range.start) {
+        setRange({ start: date, end: range.start });
+      } else {
+        setRange({ ...range, end: date });
+      }
+    }
+  };
+
+  const isInRange = (date: Date) => {
+    if (!range.start || !range.end) return false;
+    return date >= range.start && date <= range.end;
+  };
+
+  const isSelected = (date: Date) => {
     return (
-      <div
-        className={cn(
-          "h-9 w-full flex items-center justify-center text-[13px] border border-zinc-200 cursor-pointer relative transition-all",
-          selected ? "bg-[#E6F9F0] text-[#2DB36F] font-bold z-10" : "bg-white text-zinc-800 hover:bg-zinc-50"
-        )}
-      >
-        {day}
-        {selected && (
-          <>
-            <div className="absolute inset-0 border-[1.5px] border-[#2DB36F]" />
-            <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#2DB36F]" />
-          </>
-        )}
+      (range.start && date.toDateString() === range.start.toDateString()) ||
+      (range.end && date.toDateString() === range.end.toDateString())
+    );
+  };
+
+  const renderMonth = (baseDate: Date) => {
+    const year = baseDate.getFullYear();
+    const month = baseDate.getMonth();
+    const { startDay, daysInMonth } = getMonthData(year, month);
+
+    return (
+      <div className="grid grid-cols-7 gap-0 text-center min-w-[280px] sm:min-w-0">
+        {days.map((d) => (
+          <span key={d} className="text-[10px] sm:text-[11px] text-zinc-400 font-bold mb-2 uppercase">
+            {d}
+          </span>
+        ))}
+        {startDay > 0 && <div style={{ gridColumn: `span ${startDay}` }} />}
+        {Array.from({ length: daysInMonth }, (_, i) => {
+          const day = i + 1;
+          const fullDate = new Date(year, month, day);
+          const selected = isSelected(fullDate);
+          const inRange = isInRange(fullDate);
+
+          return (
+            <div
+              key={day}
+              onClick={() => handleDateClick(fullDate)}
+              className={cn(
+                "h-9 sm:h-10 w-full flex items-center justify-center text-[12px] sm:text-[13px] border border-zinc-100 cursor-pointer relative transition-all",
+                selected
+                  ? "bg-[#E6F9F0] text-[#2DB36F] font-bold z-10"
+                  : inRange
+                  ? "bg-[#F0FBF6] text-[#2DB36F]"
+                  : "bg-white text-zinc-800 hover:bg-zinc-50"
+              )}
+            >
+              {day}
+              {selected && (
+                <>
+                  <div className="absolute inset-0 border-[1.5px] border-[#2DB36F]" />
+                  <div className="absolute bottom-0 left-0 w-full h-[3px] bg-[#2DB36F]" />
+                </>
+              )}
+            </div>
+          );
+        })}
       </div>
     );
   };
 
+  const leftDate = currentDate;
+  const rightDate = addMonths(currentDate, 1);
+
   return (
-    <div className={cn(
-      "absolute z-[100] bg-white text-black p-4 sm:p-6 shadow-2xl border border-zinc-200 mt-1 font-sans animate-in fade-in slide-in-from-top-2",
-      // Desktop: Starts from 'Od:' section (approx 110px from left)
-      // Mobile: Centered/Full width
-      "w-[95vw] sm:w-[680px] left-[-20px] sm:left-[110px] top-[105%]"
-    )}>
+    <div className="absolute z-[100] bg-white text-black p-4 sm:p-6 shadow-2xl border border-zinc-200 mt-1 w-[92vw] sm:w-[680px] -left-4 sm:left-0 top-[110%] rounded-md overflow-hidden">
       
-      {/* Month Selectors Header */}
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-10 mb-6">
-        <div className="flex-1 flex items-center gap-2 border-b border-zinc-200 pb-2">
-          <span className="font-bold text-zinc-700 text-[16px]">Březen</span>
-          <ChevronDown size={14} className="text-zinc-400" />
-          <span className="font-bold text-zinc-700 text-[16px] ml-auto">2023</span>
-          <ChevronDown size={14} className="text-zinc-400" />
+      {/* Scroll indicator for mobile only */}
+      <div className="sm:hidden text-center text-[10px] text-zinc-400 mb-3 font-bold uppercase tracking-widest">
+        ← Swipe for next month →
+      </div>
+
+      {/* Scroller: Only active on mobile (overflow-x-auto), desktop is normal (sm:overflow-visible) */}
+      <div className="flex overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide gap-4 sm:gap-10">
+        
+        {/* Month 1 */}
+        <div className="min-w-full sm:min-w-0 flex-1 snap-center">
+          <div className="flex justify-between items-center mb-4 px-1">
+            <ChevronLeft size={20} onClick={() => setCurrentDate(addMonths(currentDate, -1))} className="cursor-pointer text-zinc-400 hover:text-black hover:bg-zinc-100 rounded-full transition-colors" />
+            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase">
+              {monthNames[leftDate.getMonth()]} {leftDate.getFullYear()}
+            </span>
+            <div className="w-5 sm:hidden" /> 
+          </div>
+          {renderMonth(leftDate)}
         </div>
-        <div className="flex-1 flex items-center gap-2 border-b border-zinc-200 pb-2">
-          <span className="font-bold text-zinc-700 text-[16px]">Duben</span>
-          <ChevronDown size={14} className="text-zinc-400" />
-          <span className="font-bold text-zinc-700 text-[16px] ml-auto">2023</span>
-          <ChevronDown size={14} className="text-zinc-400" />
+
+        {/* Month 2 */}
+        <div className="min-w-full sm:min-w-0 flex-1 snap-center sm:border-l sm:border-zinc-100 sm:pl-10 border-t sm:border-t-0 mt-4 sm:mt-0 pt-4 sm:pt-0">
+          <div className="flex justify-between items-center mb-4 px-1">
+            <div className="w-5 sm:hidden" />
+            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase">
+              {monthNames[rightDate.getMonth()]} {rightDate.getFullYear()}
+            </span>
+            <ChevronRight size={20} onClick={() => setCurrentDate(addMonths(currentDate, 1))} className="cursor-pointer text-zinc-400 hover:text-black hover:bg-zinc-100 rounded-full transition-colors" />
+          </div>
+          {renderMonth(rightDate)}
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-8 sm:gap-10">
-        {/* LEFT: BŘEZEN */}
-        <div className="flex-1">
-          <div className="flex justify-between items-center mb-4">
-            <ChevronLeft size={18} className="cursor-pointer text-zinc-400 hover:text-black" />
-            <span className="font-bold text-[13px] tracking-wider text-zinc-800 uppercase">Březen 2023</span>
-            <div className="w-4" />
-          </div>
-          <div className="grid grid-cols-7 gap-0 text-center">
-            {days.map(d => <span key={d} className="text-[11px] text-zinc-400 font-bold mb-2">{d}</span>)}
-            <div className="col-span-2 border border-transparent" />
-            {Array.from({ length: 31 }, (_, i) => i + 1).map(d => (
-              <DayBox key={d} day={d} month="March" />
-            ))}
-          </div>
-        </div>
-
-        {/* RIGHT: DUBEN */}
-        <div className="flex-1 sm:border-l border-zinc-100 sm:pl-10 pt-6 sm:pt-0 border-t sm:border-t-0">
-          <div className="flex justify-between items-center mb-4">
-            <div className="w-4" />
-            <span className="font-bold text-[13px] tracking-wider text-zinc-800 uppercase">Duben 2023</span>
-            <ChevronRight size={18} className="cursor-pointer text-zinc-400 hover:text-black" />
-          </div>
-          <div className="grid grid-cols-7 gap-0 text-center">
-            {days.map(d => <span key={d} className="text-[11px] text-zinc-400 font-bold mb-2">{d}</span>)}
-            <div className="col-span-5 border border-transparent" />
-            {Array.from({ length: 30 }, (_, i) => i + 1).map(d => (
-              <DayBox key={d} day={d} month="April" />
-            ))}
-            <DayBox day={31} month="April" />
-          </div>
-        </div>
-      </div>
-
-      {/* FOOTER */}
-      <div className="mt-8 flex justify-between items-center border-t border-zinc-100 pt-4">
-        <button onClick={onCancel} className="text-[14px] font-bold text-zinc-800 underline underline-offset-4 hover:text-black">
+      <div className="mt-6 flex flex-col sm:flex-row justify-between items-center border-t border-zinc-100 pt-4 gap-4">
+        <button onClick={onCancel} className="text-[13px] sm:text-[14px] font-bold text-zinc-800 underline underline-offset-4 hover:text-black order-2 sm:order-1">
           Zrušit výběr
         </button>
-        <button onClick={onConfirm} className="bg-[#C4B06D] text-white px-6 sm:px-8 py-3 text-[14px] font-bold hover:bg-[#b3a05f] transition-colors rounded-sm shadow-sm">
+        <button onClick={() => onConfirm(range)} className="w-full sm:w-auto bg-[#C4B06D] text-white px-8 py-3 text-[13px] sm:text-[14px] font-bold hover:bg-[#b3a05f] transition-colors rounded-sm shadow-sm order-1 sm:order-2">
           Potvrdit výběr
         </button>
       </div>
     </div>
   );
 };
-
-const ChevronDown = ({ size, className }: any) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="m6 9 6 6 6-6"/></svg>
-);
 
 export default DoubleCalendar;
