@@ -1,7 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import PriceChart from './HomeChart';
+import dynamic from 'next/dynamic';
+
+const PriceChart = dynamic(() => import('./HomeChart'), {
+  ssr: false,
+});
 
 const NewsAndCharts = () => {
   const [activeTab, setActiveTab] = useState('plan'); 
