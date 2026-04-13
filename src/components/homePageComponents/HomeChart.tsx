@@ -54,6 +54,9 @@ const PriceChart = () => {
     const [showIndicator, setShowIndicator] = useState(false);
 
 
+    
+
+
 
     const downloadChart = () => {
         if (chartRef.current) {
