@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo, useRef, useEffect } from "react";
 import {
     ChevronDown,
     Plus,
@@ -18,6 +18,7 @@ import {
     Legend,
     PointElement,
     LineElement,
+
 } from "chart.js";
 
 import {
@@ -28,17 +29,19 @@ import {
 import "chartjs-adapter-date-fns";
 import { Chart } from "react-chartjs-2";
 
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    TimeScale,
-    Tooltip,
-    Legend,
-    PointElement,
-    LineElement,
-    CandlestickController,
-    CandlestickElement
-);
+if (typeof window !== "undefined") {
+    ChartJS.register(
+        CategoryScale,
+        LinearScale,
+        TimeScale,
+        Tooltip,
+        Legend,
+        PointElement,
+        LineElement,
+        CandlestickController,
+        CandlestickElement
+    );
+}
 
 const PriceChart = () => {
     const chartRef = useRef<any>(null);
@@ -49,6 +52,8 @@ const PriceChart = () => {
         "candlestick"
     );
     const [showIndicator, setShowIndicator] = useState(false);
+
+
 
     const downloadChart = () => {
         if (chartRef.current) {
@@ -273,12 +278,14 @@ const PriceChart = () => {
                             {/* CHART (CRITICAL FIX FOR MOBILE VISIBILITY) */}
                             <div className="flex-1 p-6 relative">
                                 <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
-                                    <Chart
-                                        ref={chartRef}
-                                        type={chartType as any}
-                                        data={chartData}
-                                        options={chartOptions}
-                                    />
+                                    {typeof window !== "undefined" && (
+                                        <Chart
+                                            ref={chartRef}
+                                            type={chartType as any}
+                                            data={chartData}
+                                            options={chartOptions}
+                                        />
+                                    )}
                                 </div>
                             </div>
 
