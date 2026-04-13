@@ -203,7 +203,7 @@ const PriceChart = () => {
                                 </button>
                             </div>
 
-                            <h3 className="text-[10px] font-bold text-gray-400 mb-4  tracking-[0.25em]">
+                            <h3 className="text-[14px] font-bold-2xl text-black-400 mb-4  tracking-[0.25em]">
                                 Aktuální hodnota
                             </h3>
 
