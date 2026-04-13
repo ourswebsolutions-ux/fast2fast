@@ -185,8 +185,8 @@ const PriceChart = () => {
                                 <button
                                     onClick={() => setMetalToggle("zlato")}
                                     className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "zlato"
-                                        ? "bg-[#C5B367] text-white"
-                                        : "text-gray-400"
+                                        ? "bg-[#C5B367] text-white hover:bg-[#b38f4d]"
+                                        : "text-gray-400 hover:text-white hover:bg-[#b38f4d]    border-gray-200"
                                         }`}
                                 >
                                     Zlato
@@ -195,8 +195,8 @@ const PriceChart = () => {
                                 <button
                                     onClick={() => setMetalToggle("stribro")}
                                     className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "stribro"
-                                        ? "bg-[#C5B367] text-white"
-                                        : "text-gray-400"
+                                        ? "bg-[#C5B367] text-white border-gray-200"
+                                        : "text-gray-400 hover:bg-[#C5B367] hover:text-white border-gray-200"
                                         }`}
                                 >
                                     Stříbro

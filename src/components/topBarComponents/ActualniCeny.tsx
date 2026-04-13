@@ -1,4 +1,4 @@
-v"use client";
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, TrendingDown, TrendingUp } from "lucide-react";
