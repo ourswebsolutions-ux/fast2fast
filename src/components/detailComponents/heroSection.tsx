@@ -93,10 +93,10 @@ const HeroSection: React.FC = () => {
 
                     {/* Status */}
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-[13px]">
-                        <div className="flex items-center gap-1.5 text-[#00A651] font-bold">
+                        <div className="flex items-center gap-1.5 text-[#666666] font-bold">
                             <Check size={20} strokeWidth={3} /> Skladem
                         </div>
-                        <div className="text-[#666666]">Můžeme doručit do <span className="text-[#00A651] font-bold">10.01.2023</span></div>
+                        <div className="text-[#00A651]">Můžeme doručit do <span className="text-[#00A651] font-bold">10.01.2023</span></div>
                         <div className="text-[#C5A059] underline cursor-pointer font-bold">Možnosti dopravy</div>
                     </div>
 
