@@ -4,6 +4,25 @@ import React, { useState } from "react";
 import { ChevronDown, LineChart, Table as TableIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler
+);
 export default function MarketControls() {
   const [activeTab, setActiveTab] = useState("Graf");
   const [currency, setCurrency] = useState("USD $");
@@ -114,46 +133,94 @@ export default function MarketControls() {
           <div className="animate-in fade-in duration-500">
             {/* GRAPH AREA WITH RIGHT SPACE FOR NUMBERS */}
             <div className="relative w-full pr-14">
-              <div className="w-full h-[300px] sm:h-[450px] relative">
+             <div className="w-full h-[300px] sm:h-[450px] relative ">
 
                 {/* Y-Axis Grid Lines & Numbers (Numbers positioned absolute to the right) */}
                 {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
                   <div
                     key={val}
-                    className="absolute left-0 w-full border-t border-zinc-800/60 flex justify-end items-center"
+                    className="absolute left-0 w-full border-t border-zinc-800/60 flex "
                     style={{ top: `${100 - (val / 2000) * 100}%` }}
                   >
                     {/* Numbers on the right side of the line */}
-                    <span className="absolute -right-14 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
+                    <span className="absolute -right-1 -top-4 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
                       {val}
                     </span>
                   </div>
                 ))}
 
                 {/* SVG Graph - Contained in grid */}
-                <svg viewBox="0 0 1000 450" preserveAspectRatio="none" className="w-full h-full relative z-10 overflow-visible">
-                  <path
-                    d="M0,430 L50,425 L100,410 L150,350 L180,360 L200,420 L250,415 L300,420 L350,425 L400,420 L450,425 L500,430 L550,420 L600,410 L650,400 L700,350 L720,280 L740,310 L780,250 L820,150 L850,220 L880,180 L920,80 L950,150 L1000,100"
-                    fill="none"
-                    stroke="#C4B06D"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="drop-shadow-[0_0_8px_rgba(196,176,109,0.4)]"
-                  />
-                </svg>
+               {/* REAL CHART (REPLACES SVG ONLY) */}
+<div className="absolute inset-0 z-10">
+  <Line
+    data={{
+      labels: Array.from({ length: 25 }, (_, i) => i),
+      datasets: [
+        {
+          data: [
+            430, 425, 410, 350, 360, 420, 415, 420, 425, 420,
+            425, 430, 420, 410, 400, 350, 280, 310, 250, 150,
+            220, 180, 80, 150, 100,
+          ],
+          borderColor: "#C4B06D",
+          borderWidth: 2.5,
+          tension: 0.4,
+          pointRadius: 0,
+          fill: false,
+        },
+      ],
+    }}
+    options={{
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false },
+      },
+      scales: {
+        x: { display: false },
+        y: { display: false },
+      },
+      elements: {
+        line: {
+          borderJoinStyle: "round",
+        },
+      },
+    }}
+  />
+</div>
               </div>
 
               {/* X-Axis Labels (Aligned with Graph) */}
-              <div className="flex justify-between mt-4 text-zinc-500 text-[10px] sm:text-[11px] font-mono border-t border-zinc-800 pt-3">
-                <span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span>
-              </div>
+            <div className="relative mt-4 border-t border-white/80 pt-3">
+  
+  {/* Labels */}
+  <div className="flex justify-between text-zinc-500 text-[10px] sm:text-[11px] font-mono">
+    <span>1970</span>
+    <span>1980</span>
+    <span>1990</span>
+    <span>2000</span>
+    <span>2010</span>
+    <span>2020</span>
+  </div>
+
+  {/* Vertical ticks (Chart style) */}
+  <div className="absolute top-0 left-0 w-full flex justify-between">
+    {[...Array(6)].map((_, i) => (
+      <span
+        key={i}
+        className="w-[1px] h-3 bg-white/70"
+      />
+    ))}
+  </div>
+
+</div>
             </div>
 
             {/* Time Filter Buttons */}
             <div className="flex flex-wrap gap-2 pt-8">
               {timeFilters.map((f) => (
-                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:bg-[#b38f4d]")}>
+                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:bg-[#b39e55]")}>
                   {f}
                 </button>
               ))}
