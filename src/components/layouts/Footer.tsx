@@ -9,7 +9,7 @@ const Footer = () => {
 
                 {/* 1. Newsletter Box */}
                 <div className="relative mb-16">
-                    <div className="relative -mt-28 overflow-hidden bg-[#C9B067] py-8 px-6 md:px-10 lg:px-12 shadow-2xl rounded">
+                    <div className="relative -mt-28 overflow-hidden bg-[rgb(199,177,93)] py-10 px-6 md:px-10 lg:px-12 shadow-2xl rounded">
 
                         {/* Background Pattern */}
                         <div className="absolute inset-0 z-0 opacity-20">
@@ -30,7 +30,7 @@ const Footer = () => {
                                     placeholder="Napište Váš e-mail"
                                     className="bg-black/20 border-none px-6 py-3.5 w-full sm:w-64 lg:w-80 text-white placeholder:text-white/80 outline-none focus:bg-black/30 transition-all text-sm rounded"
                                 />
-                                <button className="bg-[#e0c885] hover:bg-[#b38f4d] hover:text-white text-white px-8 py-3.5 font-bold text-[10px] md:text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner rounded">
+                                <button className="bg-[#e0c885] hover:bg-[#b39e55] hover:text-white text-white px-8 py-3.5 font-bold text-[10px] md:text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner rounded">
                                     Přihlásit k odběru
                                 </button>
                             </div>
@@ -114,7 +114,7 @@ const Footer = () => {
                                     { name: 'YT', svg: <><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.11 1 12 1 12s0 3.89.46 5.58a2.78 2.78 0 0 0 1.94 2c1.72.42 8.6.42 8.6.42s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.89 23 12 23 12s0-3.89-.46-5.58z"></path><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon></> },
                                     { name: 'TW', svg: <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path> }
                                 ].map((icon, idx) => (
-                                    <div key={idx} className="w-9 h-9 flex items-center justify-center bg-[#C9B067] text-white hover:bg-white hover:text-[#C9B067] rounded-md transition-all cursor-pointer shadow-sm">
+                                    <div key={idx} className="w-9 h-9 flex items-center justify-center bg-[rgb(199,177,93)] text-white hover:bg-white hover:text-[#C9B067] rounded-md transition-all cursor-pointer shadow-sm">
                                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{icon.svg}</svg>
                                     </div>
                                 ))}

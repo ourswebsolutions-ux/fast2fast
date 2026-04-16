@@ -179,39 +179,49 @@ const PriceChart = () => {
                     <div className="flex flex-col lg:flex-row gap-5 items-stretch">
 
                         {/* SIDEBAR (NO CHANGE) */}
-                        <div className="lg:w-[300px] w-full flex flex-col items-center justify-center p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
+              <div className="lg:w-[340px] w-full flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
 
-                            <div className="flex w-full mb-10 border-gray-800 bg-white">
-                                <button
-                                    onClick={() => setMetalToggle("zlato")}
-                                    className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "zlato"
-                                        ? "bg-[#C5B367] text-white hover:bg-[#b38f4d]"
-                                        : "text-gray-400 hover:text-white hover:bg-[#b38f4d]    border-gray-200"
-                                        }`}
-                                >
-                                    Zlato
-                                </button>
+    {/* TOP BUTTONS */}
+    <div className="flex w-full mb-6 sm:mb-10 gap-2">
 
-                                <button
-                                    onClick={() => setMetalToggle("stribro")}
-                                    className={`flex-1 py-2 text-[11px] font-bold  ${metalToggle === "stribro"
-                                        ? "bg-[#C5B367] text-white border-gray-200"
-                                        : "text-gray-400 hover:bg-[#C5B367] hover:text-white border-gray-200"
-                                        }`}
-                                >
-                                    Stříbro
-                                </button>
-                            </div>
+        <button
+            onClick={() => setMetalToggle("zlato")}
+            className={`flex-1 py-2 text-[11px] font-bold ${
+                metalToggle === "zlato"
+                    ? "bg-[rgb(199,177,93)] text-white hover:bg-[#b39e55]"
+                    : "text-gray-400 bg-white border border-gray-200 hover:text-white hover:bg-[#b39e55]"
+            }`}
+        >
+            Zlato
+        </button>
 
-                            <h3 className="text-[14px] font-bold-2xl text-black-400 mb-4  tracking-[0.25em]">
-                                Aktuální hodnota
-                            </h3>
+        <button
+            onClick={() => setMetalToggle("stribro")}
+            className={`flex-1 py-2 text-[11px] font-bold ${
+                metalToggle === "stribro"
+                    ? "bg-[rgb(199,177,93)] text-white"
+                    : "text-gray-400 bg-white border border-gray-200 hover:bg-[rgb(199,177,93)] hover:text-white"
+            }`}
+        >
+            Stříbro
+        </button>
 
-                            <div className="bg-[#f23645] text-white text-4xl py-1 px-10 font-light shadow-lg">
-                                {metalToggle === "zlato" ? "1907.06" : "25.32"}
-                            </div>
-                        </div>
+    </div>
 
+    {/* CENTER CONTENT */}
+    <div className="flex flex-1 flex-col items-center justify-center text-center">
+
+        <h3 className="text-[20px] sm:text-[30px] text-black-400 mb-4 racking-[0.25em]">
+            Aktuální hodnota :
+        </h3>
+
+        <div className="bg-[#f23645] text-white text-[22px] sm:text-xl py-1 px-6 sm:px-10 font-lightshadow-lg">
+            {metalToggle === "zlato" ? "1907.06" : "25.32"}
+        </div>
+
+    </div>
+
+</div>
                         {/* CHART AREA */}
                         <div className="flex-1 bg-white border border-gray-200 rounded-sm flex flex-col min-w-0">
 

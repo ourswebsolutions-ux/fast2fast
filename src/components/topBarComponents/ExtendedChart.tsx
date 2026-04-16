@@ -5,6 +5,7 @@ import { ChevronDown, Calendar, LineChart, Table as TableIcon } from "lucide-rea
 import { cn } from "@/lib/utils";
 import DoubleCalendar from "./extendedComponents/DoubleCalendar"; 
 
+
 export default function ExtendedChart() {
   const [activeTab, setActiveTab] = useState("Graf"); 
   const [activeFilter, setActiveFilter] = useState("Celá historie");
@@ -42,11 +43,11 @@ export default function ExtendedChart() {
           <div className="flex gap-4 sm:gap-8">
             <button onClick={() => setActiveTab("Graf")} className={cn("flex items-center gap-2 text-[13px] sm:text-[14px] font-bold pb-2 transition-all relative", activeTab === "Graf" ? "text-[#C9B067]" : "text-zinc-500 hover:text-white")}>
               <LineChart size={18} /> Graf
-              {activeTab === "Graf" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[#C9B067]" />}
+              {activeTab === "Graf" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[rgb(199,177,93)]" />}
             </button>
             <button onClick={() => setActiveTab("Tabulka")} className={cn("flex items-center gap-2 text-[13px] sm:text-[14px] font-bold pb-2 transition-all relative", activeTab === "Tabulka" ? "text-[#C9B067]" : "text-zinc-500 hover:text-white")}>
               <TableIcon size={18} /> Tabulka
-              {activeTab === "Tabulka" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[#C9B067]" />}
+              {activeTab === "Tabulka" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[rgb(199,177,93)]" />}
             </button>
           </div>
           <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
@@ -69,13 +70,13 @@ export default function ExtendedChart() {
                 <div className="bg-black border border-zinc-700 px-3 py-2 text-[11px] text-zinc-400 w-full sm:w-32 group-hover:border-zinc-500">
                   Od: <span className="text-white ml-1 font-bold">{formatDate(selectedRange.start)}</span>
                 </div>
-                <div className="bg-[#C9B067] p-2 flex items-center justify-center"><Calendar className="text-black" size={16} /></div>
+                <div className="bg-[rgb(199,177,93)] p-2 flex items-center justify-center"><Calendar className="text-black" size={16} /></div>
               </div>
               <div className="flex flex-1 sm:flex-none cursor-pointer group" onClick={() => setShowCalendar(!showCalendar)}>
                 <div className="bg-black border border-zinc-700 px-3 py-2 text-[11px] text-zinc-400 w-full sm:w-32 group-hover:border-zinc-500">
                   Do: <span className="text-white ml-1 font-bold">{formatDate(selectedRange.end)}</span>
                 </div>
-                <div className="bg-[#C9B067] p-2 flex items-center justify-center"><Calendar className="text-black" size={16} /></div>
+                <div className="bg-[rgb(199,177,93)] p-2 flex items-center justify-center"><Calendar className="text-black" size={16} /></div>
               </div>
             </div>
             {showCalendar && (
@@ -143,7 +144,7 @@ export default function ExtendedChart() {
               className={cn(
                 "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
                 activeFilter === filter 
-                  ? "bg-[#C9B067] text-black border-[#C9B067]" 
+                  ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]" 
                   : "bg-black text-white border-zinc-800 hover:border-zinc-500"
               )}
             >

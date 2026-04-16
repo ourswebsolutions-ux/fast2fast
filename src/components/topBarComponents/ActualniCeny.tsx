@@ -41,12 +41,13 @@ const MetalPriceCard = ({ data }: { data: MetalData }) => {
     labels: ["8", "10", "12", "14", "16", "18", "20"],
     datasets: [
       {
-        data: [30, 45, 40, 60, 55, 70, 50],
+        data: [10, 45, 30, 60, 50, 85, 45], // Adjusted to match your wavy curve
         borderColor: "#C9B067",
-        borderWidth: 1.5,
+        borderWidth: 2,
         tension: 0.4,
         pointRadius: 0,
         fill: false,
+        
       },
     ],
   };
@@ -59,79 +60,77 @@ const MetalPriceCard = ({ data }: { data: MetalData }) => {
   } as const;
 
   return (
-    <div className="border border-zinc-800 p-5 flex flex-col items-center bg-black rounded-sm group hover:border-zinc-700 transition-all duration-300 min-w-[290px] md:min-w-0 snap-center">
+    <div className="border border-white/70 hover:border-white/100 p-6 flex flex-col items-center bg-black rounded-sm group hover:border-white transition-all duration-300 min-w-[300px] md:min-w-0">
       
-      <span className="text-[#C9B067] text-[14px] uppercase tracking-[0.3em] mb-4 font-medium">
+      {/* Title - All Caps Tracking */}
+      <span className="text-[#C9B067] text-[13px] uppercase tracking-[0.4em] mb-5 font-bold">
         {data.name}
       </span>
 
-      <div className="flex items-baseline gap-1.5 mb-2">
-        <span className="text-white text-[30px] font-bold tracking-tight">{data.price}</span>
-        <span className="text-zinc-400 text-[11px] font-bold uppercase tracking-wider">
+      {/* Price - Unit closer to number */}
+      <div className="flex items-baseline gap-2 mb-3">
+        <span className="text-white text-[32px] font-bold tracking-tight">{data.price}</span>
+        <span className="text-zinc-400 text-[14px] font-bold uppercase tracking-tight">
           {data.unit}
         </span>
       </div>
 
+      {/* Change Badge - Saturated Colors */}
       <div
         className={cn(
-          "flex items-center gap-1.5 px-4 py-1 rounded-sm text-[11px] font-bold mb-8",
-          data.isDown ? "text-[#FF4D4D] bg-[#FF4D4D]/10" : "text-[#00E676] bg-[#00E676]/10"
+          "flex items-center gap-1.5 px-4 py-1.5 rounded-[4px] text-[11px] font-bold mb-10",
+          data.isDown ? "text-[#fca5a5] bg-[#7f1d1d]" : "text-[#6ee7b7] bg-[#064e3b]"
         )}
       >
         {data.isDown ? <TrendingDown size={14} /> : <TrendingUp size={14} />}
         <span>{data.changeValue} ({data.changePercent})</span>
       </div>
 
-      {/* GRAPH AREA WITH ALIGNED LABELS */}
-      <div className="w-full relative flex gap-3 h-[140px] mb-2">
-        {/* Left Side: Graph with Grid Lines */}
-        <div className="flex-1 relative h-full">
-          {/* Background Grid Lines */}
-          <div className="absolute inset-0 flex flex-col justify-between pointer-events-none py-[2px]">
-            {[2000, 1750, 1500, 1250, 1000, 0].map((_, i) => (
-              <div key={i} className="w-full border-t border-zinc-800/60" />
+      {/* CHART AREA */}
+      <div className="w-full flex g h-[160px] relative">
+        <div className="flex-1 relative">
+          {/* Horizontal Grid Lines */}
+          <div className="absolute inset-0 flex flex-col justify-between pointer-events-none -mb-">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="w-full border-t border-zinc-800/80 h-0" />
             ))}
+            {/* The White Baseline */}
+            <div className="w-full border-t border-white/90 h-0" />
           </div>
           
-          <div className="absolute inset-0 z-10">
+          <div className="absolute inset-0 z-10 ">
             <Line data={chartData} options={chartOptions} />
           </div>
         </div>
 
-        {/* Right Side: Price Scale (Aligned with lines) */}
-        <div className="flex flex-col justify-between text-[10px] text-zinc-500 font-bold h-full leading-none">
+        {/* Y-Axis - Precise Alignment with Grid Lines */}
+        <div className="flex flex-col justify-between text-[10px] text-zinc-500 font-bold h-full leading-none mr- pb-2">
           <span>2000</span>
           <span>1750</span>
           <span>1500</span>
           <span>1250</span>
           <span>1000</span>
-          <span>0</span>
+          <span className="text-zinc-400">0</span>
         </div>
       </div>
 
-      {/* X-Axis Time Labels */}
-      <div className="flex justify-between w-full text-[10px] text-zinc-500 font-bold pr-10 pl-2">
-        <div className="flex flex-col items-center">
-            <div className="h-1.5 w-[1px] bg-zinc-700 mb-1" />
-            <span>8.00</span>
-        </div>
-        <div className="flex flex-col items-center">
-            <div className="h-1.5 w-[1px] bg-zinc-700 mb-1" />
-            <span>12.00</span>
-        </div>
-        <div className="flex flex-col items-center">
-            <div className="h-1.5 w-[1px] bg-zinc-700 mb-1" />
-            <span>16.00</span>
-        </div>
-        <div className="flex flex-col items-center">
-            <div className="h-1.5 w-[1px] bg-zinc-700 mb-1" />
-            <span>20.00</span>
-        </div>
+      {/* X-AXIS - Ticks & Labels */}
+      <div className="w-full  flex justify-between  pr-10">
+        {[
+          { label: "8.00", align: "items-start" },
+          { label: "12.00", align: "items-center" },
+          { label: "16.00", align: "items-center" },
+          { label: "20.00", align: "items-end" },
+        ].map((tick, idx) => (
+          <div key={idx} className={cn("flex flex-col ", tick.align)}>
+            <div className="h-2 w-[1px] bg-white/90 mb-1" />
+            <span className="text-[10px] text-white font-bold">{tick.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
 };
-
 /* ================= MAIN ================= */
 export default function ActualniCeny() {
   const [currency, setCurrency] = useState("USD");
@@ -165,14 +164,17 @@ export default function ActualniCeny() {
 
         {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
-          <div>
-            <h2 className="text-[#C9B067] text-[36px] font-medium leading-tight">
-              Aktuální ceny
-            </h2>
-            <p className="text-zinc-500 text-[12px] font-bold mt-1">
-              Aktualizováno: 15. 2. 2023 20.30
-            </p>
-          </div>
+        <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-6">
+  
+  <h2 className="text-[#C9B067] text-[30px] font-medium leading-tight">
+    Aktuální ceny
+  </h2>
+
+  <p className="text-zinc-500 text-[12px] font-bold">
+    Aktualizováno: 15. 2. 2023 20.30
+  </p>
+
+</div>
 
           <div ref={dropdownRef} className="flex gap-3">
             {/* Currency Dropdown */}
