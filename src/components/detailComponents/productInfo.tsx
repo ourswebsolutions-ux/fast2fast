@@ -64,7 +64,7 @@ const ProductInfoSection: React.FC = () => {
                         </div>
                         <div className="lg:col-span-4 flex justify-center order-1 lg:order-2">
                             <img
-                                src="/imgcoin.svg"
+                                src="/can-img.png"
                                 alt="Maple Leaf Gold"
                                 className="w-[170px] md:w-[230px] lg:w-full lg:max-w-[280px] drop-shadow-2xl transition-transform hover:scale-105 duration-500"
                             />
@@ -76,7 +76,7 @@ const ProductInfoSection: React.FC = () => {
                         {/* Left Side: Image */}
                         <div className="lg:col-span-4 flex justify-center">
                             <img
-                                src="/imgcoin.svg"
+                                src="/box-coin.svg"
                                 alt="Mince a pouzdro"
                                 className="w-[170px] md:w-[230px] lg:w-full lg:max-w-[280px] drop-shadow-xl"
                             />

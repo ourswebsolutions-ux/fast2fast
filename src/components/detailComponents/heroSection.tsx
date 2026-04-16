@@ -25,6 +25,11 @@ const HeroSection: React.FC = () => {
             prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
         );
     };
+    const images = [
+  "/queen-coin.svg",
+  "/line-coin.svg",
+  "/b-coin.svg"
+];
 
     return (
         <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-50 font-sans">
@@ -89,7 +94,7 @@ const HeroSection: React.FC = () => {
                         </button>
 
                         <img
-                            src="/imgcoin.svg"
+                            src="/can-img.png"
                             alt="Coin"
                             className="w-[55%] md:max-w-[320px] lg:max-w-[380px] h-auto object-contain drop-shadow-2xl mt-4 md:mt-0"
                         />
@@ -97,9 +102,9 @@ const HeroSection: React.FC = () => {
 
                     {/* Thumbnails */}
                     <div className="flex gap-2 mt-4 overflow-x-auto">
-                        {[0, 1, 2].map((i) => (
+                        {images.map((img, i) => (
                             <div key={i} className={`min-w-[64px] w-16 h-16 md:w-20 md:h-20 border p-1 cursor-pointer transition-all hover:border-[#C5A059] ${i === 0 ? 'border-[#C5A059]' : 'border-gray-300'}`}>
-                                <img src="/imgcoin.svg" alt="thumb" className="w-full h-full object-contain" />
+                                <img src={img} alt="thumb" className="w-full h-full object-contain" />
                             </div>
                         ))}
                     </div>
@@ -214,7 +219,7 @@ const HeroSection: React.FC = () => {
 
                                         {/* Icon/Image Placeholder */}
                                         <div className="w-10 h-10 p-1 flex-shrink-0">
-                                            <img src="/imgcoin.svg" alt="acc" className="w-full h-full object-contain opacity-40" />
+                                            <img src="/queen-coin.svg" alt="acc" className="w-full h-full object-contain opacity-40" />
                                         </div>
 
                                         <span className="text-[#333333] text-[13px]">Kapsle na minci – kulatá</span>
