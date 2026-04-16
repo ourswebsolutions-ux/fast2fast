@@ -59,7 +59,7 @@ const Testimonials = () => {
                     width="14" 
                     height="14" 
                     viewBox="0 0 24 24" 
-                    fill="#C9B067"
+                    fill="#f5a510"
                     className="group-hover:scale-110 transition-transform duration-300"
                   >
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -73,7 +73,7 @@ const Testimonials = () => {
               </p>
 
               {/* AUTHOR */}
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-zinc-400 mt-auto group-hover:text-[#C9B067] transition-colors">
+              <span className="text-[10px] font-bold  tracking-[0.25em] text-zinc-400 mt-auto group-hover:text-[#C9B067] transition-colors">
                 {item.author}
               </span>
             </div>
@@ -82,7 +82,7 @@ const Testimonials = () => {
 
         {/* VIEW ALL BUTTON */}
         <div className="flex justify-center mt-14">
-          <button className="bg-[#C9B067] hover:bg-[#b38f4d] text-white px-12 py-4 text-[11px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
+          <button className="bg-[#C9B067] hover:bg-[#b38f4d] text-white px-12 py-4 text-[11px] font-bold  tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
             Další 23 hodnocení
           </button>
         </div>
