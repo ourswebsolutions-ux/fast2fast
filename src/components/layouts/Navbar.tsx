@@ -181,7 +181,9 @@ export default function Navbar() {
       <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1350px] mx-auto justify-between relative z-50 bg-black">
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
+          <a href="./">
           <h1 className="text-white text-2xl sm:text-4xl font-black tracking-tighter">GULDEN</h1>
+          </a>
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
         </div>
 

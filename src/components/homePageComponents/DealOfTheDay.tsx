@@ -127,10 +127,11 @@ const DealOfTheDay = () => {
                 </span>
 
               </div>
-
+           <a href="./details">
               <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">
                 Zobrazit detail
               </button>
+              </a>
             </div>
 
           </div>

@@ -76,7 +76,7 @@ const ProductInfoSection: React.FC = () => {
                         {/* Left Side: Image */}
                         <div className="lg:col-span-4 flex justify-center">
                             <img
-                                src="/box-coin.svg"
+                                src="/box-coin.png"
                                 alt="Mince a pouzdro"
                                 className="w-[170px] md:w-[230px] lg:w-full lg:max-w-[280px] drop-shadow-xl"
                             />

@@ -5,6 +5,25 @@ import { ChevronDown, Calendar, LineChart, Table as TableIcon } from "lucide-rea
 import { cn } from "@/lib/utils";
 import DoubleCalendar from "./extendedComponents/DoubleCalendar"; 
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler
+);
 
 export default function ExtendedChart() {
   const [activeTab, setActiveTab] = useState("Graf"); 
@@ -38,7 +57,7 @@ export default function ExtendedChart() {
     <div className="w-full bg-black border-b border-zinc-900 select-none overflow-hidden">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 py-6 relative">
         
-        {/* TOP TABS - Static and Wrap-ready */}
+        {/* TOP TABS - untouched */}
         <div className="flex justify-between items-center border-b border-zinc-800 pb-2 mb-6">
           <div className="flex gap-4 sm:gap-8">
             <button onClick={() => setActiveTab("Graf")} className={cn("flex items-center gap-2 text-[13px] sm:text-[14px] font-bold pb-2 transition-all relative", activeTab === "Graf" ? "text-[#C9B067]" : "text-zinc-500 hover:text-white")}>
@@ -57,7 +76,7 @@ export default function ExtendedChart() {
           </div>
         </div>
 
-        {/* CONTROLS - Stacked on mobile */}
+        {/* CONTROLS - untouched */}
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
           <button className="bg-white px-4 py-2 flex items-center justify-between w-full lg:w-[120px] text-black text-[14px] font-bold rounded-sm active:scale-95">
             USD <ChevronDown size={16} strokeWidth={3} />
@@ -85,31 +104,87 @@ export default function ExtendedChart() {
           </div>
         </div>
 
-        {/* DYNAMIC CONTENT - Chart remains VIP and Responsive */}
+        {/* DYNAMIC CONTENT - only graph area updated to match first component exactly */}
         <div className="w-full h-[300px] sm:h-[480px] relative mb-12 overflow-hidden">
           {activeTab === "Graf" ? (
             <>
-              <div className="absolute right-0 top-0 h-full flex flex-col justify-between text-[9px] sm:text-[11px] text-zinc-600 font-mono pr-1 z-20 bg-black/50">
-                <span>2000</span><span>1500</span><span>1000</span><span>500</span><span>0</span>
-              </div>
-              <div className="w-full h-full flex flex-col justify-between absolute left-0 z-0">
-                {[...Array(5)].map((_, i) => ( <div key={i} className="w-full h-[1px] bg-zinc-800/40" /> ))}
-              </div>
-              <svg viewBox="0 0 1000 400" preserveAspectRatio="none" className="w-full h-full overflow-visible relative z-10">
-                <defs>
-                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#C9B067" stopOpacity="0.3" />
-                    <stop offset="100%" stopColor="#C9B067" stopOpacity="0" />
-                  </linearGradient>
-                </defs>
-                <path d="M0,385 L100,382 L250,230 L380,315 L550,325 L720,160 L850,220 L1000,90 V400 H0 Z" fill="url(#chartGradient)"/>
-                <path d="M0,385 L100,382 L250,230 L380,315 L550,325 L720,160 L850,220 L1000,90" fill="none" stroke="#C9B067" strokeWidth="3" strokeLinejoin="round" />
-              </svg>
-              <div className="flex justify-between w-full text-[9px] sm:text-[11px] text-zinc-500 font-mono mt-6 border-t border-zinc-800 pt-2">
-                <span>1970</span><span className="hidden sm:inline">1980</span><span>1990</span><span className="hidden sm:inline">2000</span><span>2010</span><span>2020</span>
+              <div className="relative w-full pr-14 h-full">
+                <div className="w-full h-full relative">
+
+                  {/* Y-Axis Grid Lines & Numbers - exact from first */}
+                  {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
+                    <div
+                      key={val}
+                      className="absolute left-0 w-full border-t border-zinc-800/60 flex"
+                      style={{ top: `${100 - (val / 2000) * 100}%` }}
+                    >
+                      <span className="absolute -right-1 -top-4 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
+                        {val}
+                      </span>
+                    </div>
+                  ))}
+
+                  {/* REAL CHART - exact style from first component */}
+                  <div className="absolute inset-0 z-10">
+                    <Line
+                      data={{
+                        labels: Array.from({ length: 25 }, (_, i) => i),
+                        datasets: [
+                          {
+                            data: [
+                              430, 425, 410, 350, 360, 420, 415, 420, 425, 420,
+                              425, 430, 420, 410, 400, 350, 280, 310, 250, 150,
+                              220, 180, 80, 150, 100,
+                            ],
+                            borderColor: "#C9B067",
+                            borderWidth: 2.5,
+                            tension: 0.4,
+                            pointRadius: 0,
+                            fill: false,
+                          },
+                        ],
+                      }}
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                          legend: { display: false },
+                          tooltip: { enabled: false },
+                        },
+                        scales: {
+                          x: { display: false },
+                          y: { display: false },
+                        },
+                        elements: {
+                          line: {
+                            borderJoinStyle: "round",
+                          },
+                        },
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* X-Axis Labels & Ticks - exact from first */}
+                <div className="relative mt-4 border-t border-white/80 pt-3">
+                  <div className="flex justify-between text-zinc-500 text-[10px] sm:text-[11px] font-mono">
+                    <span>1970</span>
+                    <span>1980</span>
+                    <span>1990</span>
+                    <span>2000</span>
+                    <span>2010</span>
+                    <span>2020</span>
+                  </div>
+                  <div className="absolute top-0 left-0 w-full flex justify-between">
+                    {[...Array(6)].map((_, i) => (
+                      <span key={i} className="w-[1px] h-3 bg-white/70" />
+                    ))}
+                  </div>
+                </div>
               </div>
             </>
           ) : (
+            /* TABLE - untouched */
             <div className="w-full overflow-x-auto rounded-sm border border-zinc-900">
               <table className="w-full text-left border-collapse min-w-[600px]">
                 <thead>
@@ -135,7 +210,7 @@ export default function ExtendedChart() {
           )}
         </div>
 
-        {/* FIXED FILTERS - Wrapped so they don't scroll */}
+        {/* FILTER BUTTONS - untouched */}
         <div className="flex flex-wrap gap-2 mt-8">
           {filters.map((filter) => (
             <button
