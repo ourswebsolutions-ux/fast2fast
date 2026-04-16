@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const FilterModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -50,24 +50,24 @@ const FilterModal = ({ isOpen, onClose }) => {
               <div 
                 key={item}
                 className={`p-4 text-sm font-medium border-b border-gray-200 cursor-pointer transition-colors
-                  ${item === "Hmotnost" ? " text-black" : "text-gray-600 hover:bg-white "}`}
+                  ${item === "Hmotnost" ? " bg-white text-black border-r-4 border-r-[#C5B367]" : "text-gray-600 hover:bg-white"}`}
               >
-                {item}cl
+                {item}
               </div>
             ))}
           </div>
 
           {/* Main Content (Checkboxes) */}
           <div className="w-3/4 p-6 overflow-y-auto">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <div className="grid grid-cols-2 gap-x-4 gap-y-2 hover-border-gray-300">
               {weights.map((item, idx) => (
                 <label 
                   key={idx} 
-                  className="flex items-center gap-3 p-3 bg-white border border-gray-100 hover:border-[#C5B367] cursor-pointer transition-all group"
+                  className="flex items-center gap-3 p-3 bg-white border border-gray-100 hover-border-200 cursor-pointer transition-all group"
                 >
                   <input 
                     type="checkbox" 
-                    className="w-4 h-4 accent-[#C5B367] cursor-pointer" 
+                    className="w-4 h-4 accent-[#00A651] cursor-pointer" 
                   />
                   <div className="flex items-center gap-1 text-sm">
                     <span className="font-bold text-gray-700">{item.label.split(' ')[0]}</span>
