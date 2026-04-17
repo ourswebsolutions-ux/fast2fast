@@ -4,9 +4,10 @@ import {
     ChevronDown,
     Plus,
     Camera,
-    BarChart2,
+    ChartNoAxesCombined,
     LineChart,
     Activity,
+    AlignHorizontalDistributeCenter
 } from "lucide-react";
 
 import {
@@ -223,86 +224,116 @@ const PriceChart = () => {
 
 </div>
                         {/* CHART AREA */}
-                        <div className="flex-1 bg-white border border-gray-200 rounded-sm flex flex-col min-w-0">
+                  {/* CHART AREA - Final version with Gear (right) & TV (left) */}
+<div className="flex-1 bg-white border border-gray-200 rounded-sm flex flex-col min-w-0 h-full">
 
-                            {/* TOOLBAR (ONLY RESPONSIVE FIX) */}
-                            <div className="flex items-center px-6 py-3 border-b gap-4 overflow-x-auto whitespace-nowrap">
+    {/* TOOLBAR */}
+    <div className="flex items-center px-6 py-3 border-b gap-3 text-sm overflow-x-auto whitespace-nowrap flex-shrink-0">
 
-                                <span className="font-black text-[12px] text-black  flex items-center gap-1">
-                                    {metalToggle === "zlato" ? "GOLD" : "SILVER"}
-                                    <Plus size={14} />
-                                </span>
+        <span className="font-bold text-black">GOLD</span>
 
-                                <div className="h-4 w-[1px] bg-gray-200" />
+        <div className="flex items-center gap-1 text-gray-400">
+            <Plus size={18} className="cursor-pointer hover:text-black" onClick={() => alert('Add clicked')} />
+        </div>
 
-                                <div className="flex gap-2">
-                                    {["1m", "30m", "1h", "D"].map((t) => (
-                                        <button
-                                            key={t}
-                                            onClick={() => setTimeframe(t)}
-                                            className={`text-[11px] font-bold px-2 py-1 ${timeframe === t
-                                                ? "bg-blue-50 text-blue-600"
-                                                : "text-gray-400"
-                                                }`}
-                                        >
-                                            {t}
-                                        </button>
-                                    ))}
-                                </div>
+        <div className="h-5 w-[1px] bg-gray-200 mx-1" />
 
-                                <div className="h-4 w-[1px] bg-gray-200" />
+        <div className="flex items-center gap-1">
+            {["1m", "30m", "1h", "D"].map((t) => (
+                <button
+                    key={t}
+                    onClick={() => setTimeframe(t)}
+                    className={`px-3 py-1 text-[13px] font-medium rounded-sm ${timeframe === t 
+                        ? "bg-blue-50 text-blue-600" 
+                        : "text-gray-500 hover:text-black"}`}
+                >
+                    {t}
+                </button>
+            ))}
+            <ChevronDown size={16} className="text-gray-400 ml-1" />
+        </div>
 
-                                <div className="flex gap-4 text-gray-400">
-                                    <BarChart2
-                                        size={18}
-                                        className={chartType === "candlestick" ? "text-blue-600" : ""}
-                                        onClick={() => setChartType("candlestick")}
-                                    />
-                                    <LineChart
-                                        size={18}
-                                        className={chartType === "line" ? "text-blue-600" : ""}
-                                        onClick={() => setChartType("line")}
-                                    />
-                                    <Activity
-                                        size={18}
-                                        className={showIndicator ? "text-blue-600" : ""}
-                                        onClick={() => setShowIndicator(!showIndicator)}
-                                    />
-                                </div>
+        <div className="h-5 w-[1px] bg-gray-200 mx-2" />
 
-                                <button
-                                    onClick={() => setShowIndicator(!showIndicator)}
-                                    className={`text-[11px] font-bold flex items-center gap-1 ${showIndicator ? "text-blue-600" : "text-gray-500"
-                                        }`}
-                                >
-                                    Indicators <ChevronDown size={12} />
-                                </button>
+        <div className="flex items-center gap-4 text-gray-400">
+            <span className="cursor-pointer text-lg leading-none hover:text-black">↑↓</span>
+            <span className="cursor-pointer text-lg leading-none hover:text-black">
+                <AlignHorizontalDistributeCenter size={19} />
+            </span>
+            
+            <ChartNoAxesCombined 
+                size={19} 
+                className={`cursor-pointer ${chartType === "candlestick" ? "text-blue-600" : ""}`} 
+                onClick={() => setChartType("candlestick")} 
+            />
+            
+            <LineChart 
+                size={19} 
+                className={`cursor-pointer ${chartType === "line" ? "text-blue-600" : ""}`} 
+                onClick={() => setChartType("line")} 
+            />
+        </div>
 
-                                <div className="ml-auto">
-                                    <Camera
-                                        size={20}
-                                        className="text-gray-400"
-                                        onClick={downloadChart}
-                                    />
-                                </div>
+        <div className="h-5 w-[1px] bg-gray-200 mx-2" />
 
-                            </div>
+        <div 
+            className={`flex items-center gap-1 text-sm cursor-pointer ${showIndicator ? "text-blue-600" : "text-gray-500"}`}
+            onClick={() => setShowIndicator(!showIndicator)}
+        >
+            <Activity size={19} />
+            <span>Indicators</span>
+            <ChevronDown size={16} />
+        </div>
 
-                            {/* CHART (CRITICAL FIX FOR MOBILE VISIBILITY) */}
-                            <div className="flex-1 p-6 relative">
-                                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
-                                    {typeof window !== "undefined" && (
-                                        <Chart
-                                            ref={chartRef}
-                                            type={chartType as any}
-                                            data={chartData}
-                                            options={chartOptions}
-                                        />
-                                    )}
-                                </div>
-                            </div>
+        <div className="ml-auto">
+            <Camera 
+                size={20} 
+                className="text-gray-400 cursor-pointer hover:text-black" 
+                onClick={downloadChart} 
+            />
+        </div>
+    </div>
 
-                        </div>
+    {/* Top info */}
+    <div className="px-6 py-2 border-b bg-white text-xs text-gray-500 flex-shrink-0">
+        CFDs on Gold (US$ / OZ) • 1D • TVC 
+        <span className="text-green-500 mx-1">●</span>
+        <span className="text-green-600">O 1915.66</span> 
+        <span className="text-green-600">H 1919.02</span> 
+        <span className="text-green-600">L 1904.34</span> 
+        <span className="text-green-600">C 1907.06</span> 
+        <span className="text-red-500">-10.54 (-0.55%)</span>
+        
+        <div className="mt-1 text-gray-400">Vol 0</div>
+    </div>
+
+    {/* CHART AREA - Full height with icons */}
+    <div className="flex-1 p-6 relative border-b border-gray-200 min-h-0">
+        <div className="w-full h-full">
+            {typeof window !== "undefined" && (
+                <Chart
+                    ref={chartRef}
+                    type={chartType as any}
+                    data={chartData}
+                    options={chartOptions}
+                />
+            )}
+        </div>
+
+        {/* Bottom Left - TV Icon */}
+        <div className="absolute bottom-4 left-6">
+            <div className="w-5 h-5 rounded bg-orange-500 flex items-center justify-center text-[10px] font-bold text-white">
+                TV
+            </div>
+        </div>
+
+        {/* Bottom Right - Gear Icon */}
+        <div className="absolute bottom-4 right-6 text-gray-400 cursor-pointer hover:text-black">
+            ⚙️
+        </div>
+    </div>
+
+</div>
                     </div>
 
 
