@@ -308,8 +308,8 @@ const HeroSection: React.FC = () => {
                                                 <div onClick={() => toggleCheckbox(idx)} className={`w-5 h-5 border flex items-center justify-center cursor-pointer transition-colors ${selectedAccs.includes(idx) ? 'bg-[#00A651] border-[#00A651]' : 'border-gray-300 bg-white'}`}>
                                                     {selectedAccs.includes(idx) && <Check size={14} className="text-white" strokeWidth={4} />}
                                                 </div>
-                                                <div className="w-10 h-10 p-1 flex-shrink-0">
-                                                    <img src="/queen-coin.svg" alt="acc" className="w-full h-full object-contain opacity-40" />
+                                                <div className="w-10 h-10 p-1 flex-shri  ">
+                                                    <img src="/Vrstva 629.svg" alt="acc" className="w-full h-full text-white object-contain opacity-40" />
                                                 </div>
                                                 <span className="text-[#3a3a3a] text-[13px]">Kapsle na minci – kulatá</span>
                                             </div>
