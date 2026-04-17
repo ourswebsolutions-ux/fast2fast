@@ -8,20 +8,20 @@ const Footer = () => {
 
                 {/* Newsletter Box - Fixed spacing & shape */}
                 <div className="relative mb-16">
-                    <div className="relative -mt-28 overflow-hidden bg-[rgb(199,177,93)] py-10 px-6 md:px-10 lg:px-12 shadow-2xl rounded-2xl">
+                    <div className="relative -mt-28 overflow-hidden bg-[rgb(199,177,93)] py-10 px-6 md:px-10 lg:px-12 shadow-2xl ">
 
                         {/* Background shapes */}
                       {/* Background shapes */}
 <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
 
     {/* LEFT */}
-    <div className="absolute left-16 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
+    <div className="absolute left-80 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
 
     {/* CENTER */}
-    <div className="absolute left-1/2 top-1/2 -translate-x-1/1 -translate-y-1/2 w-40 h-40 bg-black/10 rotate-45" />
+    <div className="absolute left-1/2 top-1/2 -translate-x-2/2 -translate-y-1/2 w-40 h-40 bg-black/10 rotate-45" />
 
     {/* RIGHT */}
-    <div className="absolute right-16 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
+    <div className="absolute right-120 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
 
 </div>
 
@@ -133,7 +133,7 @@ const Footer = () => {
 
                 <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-zinc-500 tracking-[1px]">
                     <div className="flex items-center gap-6">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 opacity-80" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 bg-white opacity-80" />
                         <div className="flex items-center justify-center">
                             <span className="text-white font-black text-sm tracking-[4px]">VISA</span>
                         </div>
