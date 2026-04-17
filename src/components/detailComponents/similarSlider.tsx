@@ -62,34 +62,51 @@ const SimilarProductsSlider = () => {
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
                   <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[#C5A059] hover:shadow-lg group/card">
                     
-                    {/* Badges */}
-                    <div className="flex flex-col gap-2 h-14">
-                      {product.badges.map(badge => (
-                        badge === "Novinka" ? (
-                          <div key={badge} className="relative w-fit h-[22px] flex items-center">
-                            <span 
-                              className="relative z-10 px-4 py-0.5 text-[10px] text-gray-700 font-sans border border-gray-200 bg-white"
+                    {/* Badge Container - Fixed height for alignment */}
+                    <div className="flex flex-col gap-1.5 h-14">
+                      {product.badges.map((badge) => {
+                        const isNew = badge === "Novinka";
+
+                        return isNew ? (
+                          <div
+                            key={badge}
+                            className="inline-block w-fit p-[1px] bg-gray-300"
+                            style={{
+                              WebkitMask: `
+            radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+            radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+            radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+            radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+          `,
+                              WebkitMaskSize: "51% 51%",
+                              WebkitMaskRepeat: "no-repeat",
+                            }}
+                          >
+                            <span
+                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
                               style={{
-                                WebkitMaskImage: `radial-gradient(circle at 0 0, transparent 3.5px, black 4px), 
-                                                 radial-gradient(circle at 100% 0, transparent 3.5px, black 4px), 
-                                                 radial-gradient(circle at 0 100%, transparent 3.5px, black 4px), 
-                                                 radial-gradient(circle at 100% 100%, transparent 3.5px, black 4px)`,
-                                WebkitMaskComposite: 'source-in',
-                                maskComposite: 'intersect'
+                                WebkitMask: `
+              radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+              radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+              radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+              radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+            `,
+                                WebkitMaskSize: "51% 51%",
+                                WebkitMaskRepeat: "no-repeat",
                               }}
                             >
                               {badge}
                             </span>
                           </div>
                         ) : (
-                          <span 
-                            key={badge} 
+                          <span
+                            key={badge}
                             className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
                           >
                             {badge}
                           </span>
-                        )
-                      ))}
+                        );
+                      })}
                     </div>
 
                     {/* Image Area */}
