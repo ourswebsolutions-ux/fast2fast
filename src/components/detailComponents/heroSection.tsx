@@ -111,10 +111,10 @@ const HeroSection: React.FC = () => {
                     ))}
                 </div>
 
-                <div className="grid grid-cols-12 gap-8 lg:gap-12">
+                <div className="grid grid-cols-12 gap-10 lg:gap-18">
 
                     {/* Left Side: Image Gallery & Labels */}
-                    <div className="col-span-12 md:col-span-6 lg:col-span-7">
+                    <div className="col-span-12 md:col-span-5 lg:col-span-7 ">
                         <div className="relative bg-white border border-gray-100 p-4 pt-24 md:pt-10 md:p-8 flex flex-col md:flex-row justify-center items-center min-h-[350px] md:min-h-[550px] rounded-sm">
 
                             {/* Image Labels (From Image) */}
@@ -130,7 +130,7 @@ const HeroSection: React.FC = () => {
                                 <Heart size={32} strokeWidth={1.2} className={`transition-all ${isWishlisted ? 'fill-[#C5A059] text-[#C5A059]' : 'text-gray-300'}`} />
                             </button>
 
-                            <img src="/can-img.png" alt="Coin" className="w-[55%] md:max-w-[320px] lg:max-w-[380px] h-auto object-contain drop-shadow-2xl mt-4 md:mt-0" />
+                            <img src="/can-img.png" alt="Coin" className="w-[50%] md:max-w-[320px] lg:max-w-[380px] h-auto object-contain drop-shadow-2xl mt-4 md:mt-0" />
                         </div>
 
                         {/* Thumbnails */}
