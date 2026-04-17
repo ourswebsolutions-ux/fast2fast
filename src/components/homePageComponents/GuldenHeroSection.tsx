@@ -36,7 +36,7 @@ const GuldenHeroSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100">
+        <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100 ">
             <div className="max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
 
                 {/* Sidebar */}
@@ -46,7 +46,7 @@ const GuldenHeroSection: React.FC = () => {
                             <li
                                 key={i}
                                 className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
-                ${item.active ? 'bg-[#C5A059] text-black' : 'hover:bg-[#b38f4d]'}`}
+                ${item.active ? 'bg-[rgb(199,177,93)] text-black' : 'hover:bg-[rgb(199,177,93)]'}`}
                             >
                                 <div className="flex items-center gap-2 md:gap-3">
                                     {item.icon && (
@@ -80,7 +80,7 @@ const GuldenHeroSection: React.FC = () => {
                             <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-8 text-sm md:text-base">
                                 Zlato, které ochrání vaše úspory.
                             </p>
-                            <button className="bg-[#C5A059] hover:bg-[#b38f4d] text-white px-6 md:px-9 py-2.5 md:py-3.5 text-xs md:text-sm font-medium rounded-none">
+                            <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
                                 Prohlédnout
                             </button>
                         </div>
@@ -102,18 +102,18 @@ const GuldenHeroSection: React.FC = () => {
                                     key={i}
                                     className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
-                                            ? 'bg-[#C5A059] hover:bg-[#b38f4d] text-black shadow-lg'
-                                            : 'bg-black text-white hover:bg-[#C5A059] hover:text-black'}`}
+                                            ? 'bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white shadow-lg'
+                                            : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-black'}`}
                                 >
                                     {banner.label}
 
                                     {banner.active && (
                                         <div
-                                            className="absolute top-0 -left-[12px] md:-left-[18px] w-0 h-0 
+                                            className="absolute top-0    -left-[120px]  md:-left-[21px] w-0 h-0 
 border-t-[20px] md:border-t-[26px] border-t-transparent 
-border-b-[20px] md:border-b-[26px] border-b-transparent 
-border-r-[12px] md:border-r-[18px] border-r-[#C5A059]"
-                                            style={{ height: '100%' }}
+border-b-[20px] md:mr-2 border-b-transparent 
+border-r-[12px] md:border-r-[18px] border-r-[rgb(199,177,93)]"
+                                            style={{ height: '99%' }}
                                         />
                                     )}
                                 </button>

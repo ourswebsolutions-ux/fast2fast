@@ -3,6 +3,25 @@
 import React, { useState } from "react";
 import { ChevronDown, LineChart, Table as TableIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler,
+} from "chart.js";
+import { Line } from "react-chartjs-2";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Filler
+);
 
 export default function MarketControls() {
   const [activeTab, setActiveTab] = useState("Graf");
@@ -29,7 +48,7 @@ export default function MarketControls() {
     <div className="w-full bg-black p-4 sm:p-6 font-sans select-none text-white overflow-hidden">
       <div className="max-w-[1350px] mx-auto">
 
-        {/* TABS SELECTOR */}
+        {/* TABS - exact same as your second code */}
         <div className="flex gap-6 sm:gap-8 border-b border-zinc-800 mb-6">
           <button
             onClick={() => setActiveTab("Graf")}
@@ -51,7 +70,7 @@ export default function MarketControls() {
           </button>
         </div>
 
-        {/* CONTROLS GRID */}
+        {/* CONTROLS - exact same as your second code (other design untouched) */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center mb-8">
           <div className="w-full lg:col-span-3 flex gap-2">
             <div className="relative flex-1">
@@ -109,63 +128,70 @@ export default function MarketControls() {
           </div>
         </div>
 
-        {/* CONDITIONAL CONTENT */}
+        {/* GRAPH + FILTERS - exactly same as your first component (graph area only changed) */}
         {activeTab === "Graf" ? (
           <div className="animate-in fade-in duration-500">
-            {/* GRAPH AREA WITH RIGHT SPACE FOR NUMBERS */}
-            <div className="relative w-full pr-14">
-              <div className="w-full h-[300px] sm:h-[450px] relative">
-
-                {/* Y-Axis Grid Lines & Numbers (Numbers positioned absolute to the right) */}
-                {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
-                  <div
-                    key={val}
-                    className="absolute left-0 w-full border-t border-zinc-800/60 flex justify-end items-center"
-                    style={{ top: `${100 - (val / 2000) * 100}%` }}
-                  >
-                    {/* Numbers on the right side of the line */}
-                    <span className="absolute -right-14 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
-                      {val}
-                    </span>
-                  </div>
-                ))}
-
-                {/* SVG Graph - Contained in grid */}
-                <svg viewBox="0 0 1000 450" preserveAspectRatio="none" className="w-full h-full relative z-10 overflow-visible">
-                  <path
-                    d="M0,430 L50,425 L100,410 L150,350 L180,360 L200,420 L250,415 L300,420 L350,425 L400,420 L450,425 L500,430 L550,420 L600,410 L650,400 L700,350 L720,280 L740,310 L780,250 L820,150 L850,220 L880,180 L920,80 L950,150 L1000,100"
-                    fill="none"
-                    stroke="#C4B06D"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="drop-shadow-[0_0_8px_rgba(196,176,109,0.4)]"
-                  />
-                </svg>
-              </div>
-
-              {/* X-Axis Labels (Aligned with Graph) */}
-              <div className="flex justify-between mt-4 text-zinc-500 text-[10px] sm:text-[11px] font-mono border-t border-zinc-800 pt-3">
-                <span>1970</span><span>1980</span><span>1990</span><span>2000</span><span>2010</span><span>2020</span>
-              </div>
+            <div className="w-full h-[300px] sm:h-[480px] relative mb-12">
+              <Line
+                data={{
+                  labels: Array.from({ length: 51 }, (_, i) => 1970 + i),
+                  datasets: [{
+                    data: [50,60,70,80,90,120,150,180,220,280,350,420,650,720,580,520,480,450,420,400,380,360,340,320,300,280,260,240,220,200,180,170,160,150,140,130,120,110,100,90,80,70,60,55,50,60,80,120,180,300,450,700,1100,1400,1700,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750,650,550,450,350,250,150,100,50,100,300,600,900,1200,1500,1700,1850,1950,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750],
+                    borderColor: "#C9B067",
+                    borderWidth: 2.5,
+                    tension: 0.35,
+                    pointRadius: 0,
+                    fill: false,
+                  }],
+                }}
+                options={{
+                  responsive: true,
+                  maintainAspectRatio: false,
+                  layout: { padding: { top: 10, right: 0, bottom: 25, left: 10 } },
+                  plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                  scales: {
+                    x: {
+                      display: true,
+                      offset: true,
+                      grid: { display: true, tickLength: 6 },
+                      border: { display: true, color: "#ffffff" },
+                      ticks: { color: "#9ca3af", font: { size: 10 }, maxTicksLimit: 6, padding: 6 },
+                    },
+                    y: {
+                      display: true,
+                      position: "right",
+                      min: 0,
+                      max: 2000,
+                      grid: { color: "rgba(255,255,255,0.05)" },
+                      ticks: { color: "#9ca3af", font: { size: 10 }, stepSize: 250 },
+                    },
+                  },
+                }}
+              />
             </div>
 
-            {/* Time Filter Buttons */}
-            <div className="flex flex-wrap gap-2 pt-8">
+            {/* Time Filter Buttons - same as first */}
+            <div className="flex flex-wrap gap-2">
               {timeFilters.map((f) => (
-                <button key={f} className={cn("px-3 sm:px-4 py-1.5 text-[11px] sm:text-[12px] font-bold border transition-all rounded-sm", f === "Celá historie" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "border-zinc-800 text-white hover:bg-[#b38f4d]")}>
+                <button
+                  key={f}
+                  className={cn(
+                    "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
+                    f === "Celá historie" ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]" : "bg-black text-white border-zinc-800 hover:border-zinc-500"
+                  )}
+                >
                   {f}
                 </button>
               ))}
             </div>
           </div>
         ) : (
-          /* TABLE VIEW */
+          /* TABLE - exact same as your second code */
           <div className="w-full overflow-x-auto bg-black p-1">
             <table className="min-w-[700px] w-full text-left border-collapse">
               <thead>
                 <tr className="bg-black text-white text-[13px] font-bold">
-                  <th className="p-4 w-[150px]"></th> {/* Empty space for date column alignment */}
+                  <th className="p-4 w-[150px]"></th>
                   <th className="p-4 text-center">USD $</th>
                   <th className="p-4 text-center">GBP £</th>
                   <th className="p-4 text-center">EUR €</th>
@@ -179,7 +205,6 @@ export default function MarketControls() {
                     key={idx}
                     className={cn(
                       "text-[14px] font-medium transition-all",
-                      // Image pattern: White row, then Black row
                       idx % 2 === 0 ? "bg-white text-black" : "bg-black text-white"
                     )}
                   >

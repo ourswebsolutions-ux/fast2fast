@@ -30,7 +30,7 @@ const ProductSlider = () => {
   };
 
   return (
-    <div className=" py-16 px-4 font-serif">
+    <div className="  px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
 
         {/* Diamond Icons Top Center */}
@@ -45,27 +45,55 @@ const ProductSlider = () => {
 
           {/* Top Buttons - Full Width (1350px) with Gap */}
           <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
-            <button className="flex-1 bg-[#C5B367] text-white py-3.5 text-sm tracking-wider hover:bg-[#b5a256] transition-all">Nejnovější výrobky</button>
-            <button className="flex-1 bg-white text-gray-600 border border-gray-200 py-3.5 text-sm tracking-wider hover:bg-[#b5a256] hover:text-white transition-all"> Investiční příležitosti</button>            <button className="flex-1 bg-[#C5B367] text-white py-3.5 text-sm  tracking-wider hover:bg-[#b5a256] transition-all">Oblíbené dárky</button>
+            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm tracking-wider hover:bg-[#b5a256] transition-all">Nejnovější výrobky</button>
+            <button className="flex-1 bg-white text-gray-600 border border-gray-200 py-3.5 text-sm tracking-wider hover:bg-[#b5a256] hover:text-white transition-all"> Investiční příležitosti</button>            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm  tracking-wider hover:bg-[#b5a256] transition-all">Oblíbené dárky</button>
           </div>
         </div>
 
-        <div className="relative group mt-4">
+        <div className="relative group mt-4 px-5 sm:px-4  md:px-5 lg:px-3">
           {/* Navigation Arrows - Adjusted for LG screens */}
+          {/* LEFT ARROW */}
           <button
             onClick={scrollPrev}
-            className="absolute -left-2 lg:-left-6 top-[40%] -translate-y-1/2 z-20 bg-[#C5B367] p-4 text-white hover:bg-[#b5a256] transition-all"
-            style={{ clipPath: 'polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)' }}
+            className="
+    absolute 
+    -left-1 sm:-left-3 
+    top-1/2 -translate-y-1/2
+    z-20
+    w-8 h-12 sm:w-10 sm:h-12 lg:w-8 lg:h-12
+    bg-[rgb(199,177,93)]
+    flex items-center justify-center
+    text-white
+    hover:bg-[#b5a256]
+    transition-all
+  "
+            style={{
+              clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)'
+            }}
           >
-            <ChevronLeft size={30} />
+            <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
           </button>
 
+          {/* RIGHT ARROW */}
           <button
             onClick={scrollNext}
-            className="absolute -right-2 lg:-right-6 top-[40%] -translate-y-1/2 z-20 bg-[#C5B367] p-4 text-white hover:bg-[#b5a256] transition-all"
-            style={{ clipPath: 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)' }}
+            className="
+    absolute 
+    -right-1 sm:-right-5 lg:-right-3
+    top-1/2 -translate-y-1/2
+    z-20
+    w-8 h-12 sm:w-12 sm:h-10 lg:w-8 lg:h-12
+    bg-[rgb(199,177,93)]
+    flex items-center justify-center
+    text-white
+    hover:bg-[#b5a256]
+    transition-all
+  "
+            style={{
+              clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)'
+            }}
           >
-            <ChevronRight size={30} />
+            <ChevronRight size={18} className="sm:size-5 lg:size-6" />
           </button>
 
           <div className="overflow-hidden" ref={emblaRef}>
@@ -79,13 +107,50 @@ const ProductSlider = () => {
                   >
                     {/* Badge Container - Fixed height for alignment */}
                     <div className="flex flex-col gap-1.5 h-14">
-                      {product.badges.map(badge => (
-                        <span key={badge} className="w-fit text-[10px] bg-white border border-gray-200 px-3 py-0.5 text-gray-500 font-sans ">
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
+                      {product.badges.map((badge) => {
+                        const isNew = badge === "Novinka";
 
+                        return isNew ? (
+                          <div
+                            key={badge}
+                            className="inline-block w-fit p-[1px] bg-gray-300"
+                            style={{
+                              WebkitMask: `
+            radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+            radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+            radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+            radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+          `,
+                              WebkitMaskSize: "51% 51%",
+                              WebkitMaskRepeat: "no-repeat",
+                            }}
+                          >
+                            <span
+                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
+                              style={{
+                                WebkitMask: `
+              radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+              radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+              radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+              radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+            `,
+                                WebkitMaskSize: "51% 51%",
+                                WebkitMaskRepeat: "no-repeat",
+                              }}
+                            >
+                              {badge}
+                            </span>
+                          </div>
+                        ) : (
+                          <span
+                            key={badge}
+                            className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+                          >
+                            {badge}
+                          </span>
+                        );
+                      })}
+                    </div>
                     {/* Image Wrapper - Center Aligned */}
                     <div className="h-52 flex flex-col items-center justify-center relative mb-4">
                       <img
@@ -116,13 +181,13 @@ const ProductSlider = () => {
                     </div>
 
                     {/* Footer Actions */}
-                    <div className="flex items-stretch gap-2 h-11 mt-auto" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-stretch gap-2 h-10 mt-auto" onClick={(e) => e.stopPropagation()}>
                       <div className="flex border border-gray-200 items-center bg-white">
                         <button onClick={() => handleQuantity(product.id, 'dec')} className="px-3 text-red-400 text-xl">−</button>
                         <input type="text" value={quantities[product.id] ?? 1} readOnly className="w-8 text-center text-sm outline-none" />
                         <button onClick={() => handleQuantity(product.id, 'inc')} className="px-3 text-green-500 text-xl">+</button>
                       </div>
-                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold  tracking-wider transition-colors">
+                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bd  tracking-wider transition-colors">
                         Přidat do košíku
                       </button>
                     </div>

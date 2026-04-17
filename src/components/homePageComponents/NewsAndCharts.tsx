@@ -49,7 +49,7 @@ const NewsAndCharts = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 font-serif">
+    <div className="bg-white py-12 px-4 font-serif">
       {/* Container aligned to 1350px */}
       <div className="max-w-[1350px] mx-auto">
 
@@ -70,8 +70,8 @@ const NewsAndCharts = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex-1 max-w-xl py-3 px-6 text-sm tracking-wider border transition-all
   ${activeTab === tab.id
-                    ? "bg-[#C5B367] text-white border-[#C5B367] hover:bg-[#b38f4d]"
-                    : "bg-white text-gray-600 border-gray-200 hover:bg-[#C5B367] hover:text-white"
+                    ? "bg-[rgb(199,177,93)] text-white border-[#C5B367] hover:bg-[#b39e55]"
+                    : "bg-white text-gray-600 border-gray-200  hover:bg-[rgb(199,177,93)] hover:text-white"
                   }`}
               >
                 {tab.label}
@@ -92,7 +92,7 @@ const NewsAndCharts = () => {
                     {['Rok', 'Nominál', 'Název', 'Provedení', 'Materiál', 'Cena', 'Emisní den', 'Dostupnost', 'Objednat / rezervovat'].map((head) => (
                       <th key={head} className="p-4 font-normal border-r border-gray-800 last:border-0">
                         <div className="flex items-center justify-between">
-                          {head} {head !== 'Objednat / rezervovat' && <ChevronDown size={14} className="ml-2 opacity-50" />}
+                          {head} {head !== 'Objednat / rezervovat' && <ChevronDown className="ml-2 text-white/600 w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                         </div>
                       </th>
                     ))}
@@ -123,7 +123,7 @@ const NewsAndCharts = () => {
                       </td>
                       <td className="p-4 bg-gray-100 text-center">
                         <div className="flex justify-center items-center h-full">
-                          <button className="w-[120px] bg-[#C5B367] text-white text-xs py-2 hover:bg-[#b5a256] transition-colors">
+                          <button className="w-[120px] bg-[rgb(199,177,93)] text-white text-xs py-2 hover:bg-[#b5a256] transition-colors">
                             {i === 1 || i === 3 ? 'Objednat' : 'Koupit'}
                           </button>
                         </div>
@@ -176,7 +176,7 @@ const NewsAndCharts = () => {
           {/* Load More Button */}
           {(activeTab === 'plan' || activeTab === 'news') && (
             <div className="mt-12 text-center">
-              <button className="bg-[#C5B367] text-white py-3 px-10 text-sm hover:bg-[#b5a256] transition-colors">
+              <button className="bg-[rgb(199,177,93)] text-white py-3 px-10 text-sm hover:bg-[#b5a256] transition-colors">
                 Zobrazit další
               </button>
             </div>

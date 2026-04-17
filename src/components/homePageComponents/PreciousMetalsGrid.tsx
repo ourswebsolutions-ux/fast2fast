@@ -38,7 +38,7 @@ const PreciousMetalsGrid = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 font-serif">
+    <div className="bg-white py-1 px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
 
         {/* Header Section */}
@@ -58,10 +58,10 @@ const PreciousMetalsGrid = () => {
           {categories.map((cat, idx) => (
             <div
               key={idx}
-              className={`relative bg-[#0A0A0A] p-10 min-h-[400px] flex flex-row items-stretch border overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[#C5B367]`}
+              className={`relative bg-[#0A0A0A]  md:p-18 p-8  min-h-[400px] flex flex-row items-stretch border-3 overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[rgb(199,177,93)]`}
             >
               {/* Left Side: Text Content */}
-              <div className="flex-1 z-20 flex flex-col justify-between">
+              <div className="flex-1 z-20 flex flex-col md:ml justify-between ">
                 <div>
                   <h3 className="text-1xl text-[#C5B367] font-light mb-8 tracking-widest">
                     {cat.title}
@@ -79,7 +79,7 @@ const PreciousMetalsGrid = () => {
                 </div>
               </div>
               {/* Right Side: Price + Image (Flex Parallel) */}
-              <div className="flex-1 z-20 flex flex-col items-end">
+              <div className="flex-1 z-20 flex flex-col  items-end">
                 {/* Price at the very top of image side */}
                 {cat.price ? (
                   <div className="flex items-center gap-3 text-[11px] font-sans mb-4">
@@ -108,7 +108,7 @@ const PreciousMetalsGrid = () => {
               </div>
 
               {/* Background glow */}
-              <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[#C5B367]/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[rgb(199,177,93)]/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             </div>
           ))}
         </div>
