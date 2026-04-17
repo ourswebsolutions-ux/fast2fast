@@ -11,6 +11,7 @@ const Footer = () => {
   { icon: FaYoutube },
   { icon: FaTwitter },
 ];
+
     return (
         <footer className="w-full bg-black text-white pt-12 pb-6 font-sans mt-8">
             <div className="mx-auto w-full max-w-[1350px] px-4">
