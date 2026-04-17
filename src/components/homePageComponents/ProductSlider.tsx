@@ -144,7 +144,7 @@ const ProductSlider = () => {
     ) : (
       <span
         key={badge}
-        className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+        className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-black-400 font-sans rounded-full"
       >
         {badge}
       </span>

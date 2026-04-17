@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ChevronDown, Calendar, LineChart, Table as TableIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import DoubleCalendar from "./extendedComponents/DoubleCalendar"; 
+import DoubleCalendar from "./extendedComponents/DoubleCalendar";
 
 import {
   Chart as ChartJS,
@@ -26,10 +26,10 @@ ChartJS.register(
 );
 
 export default function ExtendedChart() {
-  const [activeTab, setActiveTab] = useState("Graf"); 
+  const [activeTab, setActiveTab] = useState("Graf");
   const [activeFilter, setActiveFilter] = useState("Celá historie");
   const [showCalendar, setShowCalendar] = useState(false);
-  
+
   const [selectedRange, setSelectedRange] = useState<{ start: Date | null; end: Date | null }>({
     start: null,
     end: null,
@@ -56,7 +56,7 @@ export default function ExtendedChart() {
   return (
     <div className="w-full bg-black border-b border-zinc-900 select-none overflow-hidden">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 py-6 relative">
-        
+
         {/* TOP TABS - untouched */}
         <div className="flex justify-between items-center border-b border-zinc-800 pb-2 mb-6">
           <div className="flex gap-4 sm:gap-8">
@@ -70,9 +70,9 @@ export default function ExtendedChart() {
             </button>
           </div>
           <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
-             <div className="w-4 h-2 bg-[#FF0000] mr-1" />
-             <span className="group-hover:text-[#C9B067] transition-colors">Komerční banka</span>
-             <ChevronDown size={14} className="text-zinc-500" />
+            <div className="w-4 h-2 bg-[#FF0000] mr-1" />
+            <span className="group-hover:text-[#C9B067] transition-colors">Komerční banka</span>
+            <ChevronDown size={14} className="text-zinc-500" />
           </div>
         </div>
 
@@ -105,83 +105,81 @@ export default function ExtendedChart() {
         </div>
 
         {/* DYNAMIC CONTENT - only graph area updated to match first component exactly */}
-        <div className="w-full h-[300px] sm:h-[480px] relative mb-12 overflow-hidden">
+        <div className="w-full h-[300px] sm:h-[480px] relative mb-12">
           {activeTab === "Graf" ? (
             <>
-              <div className="relative w-full pr-14 h-full">
-                <div className="w-full h-full relative">
+            {/* GRAPH AREA */}
+<div className="relative w-full h-full flex flex-col">
+  <div className="w-full h-full relative">
 
-                  {/* Y-Axis Grid Lines & Numbers - exact from first */}
-                  {[2000, 1750, 1500, 1250, 1000, 750, 500, 250, 0].map((val) => (
-                    <div
-                      key={val}
-                      className="absolute left-0 w-full border-t border-zinc-800/60 flex"
-                      style={{ top: `${100 - (val / 2000) * 100}%` }}
-                    >
-                      <span className="absolute -right-1 -top-4 text-zinc-500 text-[10px] sm:text-[11px] font-mono w-12 text-right">
-                        {val}
-                      </span>
-                    </div>
-                  ))}
+    {/* CHART */}
+    <div className="w-full h-full">
+   <Line
+  data={{
+    labels: Array.from({ length: 51 }, (_, i) => 1970 + i), // 1970 to 2020
+    datasets: [{
+      data: [
+        // Exact visual match to image (approximated from graph shape)
+        50,60,70,80,90,120,150,180,220,280,350,420,650,720,580,520,480,450,420,400,
+        380,360,340,320,300,280,260,240,220,200,180,170,160,150,140,130,120,110,100,90,
+        80,70,60,55,50,60,80,120,180,300,450,700,1100,1400,1700,1850,1750,1650,1550,1450,
+        1350,1250,1150,1050,950,850,750,650,550,450,350,250,150,100,50,100,300,600,900,
+        1200,1500,1700,1850,1950,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750
+      ],
+      borderColor: "#C9B067",
+      borderWidth: 2.5,
+      tension: 0.35,
+      pointRadius: 0,
+      fill: false,
+    }],
+  }}
+  options={{
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: { padding: { top: 10, right: 0, bottom: 25, left: 10 } },
+    plugins: { legend: { display: false }, tooltip: { enabled: false } },
+   scales: {
+ x: {
+  display: true,
+  offset: true,
+  grid: {
+    display: true,                 // 👈 MUST be true
+   
+    tickLength: 6,                // 👈 pointer size
+  },
+  border: {
+    display: true,
+    color: "#ffffff",
+  },
+  ticks: {
+    color: "#9ca3af",
+    font: { size: 10 },
+    maxTicksLimit: 6,
+    padding: 6,
+  },
+},
+  y: {
+    display: true,
+    position: "right",
+    min: 0,
+    max: 2000,
+    grid: {
+      color: "rgba(255,255,255,0.05)",
+    },
+    ticks: {
+      color: "#9ca3af",
+      font: { size: 10 },
+      stepSize: 250,
+    },
+  },
+},
+  }}
+/>
+    </div>
+  </div>
 
-                  {/* REAL CHART - exact style from first component */}
-                  <div className="absolute inset-0 z-10">
-                    <Line
-                      data={{
-                        labels: Array.from({ length: 25 }, (_, i) => i),
-                        datasets: [
-                          {
-                            data: [
-                              430, 425, 410, 350, 360, 420, 415, 420, 425, 420,
-                              425, 430, 420, 410, 400, 350, 280, 310, 250, 150,
-                              220, 180, 80, 150, 100,
-                            ],
-                            borderColor: "#C9B067",
-                            borderWidth: 2.5,
-                            tension: 0.4,
-                            pointRadius: 0,
-                            fill: false,
-                          },
-                        ],
-                      }}
-                      options={{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                          legend: { display: false },
-                          tooltip: { enabled: false },
-                        },
-                        scales: {
-                          x: { display: false },
-                          y: { display: false },
-                        },
-                        elements: {
-                          line: {
-                            borderJoinStyle: "round",
-                          },
-                        },
-                      }}
-                    />
-                  </div>
-                </div>
-
-                {/* X-Axis Labels & Ticks - exact from first */}
-                <div className="relative mt-4 border-t border-white/80 pt-3">
-                  <div className="flex justify-between text-zinc-500 text-[10px] sm:text-[11px] font-mono">
-                    <span>1970</span>
-                    <span>1980</span>
-                    <span>1990</span>
-                    <span>2000</span>
-                    <span>2010</span>
-                    <span>2020</span>
-                  </div>
-                  <div className="absolute top-0 left-0 w-full flex justify-between">
-                    {[...Array(6)].map((_, i) => (
-                      <span key={i} className="w-[1px] h-3 bg-white/70" />
-                    ))}
-                  </div>
-                </div>
-              </div>
+  
+</div>
             </>
           ) : (
             /* TABLE - untouched */
@@ -218,8 +216,8 @@ export default function ExtendedChart() {
               onClick={() => setActiveFilter(filter)}
               className={cn(
                 "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
-                activeFilter === filter 
-                  ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]" 
+                activeFilter === filter
+                  ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]"
                   : "bg-black text-white border-zinc-800 hover:border-zinc-500"
               )}
             >

@@ -141,12 +141,13 @@ const Footer = () => {
                         </div>
                     </div>
                 </div>
-
-                <div className="mt-12 pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-zinc-500 tracking-[1px]">
+{/* <hr className='w-full'></hr> */}
+                <div className="mt-1 pt-4 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-8 text-[11px] text-zinc-500 tracking-[1px]">
                     <div className="flex items-center gap-6">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="h-5 bg opacity-80" />
                         <div className="flex items-center justify-center">
-                            <span className="text-white font-black text-sm tracking-[4px]">VISA</span>
+                        <img src="visa.svg" alt="Mastercard" className="h- bg opacity-80" />
+                           
                         </div>
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" className="h-4 opacity-80" />
                     </div>
