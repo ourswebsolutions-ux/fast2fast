@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 const Footer = () => {
     return (
-        <footer className="w-full bg-black text-white pt-12 pb-6 font-sans mt-28">
+        <footer className="w-full bg-black text-white pt-12 pb-6 font-sans mt-8">
             {/* Main Wrapper - Exactly matching Navbar alignment at 1350px */}
             <div className="mx-auto w-full max-w-[1350px] px-4">
 
                 {/* 1. Newsletter Box */}
-                <div className="relative mb-16">
+                <div className="relative mb-16 jus">
                     <div className="relative -mt-28 overflow-hidden bg-[rgb(199,177,93)] py-10 px-6 md:px-10 lg:px-12 shadow-2xl rounded">
 
                         {/* Background Pattern */}
@@ -18,10 +18,10 @@ const Footer = () => {
                             <div className="absolute top-1/2 right-1/4 w-48 h-48 bg-black/10 rotate-45 -translate-y-1/2" />
                         </div>
 
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
-                            <h2 className="text-xl md:text-2xl lg:text-[24px] font-serif  text-white text-center lg:text-left leading-tight max-w-md">
+                        <div className="relative z-10 flex flex lg:flex items-center justify-center gap-8">
+                            <div className="text-xl md:text-2xl lg:text-[24px] font-serif  text-white text-center lg:text-left leading-tight max-w-md">
                                 Nezmeškejte žádné novinky či slevy!
-                            </h2>
+                            </div>
 
                             {/* Input and Button with Gap (as requested) */}
                             <div className="flex flex-col sm:flex-row w-full lg:w-auto gap-3">

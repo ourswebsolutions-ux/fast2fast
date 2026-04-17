@@ -37,7 +37,7 @@ const Testimonials = () => {
             Hodnocení od zákazníků
           </h2>
 
-          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[rgb(199,177,93)] flex items-center justify-center shadow-lg border-4 border-white">
+          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[rgb(199,177,93)] flex items-center justify-center shadow-lg ">
             <span className="text-white font-bold text-lg md:text-xl">
               5,0
             </span>
@@ -52,15 +52,15 @@ const Testimonials = () => {
               className="relative border border-zinc-100 px-6 py-10 flex flex-col items-center text-center bg-white shadow-[0_4px_20px_-5px_rgba(0,0,0,0.08)] hover:shadow-xl transition-all duration-500 group"
             >
               {/* STARS */}
-              <div className="absolute -top-2 left-1/2 -translate-x-1/2 bg-white px-3 flex gap-0.5 z-10">
+              <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-white px-3 flex gap-0.5 z-10">
                 {[...Array(5)].map((_, i) => (
                   <svg 
                     key={i} 
                     width="14" 
                     height="14" 
                     viewBox="0 0 24 24" 
-                    fill="#f5a510"
-                    className="group-hover:scale-110 transition-transform duration-300"
+                    fill="[rgb(199,177,93)]"
+                    className=" fill-[#C5B367] group-hover:scale-110 transition-transform duration-300"
                   >
                     <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
                   </svg>
@@ -82,7 +82,7 @@ const Testimonials = () => {
 
         {/* VIEW ALL BUTTON */}
         <div className="flex justify-center mt-14">
-          <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-12 py-4 text-[11px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
+          <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-6 py-4 text-[10px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95">
             Další 23 hodnocení
           </button>
         </div>

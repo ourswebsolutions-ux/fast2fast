@@ -182,7 +182,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <h1 className="text-white text-2xl sm:text-4xl font-black tracking-tighter">GULDEN</h1>
+          <p className="text-white text-4xl sm:text-4xl  ">GULDEN</p>
           </a>
           <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
         </div>

@@ -36,7 +36,7 @@ const GuldenHeroSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100">
+        <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100 ">
             <div className="max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
 
                 {/* Sidebar */}
@@ -80,7 +80,7 @@ const GuldenHeroSection: React.FC = () => {
                             <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-8 text-sm md:text-base">
                                 Zlato, které ochrání vaše úspory.
                             </p>
-                            <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-6 md:px-9 py-2.5 md:py-3.5 text-xs md:text-sm font-medium rounded-none">
+                            <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
                                 Prohlédnout
                             </button>
                         </div>

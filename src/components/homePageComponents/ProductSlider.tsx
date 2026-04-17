@@ -30,7 +30,7 @@ const ProductSlider = () => {
   };
 
   return (
-    <div className=" py-16 px-4 font-serif">
+    <div className="  px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
 
         {/* Diamond Icons Top Center */}
@@ -106,14 +106,51 @@ const ProductSlider = () => {
                     onClick={() => setSelectedId(product.id)}
                   >
                     {/* Badge Container - Fixed height for alignment */}
-                    <div className="flex flex-col gap-1.5 h-14">
-                      {product.badges.map(badge => (
-                        <span key={badge} className="w-fit text-[10px] bg-white border border-gray-200 px-3 py-0.5 text-gray-500 font-sans ">
-                          {badge}
-                        </span>
-                      ))}
-                    </div>
+    <div className="flex flex-col gap-1.5 h-14">
+  {product.badges.map((badge) => {
+    const isNew = badge === "Novinka";
 
+    return isNew ? (
+      <div
+        key={badge}
+        className="inline-block w-fit p-[1px] bg-gray-300"
+        style={{
+          WebkitMask: `
+            radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+            radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+            radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+            radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+          `,
+          WebkitMaskSize: "51% 51%",
+          WebkitMaskRepeat: "no-repeat",
+        }}
+      >
+        <span
+          className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
+          style={{
+            WebkitMask: `
+              radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+              radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+              radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+              radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+            `,
+            WebkitMaskSize: "51% 51%",
+            WebkitMaskRepeat: "no-repeat",
+          }}
+        >
+          {badge}
+        </span>
+      </div>
+    ) : (
+      <span
+        key={badge}
+        className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+      >
+        {badge}
+      </span>
+    );
+  })}
+</div>
                     {/* Image Wrapper - Center Aligned */}
                     <div className="h-52 flex flex-col items-center justify-center relative mb-4">
                       <img
@@ -144,13 +181,13 @@ const ProductSlider = () => {
                     </div>
 
                     {/* Footer Actions */}
-                    <div className="flex items-stretch gap-2 h-11 mt-auto" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex items-stretch gap-2 h-10 mt-auto" onClick={(e) => e.stopPropagation()}>
                       <div className="flex border border-gray-200 items-center bg-white">
                         <button onClick={() => handleQuantity(product.id, 'dec')} className="px-3 text-red-400 text-xl">−</button>
                         <input type="text" value={quantities[product.id] ?? 1} readOnly className="w-8 text-center text-sm outline-none" />
                         <button onClick={() => handleQuantity(product.id, 'inc')} className="px-3 text-green-500 text-xl">+</button>
                       </div>
-                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold  tracking-wider transition-colors">
+                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bd  tracking-wider transition-colors">
                         Přidat do košíku
                       </button>
                     </div>
