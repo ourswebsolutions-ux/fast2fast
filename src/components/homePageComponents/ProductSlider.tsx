@@ -52,10 +52,10 @@ const ProductSlider = () => {
 
         <div className="relative group mt-4 px-5 sm:px-4  md:px-5 lg:px-3">
           {/* Navigation Arrows - Adjusted for LG screens */}
-     {/* LEFT ARROW */}
-<button
-  onClick={scrollPrev}
-  className="
+          {/* LEFT ARROW */}
+          <button
+            onClick={scrollPrev}
+            className="
     absolute 
     -left-1 sm:-left-3 
     top-1/2 -translate-y-1/2
@@ -67,17 +67,17 @@ const ProductSlider = () => {
     hover:bg-[#b5a256]
     transition-all
   "
-  style={{
-    clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)'
-  }}
->
-  <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
-</button>
+            style={{
+              clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)'
+            }}
+          >
+            <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
+          </button>
 
-{/* RIGHT ARROW */}
-<button
-  onClick={scrollNext}
-  className="
+          {/* RIGHT ARROW */}
+          <button
+            onClick={scrollNext}
+            className="
     absolute 
     -right-1 sm:-right-5 lg:-right-3
     top-1/2 -translate-y-1/2
@@ -89,12 +89,12 @@ const ProductSlider = () => {
     hover:bg-[#b5a256]
     transition-all
   "
-  style={{
-    clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)'
-  }}
->
-  <ChevronRight size={18} className="sm:size-5 lg:size-6" />
-</button>
+            style={{
+              clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)'
+            }}
+          >
+            <ChevronRight size={18} className="sm:size-5 lg:size-6" />
+          </button>
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
@@ -106,51 +106,51 @@ const ProductSlider = () => {
                     onClick={() => setSelectedId(product.id)}
                   >
                     {/* Badge Container - Fixed height for alignment */}
-    <div className="flex flex-col gap-1.5 h-14">
-  {product.badges.map((badge) => {
-    const isNew = badge === "Novinka";
+                    <div className="flex flex-col gap-1.5 h-14">
+                      {product.badges.map((badge) => {
+                        const isNew = badge === "Novinka";
 
-    return isNew ? (
-      <div
-        key={badge}
-        className="inline-block w-fit p-[1px] bg-gray-300"
-        style={{
-          WebkitMask: `
+                        return isNew ? (
+                          <div
+                            key={badge}
+                            className="inline-block w-fit p-[1px] bg-gray-300"
+                            style={{
+                              WebkitMask: `
             radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
             radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
             radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
             radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
           `,
-          WebkitMaskSize: "51% 51%",
-          WebkitMaskRepeat: "no-repeat",
-        }}
-      >
-        <span
-          className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
-          style={{
-            WebkitMask: `
+                              WebkitMaskSize: "51% 51%",
+                              WebkitMaskRepeat: "no-repeat",
+                            }}
+                          >
+                            <span
+                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
+                              style={{
+                                WebkitMask: `
               radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
               radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
               radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
               radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
             `,
-            WebkitMaskSize: "51% 51%",
-            WebkitMaskRepeat: "no-repeat",
-          }}
-        >
-          {badge}
-        </span>
-      </div>
-    ) : (
-      <span
-        key={badge}
-        className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-black-400 font-sans rounded-full"
-      >
-        {badge}
-      </span>
-    );
-  })}
-</div>
+                                WebkitMaskSize: "51% 51%",
+                                WebkitMaskRepeat: "no-repeat",
+                              }}
+                            >
+                              {badge}
+                            </span>
+                          </div>
+                        ) : (
+                          <span
+                            key={badge}
+                            className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+                          >
+                            {badge}
+                          </span>
+                        );
+                      })}
+                    </div>
                     {/* Image Wrapper - Center Aligned */}
                     <div className="h-52 flex flex-col items-center justify-center relative mb-4">
                       <img
