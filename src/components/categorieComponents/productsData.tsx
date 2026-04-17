@@ -17,21 +17,31 @@ const productsData = [
     { id: 12, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5 },
 ];
 
+type QuantityAction = 'inc' | 'dec';
+
+type QuantitiesState = Record<number, number>;
+type FavoritesState = Record<number, boolean>;
+
 const ProductGrid = () => {
-    const [quantities, setQuantities] = useState({});
-    const [favorites, setFavorites] = useState({});
+ const [quantities, setQuantities] = useState<QuantitiesState>({});
+const [favorites, setFavorites] = useState<FavoritesState>({});
+   type QuantityAction = 'inc' | 'dec';
 
-    const handleQuantity = (id, type) => {
-        setQuantities(prev => ({
-            ...prev,
-            [id]: type === 'inc' ? (prev[id] ?? 1) + 1 : Math.max(1, (prev[id] ?? 1) - 1)
-        }));
-    };
+const handleQuantity = (id: number, type: QuantityAction) => {
+    setQuantities(prev => ({
+        ...prev,
+        [id]: type === 'inc'
+            ? (prev[id] ?? 1) + 1
+            : Math.max(1, (prev[id] ?? 1) - 1)
+    }));
+};
 
-    const toggleFavorite = (id) => {
-        setFavorites(prev => ({ ...prev, [id]: !prev[id] }));
-    };
-
+const toggleFavorite = (id: number) => {
+    setFavorites(prev => ({
+        ...prev,
+        [id]: !prev[id]
+    }));
+};
     return (
         <div className="bg-white py-10 px-4">
             <div className="max-w-[1350px] mx-auto">

@@ -42,13 +42,14 @@ if (typeof window !== "undefined") {
         CandlestickElement
     );
 }
+type ChartType = "line" | "candlestick";
 
 const PriceChart = () => {
-    const chartRef = useRef(null);
+const chartRef = useRef<any>(null);
 
     const [metalToggle, setMetalToggle] = useState("zlato");
     const [timeframe, setTimeframe] = useState("D");
-    const [chartType, setChartType] = useState("candlestick");
+const [chartType, setChartType] = useState<ChartType>("candlestick");
     const [showIndicator, setShowIndicator] = useState(false);
 
     const downloadChart = () => {
@@ -288,8 +289,8 @@ const PriceChart = () => {
                                     <Chart
                                         ref={chartRef}
                                         type={chartType}
-                                        data={chartData}
-                                        options={chartOptions}
+                                        data={chartData as any}
+                                        options={chartOptions as any}
                                     />
                                 </div>
                             </div>

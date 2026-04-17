@@ -12,14 +12,17 @@ const productsData = [
 
 const SimilarProductsSlider = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
-  const [favorites, setFavorites] = useState({});
+  const [favorites, setFavorites] = useState<Record<number, boolean>>({});
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  const toggleFavorite = (id) => {
-    setFavorites(prev => ({ ...prev, [id]: !prev[id] }));
-  };
+const toggleFavorite = (id: number) => {
+  setFavorites(prev => ({
+    ...prev,
+    [id]: !prev[id]
+  }));
+};
 
   return (
     <div className="py-20 px-4 font-serif bg-white">
