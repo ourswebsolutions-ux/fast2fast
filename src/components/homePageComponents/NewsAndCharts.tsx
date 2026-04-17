@@ -49,7 +49,7 @@ const NewsAndCharts = () => {
   ];
 
   return (
-    <div className="bg-white  px-4 font-serif">
+    <div className="bg-white py-12 px-4 font-serif">
       {/* Container aligned to 1350px */}
       <div className="max-w-[1350px] mx-auto">
 

@@ -12,11 +12,11 @@ const BenefitsSection = () => {
     <section className="relative w-full ">
       {/* Background Split */}
       <div className="absolute inset-0 flex flex-col pointer-events-none">
-        <div className="flex-1 bg-gray-100" />
-        <div className="flex-1 bg-white" />
+        <div className="flex-1 bg-gray-100 pb-27 " />
+        <div className="flex-1 bg-white " />
       </div>
 
-      <div className="relative max-w-[1500px] mx-auto px-4 pt-12 md:pt-16  flex flex-col items-center">
+      <div className="relative max-w-[1500px] mx-auto px-4 pt-22 md:pt-16  md:pb-20 flex flex-col items-center">
         {/* Title */}
         <div className="flex flex-col items-center mb-16 md:mb-24">
           <div className="flex items-center gap-1.5 mb-4 md:mb-6">

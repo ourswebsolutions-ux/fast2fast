@@ -38,7 +38,7 @@ const PreciousMetalsGrid = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4 font-serif">
+    <div className="bg-white py-1 px-4 font-serif">
       <div className="max-w-[1350px] mx-auto">
 
         {/* Header Section */}
@@ -58,7 +58,7 @@ const PreciousMetalsGrid = () => {
           {categories.map((cat, idx) => (
             <div
               key={idx}
-              className={`relative bg-[#0A0A0A]  p-18  min-h-[400px] flex flex-row items-stretch border-3 overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[rgb(199,177,93)]`}
+              className={`relative bg-[#0A0A0A]  md:p-18 p-8  min-h-[400px] flex flex-row items-stretch border-3 overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[rgb(199,177,93)]`}
             >
               {/* Left Side: Text Content */}
               <div className="flex-1 z-20 flex flex-col md:ml justify-between ">
