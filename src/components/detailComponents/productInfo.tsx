@@ -26,26 +26,28 @@ const ProductInfoSection: React.FC = () => {
                     <h2 className="text-4xl font-serif text-[#333333]">Informace o produktu</h2>
                 </div>
 
-               {/* Navigation Tabs - Mobile: 2 per row | Desktop: 5 per row */}
-<div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-4">
-    {tabs.map((tab) => {
-        const isActive = activeTab === tab.name;
-        
-        return (
-            <button
-                key={tab.name}
-                onClick={() => setActiveTab(tab.name)}
-                className={`py-3 px-2 text-[12px] md:text-[13px] font-bold tracking-wider transition-all border text-center flex items-center justify-center min-h-[50px]
+                {/* Navigation Tabs - Desktop Grid / Mobile Scroll */}
+                <div className="flex overflow-x-auto no-scrollbar md:grid md:grid-cols-5 gap-2 mb-4 pb-2 md:pb-0">
+                    {tabs.map((tab) => {
+                        const isActive = activeTab === tab.name;
+
+                        return (
+                            <button
+                                key={tab.name}
+                                onClick={() => setActiveTab(tab.name)}
+                                // Mobile ke liye flex-shrink-0 aur min-w-[calc(50%-4px)] add kiya hai
+                                className={`py-3.5 px-2 text-[13px] font-bold tracking-wider transition-all border whitespace-nowrap
+                    flex-shrink-0 min-w-[calc(50%-4px)] md:min-w-0
                     ${isActive
-                        ? 'bg-[#C5A059] text-white border-[#f8c66e]' 
-                        : 'bg-white text-[#666666] border-[#C5A059] hover:bg-[#C5A059] hover:text-white'
-                    }`}
-            >
-                <span className="leading-tight">{tab.name}</span>
-            </button>
-        );
-    })}
-</div>
+                                        ? 'bg-[#C5A059] text-white border-[#f8c66e] hover:bg-[#b08d4b] hover:border-[#d4a855]'
+                                        : 'bg-white text-[#666666] border-[#C5A059] hover:bg-[#C5A059] hover:text-white hover:border-[#C5A059]'
+                                    }`}
+                            >
+                                {tab.name}
+                            </button>
+                        );
+                    })}
+                </div>
 
                 {/* Main Content Container */}
                 <div className="bg-white border border-gray-100 p-6 md:p-16 lg:p-24 shadow-[0_10px_50px_rgba(0,0,0,0.05)] rounded-sm">

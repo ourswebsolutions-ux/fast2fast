@@ -1,6 +1,7 @@
 "use client";
 import React, { useCallback, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
 import { ChevronLeft, ChevronRight, Heart, Star } from 'lucide-react';
 
 const productsData = [
@@ -11,8 +12,13 @@ const productsData = [
 ];
 
 const SimilarProductsSlider = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
   const [favorites, setFavorites] = useState({});
+  
+  // Autoplay plugin settings
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start' },
+    [Autoplay({ delay: 3000, stopOnInteraction: false })]
+  );
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -39,7 +45,6 @@ const SimilarProductsSlider = () => {
 
         <div className="relative group px-5 sm:px-4 md:px-5 lg:px-3">
           
-          {/* Navigation Arrows */}
           <button
             onClick={scrollPrev}
             className="absolute -left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-10 sm:h-12 lg:w-8 lg:h-12 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
@@ -62,7 +67,7 @@ const SimilarProductsSlider = () => {
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
                   <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[#C5A059] hover:shadow-lg group/card">
                     
-                    {/* Badge Container - Fixed height for alignment */}
+                   {/* Badge Container - Fixed height for alignment */}
                     <div className="flex flex-col gap-1.5 h-14">
                       {product.badges.map((badge) => {
                         const isNew = badge === "Novinka";
@@ -109,46 +114,24 @@ const SimilarProductsSlider = () => {
                       })}
                     </div>
 
-                    {/* Image Area */}
                     <div className="h-52 flex flex-col items-center justify-center relative mb-6">
-                      <img
-                        src={product.image}
-                        alt={product.title}
-                        className="max-h-full w-auto object-contain transition-transform duration-500 group-hover/card:scale-105"
-                      />
+                      <img src={product.image} alt={product.title} className="max-h-full w-auto object-contain transition-transform duration-500 group-hover/card:scale-105" />
                       <Heart
                         size={20}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          toggleFavorite(product.id);
-                        }}
-                        className={`absolute bottom-0 right-0 cursor-pointer transition-all duration-300 ${
-                          favorites[product.id] 
-                          ? "fill-[#C5A059] text-[#C5A059] scale-110" 
-                          : "text-gray-200 hover:text-[#C5A059]"
-                        }`}
+                        onClick={(e) => { e.stopPropagation(); toggleFavorite(product.id); }}
+                        className={`absolute bottom-0 right-0 cursor-pointer transition-all duration-300 ${favorites[product.id] ? "fill-[#C5A059] text-[#C5A059] scale-110" : "text-gray-200 hover:text-[#C5A059]"}`}
                       />
                     </div>
 
-                    {/* Gold Rating Stars */}
                     <div className="flex justify-center gap-0.5 mb-6">
                       {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          size={14} 
-                          className={i < product.rating ? "fill-[#f5a510] text-[#f3ae2e]" : "text-gray-100"} 
-                        />
+                        <Star key={i} size={14} className={i < product.rating ? "fill-[#f5a510] text-[#f3ae2e]" : "text-gray-100"} />
                       ))}
                     </div>
 
-                    {/* Title & Price */}
                     <div className="text-center mt-auto w-full overflow-hidden">
-                      <h3 className="text-[11.2px] text-[#555555] underline underline-offset-4 decoration-gray-200 mb-3 block whitespace-nowrap overflow-visible w-full px-1">
-                        {product.title}
-                      </h3>
-                      <p className="text-[20px] text-[#C5A059] font-medium font-sans tracking-tight">
-                        {product.price}
-                      </p>
+                      <h3 className="text-[11.2px] text-[#555555] underline underline-offset-4 decoration-gray-200 mb-3 block whitespace-nowrap overflow-visible w-full px-1">{product.title}</h3>
+                      <p className="text-[20px] text-[#C5A059] font-medium font-sans tracking-tight">{product.price}</p>
                     </div>
                   </div>
                 </div>
