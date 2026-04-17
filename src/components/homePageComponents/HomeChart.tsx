@@ -293,13 +293,22 @@ const PriceChart = () => {
     </div>
 
 </div>
-<div className="px-6 py-2  bg-white text-xs text-gray-500 flex items-center gap-2 flex-wrap">
-        CFDs on Gold (US$ / OZ) • 1D • TVC 
-        <span className="text-green-500">●</span>
-        O 1915.66 H 1919.02 L 1904.34 C 1907.06 
-        <span className="text-red-500">-10.54 (-0.55%)</span>
-        <span className="ml-auto text-gray-400">Vol 0</span>
-    </div>
+<div className="px-6 py-2 bg-white text-xs text-gray-500">
+  
+  {/* TOP LINE */}
+  <div className="flex items-center gap-2 flex-wrap">
+    CFDs on Gold (US$ / OZ) • 1D • TVC 
+    <span className="text-green-500">●</span>
+    O 1915.66 H 1919.02 L 1904.34 C 1907.06 
+    <span className="text-red-500">-10.54 (-0.55%)</span>
+  </div>
+
+  {/* BOTTOM LINE */}
+  <div className="flex justify- text-gray-400 mt-1">
+    Vol 0
+  </div>
+
+</div>
                             {/* CHART (CRITICAL FIX FOR MOBILE VISIBILITY) */}
                             <div className="flex-1 p-6 relative">
                                 <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
