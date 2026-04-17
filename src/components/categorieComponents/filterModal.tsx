@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const FilterModal = ({ isOpen, onClose }) => {
+const FilterModal = ({ isOpen, onClose }: any) => {
   if (!isOpen) return null;
 
   const sidebarItems = [
