@@ -1,6 +1,5 @@
-
 "use client";
-import React, { useState, useMemo, useRef, useEffect } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import {
     ChevronDown,
     Plus,
@@ -20,7 +19,6 @@ import {
     Legend,
     PointElement,
     LineElement,
-
 } from "chart.js";
 
 import {
@@ -46,32 +44,24 @@ if (typeof window !== "undefined") {
 }
 
 const PriceChart = () => {
-    const chartRef = useRef<any>(null);
+    const chartRef = useRef(null);
 
     const [metalToggle, setMetalToggle] = useState("zlato");
     const [timeframe, setTimeframe] = useState("D");
-    const [chartType, setChartType] = useState<"candlestick" | "line">(
-        "candlestick"
-    );
+    const [chartType, setChartType] = useState("candlestick");
     const [showIndicator, setShowIndicator] = useState(false);
-
-
-    
-
-
 
     const downloadChart = () => {
         if (chartRef.current) {
             const link = document.createElement("a");
-            link.download = `chart.png`;
+            link.download = "chart.png";
             link.href = chartRef.current.toBase64Image();
             link.click();
         }
     };
 
-    // DATA (UNCHANGED)
     const generateData = useMemo(() => {
-        const points: any[] = [];
+        const points = [];
         let price = metalToggle === "zlato" ? 1820 : 21.5;
         const startDate = new Date("2022-07-01");
 
@@ -100,7 +90,7 @@ const PriceChart = () => {
     }, [metalToggle]);
 
     const maData = useMemo(() => {
-        return generateData.map((p: any, i: number, arr: any[]) => {
+        return generateData.map((p, i, arr) => {
             const window = 7;
             if (i < window) return { x: p.x, y: p.c };
             const avg =
@@ -112,7 +102,7 @@ const PriceChart = () => {
     const chartData = {
         datasets: [
             {
-                type: chartType as any,
+                type: chartType,
                 label: "Price",
                 data: generateData,
                 borderColor:
@@ -127,7 +117,7 @@ const PriceChart = () => {
                 pointRadius: 0,
             },
             {
-                type: "line" as const,
+                type: "line",
                 label: "MA",
                 data: maData,
                 borderColor: "#f23645",
@@ -139,22 +129,18 @@ const PriceChart = () => {
         ],
     };
 
-    const chartOptions: any = {
+    const chartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: {
             x: {
                 type: "time",
-
                 grid: { color: "rgba(240, 243, 250, 0.6)", drawTicks: false },
-
                 time: {
                     unit: "month",
                     stepSize: 1,
-                    displayFormats: {
-                        month: "MMM"
-                    }
+                    displayFormats: { month: "MMM" }
                 },
                 ticks: {
                     autoSkip: false,
@@ -174,164 +160,146 @@ const PriceChart = () => {
     return (
         <div className="w-full overflow-x-hidden">
             <div className="mx-auto">
-
                 <div className="min-h-[550px]">
-
-
                     <div className="flex flex-col lg:flex-row gap-5 items-stretch">
 
-                        {/* SIDEBAR (NO CHANGE) */}
-              <div className="lg:w-[340px] w-full flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
+                        {/* SIDEBAR */}
+                        <div className="lg:w-[340px] w-full flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
 
-    {/* TOP BUTTONS */}
-    <div className="flex w-full mb-6 sm:mb-10 gap-2">
+                            <div className="flex w-full mb-6 sm:mb-10 gap-2">
+                                <button
+                                    onClick={() => setMetalToggle("zlato")}
+                                    className={`flex-1 py-2 text-[11px] font-bold ${
+                                        metalToggle === "zlato"
+                                            ? "bg-[rgb(199,177,93)] text-white"
+                                            : "text-gray-400 bg-white border border-gray-200"
+                                    }`}
+                                >
+                                    Zlato
+                                </button>
 
-        <button
-            onClick={() => setMetalToggle("zlato")}
-            className={`flex-1 py-2 text-[11px] font-bold ${
-                metalToggle === "zlato"
-                    ? "bg-[rgb(199,177,93)] text-white hover:bg-[#b39e55]"
-                    : "text-gray-400 bg-white border border-gray-200 hover:text-white hover:bg-[#b39e55]"
-            }`}
-        >
-            Zlato
-        </button>
+                                <button
+                                    onClick={() => setMetalToggle("stribro")}
+                                    className={`flex-1 py-2 text-[11px] font-bold ${
+                                        metalToggle === "stribro"
+                                            ? "bg-[rgb(199,177,93)] text-white"
+                                            : "text-gray-400 bg-white border border-gray-200"
+                                    }`}
+                                >
+                                    Stříbro
+                                </button>
+                            </div>
 
-        <button
-            onClick={() => setMetalToggle("stribro")}
-            className={`flex-1 py-2 text-[11px] font-bold ${
-                metalToggle === "stribro"
-                    ? "bg-[rgb(199,177,93)] text-white"
-                    : "text-gray-400 bg-white border border-gray-200 hover:bg-[rgb(199,177,93)] hover:text-white"
-            }`}
-        >
-            Stříbro
-        </button>
+                            <div className="flex flex-1 flex-col items-center justify-center text-center">
+                                <h3 className="text-[20px] sm:text-[30px] mb-4">
+                                    Aktuální hodnota :
+                                </h3>
 
-    </div>
+                                <div className="bg-[#f23645] text-white text-[22px] py-1 px-6">
+                                    {metalToggle === "zlato" ? "1907.06" : "25.32"}
+                                </div>
+                            </div>
+                        </div>
 
-    {/* CENTER CONTENT */}
-    <div className="flex flex-1 flex-col items-center justify-center text-center">
-
-        <h3 className="text-[20px] sm:text-[30px] text-black-400 mb-4 racking-[0.25em]">
-            Aktuální hodnota :
-        </h3>
-
-        <div className="bg-[#f23645] text-white text-[22px] sm:text-xl py-1 px-6 sm:px-10 font-lightshadow-lg">
-            {metalToggle === "zlato" ? "1907.06" : "25.32"}
-        </div>
-
-    </div>
-
-</div>
-                        {/* CHART AREA */}
+                        {/* CHART */}
                         <div className="flex-1 bg-white border border-gray-200 rounded-sm flex flex-col min-w-0">
 
-                            {/* TOOLBAR (ONLY RESPONSIVE FIX) */}
-               {/* FIXED TOOLBAR - Exact visual + separators like image */}
-<div className="flex items-center px-6 py-3  gap-3 text-sm overflow-x-auto whitespace-nowrap">
+                            {/* TOOLBAR (RESTORED EXACT) */}
+                            <div className="flex items-center px-6 py-3 gap-3 text-sm overflow-x-auto whitespace-nowrap">
 
-    <span className="font-bold text-black">GOLD</span>
+                                <span className="font-bold text-black">GOLD</span>
 
-    <div className="flex items-center gap-1 text-gray-400">
-        <Plus size={18} className="cursor-pointer hover:text-black" onClick={() => alert('Add clicked')} />
-    </div>
+                                <Plus size={18} className="cursor-pointer" />
 
-    <div className="h-5 w-[1px] bg-gray-200 mx-1" />
+                                <div className="h-5 w-[1px] bg-gray-200 mx-1" />
 
-    <div className="flex items-center gap-1">
-        {["1m", "30m", "1h", "D"].map((t) => (
-            <button
-                key={t}
-                onClick={() => setTimeframe(t)}
-                className={`px-3 py-1 text-[13px] font-medium rounded-sm ${timeframe === t 
-                    ? "bg-blue-50 text-blue-600" 
-                    : "text-gray-500 hover:text-black"}`}
-            >
-                {t}
-            </button>
-        ))}
-    </div>
+                                <div className="flex items-center gap-1">
+                                    {["1m", "30m", "1h", "D"].map((t) => (
+                                        <button
+                                            key={t}
+                                            onClick={() => setTimeframe(t)}
+                                            className={`px-3 py-1 text-[13px] font-medium rounded-sm ${
+                                                timeframe === t
+                                                    ? "bg-blue-50 text-blue-600"
+                                                    : "text-gray-500"
+                                            }`}
+                                        >
+                                            {t}
+                                        </button>
+                                    ))}
+                                </div>
 
-    <div className="h-5 w-[1px] bg-gray-200 mx-2" />
+                                <div className="h-5 w-[1px] bg-gray-200 mx-2" />
 
-    <div className="flex items-center gap-4 text-gray-400">
-        <span className="cursor-pointer text-lg leading-none hover:text-black">↑↓</span>
-        <span className="cursor-pointer text-lg leading-none hover:text-black"><AlignHorizontalDistributeCenter></AlignHorizontalDistributeCenter></span>
-        
-        <ChartNoAxesCombined 
-            size={19} 
-            className={`cursor-pointer ${chartType === "candlestick" ? "text-blue-600" : ""}`} 
-            onClick={() => setChartType("candlestick")} 
-        />
-        
-        <LineChart 
-            size={19} 
-            className={`cursor-pointer ${chartType === "line" ? "text-blue-600" : ""}`} 
-            onClick={() => setChartType("line")} 
-        />
-    </div>
-        <ChevronDown size={16} className="text-gray-400 ml-1" />
+                                <div className="flex items-center gap-4 text-gray-400">
+                                    <AlignHorizontalDistributeCenter className="cursor-pointer" />
 
-    <div className="h-5 w-[1px] bg-gray-200 mx-2" />
+                                    <ChartNoAxesCombined
+                                        size={19}
+                                        className={`cursor-pointer ${
+                                            chartType === "candlestick" ? "text-blue-600" : ""
+                                        }`}
+                                        onClick={() => setChartType("candlestick")}
+                                    />
 
-    <div 
-        className={`flex items-center gap-1 text-sm cursor-pointer ${showIndicator ? "text-blue-600" : "text-gray-500"}`}
-        onClick={() => setShowIndicator(!showIndicator)}
-    >
-        <Activity size={19} />
-        <span>Indicators</span>
-        <ChevronDown size={16} />
-    </div>
+                                    <LineChart
+                                        size={19}
+                                        className={`cursor-pointer ${
+                                            chartType === "line" ? "text-blue-600" : ""
+                                        }`}
+                                        onClick={() => setChartType("line")}
+                                    />
+                                </div>
 
-    <div className="ml-auto">
-        <Camera 
-            size={20} 
-            className="text-gray-400 cursor-pointer hover:text-black" 
-            onClick={downloadChart} 
-        />
-    </div>
+                                <div
+                                    className={`flex items-center gap-1 ml-2 cursor-pointer ${
+                                        showIndicator ? "text-blue-600" : "text-gray-500"
+                                    }`}
+                                    onClick={() => setShowIndicator(!showIndicator)}
+                                >
+                                    <Activity size={19} />
+                                    Indicators
+                                </div>
 
-</div>
-<div className="px-6 py-2 bg-white text-xs text-gray-500">
-  
-  {/* TOP LINE */}
-  <div className="flex items-center gap-2 flex-wrap">
-    CFDs on Gold (US$ / OZ) • 1D • TVC 
-    <span className="text-green-500">●</span>
-    O 1915.66 H 1919.02 L 1904.34 C 1907.06 
-    <span className="text-red-500">-10.54 (-0.55%)</span>
-  </div>
+                                <div className="ml-auto">
+                                    <Camera
+                                        size={20}
+                                        className="cursor-pointer"
+                                        onClick={downloadChart}
+                                    />
+                                </div>
+                            </div>
 
-  {/* BOTTOM LINE */}
-  <div className="flex justify- text-gray-400 mt-1">
-    Vol 0
-  </div>
-
-</div>
-                            {/* CHART (CRITICAL FIX FOR MOBILE VISIBILITY) */}
+                            {/* CHART AREA */}
                             <div className="flex-1 p-6 relative">
+
+                                {/* ✅ OVERLAY INFO FIXED */}
+                                <div className="absolute top-0 left-0 w-full px-6 py-2 text-xs text-gray-500 bg-white/80 backdrop-blur-sm z-10">
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        CFDs on Gold (US$ / OZ) • 1D • TVC
+                                        <span className="text-green-500">●</span>
+                                        O 1915.66 H 1919.02 L 1904.34 C 1907.06
+                                        <span className="text-red-500">-10.54 (-0.55%)</span>
+                                    </div>
+                                    <div className="text-gray-400 mt-1">Vol 0</div>
+                                </div>
+
                                 <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
-                                    {typeof window !== "undefined" && (
-                                        <Chart
-                                            ref={chartRef}
-                                            type={chartType as any}
-                                            data={chartData}
-                                            options={chartOptions}
-                                        />
-                                    )}
+                                    <Chart
+                                        ref={chartRef}
+                                        type={chartType}
+                                        data={chartData}
+                                        options={chartOptions}
+                                    />
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     );
 };
 
-export default PriceChart; 
+export default PriceChart;
