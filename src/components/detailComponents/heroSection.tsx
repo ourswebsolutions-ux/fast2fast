@@ -26,10 +26,10 @@ const HeroSection: React.FC = () => {
         );
     };
     const images = [
-  "/queen-coin.svg",
-  "/line-coin.svg",
-  "/b-coin.svg"
-];
+        "/queen-coin.svg",
+        "/line-coin.svg",
+        "/b-coin.svg"
+    ];
 
     return (
         <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-50 font-sans">
@@ -116,7 +116,7 @@ const HeroSection: React.FC = () => {
                         Kanada 50$ 2018 Maple Leaf 1 oz 999,9/1000 Au
                     </h1>
 
-                    <p className="text-[#5a5959] text-[13px] mt-4 leading-relaxed">
+                    <p className="text-[#3b3a3a] text-[13px] mt-4 leading-relaxed">
                         Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené ve zlatých dolech v Kanadě. <span className="text-[#C5A059] border-b border-[#C5A059] cursor-pointer ml-1">Více informací</span>
                     </p>
 
@@ -169,34 +169,34 @@ const HeroSection: React.FC = () => {
                         />                    </div>
 
                     {/* Pricing Table - All text weights synced */}
-<div className="mt-10 border border-gray-200 bg-white">
-    <table className="w-full text-left text-[13px] md:text-xs border-collapse">
-        <thead className="bg-[#EEEEEE] text-[#333333] border-b border-gray-200 font-bold">
-            <tr>
-                <th className="px-4 py-3">Množství</th>
-                <th className="px-4 py-3">Cena</th>
-                <th className="px-4 py-3">Fixace ceny</th>
-                <th className="px-4 py-3">Platba kartou</th>
-            </tr>
-        </thead>
-        <tbody className="text-[#333333]">
-            {[
-                { q: '1–19', p: '45 703 Kč', f: 'Ihned', c: 'Ano' }, 
-                { q: '20–99', p: '44 703 Kč', f: 'Ihned', c: 'Ano' }, 
-                { q: '100–499', p: '43 703 Kč', f: 'Ihned', c: 'Ano' }, 
-                { q: '500+', p: '42 703 Kč', f: 'Po zaplacení', c: 'Ne' }
-            ].map((row, i) => (
-                <tr key={i} className="border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transition-colors">
-                    <td className="px-4 py-3.5">{row.q}</td>
-                    {/* font-bold remove kar diya gaya hai aur color inherit ho raha hai */}
-                    <td className="px-4 py-3.5 text-[#333333]">{row.p}</td>
-                    <td className="px-4 py-3.5">{row.f}</td>
-                    <td className="px-4 py-3.5">{row.c}</td>
-                </tr>
-            ))}
-        </tbody>
-    </table>
-</div>
+                    <div className="mt-10 border border-gray-200 bg-white">
+                        <table className="w-full text-left text-[13px] md:text-xs border-collapse">
+                            <thead className="bg-[#EEEEEE] text-[#333333] border-b border-gray-200 font-bold">
+                                <tr>
+                                    <th className="px-4 py-3">Množství</th>
+                                    <th className="px-4 py-3">Cena</th>
+                                    <th className="px-4 py-3">Fixace ceny</th>
+                                    <th className="px-4 py-3">Platba kartou</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-[#292828] text-[13px]">
+                                {[
+                                    { q: '1–19', p: '45 703 Kč', f: 'Ihned', c: 'Ano' },
+                                    { q: '20–99', p: '44 703 Kč', f: 'Ihned', c: 'Ano' },
+                                    { q: '100–499', p: '43 703 Kč', f: 'Ihned', c: 'Ano' },
+                                    { q: '500+', p: '42 703 Kč', f: 'Po zaplacení', c: 'Ne' }
+                                ].map((row, i) => (
+                                    <tr key={i} className="border-b border-gray-200 last:border-b-0 hover:bg-gray-50 transition-colors">
+                                        <td className="px-4 py-3.5">{row.q}</td>
+                                        {/* font-bold remove kar diya gaya hai aur color inherit ho raha hai */}
+                                        <td className="px-4 py-3.5 text-[#333333]">{row.p}</td>
+                                        <td className="px-4 py-3.5">{row.f}</td>
+                                        <td className="px-4 py-3.5">{row.c}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
 
                     {/* Accessories Section - EXACT IMAGE MATCH */}
                     <div className="mt-8 border border-gray-200 bg-white">
@@ -222,7 +222,7 @@ const HeroSection: React.FC = () => {
                                             <img src="/queen-coin.svg" alt="acc" className="w-full h-full object-contain opacity-40" />
                                         </div>
 
-                                        <span className="text-[#333333] text-[13px]">Kapsle na minci – kulatá</span>
+                                        <span className="text-[#3a3a3a] text-[13px]">Kapsle na minci – kulatá</span>
                                     </div>
 
                                     <div className="flex items-center gap-6">

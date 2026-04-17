@@ -14,7 +14,6 @@ const ProductInfoSection: React.FC = () => {
 
     return (
         <section className="mt-16 py-12 px-4 font-sans bg-white">
-            {/* Main width back to 1350px */}
             <div className="max-w-[1350px] mx-auto">
 
                 {/* Section Title */}
@@ -27,15 +26,15 @@ const ProductInfoSection: React.FC = () => {
                     <h2 className="text-4xl font-serif text-[#333333]">Informace o produktu</h2>
                 </div>
 
-                {/* Navigation Tabs */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-2 mb-4">
+                {/* Navigation Tabs - Desktop Grid / Mobile Scroll */}
+                <div className="flex overflow-x-auto no-scrollbar md:grid md:grid-cols-5 gap-2 mb-4 pb-2 md:pb-0">
                     {tabs.map((tab) => (
                         <button
                             key={tab.name}
                             onClick={() => setActiveTab(tab.name)}
-                            className={`py-3.5 px-2 text-[13px] font-bold tracking-wider transition-all border border-[#C5A059]/40
+                            className={`py-3.5 px-6 md:px-2 text-[13px] font-bold tracking-wider transition-all border border-gray-200 whitespace-nowrap
                                 ${activeTab === tab.name
-                                    ? 'bg-[#C5A059] text-white border-gray-300 hover:bg-[#b38f4d]'
+                                    ? 'bg-[#C5A059] text-white border-gray-300'
                                     : 'bg-white text-[#666666] hover:bg-[#C5A059] hover:text-white'
                                 }`}
                         >
@@ -45,68 +44,79 @@ const ProductInfoSection: React.FC = () => {
                 </div>
 
                 {/* Main Content Container */}
-                <div className="bg-white border border-gray-100 p-10 md:p-16 lg:p-20  shadow-[0_10px_50px_rgba(0,0,0,0.05)] rounded-sm">
+                <div className="bg-white border border-gray-100 p-6 md:p-16 lg:p-24 shadow-[0_10px_50px_rgba(0,0,0,0.05)] rounded-sm">
 
-                    {/* First Block: Text width restricted to match image */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 px-20 items-center mb-16 lg:mb-24">
-                        <div className="lg:col-span-8 lg:text-right order-2 lg:order-1 flex flex-col lg:items-end">
-                            <h3 className="text-xl font-serif text-[#333333]  mb-2">Investiční zlatá mince</h3>
-                            <h2 className="text-3xl md:text-[40px] font-serif text-[#111111] mb-6 leading-tight lg:max-w-[600px]">
-                                Maple Leaf <span className='font-sans'> 1 oz 999,9/1000</span> Au
+                    {/* First Block - Image Right, Text Left (Desktop) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-16 lg:mb-32">
+                        <div className="lg:col-span-7 lg:text-right order-2 lg:order-1 flex flex-col lg:items-end">
+                            <h3 className="text-[19px] font-serif text-[#333333] mb-2">Investiční zlatá mince</h3>
+                            <h2 className="text-3xl md:text-[38px] font-serif text-[#111111] mb-8 leading-tight">
+                                Maple Leaf <span className='font-sans '>1 oz 999,9/1000</span> Au
                             </h2>
-                            <p className="text-[#444444] text-[15px] md:text-[16px] leading-[1.8] text-justify lg:text-right lg:max-w-[580px]">
-                                Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979.
-                                Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené
-                                ve zlatých dolech v Kanadě. Tato zlatá mince je nabízena ve velikostech 1/20 oz, 1/10 oz, 1/4 oz,
-                                1/2 oz a 1 oz a je zaručen obsah kovu (v trojských uncích) 0,9999 (24 karátů), liší se pouze na lícové
-                                i rubové straně indikací váhy a nominální hodnoty.
+                            <p className="text-[#3a3a3a] text-[15px] leading-[1.8] lg:max-w-[550px]">
+                                Kanadská královská mincovna razí investiční mince Maple Leaf<br className="hidden lg:block" />
+                                (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott.<br className="hidden lg:block" />
+                                Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené
+                                ve zlatých <br className="hidden lg:block" /> dolech v Kanadě. Tato zlatá mince je nabízena ve velikostech 1/20 oz,<br className="hidden lg:block" />
+                                1/10 oz, 1/4 oz, 1/2 oz a 1oz a je zaručen obsah kovu (v trojských<br className="hidden lg:block" />
+                                uncích) 0,9999 (24 karátů), liší se pouze na lícové i rubové straně<br className="hidden lg:block" />
+                                indikací váhy a nominální hodnoty.
                             </p>
                         </div>
-                        <div className="lg:col-span-4 flex justify-center order-1 lg:order-2">
+                        <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
                             <img
                                 src="/can-img.png"
                                 alt="Maple Leaf Gold"
-                                className="w-[170px] md:w-[230px] lg:w-full lg:max-w-[280px] drop-shadow-2xl transition-transform hover:scale-105 duration-500"
+                                className="w-[180px] md:w-[250px] lg:w-[320px] drop-shadow-2xl"
                             />
                         </div>
                     </div>
 
-                    {/* Second Block: Text width restricted */}
-                    <div className="grid grid-cols-1 px-14 lg:grid-cols-12 gap-10 lg:gap-12 items-center mt-16">
-                        {/* Left Side: Image */}
-                        <div className="lg:col-span-4 flex justify-center">
+                    {/* Second Block - Image Left, Text Right (Desktop) */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+                        <div className="lg:col-span-5 flex justify-center lg:justify-end">
                             <img
                                 src="/box-coin.png"
                                 alt="Mince a pouzdro"
-                                className="w-[170px] md:w-[230px] lg:w-full lg:max-w-[280px] drop-shadow-xl"
+                                className="w-[180px] md:w-[250px] lg:w-[320px] drop-shadow-xl"
                             />
                         </div>
 
-                        {/* Right Side: Content */}
-                        <div className="lg:col-span-8 flex flex-col items-start">
-                            {/* Sub-heading */}
-                            <h3 className="text-[18px] md:text-[19px] font-serif text-[#111111] mb-4">
+                        <div className="lg:col-span-7 flex flex-col items-start text-left">
+                            <h3 className="text-[19px] font-serif text-[#111111] mb-3">
                                 Krátká specifikace
                             </h3>
-
-                            {/* Main Heading */}
-                            <h2 className="text-3xl md:text-[40px] font-serif text-[#111111] mb-6 leading-tight">
+                            <h2 className="text-3xl md:text-[38px] font-serif text-[#111111] mb-8 leading-tight">
                                 Proč investiční zlatou minci?
                             </h2>
-
-                            {/* Description Block - Zero Gap & Continuous Flow */}
-                            <div className="text-[14px] md:text-[15px] leading-[1.6] text-[#444444] font-normal lg:max-w-[580px]">
-                                <span className="">Emitent:</span> Kanada
-                                <br />
-                        
-                                Líc: Královna Alžběta II. hledící vpravo text "ELIZABETH II 50 DOLLARS" Rok Autor Arnold Machin (1979-1989) Vyobrazení Alžběty II se od roku 1990 změnilo. Novým autorem je dePedery-Hunt (1990+) Rub: Maple leaf - Javorový list text "CANADA 9999 FINE GOLD 1 OZ OR PUR 9999" Autor Cosme Saffioti
+                            <div className="text-[15px] leading-[1.8] text-[#333333] lg:max-w-[560px]">
+                                <p className="mb-0">Emitent: Kanada</p>
+                                <p className="mb-0">
+                                    Líc: Královna Alžběta II. hledící vpravo text "ELIZABETH II 50
+                                </p>
+                                <p className="mb-0">
+                                    DOLLARS" Rok Autor Arnold Machin (1979-1989) Vyobrazení
+                                </p>
+                                <p className="mb-0">
+                                    Alžběty II se od roku 1990 změnilo. Novým autorem je
+                                </p>
+                                <p className="mb-0">
+                                    dePedery-Hunt (1990+) Rub: Maple leaf - Javorový list text
+                                </p>
+                                <p className="mb-0">
+                                    "CANADA 9999 FINE GOLD 1 OZ OR PUR 9999" Autor Cosme
+                                </p>
+                                <p>Saffioti</p>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
+            <style jsx>{`
+                .no-scrollbar::-webkit-scrollbar { display: none; }
+                .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+            `}</style>
         </section>
     );
 };

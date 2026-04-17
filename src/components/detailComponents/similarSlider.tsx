@@ -12,12 +12,12 @@ const productsData = [
 
 const SimilarProductsSlider = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' });
-  const [favorites, setFavorites] = useState<Record<number, boolean>>({});
+  const [favorites, setFavorites] = useState({});
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
 
-  const toggleFavorite = (id: number) => {
+  const toggleFavorite = (id) => {
     setFavorites(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
@@ -37,37 +37,58 @@ const SimilarProductsSlider = () => {
           <h2 className="text-[34px] text-[#333333] font-light tracking-wide">Podobné produkty</h2>
         </div>
 
-        <div className="relative group px-12">
+        <div className="relative group px-5 sm:px-4 md:px-5 lg:px-3">
+          
           {/* Navigation Arrows */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-[40%] -translate-y-1/2 z-20 bg-[#C5A059] p-4 text-white hover:bg-[#b5a256] transition-all"
-            style={{ clipPath: 'polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)' }}
+            className="absolute -left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-10 sm:h-12 lg:w-8 lg:h-12 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
+            style={{ clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)' }}
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
           </button>
 
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-[40%] -translate-y-1/2 z-20 bg-[#C5A059] p-4 text-white hover:bg-[#b5a256] transition-all"
-            style={{ clipPath: 'polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)' }}
+            className="absolute -right-1 sm:-right-5 lg:-right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-12 sm:h-10 lg:w-8 lg:h-12 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
+            style={{ clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)' }}
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={18} className="sm:size-5 lg:size-6" />
           </button>
 
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {productsData.map((product) => (
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
-                  <div
-                    className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[#C5A059] hover:shadow-lg group/card"
-                  >
+                  <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[#C5A059] hover:shadow-lg group/card">
+                    
                     {/* Badges */}
-                    <div className="flex flex-col gap-1 h-14">
+                    <div className="flex flex-col gap-2 h-14">
                       {product.badges.map(badge => (
-                        <span key={badge} className="w-fit text-[10px] bg-white border border-gray-100 px-2.5 py-0.5 text-gray-400 font-sans">
-                          {badge}
-                        </span>
+                        badge === "Novinka" ? (
+                          <div key={badge} className="relative w-fit h-[22px] flex items-center">
+                            <span 
+                              className="relative z-10 px-4 py-0.5 text-[10px] text-gray-700 font-sans border border-gray-200 bg-white"
+                              style={{
+                                WebkitMaskImage: `radial-gradient(circle at 0 0, transparent 3.5px, black 4px), 
+                                                 radial-gradient(circle at 100% 0, transparent 3.5px, black 4px), 
+                                                 radial-gradient(circle at 0 100%, transparent 3.5px, black 4px), 
+                                                 radial-gradient(circle at 100% 100%, transparent 3.5px, black 4px)`,
+                                WebkitMaskComposite: 'source-in',
+                                maskComposite: 'intersect'
+                              }}
+                            >
+                              {badge}
+                            </span>
+                          </div>
+                        ) : (
+                          <span 
+                            key={badge} 
+                            className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+                          >
+                            {badge}
+                          </span>
+                        )
                       ))}
                     </div>
 
@@ -103,9 +124,9 @@ const SimilarProductsSlider = () => {
                       ))}
                     </div>
 
-                    {/* Title & Price - Single Line Fix */}
-                    <div className="text-center mt-auto w-full">
-                      <h3 className="text-[11.5px] text-[#555555] underline underline-offset-4 decoration-gray-200 mb-3 block whitespace-nowrap overflow-hidden text-ellipsis w-full px-1">
+                    {/* Title & Price */}
+                    <div className="text-center mt-auto w-full overflow-hidden">
+                      <h3 className="text-[11.2px] text-[#555555] underline underline-offset-4 decoration-gray-200 mb-3 block whitespace-nowrap overflow-visible w-full px-1">
                         {product.title}
                       </h3>
                       <p className="text-[20px] text-[#C5A059] font-medium font-sans tracking-tight">
