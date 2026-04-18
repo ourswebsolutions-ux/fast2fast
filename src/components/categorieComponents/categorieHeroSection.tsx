@@ -18,7 +18,7 @@ const CategorieHero = () => {
         <aside className="w-full lg:w-[280px] flex-shrink-0 bg-black text-white flex flex-col">
           <div className="bg-[#C5A059] p-4 py-4 flex justify-between items-center cursor-pointer">
             <div className="flex items-center gap-3">
-              <div className="w-6 h-6 border border-white/30 rounded-full flex items-center justify-center text-[10px] font-bold">Au</div>
+              <div className="w-6 h-6 border border-white/30 rounded-full flex items-center justify-center text-[10px] font-bold"><img src="/side-bar-icon-8.svg"></img></div>
               <span className="text-[14px] font-bold tracking-tight">Investiční zlato</span>
             </div>
             <ChevronDown size={18} />
@@ -26,13 +26,13 @@ const CategorieHero = () => {
 
           <div className="flex flex-col flex-1">
             {[
-              { title: 'Zlaté mince', icon: 'Au' },
-              { title: 'Zlaté slitky a cihly', icon: '■' },
-              { title: 'Zlaté novoražby', icon: '○', active: true, triggerPopup: true },
-              { title: 'Zlaté medaile', icon: '★' },
-              { title: 'Investiční stříbro', icon: 'Ag', sub: true },
-              { title: 'Pro sběratele', icon: '👤', sub: true },
-              { title: 'Příslušenství', icon: '📖', sub: true },
+              { title: 'Zlaté mince', icon: <img src="/au.svg"></img> },
+              { title: 'Zlaté slitky a cihly', icon: <img src="/side-bar-icon-2.svg"></img> },
+              { title: 'Zlaté novoražby', icon: <img src="/side-bar-icon-3.svg"></img>, active: true, triggerPopup: true },
+              { title: 'Zlaté medaile', icon: <img src="/side-bar-icon-4.svg"></img> },
+              { title: 'Investiční stříbro', icon: <img src="/side-bar-icon-5.svg"></img>, sub: true },
+              { title: 'Pro sběratele', icon: <img src="/side-bar-icon-6.svg"></img>, sub: true },
+              { title: 'Příslušenství', icon: <img src="/side-bar-icon-7.svg"></img>, sub: true },
             ].map((item, idx) => (
               <div
                 key={idx}
@@ -45,7 +45,7 @@ const CategorieHero = () => {
                 <div className="flex items-center gap-3">
                   <span className={`text-[15px] w-5 text-center transition-colors
                     ${item.active
-                      ? 'text-gray-400 group-hover:text-black'
+                      ? 'text-gray-40 group-hover:text-black'
                       : 'text-gray-400 font-bold'}`}>
                     {item.icon}
                   </span>
@@ -79,7 +79,14 @@ const CategorieHero = () => {
           </div>
 
           {/* Banner */}
-          <div className="relative bg-[#111111] h-[300px] flex items-center overflow-hidden">
+          <div className="relative bg-[#111111] h-[300px] flex items-center overflow-hidden"
+           style={{
+    backgroundImage: "url('/cat-hero.svg')",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+          >
             <div className="relative z-20 pl-12 md:pl-16 w-full lg:w-[60%]">
               <h1 className="text-white text-4xl lg:text-5xl font-serif italic mb-4 leading-tight tracking-wide">
                 Investiční zlato
@@ -89,33 +96,25 @@ const CategorieHero = () => {
               </p>
             </div>
             
-            <div className="absolute inset-y-0 right-0 w-[70%] lg:w-[50%] flex items-center justify-center pointer-events-none">
-              <img
-                src="/produkty.png"
-                alt="Gold bars"
-                className="h-full w-auto object-contain"
-                style={{ transform: 'scale(1.2) translateX(-15%)' }}
-              />
-            </div>
-
+            
             <div className="absolute inset-0 bg-gradient-to-r from-[#111111] via-[#111111]/80 to-transparent z-[15] pointer-events-none"></div>
           </div>
 
           {/* Categories Grid */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
             {[
-              { name: 'Zlaté mince' },
-              { name: 'Zlaté slitky a cihly' },
-              { name: 'Zlaté novoražby' },
-              { name: 'Zlaté medaile' }
+              { name: 'Zlaté mince',img:"/Zlaté mince.svg" },
+              { name: 'Zlaté slitky a cihly',img:"/Zlaté slitky a cihly.svg" },
+              { name: 'Zlaté novoražby',img:"/Zlaté novoražby.svg" },
+              { name: 'Zlaté medaile',img:"/Zlaté medaile.svg" }
             ].map((card, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 p-4 h-20 transition-all duration-300 cursor-pointer bg-white group border-2 border-gray-200 hover:border-[#C5A059]"
+                className="flex items-center gap-3 p-4 h-20 transition-all duration-300 cursor-pointer bg-white group border-[#C5B367] border-1 b hover:border-[#C5A059] hover:border-2"
               >
                 <div className="w-10 h-10 flex-shrink-0">
                   <img
-                    src="/imgcoin432.svg"
+                    src={card.img}
                     alt="icon"
                     className="w-full h-full object-contain group-hover:scale-110 transition-transform"
                   />

@@ -6,7 +6,7 @@ import Testimonials from '@/components/homePageComponents/Testimonials';
 
 export default function Page() {
     return (
-        <main className="overflow-x-hidden bg-[#F9F9F9]">
+        <main className="overflow-x-hidden ">
             <HeroSection />
             <ProductFilterSection />
             <ProductGrid />

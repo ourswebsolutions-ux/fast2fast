@@ -21,7 +21,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-white w-full overflow-hidden pb-20 md:pb-29">
+    <section className="bg-white w-full  overflow-hidden pb-20 md:pb-29">
       <div className="mx-auto w-full max-w-[1350px] px-4 sm:px-6 lg:px-4">
         
         {/* HEADER */}
