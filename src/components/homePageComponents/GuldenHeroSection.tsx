@@ -62,7 +62,7 @@ const GuldenHeroSection: React.FC = () => {
                                     </span>
                                 </div>
 
-                                {item.icon && <ChevronRight size={16} strokeWidth={4} className="md:w-5 md:h-5" />}
+                                {item.icon && <ChevronRight size={16} color='white' strokeWidth={4} className="md:w-5 md:h-5" />}
                             </li>
                         ))}
                     </ul>
@@ -109,7 +109,7 @@ const GuldenHeroSection: React.FC = () => {
 
                                     {banner.active && (
                                         <div
-                                            className="absolute top-0    -left-[120px]  md:-left-[21px] w-0 h-0 
+                                            className="absolute top-0    -left-[120px]  md:-left-[18px] w-0 h-0 
 border-t-[20px] md:border-t-[26px] border-t-transparent 
 border-b-[20px] md:mr-2 border-b-transparent 
 border-r-[12px] md:border-r-[18px] border-r-[rgb(199,177,93)]"

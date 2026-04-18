@@ -3,18 +3,18 @@ import React, { useState } from 'react';
 import { Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const productsData = [
-    { id: 1, title: "31.1g investiční zlatý slitek Argor Heraeus SA", price: "42 505 Kč", badge: "Novinka", rating: 5 },
-    { id: 2, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5 },
-    { id: 3, title: "Zlatá investiční mince Wiener Philharmoniker...", price: "43 024 Kč", badge: "Tip", rating: 5 },
-    { id: 4, title: "Rakousko Uherská novoražba 100 Koruna...", price: "95 000 Kč", badge: "Novinka", rating: 5 },
-    { id: 5, title: "Rakousko Uherská novoražba 100 Koruna...", price: "95 000 Kč", badge: "Novinka", rating: 5 },
-    { id: 6, title: "250g investiční zlatý slitek Argor Heraeus SA", price: "337 106 Kč", badge: "Novinka", rating: 5 },
-    { id: 7, title: "Zlatá investiční mince Rok Tygra Lunar III 1 Oz...", price: "67 110 Kč", badge: "Tip", rating: 5 },
-    { id: 8, title: "31.1g investiční zlatý slitek Valcambi", price: "42 389 Kč", badge: "Novinka", rating: 5 },
-    { id: 9, title: "31.1g investiční zlatý slitek Valcambi", price: "42 389 Kč", badge: "Novinka", rating: 5 },
-    { id: 10, title: "50g investiční zlatý slitek Valcambi | Litý slitek", price: "68 310 Kč", badge: "Novinka", rating: 5 },
-    { id: 11, title: "Zlatá mince 10000 Kč Kněžna Ludmila 2021...", price: "78 900 Kč", badge: "Tip", rating: 5 },
-    { id: 12, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5 },
+    { id: 1, title: "31.1g investiční zlatý slitek Argor Heraeus SA", price: "42 505 Kč", badge: "Novinka", rating: 5,img:"/card-1.svg" },
+    { id: 2, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5,img:"/imgcoin23.svg" },
+    { id: 3, title: "Zlatá investiční mince Wiener Philharmoniker...", price: "43 024 Kč", badge: "Tip", rating: 5,img:"/card-3.svg" },
+    { id: 4, title: "Rakousko Uherská novoražba 100 Koruna...", price: "95 000 Kč", badge: "Novinka", rating: 5 ,img:"/card-4.svg"},
+    { id: 5, title: "Rakousko Uherská novoražba 100 Koruna...", price: "95 000 Kč", badge: "Novinka", rating: 5 ,img:"/card-4.svg"},
+    { id: 6, title: "250g investiční zlatý slitek Argor Heraeus SA", price: "337 106 Kč", badge: "Novinka", rating: 5 ,img:"/card-5.svg"},
+    { id: 7, title: "Zlatá investiční mince Rok Tygra Lunar III 1 Oz...", price: "67 110 Kč", badge: "Tip", rating: 5 ,img:"/card-6.svg"},
+    { id: 8, title: "31.1g investiční zlatý slitek Valcambi", price: "42 389 Kč", badge: "Novinka", rating: 5 ,img:"/card-7.svg"},
+    { id: 9, title: "31.1g investiční zlatý slitek Valcambi", price: "42 389 Kč", badge: "Novinka", rating: 5 ,img:"/card-7.svg"},
+    { id: 10, title: "50g investiční zlatý slitek Valcambi | Litý slitek", price: "68 310 Kč", badge: "Novinka", rating: 5 ,img:"/card-8.svg"},
+    { id: 11, title: "Zlatá mince 10000 Kč Kněžna Ludmila 2021...", price: "78 900 Kč", badge: "Tip", rating: 5 ,img:"/card-9.svg"},
+    { id: 12, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5 ,img:"/imgcoin23.svg"},
 ];
 
 type QuantityAction = 'inc' | 'dec';
@@ -43,7 +43,7 @@ const toggleFavorite = (id: number) => {
     }));
 };
     return (
-        <div className="bg-white py-10 px-4">
+        <div className="bg-white pb-10 py- px-">
             <div className="max-w-[1350px] mx-auto">
 
                 {/* Product Grid - 4 columns on desktop */}
@@ -54,18 +54,48 @@ const toggleFavorite = (id: number) => {
                             className="bg-white flex flex-col border border-gray-200 hover:border-[#C5B367] p-4 transition-all duration-300 relative group"
                         >
                             {/* Badge */}
-                            <div className="h-8">
-                                {product.badge && (
-                                    <span className="text-[10px] border border-gray-200 px-2 py-0.5 text-gray-400 font-sans">
-                                        {product.badge}
-                                    </span>
-                                )}
-                            </div>
+                         <div className="h-10 flex items-start">
+  {product.badge === "Novinka" ? (
+    <div
+      className="inline-block w-fit p-[1px] bg-gray-300"
+      style={{
+        WebkitMask: `
+          radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+          radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+          radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+          radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+        `,
+        WebkitMaskSize: "51% 51%",
+        WebkitMaskRepeat: "no-repeat",
+      }}
+    >
+      <span
+        className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
+        style={{
+          WebkitMask: `
+            radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+            radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+            radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+            radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+          `,
+          WebkitMaskSize: "51% 51%",
+          WebkitMaskRepeat: "no-repeat",
+        }}
+      >
+        {product.badge}
+      </span>
+    </div>
+  ) : (
+    <span className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full">
+      {product.badge}
+    </span>
+  )}
+</div>
 
                             {/* Image & Heart */}
                             <div className="relative h-64 flex items-center justify-center mb-4">
                                 <img
-                                    src="/imgcoins232.svg"
+                                    src={product.img}
                                     alt={product.title}
                                     className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform"
                                 />
@@ -107,7 +137,7 @@ const toggleFavorite = (id: number) => {
                                         type="text"
                                         value={quantities[product.id] ?? 1}
                                         readOnly
-                                        className="w-8 text-center text-xs outline-none border-x border-gray-100 h-full"
+                                        className="w-6 text-center text-xs outline-none border-x border-gray-100 h-6"
                                     />
                                     <button
                                         onClick={() => handleQuantity(product.id, 'inc')}
@@ -117,7 +147,7 @@ const toggleFavorite = (id: number) => {
                                     </button>
                                 </div>
 
-                                <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-semibold transition-colors h-full rounded-sm px-1">
+                                <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-semibold transition-colors h-full  px-1">
                                     Přidat do košíku
                                 </button>
                             </div>
