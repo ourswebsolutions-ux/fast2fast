@@ -46,7 +46,7 @@ const GuldenHeroSection: React.FC = () => {
                             <li
                                 key={i}
                                 className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
-                ${item.active ? 'bg-[rgb(199,177,93)] text-black' : 'hover:bg-[rgb(199,177,93)]'}`}
+                ${item.active ? 'bg-[rgb(199,177,93)] text-white' : 'hover:bg-[rgb(199,177,93)]'}`}
                             >
                                 <div className="flex items-center gap-2 md:gap-3">
                                     {item.icon && (
@@ -80,7 +80,7 @@ const GuldenHeroSection: React.FC = () => {
                             <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-8 text-sm md:text-base">
                                 Zlato, které ochrání vaše úspory.
                             </p>
-                            <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
+                            <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
                                 Prohlédnout
                             </button>
                         </div>
@@ -102,8 +102,8 @@ const GuldenHeroSection: React.FC = () => {
                                     key={i}
                                     className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
-                                            ? 'bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white shadow-lg'
-                                            : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-black'}`}
+                                            ? 'bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white shadow-lg'
+                                            : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-white'}`}
                                 >
                                     {banner.label}
 

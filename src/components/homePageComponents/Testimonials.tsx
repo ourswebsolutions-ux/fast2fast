@@ -80,7 +80,7 @@ const Testimonials = () => {
 
         {/* BUTTON */}
         <div className="flex justify-center mr-3 mt-10 md:mt-14">
-          <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-5 sm:px-6 py-3 sm:py-4 text-[10px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 w-full sm:w-auto max-w-[260px]">
+          <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-5 sm:px-6 py-3 sm:py-4 text-[10px] font-bold uppercase tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 w-full sm:w-auto max-w-[260px]">
             Další 23 hodnocení
           </button>
         </div>

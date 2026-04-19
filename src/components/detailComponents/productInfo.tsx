@@ -39,8 +39,8 @@ const ProductInfoSection: React.FC = () => {
                                 className={`py-3.5 px-2 text-[13px] font-bold tracking-wider transition-all border whitespace-nowrap
                     flex-shrink-0 min-w-[calc(50%-4px)] md:min-w-0
                     ${isActive
-                                        ? 'bg-[#C5A059] text-white border-[#f8c66e] hover:bg-[#b08d4b] hover:border-[#d4a855]'
-                                        : 'bg-white text-[#666666] border-[#C5A059] hover:bg-[#C5A059] hover:text-white hover:border-[#C5A059]'
+                                        ? 'bg-[rgb(199,177,93)] text-white border-[#f8c66e] hover:bg-[rgb(199,177,93)] hover:border-[#d4a855]'
+                                        : 'bg-white text-[#666666] border-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] hover:text-white hover:border-[rgb(199,177,93)]'
                                     }`}
                             >
                                 {tab.name}

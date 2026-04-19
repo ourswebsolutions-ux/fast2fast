@@ -83,7 +83,7 @@ const PreciousMetalsGrid = () => {
                 {/* Price at the very top of image side */}
                 {cat.price ? (
                   <div className="flex items-center gap-3 text-[11px] font-sans mb-4">
-                    <span className="text-[#C5A059] border-b border-white/20  pb-0.5 tracking-tighter">
+                    <span className="text-[rgb(199,177,93)] border-b border-white/20  pb-0.5 tracking-tighter">
                       {cat.symbol}
                     </span>
                     <span className="text-white font-medium">{cat.price}</span>

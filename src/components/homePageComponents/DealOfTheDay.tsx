@@ -103,7 +103,7 @@ const DealOfTheDay = () => {
                 31,1g investiční zlatý slitek Argor Heraeus SA
               </h3>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
 
                 <span className="text-lg text-gray-800 block">
                   Běžná cena:
@@ -114,17 +114,21 @@ const DealOfTheDay = () => {
 
                 <span className="text-lg text-gray-800 block">
                   Cena dnes:
-                  <span className="text-xl md:text-lg lg:text-xl text-[#C5A059] font-medium font-sans ml-2 block sm:inline">
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-xl md:text-lg font-sans ml-2">
                     34 316 Kč
                   </span>
                 </span>
 
-                <span className="text-lg text-gray-800 block  justify-end">
+ <span className="text-lg text-gray-800 ml-8 block">
                   Sleva:
-                  <span className="text-xl text-red-600 font-medium font-sans ml-2 block sm:inline">
-                    – 8 579 Kč
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-xl md:text-lg font-sans ml-2">
+                     – 8 579 Kč
                   </span>
                 </span>
+
+               
+
+               
 
               </div>
            <a href="./details">
