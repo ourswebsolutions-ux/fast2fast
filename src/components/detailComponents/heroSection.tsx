@@ -101,14 +101,14 @@ const HeroSection: React.FC = () => {
                             </div>
 
                             <button onClick={() => setIsWishlisted(!isWishlisted)} className="absolute top-4 right-4 md:top-6 md:right-6">
-                                <Heart strokeWidth={1.2} className={`w-7 h-7 md:w-8 md:h-8 ${isWishlisted ? 'fill-[#C5A059] text-[#C5A059]' : 'text-gray-300'}`} />
+                                <Heart strokeWidth={1.2} className={`w-7 h-7 md:w-8 md:h-8 ${isWishlisted ? 'fill-[rgb(199,177,93)] text-[rgb(199,177,93)]' : 'text-gray-300'}`} />
                             </button>
 
                             <img src="/can-img.png" alt="Coin" className="w-[65%] md:w-[320px] lg:w-[380px] h-auto object-contain drop-shadow-2xl" />
                         </div>
                         <div className="flex gap-2 mt-4 overflow-x-auto no-scrollbar">
                             {images.map((img, i) => (
-                                <div key={i} className={`min-w-[64px] w-16 h-16 md:w-20 md:h-20 border p-1 cursor-pointer ${i === 0 ? 'border-[#C5A059]' : 'border-gray-300'}`}>
+                                <div key={i} className={`min-w-[64px] w-16 h-16 md:w-20 md:h-20 border p-1 cursor-pointer ${i === 0 ? 'border-[rgb(199,177,93)]' : 'border-gray-300'}`}>
                                     <img src={img} alt="thumb" className="w-full h-full object-contain" />
                                 </div>
                             ))}
@@ -124,20 +124,20 @@ const HeroSection: React.FC = () => {
                         {/* Description Text - Font Size adjusted for Image matching */}
                         <p className="text-[#3b3a3a] text-[12px] md:text-[13.5px] mt-4 leading-relaxed max-w-[500px]">
                             Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené ve zlatých dolech v Kanadě. 
-                            <span className="text-[#C5A059] border-b border-[#C5A059] cursor-pointer ml-1 font-medium whitespace-nowrap hover:text-[#b38f4d]">Více informací</span>
+                            <span className="text-[rgb(199,177,93)] border-b border-[rgb(199,177,93)] cursor-pointer ml-1 font-medium whitespace-nowrap hover:text-[#b38f4d]">Více informací</span>
                         </p>
 
                         <div className="flex flex-row gap-2 mt-6 md:mt-8">
-                            <button className={`flex-1 md:flex-none md:w-[140px] py-3 font-bold text-sm border ${sellOption !== 'Chci prodat' || isDropdownOpen ? 'bg-white text-black border-gray-300' : 'bg-[#C5A059] text-white border-[#C5A059]'}`}>Chci koupit</button>
+                            <button className={`flex-1 md:flex-none md:w-[140px] py-3 font-bold text-sm border ${sellOption !== 'Chci prodat' || isDropdownOpen ? 'bg-white text-black border-gray-300' : 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]'}`}>Chci koupit</button>
                             <div className="relative flex-1 md:flex-none md:w-[160px]">
-                                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className={`w-full border flex items-center justify-between px-3 md:px-4 py-3 text-sm font-medium ${isDropdownOpen || sellOption !== 'Chci prodat' ? 'bg-[#C5A059] text-white border-[#C5A059]' : 'bg-white text-[#333] border-gray-300'}`}>
+                                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className={`w-full border flex items-center justify-between px-3 md:px-4 py-3 text-sm font-medium ${isDropdownOpen || sellOption !== 'Chci prodat' ? 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]' : 'bg-white text-[#333] border-gray-300'}`}>
                                     <span className="truncate">{sellOption}</span>
                                     <ChevronDown size={18} />
                                 </button>
                                 {isDropdownOpen && (
                                     <div className="absolute top-full left-0 w-full bg-white border border-gray-200 shadow-xl z-50 mt-1">
                                         {Object.keys(sellData).map((option) => (
-                                            <div key={option} onClick={() => { setSellOption(option); setIsDropdownOpen(false); }} className="px-4 py-2.5 text-sm hover:bg-[#C5A059] hover:text-white cursor-pointer">{option}</div>
+                                            <div key={option} onClick={() => { setSellOption(option); setIsDropdownOpen(false); }} className="px-4 py-2.5 text-sm hover:bg-[rgb(199,177,93)] hover:text-white cursor-pointer">{option}</div>
                                         ))}
                                     </div>
                                 )}
@@ -149,7 +149,7 @@ const HeroSection: React.FC = () => {
                             {sellOption === 'Chci prodat' && <div className="text-[#E54B4B] text-sm line-through font-medium">46 003 Kč</div>}
                             <div className="flex items-baseline gap-4 mt-1">
                                 <span className="text-2xl md:text-4xl font-medium text-[#00A651]">45 703 Kč</span>
-                                <span className="text-[#C5A059] text-[10px] md:text-[11px] underline cursor-pointer font-bold tracking-wider  self-end mb-1">Hlídat cenu</span>
+                                <span className="text-[rgb(199,177,93)] text-[10px] md:text-[11px] underline cursor-pointer font-bold tracking-wider  self-end mb-1">Hlídat cenu</span>
                             </div>
                         </div>
 
@@ -162,15 +162,15 @@ const HeroSection: React.FC = () => {
                                     {currentData.deliveryText} <span className="font-bold">{currentData.date}</span>
                                 </div>
                             )}
-                            {currentData.showShipping && <div className="text-[#C5A059] underline cursor-pointer font-bold">Možnosti dopravy</div>}
+                            {currentData.showShipping && <div className="text-[rgb(199,177,93)] underline cursor-pointer font-bold">Možnosti dopravy</div>}
                         </div>
 
                         {/* Counter Buttons Design */}
                         <div className="flex flex-row gap-2 mt-8 md:h-12">
                             <div className="flex items-center gap-0.5 h-12 md:h-full">
-                                <button onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)} className="w-10 h-full bg-[#C5A059] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={14} /></button>
+                                <button onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)} className="w-10 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={14} /></button>
                                 <div className="w-10 h-full border border-gray-200 flex items-center justify-center bg-white text-sm font-bold text-[#333]">{quantity}</div>
-                                <button onClick={() => setQuantity(q => q + 1)} className="w-10 h-full bg-[#C5A059] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={14} /></button>
+                                <button onClick={() => setQuantity(q => q + 1)} className="w-10 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={14} /></button>
                             </div>
                             <button 
                                 onClick={() => (sellOption === 'Chci prodat' || sellOption === 'Na prodejně') && setIsPopupOpen(true)} 
@@ -229,9 +229,9 @@ const HeroSection: React.FC = () => {
                                             </div>
                                             <div className="flex items-center justify-between w-full sm:w-auto gap-4 pl-8 sm:pl-0">
                                                 <div className="flex items-center gap-0.5 h-8">
-                                                    <button onClick={() => handleAccQty(idx, 'dec')} className="w-8 h-full bg-[#C5A059] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={12} /></button>
+                                                    <button onClick={() => handleAccQty(idx, 'dec')} className="w-8 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={12} /></button>
                                                     <div className="w-8 h-full border border-gray-200 flex items-center justify-center text-xs bg-white font-medium">{accQuantities[idx]}</div>
-                                                    <button onClick={() => handleAccQty(idx, 'inc')} className="w-8 h-full bg-[#C5A059] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={12} /></button>
+                                                    <button onClick={() => handleAccQty(idx, 'inc')} className="w-8 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={12} /></button>
                                                 </div>
                                                 <span className="text-[13px] text-[#5a5959] font-bold min-w-[50px] text-right">10 Kč</span>
                                             </div>
@@ -239,7 +239,7 @@ const HeroSection: React.FC = () => {
                                     ))}
                                 </div>
                                 <div className="p-3 border-t border-gray-200 text-center">
-                                    <button className="text-[#C5A059] text-[12px] font-medium underline hover:text-[#b38f4d]">Zobrazit další</button>
+                                    <button className="text-[rgb(199,177,93)] text-[12px] font-medium underline hover:text-[#b38f4d]">Zobrazit další</button>
                                 </div>
                             </div>
                         )}

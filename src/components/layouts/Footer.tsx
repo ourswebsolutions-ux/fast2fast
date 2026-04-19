@@ -18,20 +18,20 @@ const Footer = () => {
 
                 {/* Newsletter Box - Fixed spacing & shape */}
                 <div className="relative mb-16">
-                    <div className="relative -mt-28 overflow-hidden bg-[rgb(199,177,93)] py-10 px-6 md:px-10 lg:px-12 shadow-2xl ">
+                    <div className="relative -mt-28 overflow-hidden bg-[rgb(168,155,101,255)] py-13 px-6 md:px-10 lg:px-12 shadow-2xl ">
 
                         {/* Background shapes */}
                         {/* Background shapes */}
                         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
 
                             {/* LEFT */}
-                            <div className="absolute left-80 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
+                            <div className="absolute left-93 top-1/2 -translate-y-1/2 w-12 h-12  bg-black/10 rotate-45" />
 
                             {/* CENTER */}
-                            <div className="absolute left-1/2 top-1/2 -translate-x-2/2 -translate-y-1/2 w-40 h-40 bg-black/10 rotate-45" />
+                            <div className="absolute left-191 top-1/2 -translate-x-2/2 -translate-y-1/2 w-60 h-60 bg-black/10 rotate-45" />
 
                             {/* RIGHT */}
-                            <div className="absolute right-120 top-1/2 -translate-y-1/2 w-16 h-16  bg-black/10 rotate-45" />
+                            <div className="absolute right-105 top-1/2 -translate-y-1/2 w-12 h-12  bg-black/10 rotate-45" />
 
                         </div>
 
@@ -46,9 +46,9 @@ const Footer = () => {
                                     <input
                                         type="email"
                                         placeholder="Napište Váš e-mail"
-                                        className="bg-black/20 border-none px-6 py-3.5 w-full sm:w-64 lg:w-90 text-white placeholder:text-white/80 outline-none focus:bg-black/30 transition-all text-sm "
+                                        className="bg-black/20 border-none px-6 py-4.5 w-full sm:w-64 lg:w-70 text-white placeholder:text-white/80 outline-none focus:bg-black/30 transition-all text-sm "
                                     />
-                                    <button className="bg-[#e0c885] hover:bg-[#b39e55] text-white px-8 py-3.5 font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
+                                    <button className="bg-[rgb(199,177,93)]  text-white px-6 py-4.5  font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
                                         Přihlásit k odběru
                                     </button>
                                 </div>
@@ -61,52 +61,52 @@ const Footer = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                     {/* Column 1 */}
                     <div>
-                        <h3 className="text-[#C9B067] font-serif text-lg mb-6">Hlavní kategorie</h3>
+                        <h3 className="text-[rgb(199,177,93)] font-serif text-lg mb-6">Hlavní kategorie</h3>
                         <ul className="flex flex-col gap-3 text-[13px] text-zinc-400">
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Investiční zlato</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Investiční stříbro</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Pro sběratele</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Příslušenství</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Investiční zlato</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Investiční stříbro</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Pro sběratele</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Příslušenství</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 2 */}
                     <div>
-                        <h3 className="text-[#C9B067] font-serif text-lg mb-6">Důležité informace</h3>
+                        <h3 className="text-[rgb(199,177,93)] font-serif text-lg mb-6">Důležité informace</h3>
                         <ul className="flex flex-col gap-3 text-[13px] text-zinc-400">
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Investice</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Online rádce</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Vše o výkupu</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Slovníček pojmů</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Blog</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">O nás</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Investice</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Online rádce</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Vše o výkupu</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Slovníček pojmů</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Blog</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">O nás</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 3 */}
                     <div>
-                        <h3 className="text-[#C9B067] font-serif text-lg mb-6">Vše o nákupu</h3>
+                        <h3 className="text-[rgb(199,177,93)] font-serif text-lg mb-6">Vše o nákupu</h3>
                         <ul className="flex flex-col gap-3 text-[13px] text-zinc-400">
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Naše prodejny</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Hodnocení obchodu</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Obchodní podmínky</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Doprava a platba</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Záruka a reklamace</Link></li>
-                            <li><Link href="#" className="hover:text-[#C9B067] hover:underline transition-all">Odstoupení od smlouvy</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Naše prodejny</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Hodnocení obchodu</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Obchodní podmínky</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Doprava a platba</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Záruka a reklamace</Link></li>
+                            <li><Link href="#" className="hover:text-[rgb(199,177,93)] hover:underline transition-all">Odstoupení od smlouvy</Link></li>
                         </ul>
                     </div>
 
                     {/* Column 4 */}
                     <div className="lg:pr-10">
-                        <h3 className="text-[#C9B067] font-serif text-lg mb-6">Kontaktujte nás</h3>
+                        <h3 className="text-[rgb(199,177,93)] font-serif text-lg mb-6">Kontaktujte nás</h3>
                         <div className="flex flex-col gap-6">
                             <div className="flex items-start gap-4 group cursor-pointer">
                                 <div className="mt-1 transition-transform group-hover:scale-110">
                                     <PhoneCall />
                                 </div>
-                                <div className="border-b border-zinc-800 pb-3 max-w-[150px] w-full transition-colors group-hover:border-[#C9B067]">
-                                    <p className="text-[12px] font-bold text-zinc-400 mb-0.5 tracking-wider group-hover:text-[#C9B067]">Infolinka</p>
-                                    <p className="text-[14px] text-zinc-400 group-hover:text-[#C9B067]">+420 800 01 02 03</p>
+                                <div className="border-b border-zinc-800 pb-3 max-w-[150px] w-full transition-colors group-hover:border-[rgb(199,177,93)]">
+                                    <p className="text-[12px] font-bold text-zinc-400 mb-0.5 tracking-wider group-hover:text-[rgb(199,177,93)]">Infolinka</p>
+                                    <p className="text-[14px] text-zinc-400 group-hover:text-[rgb(199,177,93)]">+420 800 01 02 03</p>
                                 </div>
                             </div>
 
@@ -117,9 +117,9 @@ const Footer = () => {
                                         <polyline points="22,6 12,13 2,6"></polyline>
                                     </svg>
                                 </div>
-                                <div className="border-b border-zinc-800 pb-3 max-w-[150px] w-full transition-colors group-hover:border-[#C9B067]">
-                                    <p className="text-[12px] font-bold text-zinc-400 mb-0.5 tracking-wider group-hover:text-[#C9B067]">E-mail</p>
-                                    <p className="text-[14px] text-zinc-400 group-hover:text-[#C9B067]">info@gulden.cz</p>
+                                <div className="border-b border-zinc-800 pb-3 max-w-[150px] w-full transition-colors group-hover:border-[rgb(199,177,93)]">
+                                    <p className="text-[12px] font-bold text-zinc-400 mb-0.5 tracking-wider group-hover:text-[rgb(199,177,93)]">E-mail</p>
+                                    <p className="text-[14px] text-zinc-400 group-hover:text-[rgb(199,177,93)]">info@gulden.cz</p>
                                 </div>
                             </div>
 
@@ -133,7 +133,7 @@ const Footer = () => {
                                         >
                                             <Icon
                                                 size={16}
-                                                className="text-white group-hover:text-[#C9B067]"
+                                                className="text-white group-hover:text-[rgb(199,177,93)]"
                                             />
                                         </div>
                                     );

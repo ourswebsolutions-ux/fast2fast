@@ -114,14 +114,14 @@ const DealOfTheDay = () => {
 
                 <span className="text-lg text-gray-800 block">
                   Cena dnes:
-                  <span className="text-sm  text-[#C5A059] lg:text-xl md:text-lg font-sans ml-2">
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-xl md:text-lg font-sans ml-2">
                     34 316 Kč
                   </span>
                 </span>
 
  <span className="text-lg text-gray-800 ml-8 block">
                   Sleva:
-                  <span className="text-sm  text-[#C5A059] lg:text-xl md:text-lg font-sans ml-2">
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-xl md:text-lg font-sans ml-2">
                      – 8 579 Kč
                   </span>
                 </span>

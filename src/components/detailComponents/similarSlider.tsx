@@ -63,7 +63,7 @@ const toggleFavorite = (id: number) => {
             <div className="flex">
               {productsData.map((product) => (
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
-                  <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[#C5A059] hover:shadow-lg group/card">
+                  <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[rgb(199,177,93)] hover:shadow-lg group/card">
                     
                    {/* Badge Container - Fixed height for alignment */}
                     <div className="flex flex-col gap-1.5 h-14">
@@ -117,7 +117,7 @@ const toggleFavorite = (id: number) => {
                       <Heart
                         size={20}
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(product.id); }}
-                        className={`absolute bottom-0 right-0 cursor-pointer transition-all duration-300 ${favorites[product.id] ? "fill-[#C5A059] text-[#C5A059] scale-110" : "text-gray-200 hover:text-[#C5A059]"}`}
+                        className={`absolute bottom-0 right-0 cursor-pointer transition-all duration-300 ${favorites[product.id] ? "fill-[rgb(199,177,93)] text-[rgb(199,177,93)] scale-110" : "text-gray-200 hover:text-[rgb(199,177,93)]"}`}
                       />
                     </div>
 
@@ -129,7 +129,7 @@ const toggleFavorite = (id: number) => {
 
                     <div className="text-center mt-auto w-full overflow-hidden">
                       <h3 className="text-[11.2px] text-[#555555] underline underline-offset-4 decoration-gray-200 mb-3 block whitespace-nowrap overflow-visible w-full px-1">{product.title}</h3>
-                      <p className="text-[20px] text-[#C5A059] font-medium font-sans tracking-tight">{product.price}</p>
+                      <p className="text-[20px] text-[rgb(199,177,93)] font-medium font-sans tracking-tight">{product.price}</p>
                     </div>
                   </div>
                 </div>
