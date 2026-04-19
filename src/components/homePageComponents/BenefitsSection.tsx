@@ -56,7 +56,7 @@ const BenefitsSection = () => {
 
               {/* Content */}
               <div className="relative z-10 flex flex-col items-center text-center px-2">
-                <div className="mb-2 md:mb-3 text-[#C5A059]">
+                <div className="mb-2 md:mb-3 text-[rgb(199,177,93)]">
                   {feature.icon}
                 </div>
 

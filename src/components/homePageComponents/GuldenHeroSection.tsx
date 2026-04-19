@@ -20,7 +20,8 @@ const GuldenHeroSection: React.FC = () => {
         { label: 'Investiční stříbro', icon: 'Ag' },
         {label: 'Pro sběratele', icon: (
          <Image src="/sberatele.svg"alt="sberatele" width={20} height={20}  />)},
-        { label: 'Příslušenství', icon: <BookOpen size={200} />, active: true },
+        { label: 'Příslušenství', icon:  (
+         <Image src="/side-bar-icon-7.svg"alt="sberatele" width={20} height={20}  />), active: true },
         { label: 'Spoření' },
         { label: 'Online rádce' },
         { label: 'Naše prodejny' },
@@ -62,7 +63,7 @@ const GuldenHeroSection: React.FC = () => {
                                     </span>
                                 </div>
 
-                                {item.icon && <ChevronRight size={16} strokeWidth={4} className="md:w-5 md:h-5" />}
+                                {item.icon && <ChevronRight size={16} color='white' strokeWidth={4} className="md:w-5 md:h-5" />}
                             </li>
                         ))}
                     </ul>
@@ -80,7 +81,7 @@ const GuldenHeroSection: React.FC = () => {
                             <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-8 text-sm md:text-base">
                                 Zlato, které ochrání vaše úspory.
                             </p>
-                            <button className="bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
+                            <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
                                 Prohlédnout
                             </button>
                         </div>
@@ -102,14 +103,14 @@ const GuldenHeroSection: React.FC = () => {
                                     key={i}
                                     className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
-                                            ? 'bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white shadow-lg'
+                                            ? 'bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white shadow-lg'
                                             : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-black'}`}
                                 >
                                     {banner.label}
 
                                     {banner.active && (
                                         <div
-                                            className="absolute top-0    -left-[120px]  md:-left-[21px] w-0 h-0 
+                                            className="absolute top-0    -left-[120px]  md:-left-[18px] w-0 h-0 
 border-t-[20px] md:border-t-[26px] border-t-transparent 
 border-b-[20px] md:mr-2 border-b-transparent 
 border-r-[12px] md:border-r-[18px] border-r-[rgb(199,177,93)]"

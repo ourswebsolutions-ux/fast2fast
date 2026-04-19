@@ -58,7 +58,7 @@ const PreciousMetalsGrid = () => {
           {categories.map((cat, idx) => (
             <div
               key={idx}
-              className={`relative bg-[#0A0A0A]  md:p-18 p-8  min-h-[400px] flex flex-row items-stretch border-3 overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[rgb(199,177,93)]`}
+              className={`relative bg-[#0A0A0A]  md:p-24 p-8  min-h-[400px] flex flex-row items-stretch border-3 overflow-hidden group transition-all duration-500 ${cat.borderColor} hover:border-[rgb(199,177,93)]`}
             >
               {/* Left Side: Text Content */}
               <div className="flex-1 z-20 flex flex-col md:ml justify-between ">
@@ -83,7 +83,7 @@ const PreciousMetalsGrid = () => {
                 {/* Price at the very top of image side */}
                 {cat.price ? (
                   <div className="flex items-center gap-3 text-[11px] font-sans mb-4">
-                    <span className="text-[#C5A059] border-b border-white/20  pb-0.5 tracking-tighter">
+                    <span className="text-[rgb(199,177,93)] border-b border-white/20  pb-0.5 tracking-tighter">
                       {cat.symbol}
                     </span>
                     <span className="text-white font-medium">{cat.price}</span>
