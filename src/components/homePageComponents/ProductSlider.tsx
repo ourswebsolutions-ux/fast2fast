@@ -45,8 +45,9 @@ const ProductSlider = () => {
 
           {/* Top Buttons - Full Width (1350px) with Gap */}
           <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
-            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm tracking-wider hover:bg-[#b5a256] transition-all">Nejnovější výrobky</button>
-            <button className="flex-1 bg-white text-gray-600 border border-gray-200 py-3.5 text-sm tracking-wider hover:bg-[#b5a256] hover:text-white transition-all"> Investiční příležitosti</button>            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm  tracking-wider hover:bg-[#b5a256] transition-all">Oblíbené dárky</button>
+            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm tracking-wider outline hover:bg-[rgb(199,177,93)] transition-all">Nejnovější výrobky</button>
+            <button className="flex-1 bg-white text-gray-600 border border-[rgb(199,177,93)] py-3.5 text-sm tracking-wider hover:bg-[rgb(199,177,93)] hover:text-white transition-all"> Investiční příležitosti</button>           
+             <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm  tracking-wider hover:bg-[rgb(199,177,93)] transition-all">Oblíbené dárky</button>
           </div>
         </div>
 
@@ -101,7 +102,7 @@ const ProductSlider = () => {
               {productsData.map((product) => (
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
                   <div
-                    className={`bg-white p-6 border h-full flex flex-col relative transition-all duration-300 ${product.id === 2 ? 'border-[#C5B367] ring-[0.5px] ring-[#C5B367]' : 'border-gray-100'
+                    className={`bg-white p-6 border-2 border-gray-300 h-full flex flex-col relative transition-all duration-300  hover:border-[#C5B367] 
                       } ${selectedId === product.id ? 'shadow-lg' : ''}`}
                     onClick={() => setSelectedId(product.id)}
                   >
