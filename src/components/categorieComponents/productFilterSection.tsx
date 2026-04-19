@@ -1,8 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronDown, X, ChevronUp } from 'lucide-react';
+import FilterModal from './filterModal';
 
 const ProductFilterSection = () => {
+    const [isFilterOpen, setIsFilterOpen] = useState(false);
+  
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   
   const [filters, setFilters] = useState<any>({
@@ -57,7 +60,10 @@ const ProductFilterSection = () => {
   return (
     <div className="w-full bg-white">
       <div className="max-w-[1350px] mx-auto font-sans px-4">
-        
+        <FilterModal
+        isOpen={isFilterOpen}
+        onClose={() => setIsFilterOpen(false)}
+      />
         {/* SECTION 1: Filters Area */}
         <div className="bg-[#F3F3F3] p-4 sm:p-6 md:p-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
@@ -104,7 +110,7 @@ const ProductFilterSection = () => {
           {/* Rozšířený filtr - Now clears all filters on click */}
           <div className="flex justify-center mt-6">
             <button 
-              onClick={clearAllFilters}
+              onClick={() => setIsFilterOpen(true)}
               className="bg-[#D1B870] text-white px-10 py-2.5 text-[14px] font-medium hover:bg-[#c4a95d] transition-all rounded-[2px]"
             >
               Rozšířený filtr

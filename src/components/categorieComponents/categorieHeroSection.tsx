@@ -45,8 +45,8 @@ const CategorieHero = () => {
       <div className="flex flex-col lg:flex-row gap-7 items-stretch">
 
         {/* 2. Sidebar (Mobile pe ye breadcrumb ke baad aayega) */}
-        <aside className="w-full lg:w-[280px] flex-shrink-0 bg-black text-white flex flex-col order-2 lg:order-1">
-          <div className="bg-[#C5A059] p-4 py-4 flex justify-between items-center cursor-pointer">
+        <aside className="w-full lg:w-[280px] border   flex-shrink-0 bg-black text-white flex flex-col order-2 lg:order-1">
+          <div className="bg-[rgb(199,177,93)] p-4 py-4 flex justify-between items-center cursor-pointer">
             <div className="flex items-center gap-3">
               <div className="w-6 h-6 border border-white/30 rounded-full flex items-center justify-center">
                 <img src="/side-bar-icon-8.svg" alt="icon" className="w-4 h-4" />
@@ -56,26 +56,36 @@ const CategorieHero = () => {
             <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[6px] border-t-white"></div>
           </div>
 
-          <div className="flex flex-col flex-1">
+          <div className="flex flex-col  flex-1">
             {[
-              { title: 'Zlaté mince', icon: <img src="/au.svg" alt="" /> },
-              { title: 'Zlaté slitky a cihly', icon: <img src="/side-bar-icon-2.svg" alt="" /> },
-              { title: 'Zlaté novoražby', icon: <img src="/side-bar-icon-3.svg" alt="" />, active: true, triggerPopup: true },
-              { title: 'Zlaté medaile', icon: <img src="/side-bar-icon-4.svg" alt="" /> },
-              { title: 'Investiční stříbro', icon: <img src="/side-bar-icon-5.svg" alt="" />, sub: true },
-              { title: 'Pro sběratele', icon: <img src="/sberatele.svg" alt="" />, sub: true },
-              { title: 'Příslušenství', icon: <img src="/side-bar-icon-7.svg" alt="" />, sub: true },
+              { title: 'Zlaté mince', icon: <img src="/au.svg" alt="" className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert"/> },
+              { title: 'Zlaté slitky a cihly', icon: <img src="/side-bar-icon-2.svg" alt="" className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert"/> },
+              { title: 'Zlaté novoražby', icon: <img src="/side-bar-icon-3.svg" alt="" className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert"/>, active: true, triggerPopup: true },
+              { title: 'Zlaté medaile', icon: <img src="/side-bar-icon-4.svg" alt=""className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert" /> },
+              { title: 'Investiční stříbro', icon: <img src="/side-bar-icon-5.svg" alt=""className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert" />, sub: true },
+              { title: 'Pro sběratele', icon: <img src="/sberatele.svg" alt="" className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert"/>, sub: true },
+              { title: 'Příslušenství', icon: <img src="/side-bar-icon-7.svg" alt="" className="w-4 h-4 object-contain transition-all duration-200 
+      group-hover:invert"/>, sub: true },
             ].map((item, idx) => (
               <div
                 key={idx}
                 onClick={() => item.triggerPopup && setIsFilterOpen(true)}
-                className={`group relative px-4 py-[18px] flex justify-between items-center border-b border-gray-800 cursor-pointer transition-colors duration-200
+                className={`group relative px-4 border py-[18px] flex justify-between items-center border-b border-gray-800 cursor-pointer transition-colors duration-200
                 ${item.active ? 'bg-white text-black font-semibold' : 'bg-black text-white hover:bg-white hover:text-black'}`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="w-6 flex justify-center grayscale group-hover:grayscale-0 brightness-200 group-hover:brightness-100">
-                    {item.icon}
-                  </span>
+                 <span className="w-6 flex justify-center grayscale 
+  hover:bg-black hover:border-2 hover:border-white 
+  hover:rounded-full hover:scale-110 
+  group-hover:brightness-100 transition-all duration-200">
+  {item.icon}
+</span>
                   <span className="text-[14px]">{item.title}</span>
                 </div>
                 {item.sub && (
@@ -125,7 +135,7 @@ const CategorieHero = () => {
               <h1 className="text-white text-3xl md:text-4xl font-serif mb-4 leading-tight tracking-wide">
                 Investiční zlato
               </h1>
-              <p className="text-[#C5A059] text-[14px] underline underline-offset-8 cursor-pointer hover:text-[#d4b57a] transition-colors decoration-[#C5A059] font-medium">
+              <p className="text-[rgb(199,177,93)] text-[14px] underline underline-offset-8 cursor-pointer hover:text-[#d4b57a] transition-colors decoration-[rgb(199,177,93)] font-medium">
                 Více informací o investičním zlatě &gt;
               </p>
             </div>
@@ -142,7 +152,7 @@ const CategorieHero = () => {
             ].map((card, i) => (
               <div
                 key={i}
-                className="flex items-center gap-3 p-4 h-20 min-w-[85%] md:min-w-0 snap-center transition-all duration-300 cursor-pointer bg-white group border-[#C5B367] border-1 hover:border-[#C5A059] hover:border-2 flex-shrink-0"
+                className="flex items-center gap-3 p-4 h-20 min-w-[85%] md:min-w-0 snap-center transition-all duration-300 cursor-pointer bg-white group border-[#C5B367] border-1 hover:border-[rgb(199,177,93)] hover:border-2 flex-shrink-0"
               >
                 <div className="w-10 h-10 flex-shrink-0">
                   <img
