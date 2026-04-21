@@ -126,59 +126,59 @@ const PriceChart = () => {
     };
 
     const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    layout: {
-        padding: {
-            right: 10 // Right side par thodi jagah taaki price labels na kat-te hon
-        }
-    },
-    plugins: {
-        legend: { display: false },
-        tooltip: {
-            enabled: true,
-            mode: 'index',
-            intersect: false,
-        }
-    },
-    scales: {
-        x: {
-            type: "time",
-            grid: {
-                display: true,
-                color: "rgba(240, 243, 250, 0.8)", // Light grid lines
-                drawTicks: false,
-            },
-            time: {
-                unit: "month",
-                displayFormats: {
-                    month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
-                }
-            },
-            ticks: {
-                color: "#787b86",
-                font: { size: 12 },
-                padding: 3, // Ticks aur axis ke darmiyan gap
+        responsive: true,
+        maintainAspectRatio: false,
+        layout: {
+            padding: {
+                right: 10 // Right side par thodi jagah taaki price labels na kat-te hon
             }
         },
-        y: {
-            position: "right", // Image ki tarah right side par
-            grid: {
-                color: "#f0f3fa",
-                drawBorder: false, // Left side ki border line hatane ke liye
-            },
-            ticks: {
-                color: "#787b86",
-                font: { size: 11 },
-                padding: 8,
-                // Price ke sath .00 dikhane ke liye
-                callback: function(value) {
-                    return value.toFixed(2);
+        plugins: {
+            legend: { display: false },
+            tooltip: {
+                enabled: true,
+                mode: 'index',
+                intersect: false,
+            }
+        },
+        scales: {
+            x: {
+                type: "time",
+                grid: {
+                    display: true,
+                    color: "rgba(240, 243, 250, 0.8)", // Light grid lines
+                    drawTicks: false,
+                },
+                time: {
+                    unit: "month",
+                    displayFormats: {
+                        month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
+                    }
+                },
+                ticks: {
+                    color: "#787b86",
+                    font: { size: 12 },
+                    padding: 3, // Ticks aur axis ke darmiyan gap
                 }
             },
+            y: {
+                position: "right", // Image ki tarah right side par
+                grid: {
+                    color: "#f0f3fa",
+                    drawBorder: false, // Left side ki border line hatane ke liye
+                },
+                ticks: {
+                    color: "#787b86",
+                    font: { size: 11 },
+                    padding: 8,
+                    // Price ke sath .00 dikhane ke liye
+                    callback: function (value) {
+                        return value.toFixed(2);
+                    }
+                },
+            },
         },
-    },
-};
+    };
 
     return (
         <div className="w-full overflow-x-hidden">
@@ -186,9 +186,8 @@ const PriceChart = () => {
                 <div className="min-h-[550px]">
                     <div className="flex flex-col lg:flex-row gap-5 items-stretch">
 
-                        {/* SIDEBAR */}
+                        {/* SIDEBAR - Restored Padding and Width */}
                         <div className="lg:w-[340px] w-full flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
-
                             <div className="flex w-full mb-6 sm:mb-10 gap-2">
                                 <button
                                     onClick={() => setMetalToggle("zlato")}
@@ -199,7 +198,6 @@ const PriceChart = () => {
                                 >
                                     Zlato
                                 </button>
-
                                 <button
                                     onClick={() => setMetalToggle("stribro")}
                                     className={`flex-1 py-2 text-[11px] font-bold ${metalToggle === "stribro"
@@ -215,17 +213,14 @@ const PriceChart = () => {
                                 <h3 className="text-[20px] sm:text-[30px] mb-4">
                                     Aktuální hodnota :
                                 </h3>
-
-                                <div className="bg-[#f23645] text-white text-[22px] py-1 px-6">
+                                <div className="bg-[#f23645] text-white text-[22px] py-1 px-6 font-sans">
                                     {metalToggle === "zlato" ? "1907.06" : "25.32"}
                                 </div>
                             </div>
                         </div>
 
-                        {/* CHART */}
+                        {/* CHART CONTAINER */}
                         <div className="flex-1 bg-white border border-gray-200 rounded-sm flex flex-col min-w-0">
-
-                            {/* TOOLBAR (RESTORED EXACT) */}
                             <GraphToolbar
                                 timeframe={timeframe}
                                 setTimeframe={setTimeframe}
@@ -236,46 +231,97 @@ const PriceChart = () => {
                                 downloadChart={downloadChart}
                             />
 
-                            {/* CHART AREA */}
-                            <div className="flex-1  px-2 pb-4 pt-4  relative">
-
-                                {/* CHART FULL */}
+                            <div className="flex-1 px-2 pb-4 pt-4 relative">
+                                {/* CHART FULL - Responsive Height preserved */}
                                 <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
                                     <Chart
                                         ref={chartRef}
-                                        type={chartType}
+                                        type={chartType as any}
                                         data={chartData as any}
                                         options={chartOptions as any}
                                     />
                                 </div>
 
-                                {/* INFO BAR (OVERLAY - PART OF CHART) */}
-                                <div className="absolute top-0 left-0 w-full px-2 py-2 text-xs text-gray-700 bg-white/60 backdrop-blur-md z-10 pointer-events-none">
-                                    <div className="flex items-center gap- flex-wrap">
-                                        CFDs on Gold (US$ / OZ) • 1D • TVC
-                                        <span className="text-green-500">●</span>
-                                        O 1915.66 H 1919.02 L 1904.34 C 1907.06
-                                        <span className="text-red-500">-10.54 (-0.55%)</span>
+                                <div className="absolute top-0 left-0 w-full px-3 py-2 z-10 pointer-events-none">
+                                    {/* Container for Horizontal Scroll on Mobile */}
+                                    <div className="overflow-x-auto no-scrollbar pointer-events-auto">
+                                        <div className="flex items-center gap-2.5 whitespace-nowrap min-w-max">
+
+                                            {/* 1. Symbol Info (Exact as per image) */}
+                                            <div className="flex items-center gap-1 text-[#131722] font-semibold font-sans text-[12px] sm:text-[13px]">
+                                                <span>CFDs on Gold (US$ / OZ)</span>
+                                                <span className="text-[#787b86]">·</span>
+                                                <span>1D</span>
+                                                <span className="text-[#787b86]">·</span>
+                                                <span>TVC</span>
+                                            </div>
+
+                                            {/* 2. Status Badges */}
+                                            <div className="flex items-center gap-1 ml-1">
+                                                <div className="flex items-center justify-center w-[18px] h-[18px] rounded-full bg-[#e3f2fd]">
+                                                    <div className="w-2 h-2 rounded-full bg-[#089981]" />
+                                                </div>
+                                                <div className="flex items-center justify-center px-1 h-[18px] rounded-sm bg-[#fdeeee] text-[#f23645]">
+                                                    <span className="text-[11px] font-bold">≈</span>
+                                                </div>
+                                            </div>
+
+                                            {/* 3. Price Data (O, H, L, C) */}
+                                            <div className="flex items-center gap-3 text-[12px] sm:text-[13px] font-medium ml-1 font-sans">
+                                                <div className="flex gap-1">
+                                                    <span className="text-[#787b86]">O</span>
+                                                    <span className="text-[#f23645]">1915.66</span>
+                                                </div>
+                                                <div className="flex gap-1">
+                                                    <span className="text-[#787b86]">H</span>
+                                                    <span className="text-[#f23645]">1919.02</span>
+                                                </div>
+                                                <div className="flex gap-1">
+                                                    <span className="text-[#787b86]">L</span>
+                                                    <span className="text-[#f23645]">1904.34</span>
+                                                </div>
+                                                <div className="flex gap-1">
+                                                    <span className="text-[#787b86]">C</span>
+                                                    <span className="text-[#f23645]">1907.06</span>
+                                                </div>
+
+                                                {/* Change Info */}
+                                                <div className="text-[#f23645] font-semibold">
+                                                    -10.54 (-0.55%)
+                                                </div>
+                                            </div>
+
+                                            {/* 4. Mobile ONLY Volume (Line ke andar hi scroll hoga) */}
+                                            <div className="flex sm:hidden items-center gap-1.5 text-[12px] border-l border-gray-200 pl-2 ml-1">
+                                                <span className="text-[#787b86] font-medium uppercase">Vol</span>
+                                                <span className="text-[#f23645] font-medium">0</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="text-gray-400 mt-1">Vol 0</div>
+
+                                    {/* 5. Laptop ONLY Volume (Line ke niche jaisa image mein hai) */}
+                                    <div className="hidden sm:flex items-center gap-1.5 text-[11px] mt-0.5 ml-[2px]">
+                                        <span className="text-[#787b86] font-medium uppercase">Vol</span>
+                                        <span className="text-[#f23645] font-medium">0</span>
+                                    </div>
                                 </div>
 
-{/* Bottom-left logo setup */}
-<div className="absolute bottom-14 left-9 w-9 h-9 bg-white shadow-sm border border-gray-200 rounded-full opacity-70 flex items-center justify-center z-20">
-    <img 
-        src="/tradingview-logo.webp" 
-        alt="TV" 
-        className="w-5 h-5 object-contain" 
-    />
-</div>                                {/* SETTINGS */}
-                                <div className="absolute  bottom-1 right-2 z-20">
+                                {/* TradingView Logo - Restored Exact Position */}
+                                <div className="absolute bottom-14 left-9 w-9 h-9 bg-white shadow-sm border border-gray-200 rounded-full opacity-70 flex items-center justify-center z-20">
+                                    <img
+                                        src="/tradingview-logo.webp"
+                                        alt="TV"
+                                        className="w-5 h-5 object-contain"
+                                    />
+                                </div>
+
+                                {/* SETTINGS - Restored Exact Position */}
+                                <div className="absolute bottom-1 right-2 z-20">
                                     <div className="cursor-pointer hover:bg-gray-50 p-1 rounded">
                                         <Settings size={18} className="text-gray-600" />
                                     </div>
                                 </div>
-
                             </div>
-
                         </div>
                     </div>
                 </div>

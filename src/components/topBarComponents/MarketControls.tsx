@@ -28,6 +28,13 @@ export default function MarketControls() {
   const [currency, setCurrency] = useState("USD $");
   const [timeOfDay, setTimeOfDay] = useState("AM – Dopolední cena");
   const [selectedYear, setSelectedYear] = useState("2023");
+
+  const [selectedPrice, setSelectedPrice] = useState("LBMA Gold prices");
+
+  const priceOptions = [
+    "LBMA Gold prices",
+    
+  ];
   
   // Naya state time filter buttons ke liye
   const [activeTimeFilter, setActiveTimeFilter] = useState("1 den");
@@ -69,23 +76,40 @@ export default function MarketControls() {
               onClick={() => setActiveTab("Tabulka")}
               className={cn(
                 "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
-                activeTab === "Tabulka" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-400 border-transparent hover:text-white"
+                activeTab === "Tabulka" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-200 border-transparent hover:text-white"
               )}
             >
               <TableIcon size={16} className="sm:w-[18px]" /> Tabulka
             </button>
           </div>
 
-          <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
-            <div className="relative w-4 h-4 flex items-center justify-center bg-[#00A5AD]">
-              <div className="w-3 h-3 rounded-full border border-white" />
-              <div className="absolute w-1 h-1 rounded-full bg-white" />
-            </div>
-            <span className="group-hover:text-[#C4B06D] transition-colors tracking-tight">
-              LBMA Gold prices
-            </span>
-            <ChevronDown size={14} className="text-zinc-200" />
-          </div>
+         <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group relative">
+      {/* Visual Icon Box */}
+      <div className="relative w-4 h-4 flex items-center justify-center bg-[#00A5AD] shrink-0">
+        <div className="w-3 h-3 rounded-full border border-white" />
+        <div className="absolute w-1 h-1 rounded-full bg-white" />
+      </div>
+
+      {/* Functional Select */}
+      <div className="relative flex items-center">
+        <select
+          value={selectedPrice}
+          onChange={(e) => setSelectedPrice(e.target.value)}
+          className="bg-transparent text-white cursor-pointer appearance-none outline-none group-hover:text-[#C4B06D] transition-colors pr-5 tracking-tight z-10"
+        >
+          {priceOptions.map((option) => (
+            <option key={option} value={option} className="bg-black text-white">
+              {option}
+            </option>
+          ))}
+        </select>
+
+        {/* Chevron Icon - Placed absolutely so it doesn't move */}
+        <div className="absolute right-0 pointer-events-none">
+          <ChevronDown size={14} className="text-zinc-200" />
+        </div>
+      </div>
+    </div>
         </div>
 
         {/* CONTROLS */}
@@ -212,7 +236,7 @@ export default function MarketControls() {
                     "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center ",
                     activeTimeFilter === timeFrame
                       ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]"
-                      : "bg-black text-white border-zinc-800 hover:border-zinc-500"
+                      : "bg-black text-white border-zinc-200 hover:border-zinc-500"
                   )}
                 >
                   {timeFrame}

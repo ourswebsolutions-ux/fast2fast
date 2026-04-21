@@ -29,6 +29,10 @@ export default function ExtendedChart() {
   const [activeTab, setActiveTab] = useState("Graf");
   const [activeFilter, setActiveFilter] = useState("Celá historie");
   const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedBank, setSelectedBank] = useState("Komerční banka");
+
+  // Aap yahan mazeed banks add kar sakte hain
+  const banks = ["Komerční banka"];
 
   const [selectedRange, setSelectedRange] = useState<{ start: Date | null; end: Date | null }>({
     start: null,
@@ -75,19 +79,38 @@ export default function ExtendedChart() {
               <LineChart size={18} /> Graf
               {activeTab === "Graf" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[rgb(199,177,93)]" />}
             </button>
-            <button onClick={() => setActiveTab("Tabulka")} className={cn("flex items-center gap-2 text-[13px] sm:text-[14px] font-bold pb-2 transition-all relative", activeTab === "Tabulka" ? "text-[#C9B067]" : "text-zinc-500 hover:text-white")}>
+            <button onClick={() => setActiveTab("Tabulka")} className={cn("flex items-center gap-2 text-[13px] sm:text-[14px] font-bold pb-2 transition-all relative", activeTab === "Tabulka" ? "text-[#C9B067]" : "text-zinc-200 hover:text-white")}>
               <TableIcon size={18} /> Tabulka
               {activeTab === "Tabulka" && <div className="absolute bottom-[-9px] left-0 w-full h-[2px] bg-[rgb(199,177,93)]" />}
             </button>
           </div>
-          <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
-            <div className="w-4 h-2 bg-[#FF0000] mr-1" />
-            <span className="group-hover:text-[#C9B067] transition-colors">Komerční banka</span>
-            <ChevronDown size={14} className="text-zinc-500" />
+          <div className="relative inline-block">
+            {/* Hidden Native Select for functionality, but Styled Div for UI */}
+            <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group relative">
+              <div className="w-4 h-2 bg-[#FF0000] mr-1" />
+
+              {/* Main Select Element */}
+              <select
+                value={selectedBank}
+                onChange={(e) => setSelectedBank(e.target.value)}
+                className="bg-transparent text-white cursor-pointer appearance-none outline-none group-hover:text-[#C9B067] transition-colors pr-4"
+              >
+                {banks.map((bank) => (
+                  <option key={bank} value={bank} className="bg-[#1A1A1A] text-white">
+                    {bank}
+                  </option>
+                ))}
+              </select>
+
+              {/* Custom Arrow Icon */}
+              <div className="absolute right-0 pointer-events-none">
+                <ChevronDown size={14} className="text-zinc-200" />
+              </div>
+            </div>
           </div>
         </div>
 
-      <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
           {/* CURRENCY DROPDOWN */}
           <div className="relative w-full lg:w-[120px]">
             <button
@@ -124,8 +147,8 @@ export default function ExtendedChart() {
             )}
           </div>
 
-          
-      
+
+
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 relative">
             <span className="text-white text-[13px] font-medium whitespace-nowrap">Konkrétní datum</span>
             <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -152,78 +175,78 @@ export default function ExtendedChart() {
         <div className="w-full h-[300px] sm:h-[480px] relative mb-12">
           {activeTab === "Graf" ? (
             <>
-            {/* GRAPH AREA */}
-<div className="relative w-full h-full flex flex-col">
-  <div className="w-full h-full relative">
+              {/* GRAPH AREA */}
+              <div className="relative w-full h-full flex flex-col">
+                <div className="w-full h-full relative">
 
-    {/* CHART */}
-    <div className="w-full h-full">
-   <Line
-  data={{
-    labels: Array.from({ length: 51 }, (_, i) => 1970 + i), // 1970 to 2020
-    datasets: [{
-      data: [
-        // Exact visual match to image (approximated from graph shape)
-        50,60,70,80,90,120,150,180,220,280,350,420,650,720,580,520,480,450,420,400,
-        380,360,340,320,300,280,260,240,220,200,180,170,160,150,140,130,120,110,100,90,
-        80,70,60,55,50,60,80,120,180,300,450,700,1100,1400,1700,1850,1750,1650,1550,1450,
-        1350,1250,1150,1050,950,850,750,650,550,450,350,250,150,100,50,100,300,600,900,
-        1200,1500,1700,1850,1950,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750
-      ],
-      borderColor: "#C9B067",
-      borderWidth: 2.5,
-      tension: 0.35,
-      pointRadius: 0,
-      fill: false,
-    }],
-  }}
-  options={{
-    responsive: true,
-    maintainAspectRatio: false,
-    layout: { padding: { top: 10, right: 0, bottom: 25, left: 10 } },
-    plugins: { legend: { display: false }, tooltip: { enabled: false } },
-   scales: {
- x: {
-  display: true,
-  offset: true,
-  grid: {
-    display: true,                 // 👈 MUST be true
-   
-    tickLength: 6,                // 👈 pointer size
-  },
-  border: {
-    display: true,
-    color: "#ffffff",
-  },
-  ticks: {
-    color: "#9ca3af",
-    font: { size: 10 },
-    maxTicksLimit: 6,
-    padding: 6,
-  },
-},
-  y: {
-    display: true,
-    position: "right",
-    min: 0,
-    max: 2000,
-    grid: {
-      color: "rgba(255,255,255,0.05)",
-    },
-    ticks: {
-      color: "#9ca3af",
-      font: { size: 10 },
-      stepSize: 250,
-    },
-  },
-},
-  }}
-/>
-    </div>
-  </div>
+                  {/* CHART */}
+                  <div className="w-full h-full">
+                    <Line
+                      data={{
+                        labels: Array.from({ length: 51 }, (_, i) => 1970 + i), // 1970 to 2020
+                        datasets: [{
+                          data: [
+                            // Exact visual match to image (approximated from graph shape)
+                            50, 60, 70, 80, 90, 120, 150, 180, 220, 280, 350, 420, 650, 720, 580, 520, 480, 450, 420, 400,
+                            380, 360, 340, 320, 300, 280, 260, 240, 220, 200, 180, 170, 160, 150, 140, 130, 120, 110, 100, 90,
+                            80, 70, 60, 55, 50, 60, 80, 120, 180, 300, 450, 700, 1100, 1400, 1700, 1850, 1750, 1650, 1550, 1450,
+                            1350, 1250, 1150, 1050, 950, 850, 750, 650, 550, 450, 350, 250, 150, 100, 50, 100, 300, 600, 900,
+                            1200, 1500, 1700, 1850, 1950, 1850, 1750, 1650, 1550, 1450, 1350, 1250, 1150, 1050, 950, 850, 750
+                          ],
+                          borderColor: "#C9B067",
+                          borderWidth: 2.5,
+                          tension: 0.35,
+                          pointRadius: 0,
+                          fill: false,
+                        }],
+                      }}
+                      options={{
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        layout: { padding: { top: 10, right: 0, bottom: 25, left: 10 } },
+                        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+                        scales: {
+                          x: {
+                            display: true,
+                            offset: true,
+                            grid: {
+                              display: true,                 // 👈 MUST be true
 
-  
-</div>
+                              tickLength: 6,                // 👈 pointer size
+                            },
+                            border: {
+                              display: true,
+                              color: "#ffffff",
+                            },
+                            ticks: {
+                              color: "#9ca3af",
+                              font: { size: 10 },
+                              maxTicksLimit: 6,
+                              padding: 6,
+                            },
+                          },
+                          y: {
+                            display: true,
+                            position: "right",
+                            min: 0,
+                            max: 2000,
+                            grid: {
+                              color: "rgba(255,255,255,0.05)",
+                            },
+                            ticks: {
+                              color: "#9ca3af",
+                              font: { size: 10 },
+                              stepSize: 250,
+                            },
+                          },
+                        },
+                      }}
+                    />
+                  </div>
+                </div>
+
+
+              </div>
             </>
           ) : (
             /* TABLE - untouched */
@@ -252,23 +275,26 @@ export default function ExtendedChart() {
           )}
         </div>
 
-        {/* FILTER BUTTONS - untouched */}
-        <div className="flex flex-wrap gap-2 mt-8">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveFilter(filter)}
-              className={cn(
-                "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
-                activeFilter === filter
-                  ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]"
-                  : "bg-black text-white border-zinc-800 hover:border-zinc-500"
-              )}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
+    {/* FILTER BUTTONS */}
+<div className="flex flex-wrap gap-2 mt-8">
+  {filters.map((filter) => (
+    <button
+      key={filter}
+      onClick={() => setActiveFilter(filter)}
+      className={cn(
+        // Main classes (No border color here)
+        "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
+        
+        // Logic classes
+        activeFilter === filter
+          ? "bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]" // Active: Gold
+          : "bg-black text-white border-zinc-200" // Inactive: Gray 200 (Jo aapne manga)
+      )}
+    >
+      {filter}
+    </button>
+  ))}
+</div>
       </div>
     </div>
   );
