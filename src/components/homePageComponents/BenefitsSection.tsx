@@ -2,10 +2,10 @@ import React from 'react';
 
 const BenefitsSection = () => {
   const features = [
-    { icon: <img src="/3d.svg" className="w-8 h-8" />, title: "Doprava zdarma", sub: "nad 5 000 Kč" },
-    { icon: <img src="/star.svg" className="w-8 h-8" />, title: "Nejlepší výkupní", sub: "ceny" },
-    { icon: <img src="/phone.svg" className="w-8 h-8" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
-    { icon: <img src="/arrow.svg" className="w-8 h-8 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
+    { icon: <img src="/3d.svg" className="w-12 h-12" />, title: "Doprava zdarma " , sub: "nad 5 000 Kč" },
+    { icon: <img src="/star.svg" className="w-13 h-13" />, title: "Nejlepší výkupní", sub: "ceny" },
+    { icon: <img src="/phone.svg" className="w-12 h-12" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
+    { icon: <img src="/arrow.svg" className="w-12 h-12 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
   ];
 
   return (
@@ -54,20 +54,22 @@ const BenefitsSection = () => {
               {/* Diamond Shape (Siddy diamonds) */}
               <div className="absolute inset-0 bg-white shadow-[0_15px_45px_rgba(0,0,0,0.04)] rotate-45 border border-gray-50" />
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col items-center text-center px-2">
-                <div className="mb-2 md:mb-3 text-[rgb(199,177,93)]">
-                  {feature.icon}
-                </div>
+             {/* Content Wrapper */}
+<div className="relative z-10 flex flex-col items-center text-center px-2 -mt-5 mb-2"> 
+  {/* ^^^ Yahan -mt-5 (upar le janay ke liye) aur mb-5 (neechay space ke liye) add kiya hai */}
+  
+  <div className="mb-2 md:mb-3 text-[rgb(199,177,93)]">
+    {feature.icon}
+  </div>
 
-                <h3 className="text-[12px] md:text-[20px] text-[#1A1A1A] font-sm font- leading-tight">
-                  {feature.title}
-                </h3>
+  <h3 className="text-[12px] md:text-[20px] text-[#1A1A1A]  leading-tight">
+    {feature.title}
+  </h3>
 
-                <p className="text-[12px] md:text-[20px] text-[#1A1A1A] font-sm  leading-tight">
-                  {feature.sub}
-                </p>
-              </div>
+  <p className="text-[12px] md:text-[20px] text-[#1A1A1A]  leading-tight">
+    {feature.sub}
+  </p>
+</div>
             </div>
           ))}
         </div>

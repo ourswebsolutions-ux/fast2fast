@@ -20,7 +20,8 @@ const GuldenHeroSection: React.FC = () => {
         { label: 'Investiční stříbro', icon: 'Ag' },
         {label: 'Pro sběratele', icon: (
          <Image src="/sberatele.svg"alt="sberatele" width={20} height={20}  />)},
-        { label: 'Příslušenství', icon: <BookOpen size={200} />, active: true },
+        { label: 'Příslušenství', icon:  (
+         <Image src="/side-bar-icon-7.svg"alt="sberatele" width={20} height={20}  />), active: true },
         { label: 'Spoření' },
         { label: 'Online rádce' },
         { label: 'Naše prodejny' },
@@ -103,7 +104,7 @@ const GuldenHeroSection: React.FC = () => {
                                     className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
                                             ? 'bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white shadow-lg'
-                                            : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-white'}`}
+                                            : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-black'}`}
                                 >
                                     {banner.label}
 

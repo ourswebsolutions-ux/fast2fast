@@ -30,6 +30,11 @@ export default function MarketControls() {
 
   const currencies = ["USD $", "GBP £", "EUR €", "CZK Kč", "PLN zł"];
   const timeFilters = ["1 den", "Týden", "Měsíc", "Rok", "Celá historie"];
+  // Ye arrays ke paas rakhein
+  const years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020"];
+
+  // Ye component ke andar, baki states ke sath rakhein
+  const [selectedYear, setSelectedYear] = useState("2023");
 
   const tableData = [
     { date: "16-02-2023", usd: "1837,30", gbp: "1522,94", eur: "1715,67", czk: "1522,94", pln: "1715,67" },
@@ -48,28 +53,43 @@ export default function MarketControls() {
     <div className="w-full bg-black p-4 sm:p-6 font-sans select-none text-white overflow-hidden">
       <div className="max-w-[1350px] mx-auto">
 
-        {/* TABS - exact same as your second code */}
-        <div className="flex gap-6 sm:gap-8 border-b border-zinc-800 mb-6">
-          <button
-            onClick={() => setActiveTab("Graf")}
-            className={cn(
-              "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
-              activeTab === "Graf" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-400 border-transparent hover:text-white"
-            )}
-          >
-            <LineChart size={16} className="sm:w-[18px]" /> Graf
-          </button>
-          <button
-            onClick={() => setActiveTab("Tabulka")}
-            className={cn(
-              "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
-              activeTab === "Tabulka" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-400 border-transparent hover:text-white"
-            )}
-          >
-            <TableIcon size={16} className="sm:w-[18px]" /> Tabulka
-          </button>
-        </div>
+        {/* TABS - Updated with Right Side Dropdown from Image */}
+        <div className="flex justify-between items-center border-b border-zinc-800 mb-6">
+          {/* Left Side: Tabs */}
+          <div className="flex gap-6 sm:gap-8">
+            <button
+              onClick={() => setActiveTab("Graf")}
+              className={cn(
+                "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
+                activeTab === "Graf" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-400 border-transparent hover:text-white"
+              )}
+            >
+              <LineChart size={16} className="sm:w-[18px]" /> Graf
+            </button>
+            <button
+              onClick={() => setActiveTab("Tabulka")}
+              className={cn(
+                "flex items-center gap-2 pb-2 text-[13px] sm:text-[14px] font-bold transition-all border-b-2",
+                activeTab === "Tabulka" ? "text-[#C4B06D] border-[#C4B06D]" : "text-zinc-400 border-transparent hover:text-white"
+              )}
+            >
+              <TableIcon size={16} className="sm:w-[18px]" /> Tabulka
+            </button>
+          </div>
 
+          {/* Right Side: LBMA Gold prices Dropdown (as seen in image_af0fe9) */}
+          <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
+            {/* Image wala circle/target icon */}
+            <div className="relative w-4 h-4 flex items-center justify-center  bg-[#00A5AD]">
+              <div className="w-3 h-3 rounded-full border border-white" />
+              <div className="absolute w-1 h-1 rounded-full bg-white" />
+            </div>
+            <span className="group-hover:text-[#C4B06D] transition-colors  tracking-tight">
+              LBMA Gold prices
+            </span>
+            <ChevronDown size={14} className="text-zinc-200" />
+          </div>
+        </div>
         {/* CONTROLS - exact same as your second code (other design untouched) */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center mb-8">
           <div className="w-full lg:col-span-3 flex gap-2">
@@ -85,6 +105,20 @@ export default function MarketControls() {
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={16} />
             </div>
+            {activeTab === "Tabulka" && (
+              <div className="relative flex-1 animate-in fade-in zoom-in duration-200">
+                <select
+                  value={selectedYear}
+                  onChange={(e) => setSelectedYear(e.target.value)}
+                  className="w-full bg-white text-black px-4 py-2.5 text-[13px] sm:text-[14px] font-bold appearance-none rounded-sm outline-none cursor-pointer"
+                >
+                  {years.map(year => (
+                    <option key={year} value={year}>{year}</option>
+                  ))}
+                </select>
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 text-black pointer-events-none" size={16} />
+              </div>
+            )}
           </div>
 
           <div className="w-full lg:col-span-5 flex justify-center">
@@ -96,7 +130,7 @@ export default function MarketControls() {
                     onClick={() => setCurrency(curr)}
                     className={cn(
                       "px-2 sm:px-4 py-2.5 text-[12px] sm:text-[13px] font-bold border transition-all rounded-sm",
-                      currency === curr ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "bg-transparent border-zinc-700 text-white hover:border-zinc-500"
+                      currency === curr ? "bg-[#C4B06D] border-[#C4B06D] text-white" : "bg-transparent border-zinc-700 text-white hover:border-zinc-500"
                     )}
                   >
                     {curr}
@@ -111,7 +145,7 @@ export default function MarketControls() {
               onClick={() => setTimeOfDay("AM – Dopolední cena")}
               className={cn(
                 "flex-1 py-2.5 text-[11px] sm:text-[13px] font-bold border text-center transition-all rounded-sm",
-                timeOfDay === "AM – Dopolední cena" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "bg-transparent border-zinc-700 text-white hover:border-zinc-500"
+                timeOfDay === "AM – Dopolední cena" ? "bg-[#C4B06D] border-[#C4B06D] text-white" : "bg-transparent border-zinc-700 text-white hover:border-zinc-500"
               )}
             >
               AM – Dopolední cena
@@ -120,7 +154,7 @@ export default function MarketControls() {
               onClick={() => setTimeOfDay("PM – Odpolední cena")}
               className={cn(
                 "flex-1 py-2.5 text-[11px] sm:text-[13px] font-bold border text-center transition-all rounded-sm",
-                timeOfDay === "PM – Odpolední cena" ? "bg-[#C4B06D] border-[#C4B06D] text-black" : "bg-transparent border-zinc-700 text-zinc-500"
+                timeOfDay === "PM – Odpolední cena" ? "bg-[#C4B06D] border-[#C4B06D] text-white" : "bg-transparent border-zinc-700 text-zinc-500"
               )}
             >
               PM – Odpolední cena
@@ -136,7 +170,7 @@ export default function MarketControls() {
                 data={{
                   labels: Array.from({ length: 51 }, (_, i) => 1970 + i),
                   datasets: [{
-                    data: [50,60,70,80,90,120,150,180,220,280,350,420,650,720,580,520,480,450,420,400,380,360,340,320,300,280,260,240,220,200,180,170,160,150,140,130,120,110,100,90,80,70,60,55,50,60,80,120,180,300,450,700,1100,1400,1700,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750,650,550,450,350,250,150,100,50,100,300,600,900,1200,1500,1700,1850,1950,1850,1750,1650,1550,1450,1350,1250,1150,1050,950,850,750],
+                    data: [50, 60, 70, 80, 90, 120, 150, 180, 220, 280, 350, 420, 650, 720, 580, 520, 480, 450, 420, 400, 380, 360, 340, 320, 300, 280, 260, 240, 220, 200, 180, 170, 160, 150, 140, 130, 120, 110, 100, 90, 80, 70, 60, 55, 50, 60, 80, 120, 180, 300, 450, 700, 1100, 1400, 1700, 1850, 1750, 1650, 1550, 1450, 1350, 1250, 1150, 1050, 950, 850, 750, 650, 550, 450, 350, 250, 150, 100, 50, 100, 300, 600, 900, 1200, 1500, 1700, 1850, 1950, 1850, 1750, 1650, 1550, 1450, 1350, 1250, 1150, 1050, 950, 850, 750],
                     borderColor: "#C9B067",
                     borderWidth: 2.5,
                     tension: 0.35,
@@ -177,7 +211,7 @@ export default function MarketControls() {
                   key={f}
                   className={cn(
                     "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
-                    f === "Celá historie" ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]" : "bg-black text-white border-zinc-800 hover:border-zinc-500"
+                    f === "Celá historie" ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]" : "bg-black text-white border-zinc-800 hover:border-zinc-500"
                   )}
                 >
                   {f}

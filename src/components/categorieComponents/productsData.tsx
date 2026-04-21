@@ -106,7 +106,7 @@ const ProductGrid = () => {
                                 <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1 hover:text-black transition-colors">
                                     {product.title}
                                 </h3>
-                                <p className="text-xl text-[#C5A059] font-medium tracking-tight font-sans">
+                                <p className="text-xl text-[rgb(199,177,93)] font-medium tracking-tight font-sans">
                                     {product.price}
                                 </p>
                             </div>
