@@ -159,6 +159,7 @@ const PriceChart = () => {
                     color: "#787b86",
                     font: { size: 12 },
                     padding: 3, // Ticks aur axis ke darmiyan gap
+                     autoSkip: false,   // 👈 ADD THIS
                 }
             },
             y: {
@@ -233,7 +234,7 @@ const PriceChart = () => {
 
                             <div className="flex-1 px-2 pb-4 pt-4 relative">
                                 {/* CHART FULL - Responsive Height preserved */}
-                                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px]">
+                                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] relative">
                                     <Chart
                                         ref={chartRef}
                                         type={chartType as any}
@@ -248,7 +249,7 @@ const PriceChart = () => {
                                         <div className="flex items-center gap-2.5 whitespace-nowrap min-w-max">
 
                                             {/* 1. Symbol Info (Exact as per image) */}
-                                            <div className="flex items-center gap-1 text-[#131722] font-semibold font-sans text-[12px] sm:text-[13px]">
+                                            <div className="flex items-center gap-1   font-sans text-[12px] sm:text-[13px]">
                                                 <span>CFDs on Gold (US$ / OZ)</span>
                                                 <span className="text-[#787b86]">·</span>
                                                 <span>1D</span>

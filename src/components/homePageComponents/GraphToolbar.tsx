@@ -42,7 +42,7 @@ const GraphToolbar: React.FC<Props> = ({
     <div className="flex items-center h-[45px] border-b border-gray-200 px-3 gap-1 bg-white text-[13px] select-none overflow-x-auto no-scrollbar whitespace-nowrap">
       
       {/* ASSET NAME */}
-      <div className="flex items-center pr-3 border-r border-gray-100 h-full flex-shrink-0">
+      <div className="flex items-center pr-3  border-gray-100 h-full flex-shrink-0">
         <span className="font-bold text-black tracking-tight">GOLD</span>
       </div>
 
