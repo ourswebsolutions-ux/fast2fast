@@ -103,7 +103,7 @@ const HeroSection: React.FC = () => {
                             </div>
 
                             <button onClick={() => setIsWishlisted(!isWishlisted)} className="absolute top-4 right-4 md:top-6 md:right-6">
-                                <Heart strokeWidth={1.2} className={`w-7 h-7 md:w-8 md:h-8 ${isWishlisted ? 'fill-[rgb(199,177,93)] text-[rgb(199,177,93)]' : 'text-gray-300'}`} />
+                                <Heart strokeWidth={1.2} className={`w-7 h-7 md:w-8 md:h-8 ${isWishlisted ? 'fill-[rgb(199,177,93)] text-[rgb(199,177,93)]' : 'text-[rgb(199,177,93)]'}`} />
                             </button>
 
                             <img src="/can-img.png" alt="Coin" className="w-[65%] md:w-[320px] lg:w-[380px] h-auto object-contain drop-shadow-2xl" />
