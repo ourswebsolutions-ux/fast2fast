@@ -30,10 +30,12 @@ const DealOfTheDay = () => {
               Sleva dne
             </h3>
 
-            <p className="text-gray-600 text-sm leading-relaxed mb-10 max-w-sm">
-              Zlatý investiční slitek od švýcarské firmy Argor-Heraeus SA o hmotnosti 1 Oz (31,1g)
-              představuje nadstandardní jakost spojenou s elegancí a praktičností.
-              Slitky do 100g mají ochranný obal.
+            {/* Description Text */}
+            <p className="text-gray-800 text-[15px]  leading-relaxed mb-12 max-w-lg">
+              Zlatý investiční slitek od švýcarské firmy <br />
+              Argor-Heraeus SA o hmotnosti 1 Oz (31,1g) <br />
+              představuje nadstandardní jakost spojenou s elegancí <br />
+              a praktičností. Slitky do 100g mají ochranný obal.
             </p>
 
             <div className="space-y-6">

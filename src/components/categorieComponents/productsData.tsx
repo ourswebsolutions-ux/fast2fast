@@ -97,7 +97,7 @@ const ProductGrid = () => {
                             {/* Rating */}
                             <div className="flex justify-center gap-0.5 mb-4 h-4">
                                 {[...Array(5)].map((_, i) => (
-                                    <Star key={i} size={14} className="fill-[#f8dc61] text-[#C5B367]" />
+                                    <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
                                 ))}
                             </div>
 

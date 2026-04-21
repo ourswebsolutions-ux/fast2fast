@@ -122,8 +122,11 @@ const ProductFilterSection = () => {
             <div className="flex items-center gap-2 mt-6 overflow-hidden">
               <div className="flex flex-nowrap md:flex-wrap items-center gap-2 overflow-x-auto no-scrollbar">
                 {activeFilters.map((tag, i) => (
-                  <div key={i} className="flex items-center bg-[#D1B870] text-white px-3 py-1.5 gap-4 flex-shrink-0">
-                    <span className="text-[13px] font-medium ">{tag.label}</span>
+                  <div
+                    key={i}
+                    className="flex items-center bg-[#D1B870] text-white px-3 h-9 gap-4 flex-shrink-0"
+                  >
+                    <span className="text-[13px] font-medium whitespace-nowrap">{tag.label}</span>
                     <X
                       size={14}
                       className="cursor-pointer hover:text-black transition-colors"
@@ -132,9 +135,10 @@ const ProductFilterSection = () => {
                   </div>
                 ))}
 
+                {/* Clear All Button - Fixed Height matches the tags */}
                 <button
                   onClick={clearAllFilters}
-                  className="bg-[#FF0000] p-2 text-white hover:bg-red-700 transition-colors flex-shrink-0"
+                  className="bg-[#FF0000] w-9 h-9 text-white hover:bg-red-700 transition-colors flex-shrink-0 flex items-center justify-center"
                 >
                   <X size={16} strokeWidth={3} />
                 </button>
