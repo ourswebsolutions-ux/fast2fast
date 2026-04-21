@@ -14,7 +14,7 @@ import {
     PointElement,
     LineElement,
 } from "chart.js";
-
+import type { ChartData, ChartOptions } from "chart.js";
 import {
     CandlestickController,
     CandlestickElement,
@@ -95,7 +95,7 @@ const PriceChart = () => {
         });
     }, [generateData]);
 
-    const chartData = {
+   const chartData: ChartData = {
         datasets: [
             {
                 type: chartType,
@@ -125,7 +125,7 @@ const PriceChart = () => {
         ],
     };
 
-    const chartOptions = {
+    const chartOptions: ChartOptions = {
         responsive: true,
         maintainAspectRatio: false,
         layout: {
@@ -173,9 +173,10 @@ const PriceChart = () => {
                     font: { size: 11 },
                     padding: 8,
                     // Price ke sath .00 dikhane ke liye
-                    callback: function (value) {
-                        return value.toFixed(2);
-                    }
+                    callback: function (value: string | number) {
+    const num = typeof value === "string" ? parseFloat(value) : value;
+    return num.toFixed(2);
+}
                 },
             },
         },
@@ -237,9 +238,9 @@ const PriceChart = () => {
                                 <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] relative">
                                     <Chart
                                         ref={chartRef}
-                                        type={chartType as any}
-                                        data={chartData as any}
-                                        options={chartOptions as any}
+                                        type={chartType }
+                                        data={chartData  }
+                                        options={chartOptions  }
                                     />
                                 </div>
 

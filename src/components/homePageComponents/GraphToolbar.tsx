@@ -16,7 +16,7 @@ import { BsBarChartLine } from "react-icons/bs";
 import { BiCandles } from "react-icons/bi";
 import { OHLCBarsIcon } from "../Customicons";
 
-type ChartType = "line" | "candlestick" | "bars" | "area";
+type ChartType = "line" | "candlestick";
 
 interface Props {
   timeframe: string;
@@ -27,6 +27,7 @@ interface Props {
   setShowIndicator: (val: boolean) => void;
   downloadChart: () => void;
 }
+
 
 const GraphToolbar: React.FC<Props> = ({
   timeframe,
@@ -47,7 +48,7 @@ const GraphToolbar: React.FC<Props> = ({
       </div>
 
       {/* PLUS CIRCLE */}
-      <div className="ml-6 cursor-pointer hover:bg-gray-100 h-full flex items-center justify-center px-1 flex-shrink-0">
+      <div className="ml-6 cursor-pointer  h-full flex items-center justify-center px-1 flex-shrink-0">
         <div className="border border-gray-400 rounded-full p-[1px]">
           <Plus size={14} className="text-gray-600" />
         </div>
@@ -61,7 +62,7 @@ const GraphToolbar: React.FC<Props> = ({
           <button
             key={t}
             onClick={() => setTimeframe(t)}
-            className={`px-2 py-1 font-medium hover:bg-gray-100 rounded-sm transition-colors ${
+            className={`px-2 py-1 font-medium hover:cursor-pointer rounded-sm transition-colors ${
               timeframe === t ? "text-blue-600" : "text-gray-600"
             }`}
           >
@@ -69,7 +70,7 @@ const GraphToolbar: React.FC<Props> = ({
           </button>
         ))}
         <div 
-           className={`flex items-center gap-[2px] px-2 py-1 cursor-pointer hover:bg-gray-100 rounded-sm ${timeframe === 'D' ? 'text-blue-600' : 'text-gray-600'}`}
+           className={`flex items-center gap-[2px] px-2 py-1 cursor-pointer  rounded-sm ${timeframe === 'D' ? 'text-blue-600' : 'text-gray-600'}`}
            onClick={() => setTimeframe('D')}
         >
           <span className="font-medium">D</span>
@@ -81,24 +82,24 @@ const GraphToolbar: React.FC<Props> = ({
 
       {/* CHART TYPES */}
       <div className="flex items-center gap-1 flex-shrink-0">
-        <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
-          <OHLCBarsIcon size={22} />
+        <div className="p-1.5 cursor-pointer  rounded-sm text-gray-500">
+          <OHLCBarsIcon  />
         </div>
-        <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
+        <div className="p-1.5 cursor-pointer  rounded-sm text-gray-500">
           <BiCandles size={22} />
         </div>
         <div 
-          className={`p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm ${chartType === 'candlestick' ? 'text-blue-600' : 'text-gray-500'}`}
+          className={`p-1.5 cursor-pointer  rounded-sm ${chartType === 'candlestick' ? 'text-blue-600' : 'text-gray-500'}`}
           onClick={() => setChartType('candlestick')}
         >
           <BsBarChartLine size={18} />
         </div>
 
-        <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
+        <div className="p-1.5 cursor-pointer  rounded-sm text-gray-500">
           <MdOutlineShowChart size={18} />
         </div>
         
-        <div className="flex items-center p-1 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500 gap-[2px]">
+        <div className="flex items-center p-1 cursor-pointer  rounded-sm text-gray-500 gap-[2px]">
           <ChevronDown size={12} className="text-gray-400" />
         </div>
       </div>
@@ -107,7 +108,7 @@ const GraphToolbar: React.FC<Props> = ({
 
       {/* INDICATORS SECTION */}
       <div
-        className="flex items-center gap-2 px-3 py-1 cursor-pointer hover:bg-gray-100 rounded-sm group flex-shrink-0"
+        className="flex items-center gap-2 px-3 py-1 cursor-pointer  rounded-sm group flex-shrink-0"
         onClick={() => setShowIndicator(!showIndicator)}
       >
         <ChartNoAxesCombined 
@@ -121,7 +122,7 @@ const GraphToolbar: React.FC<Props> = ({
       {/* SNAPSHOT/CAMERA */}
       <div className="ml-auto flex items-center border-gray-200 h-full px-2 flex-shrink-0">
         <div 
-          className="hover:bg-gray-100 rounded-sm cursor-pointer text-gray-600 p-1"
+          className=" rounded-sm cursor-pointer text-gray-600 p-1"
           onClick={downloadChart}
         >
           <Camera size={20} strokeWidth={1.5} />

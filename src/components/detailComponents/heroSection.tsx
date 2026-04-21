@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => {
         ));
     };
 
-    const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState<number>(Number);
 
     const toggleCheckbox = (index: number) => {
         setSelectedAccs(prev =>
@@ -119,7 +119,7 @@ const HeroSection: React.FC = () => {
             /* Default sab gray border honge, sirf selected wala golden hoga */
             ${selectedImage === i
                                             ? 'border-[rgb(199,177,93)] border-2'
-                                            : 'border-gray-300 hover:border-[rgb(199,177,93)]'
+                                            : 'border-gray-300 hover:border-[rgb(199,177,93)] hover:border-2    '
                                         }
           `}
                                 >
@@ -242,7 +242,7 @@ const HeroSection: React.FC = () => {
                                                 <div onClick={() => toggleCheckbox(idx)} className={`w-5 h-5 border flex items-center justify-center cursor-pointer transition-all ${selectedAccs.includes(idx) ? 'bg-[#00A651] border-[#00A651]' : 'border-gray-300'}`}>
                                                     {selectedAccs.includes(idx) && <Check size={14} className="text-white" strokeWidth={4} />}
                                                 </div>
-                                                <img src="/queen-coin.svg" alt="acc" className="w-8 h-8 object-contain opacity-40" />
+                                                <img src="/Vrstva 629.png" alt="acc" className="w-8 h-8 object-contain " />
                                                 <span className="text-[13px] text-[#5a5959] font-medium">Kapsle na minci – kulatá</span>
                                             </div>
                                             <div className="flex items-center justify-between w-full sm:w-auto gap-4 pl-8 sm:pl-0">
