@@ -35,6 +35,17 @@ export default function ExtendedChart() {
     end: null,
   });
 
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState("USD");
+
+  // Aapka data yahan add hoga
+  const currencies = [
+    { code: "USD", label: "US Dollar" },
+    { code: "EUR", label: "Euro" },
+    { code: "CZK", label: "Czech Koruna" },
+    { code: "GBP", label: "British Pound" }
+  ];
   const filters = ["1 den", "Týden", "Měsíc", "Rok", "Celá historie"];
 
   const formatDate = (date: Date | null) => {
@@ -76,12 +87,45 @@ export default function ExtendedChart() {
           </div>
         </div>
 
-        {/* CONTROLS - untouched */}
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
-          <button className="bg-white px-4 py-2 flex items-center justify-between w-full lg:w-[120px] text-black text-[14px] font-bold rounded-sm active:scale-95">
-            USD <ChevronDown size={16} strokeWidth={3} />
-          </button>
+      <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
+          {/* CURRENCY DROPDOWN */}
+          <div className="relative w-full lg:w-[120px]">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="bg-white px-4 py-2 flex items-center justify-between w-full text-black text-[14px] font-bold rounded-sm border border-gray-200 shadow-sm active:scale-95 transition-all"
+            >
+              {selected}
+              <ChevronDown
+                size={16}
+                strokeWidth={3}
+                className={`transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+              />
+            </button>
 
+            {isOpen && (
+              <>
+                <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)} />
+                <div className="absolute top-full left-0 mt-1 w-full bg-white border border-gray-200 shadow-xl rounded-sm z-20 py-1 overflow-hidden">
+                  {currencies.map((item) => (
+                    <div
+                      key={item.code}
+                      onClick={() => {
+                        setSelected(item.code);
+                        setIsOpen(false);
+                      }}
+                      className={`px-4 py-2 text-[13px] cursor-pointer transition-colors
+                        ${selected === item.code ? "bg-[#D1B870] text-white" : "text-gray-700 hover:bg-gray-50"}`}
+                    >
+                      <span className="font-bold">{item.code}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          
+      
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 relative">
             <span className="text-white text-[13px] font-medium whitespace-nowrap">Konkrétní datum</span>
             <div className="flex items-center gap-2 w-full sm:w-auto">

@@ -30,10 +30,12 @@ const DealOfTheDay = () => {
               Sleva dne
             </h3>
 
-            <p className="text-gray-600 text-sm leading-relaxed mb-10 max-w-sm">
-              Zlatý investiční slitek od švýcarské firmy Argor-Heraeus SA o hmotnosti 1 Oz (31,1g)
-              představuje nadstandardní jakost spojenou s elegancí a praktičností.
-              Slitky do 100g mají ochranný obal.
+            {/* Description Text */}
+            <p className="text-gray-800 text-[15px]  leading-relaxed mb-12 max-w-lg">
+              Zlatý investiční slitek od švýcarské firmy <br />
+              Argor-Heraeus SA o hmotnosti 1 Oz (31,1g) <br />
+              představuje nadstandardní jakost spojenou s elegancí <br />
+              a praktičností. Slitky do 100g mají ochranný obal.
             </p>
 
             <div className="space-y-6">
@@ -103,30 +105,29 @@ const DealOfTheDay = () => {
                 31,1g investiční zlatý slitek Argor Heraeus SA
               </h3>
 
-              <div className="space-y-3 max-w-sm">
-                {/* Row 1 */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Běžná cena:</span>
-                  <span className="text-lg text-[#1A1A1A] font-sans">
+              <div className="space-y-3">
+
+                <span className="text-lg text-gray-800 block">
+                  Běžná cena:
+                  <span className="text-sm text-gray-400 font-sans ml-1">
                     42 895 Kč
                   </span>
-                </div>
+                </span>
 
-                {/* Row 2 - Cena Dnes */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Cena dnes:</span>
-                  <span className="text-2xl md:text-3xl text-[#C7B15D] font-medium font-sans leading-none">
+                <span className="text-lg text-gray-800 block">
+                  Cena dnes:
+                  <span className="text-xl md:text-lg lg:text-xl text-[#C5A059] font-medium font-sans ml-2 block sm:inline">
                     34 316 Kč
                   </span>
-                </div>
+                </span>
 
-                {/* Row 3 - Sleva */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Sleva:</span>
-                  <span className="text-xl text-[#FF0000] font-sans">
+                <span className="text-lg text-gray-800 block  justify-end">
+                  Sleva:
+                  <span className="text-xl text-red-600 font-medium font-sans ml-2 block sm:inline">
                     – 8 579 Kč
                   </span>
-                </div>
+                </span>
+
               </div>
               <a href="./details">
                 <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">

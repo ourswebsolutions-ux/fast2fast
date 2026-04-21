@@ -243,7 +243,7 @@ const HeroSection: React.FC = () => {
                                                     {selectedAccs.includes(idx) && <Check size={14} className="text-white" strokeWidth={4} />}
                                                 </div>
                                                 <img src="/queen-coin.svg" alt="acc" className="w-8 h-8 object-contain opacity-40" />
-                                                <span className="text-[#3a3a3a] text-[13px]">Kapsle na minci – kulatá</span>
+                                                <span className="text-[13px] text-[#5a5959] font-medium">Kapsle na minci – kulatá</span>
                                             </div>
                                             <div className="flex items-center justify-between w-full sm:w-auto gap-4 pl-8 sm:pl-0">
                                                 <div className="flex items-center gap-0.5 h-8">
@@ -251,7 +251,7 @@ const HeroSection: React.FC = () => {
                                                     <div className="w-8 h-full border border-gray-200 flex items-center justify-center text-xs bg-white font-medium">{accQuantities[idx]}</div>
                                                     <button onClick={() => handleAccQty(idx, 'inc')} className="w-8 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={12} /></button>
                                                 </div>
-                                                <span className="text-[13px] text-[#5a5959] font-bold min-w-[50px] text-right">10 Kč</span>
+                                                <span className="text-[13px] text-[#5a5959] font-medium min-w-[50px] text-right">10 Kč</span>
                                             </div>
                                         </div>
                                     ))}

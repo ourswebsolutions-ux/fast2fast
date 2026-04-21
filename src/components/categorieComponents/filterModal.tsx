@@ -1,6 +1,6 @@
 "use client";
-import React, { useState } from 'react';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { X } from 'lucide-react';
 
 const FilterModal = ({ isOpen, onClose }: any) => {
   if (!isOpen) return null;
@@ -9,70 +9,103 @@ const FilterModal = ({ isOpen, onClose }: any) => {
     "Cena", "Hmotnost", "Motiv", "Stát", "Kvalita", "Mincovna", "Série", "Dostupnost"
   ];
 
-  const weights = [
-    { label: "1000 g", count: 6 }, { label: "10 g", count: 6 },
-    { label: "500 g", count: 10 }, { label: "5 g", count: 52 },
-    { label: "250 g", count: 25 }, { label: "2,5 g", count: 15 },
-    { label: "100 g", count: 88 }, { label: "2 g", count: 10 },
-    { label: "50 g", count: 5 },  { label: "1 g", count: 34 },
+  // Column-wise split for exact image match
+  const col1 = [
+    { label: "1000 g", count: 6 },
+    { label: "500 g", count: 10 },
+    { label: "250 g", count: 25 },
+    { label: "100 g", count: 88 },
+    { label: "50 g", count: 5 },
     { label: "31,11 g", count: 126 },
     { label: "31,1 g", count: 13 },
     { label: "25 g", count: 13 },
     { label: "20 g", count: 5 },
   ];
 
+  const col2 = [
+    { label: "10 g", count: 6 },
+    { label: "5 g", count: 52 },
+    { label: "2,5 g", count: 15 },
+    { label: "2 g", count: 10 },
+    { label: "1 g", count: 34 },
+  ];
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Background Blur Overlay */}
+      {/* Dark Overlay */}
       <div 
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity"
+        className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"
         onClick={onClose}
       />
 
-      {/* Modal Content */}
-      <div className="relative bg-white w-full max-w-[850px] shadow-2xl rounded-sm overflow-hidden animate-in fade-in zoom-in duration-200">
+      {/* Modal Container */}
+      <div className="relative bg-white w-full max-w-[800px] shadow-2xl rounded-sm overflow-hidden flex flex-col transition-all">
         
         {/* Header */}
-        <div className="flex justify-between items-center p-6 border-b border-gray-100">
-          <h2 className="text-3xl font-serif text-gray-800">Rozšířený filtr</h2>
+        <div className="flex justify-between items-center px-7 py-5 bg-white border-b border-gray-50">
+          <h2 className="text-[30px] font-serif font-light text-[#333]">Rozšířený filtr</h2>
           <button 
             onClick={onClose}
-            className="bg-[#C5B367] p-1 rounded-full text-white hover:bg-[#b5a256] transition-colors"
+            className="bg-[#C9B067] p-1.5 rounded-full text-white hover:scale-105 active:scale-95 transition-all"
           >
-            <X size={20} />
+            <X size={18} strokeWidth={3} />
           </button>
         </div>
 
-        <div className="flex h-[450px]">
+        {/* Content Area */}
+        <div className="flex bg-white">
           {/* Sidebar */}
-          <div className="w-1/4 bg-[#F8F8F8] border-r border-gray-200">
-            {sidebarItems.map((item, index) => (
+          <div className="w-[190px] bg-[#F4F4F4] border-r border-[#E5E5E5]">
+            {sidebarItems.map((item) => (
               <div 
                 key={item}
-                className={`p-4 text-sm font-medium border-b border-gray-200 cursor-pointer transition-colors
-                  ${item === "Hmotnost" ? " bg-white text-black border-r-4 border-r-[#C5B367]" : "text-gray-600 hover:bg-white"}`}
+                className={`px-5 py-3.5 text-[14px] border-b border-[#E5E5E5] cursor-pointer transition-colors
+                  ${item === "Hmotnost" 
+                    ? "bg-white text-black font-bold border-r-0 shadow-sm" 
+                    : "text-[#666] hover:bg-[#ECECEC]"}`}
               >
                 {item}
               </div>
             ))}
+            {/* Filler to keep sidebar full height */}
+            <div className="flex-grow bg-[#F4F4F4]"></div>
           </div>
 
-          {/* Main Content (Checkboxes) */}
-          <div className="w-3/4 p-6 overflow-y-auto">
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2 hover-border-gray-300">
-              {weights.map((item, idx) => (
+          {/* Main Grid Section */}
+          <div className="flex-1 p-6 flex gap-4 bg-white overflow-y-auto">
+            {/* Column 1 */}
+            <div className="flex-1 flex flex-col gap-1.5">
+              {col1.map((item, idx) => (
                 <label 
                   key={idx} 
-                  className="flex items-center gap-3 p-3 bg-white border border-gray-100 hover-border-200 cursor-pointer transition-all group"
+                  className="flex items-center gap-3 px-3 py-2 bg-[#FBFBFB] border border-[#EEEEEE] cursor-pointer hover:border-[#CCC] transition-all"
                 >
                   <input 
                     type="checkbox" 
-                    className="w-4 h-4 accent-[#00A651] cursor-pointer" 
+                    className="w-4 h-4 rounded-none accent-[#00A651] border-gray-300 cursor-pointer" 
                   />
-                  <div className="flex items-center gap-1 text-sm">
-                    <span className="font-bold text-gray-700">{item.label.split(' ')[0]}</span>
-                    <span className="text-gray-500 font-bold">{item.label.split(' ')[1]}</span>
-                    <span className="text-gray-400 text-xs ml-1">({item.count})</span>
+                  <div className="text-[13px] text-[#333]">
+                    <span className="font-bold">{item.label}</span>
+                    <span className="text-[#999] ml-1.5 font-normal">({item.count})</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+
+            {/* Column 2 */}
+            <div className="flex-1 flex flex-col gap-1.5">
+              {col2.map((item, idx) => (
+                <label 
+                  key={idx} 
+                  className="flex items-center gap-3 px-3 py-2 bg-[#FBFBFB] border border-[#EEEEEE] cursor-pointer hover:border-[#CCC] transition-all"
+                >
+                  <input 
+                    type="checkbox" 
+                    className="w-4 h-4 rounded-none accent-[#00A651] border-gray-300 cursor-pointer" 
+                  />
+                  <div className="text-[13px] text-[#333]">
+                    <span className="font-bold">{item.label}</span>
+                    <span className="text-[#999] ml-1.5 font-normal">({item.count})</span>
                   </div>
                 </label>
               ))}
@@ -80,20 +113,20 @@ const FilterModal = ({ isOpen, onClose }: any) => {
           </div>
         </div>
 
-        {/* Footer Buttons */}
-        <div className="flex flex-col md:flex-row justify-between items-center p-6 border-t border-gray-100 gap-4">
-          <button className="text-sm font-medium text-gray-600 underline hover:text-black transition-colors">
+        {/* Footer */}
+        <div className="flex flex-col sm:flex-row justify-between items-center px-7 py-6 bg-white border-t border-gray-100 gap-4">
+          <button className="text-[14px] font-medium text-black underline underline-offset-4 hover:text-[#C9B067] transition-colors">
             Zrušit vybrané parametry
           </button>
           
-          <div className="flex gap-4">
+          <div className="flex gap-3 w-full sm:w-auto">
             <button 
               onClick={onClose}
-              className="bg-[#C5B367] text-white px-10 py-3 text-sm font-medium hover:bg-[#b5a256] transition-all min-w-[150px]"
+              className="bg-[#C9B067] text-white px-12 py-3.5 text-[15px] font-normal hover:brightness-95 transition-all flex-1 sm:flex-none"
             >
               Zavřít
             </button>
-            <button className="bg-[#00A651] text-white px-10 py-3 text-sm font-bold hover:bg-[#008d44] transition-all flex items-center gap-2">
+            <button className="bg-[#00A651] text-white px-10 py-3.5 text-[15px] font-bold hover:brightness-90 transition-all flex-1 sm:flex-none">
               Zobrazit 318 položek
             </button>
           </div>
