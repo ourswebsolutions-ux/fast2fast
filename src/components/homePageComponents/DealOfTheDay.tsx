@@ -61,7 +61,7 @@ const DealOfTheDay = () => {
           </div>
 
           {/* Right Column */}
-          <div className="flex-[1.5] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-center gap-12">
+          <div className="flex-[1.5] p-8 md:p-12 lg:p-16 flex flex-col md:flex-row items-center justify-center gap-9">
 
             {/* Product Image */}
             <div className="relative group shrink-0">
@@ -71,15 +71,15 @@ const DealOfTheDay = () => {
     absolute 
     -top-3 -right-6 
     sm:-top-4 sm:-right-6 
-    lg:-top-4 lg:-right-1 
+    lg:-top-4 lg:-right- 
     bg-red-600 text-white 
-    w-12 h-12 sm:w-14 sm:h-14 
+    w-12 h-12 lg:w-17 lg:h-17 sm:w-14 sm:h-14 
     rounded-full 
     flex items-center justify-center 
     text-xs sm:text-sm 
     font-bold z-20 shadow-lg
   ">
-                <span className="text-sm sm:text-base font-sans">-20 %</span>
+                <span className="text-sm sm:text-base font-sans ">-20 %</span>
               </div>
 
               {/* Image */}
@@ -103,33 +103,33 @@ const DealOfTheDay = () => {
                 31,1g investiční zlatý slitek Argor Heraeus SA
               </h3>
 
-              <div className="space-y-3 max-w-sm">
-                {/* Row 1 */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Běžná cena:</span>
-                  <span className="text-lg text-[#1A1A1A] font-sans">
+              <div className="space-y-2">
+
+                <span className="text-lg text-gray-800 block">
+                  Běžná cena:
+                  <span className="text-sm lg:text-xl md:text-xl text-gray-400 font-sans ml-1">
                     42 895 Kč
                   </span>
-                </div>
+                </span>
 
-                {/* Row 2 - Cena Dnes */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Cena dnes:</span>
-                  <span className="text-2xl md:text-3xl text-[#C7B15D] font-medium font-sans leading-none">
+                <span className="text-lg text-gray-800 block">
+                  Cena dnes:
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-3xl md:text-lg font-sans ml-2">
                     34 316 Kč
                   </span>
-                </div>
+                </span>
 
-                {/* Row 3 - Sleva */}
-                <div className="grid grid-cols-[120px_1fr] items-baseline">
-                  <span className="text-lg text-[#1A1A1A]">Sleva:</span>
-                  <span className="text-xl text-[#FF0000] font-sans">
+                <span className="text-lg text-gray-800 ml-8 block">
+                  Sleva:
+                  <span className="text-sm  text-[#FF0000] lg:text-xl md:text-lg font-sans ml-2">
                     – 8 579 Kč
                   </span>
-                </div>
+                </span>
+
+
               </div>
               <a href="./details">
-                <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">
+                <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white lg:ml-20 lg:md-20  py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">
                   Zobrazit detail
                 </button>
               </a>
