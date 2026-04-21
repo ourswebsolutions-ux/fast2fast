@@ -40,34 +40,42 @@ const GuldenHeroSection: React.FC = () => {
         <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100 ">
             <div className="max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
 
-                {/* Sidebar */}
-                <div className="col-span-12 md:col-span-3 bg-black text-white">
-                    <ul className="flex flex-col">
-                        {navItems.map((item, i) => (
-                            <li
-                                key={i}
-                                className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
+              {/* Sidebar */}
+<div className="col-span-12 md:col-span-3 bg-black text-white">
+    <ul className="flex flex-col">
+        {navItems.map((item, i) => (
+            <li
+                key={i}
+                className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
                 ${item.active ? 'bg-[rgb(199,177,93)] text-white' : 'hover:bg-[rgb(199,177,93)]'}`}
-                            >
-                                <div className="flex items-center gap-2 md:gap-3">
-                                    {item.icon && (
-                                        <div
-                                            className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold
+            >
+                <div className="flex items-center gap-2 md:gap-3">
+                    {item.icon && (
+                        <div
+                            className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center text-[10px] md:text-xs font-bold
                       ${item.active ? 'text-white' : 'border-black bg-white text-black'}`}
-                                        >
-                                            {item.icon}
-                                        </div>
-                                    )}
-                                    <span className={`text-xs md:text-sm font-medium ${!item.icon ? 'ml-7 md:ml-9' : ''}`}>
-                                        {item.label}
-                                    </span>
-                                </div>
-
-                                {item.icon && <ChevronRight size={16} color='white' strokeWidth={4} className="md:w-5 md:h-5" />}
-                            </li>
-                        ))}
-                    </ul>
+                        >
+                            {/* Agar label Příslušenství hai to book icon dikhayega */}
+                            {item.label === 'Příslušenství' ? (
+                                <img src="/side-bar-icon-7.svg" alt="book" className="w-4.5 h-45" />
+                            ) : (
+                                item.icon
+                            )}
+                        </div>
+                    )}
+                    <span className={`text-xs md:text-sm font-medium ${!item.icon ? 'ml-7 md:ml-9' : ''}`}>
+                        {item.label}
+                    </span>
                 </div>
+
+                {/* Sirf Arrow change kiya hai (CSS Triangle) */}
+                {item.icon && (
+                    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[6px] border-l-white"></div>
+                )}
+            </li>
+        ))}
+    </ul>
+</div>
 
                 {/* Hero */}
                 <div className="col-span-12 md:col-span-9 bg-gray-200 p-5 sm:p-6 md:p-12 relative">

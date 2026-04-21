@@ -7,16 +7,14 @@ import {
   BarChart2,
   ChartNoAxesCombined,
   TrendingUp,
-  
   LineChart,
   AreaChart,
 } from "lucide-react";
-import { FcCandleSticks, } from "react-icons/fc";
+import { FcCandleSticks } from "react-icons/fc";
 import { MdOutlineShowChart } from "react-icons/md";
 import { BsBarChartLine } from "react-icons/bs";
 import { BiCandles } from "react-icons/bi";
 import { OHLCBarsIcon } from "../Customicons";
-
 
 type ChartType = "line" | "candlestick" | "bars" | "area";
 
@@ -40,23 +38,25 @@ const GraphToolbar: React.FC<Props> = ({
   downloadChart,
 }) => {
   return (
-    <div className="flex items-center h-[45px] border-b border-gray-200 px-3 gap-1 bg-white text-[13px] select-none">
+    /* Added overflow-x-auto, no-scrollbar, and whitespace-nowrap for mobile scroll */
+    <div className="flex items-center h-[45px] border-b border-gray-200 px-3 gap-1 bg-white text-[13px] select-none overflow-x-auto no-scrollbar whitespace-nowrap">
+      
       {/* ASSET NAME */}
-      <div className="flex items-center pr-3 border-r border-gray-100 h-full">
+      <div className="flex items-center pr-3 border-r border-gray-100 h-full flex-shrink-0">
         <span className="font-bold text-black tracking-tight">GOLD</span>
       </div>
 
       {/* PLUS CIRCLE */}
-      <div className="px- ml-6 cursor-pointer hover:bg-gray-100 h-full flex items-center justify-center">
+      <div className="ml-6 cursor-pointer hover:bg-gray-100 h-full flex items-center justify-center px-1 flex-shrink-0">
         <div className="border border-gray-400 rounded-full p-[1px]">
           <Plus size={14} className="text-gray-600" />
         </div>
       </div>
 
-      <div className="h-4 w-[1px] bg-gray-200 mx-1" />
+      <div className="h-4 w-[1px] bg-gray-200 mx-1 flex-shrink-0" />
 
       {/* TIMEFRAME SECTION */}
-      <div className="flex items-center">
+      <div className="flex items-center flex-shrink-0">
         {["1m", "30m", "1h"].map((t) => (
           <button
             key={t}
@@ -77,30 +77,25 @@ const GraphToolbar: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="h-4 w-[1px] bg-gray-200 mx-1" />
+      <div className="h-4 w-[1px] bg-gray-200 mx-1 flex-shrink-0" />
 
       {/* CHART TYPES */}
-      <div className="flex items-center gap-1">
-       
+      <div className="flex items-center gap-1 flex-shrink-0">
         <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
-          <OHLCBarsIcon size={22}  />
+          <OHLCBarsIcon size={22} />
         </div>
-         <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
-          <BiCandles size={22}  />
+        <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
+          <BiCandles size={22} />
         </div>
         <div 
           className={`p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm ${chartType === 'candlestick' ? 'text-blue-600' : 'text-gray-500'}`}
           onClick={() => setChartType('candlestick')}
         >
-          <BsBarChartLine size={18}  />
+          <BsBarChartLine size={18} />
         </div>
 
-        <div 
-          className={`p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500`}
-          
-        >
-          <MdOutlineShowChart size={18}  />
-
+        <div className="p-1.5 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500">
+          <MdOutlineShowChart size={18} />
         </div>
         
         <div className="flex items-center p-1 cursor-pointer hover:bg-gray-100 rounded-sm text-gray-500 gap-[2px]">
@@ -108,11 +103,11 @@ const GraphToolbar: React.FC<Props> = ({
         </div>
       </div>
 
-      <div className="h-4 w-[1px] bg-gray-200 mx-1" />
+      <div className="h-4 w-[1px] bg-gray-200 mx-1 flex-shrink-0" />
 
       {/* INDICATORS SECTION */}
       <div
-        className="flex items-center gap-2 px-3 py-1 cursor-pointer hover:bg-gray-100 rounded-sm group"
+        className="flex items-center gap-2 px-3 py-1 cursor-pointer hover:bg-gray-100 rounded-sm group flex-shrink-0"
         onClick={() => setShowIndicator(!showIndicator)}
       >
         <ChartNoAxesCombined 
@@ -120,13 +115,13 @@ const GraphToolbar: React.FC<Props> = ({
             className={`${showIndicator ? "text-blue-600" : "text-gray-700"}`} 
             strokeWidth={1.5} 
         />
-        <span className={`${showIndicator ? "text-yellow-600" : "text-gray-700"}font-medium`}>Indicators</span>
+        <span className={`${showIndicator ? "text-yellow-600" : "text-gray-700"} font-medium`}>Indicators</span>
       </div>
 
       {/* SNAPSHOT/CAMERA */}
-      <div className="ml-auto flex items-center  border-gray-200 h-full px-">
+      <div className="ml-auto flex items-center border-gray-200 h-full px-2 flex-shrink-0">
         <div 
-          className=" hover:bg-gray-100 rounded-sm cursor-pointer text-gray-600"
+          className="hover:bg-gray-100 rounded-sm cursor-pointer text-gray-600 p-1"
           onClick={downloadChart}
         >
           <Camera size={20} strokeWidth={1.5} />

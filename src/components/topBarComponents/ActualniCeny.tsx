@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { ChevronDown, TrendingDown, TrendingUp } from "lucide-react";
+import { ChevronDown,   ArrowDown,ArrowUp } from "lucide-react";
 import { cn } from "@/lib/utils";
+
 
 /* ================= CHART JS ================= */
 import {
@@ -13,6 +14,7 @@ import {
   LineElement,
   Tooltip,
   Filler,
+
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 
@@ -62,17 +64,17 @@ const MetalPriceCard = ({ data }: { data: MetalData }) => {
   return (
     <div className="border border-white/70 hover:border-white/100 p-6 flex flex-col items-center bg-black rounded-sm group hover:border-white transition-all duration-300 min-w-[300px] md:min-w-0">
       
-      <span className="text-[#C9B067] text-[13px]  tracking-[0.4em] mb-5 font-bold">
+      <span className="text-[#C9B067] text-[24px]   mb-5 font-bold">
         {data.name}
       </span>
 
       {/* PRICE SECTION - Dynamic Currency & Unit */}
       <div className="flex items-baseline gap-1.5 mb-3">
-        <span className="text-white text-[24px] font-bold tracking-tight">
+        <span className="text-white text-[20px] font-bold tracking-tight">
           {data.price}
         </span>
         <span className="text-zinc-200 text-[16px] font-bold  tracking-tight">
-          <span className="uppercase text-[24px]">{data.currency}</span>/{data.unit}
+          <span className="uppercase text-[20px]">{data.currency}</span>/{data.unit}
         </span>
       </div>
 
@@ -82,7 +84,7 @@ const MetalPriceCard = ({ data }: { data: MetalData }) => {
           data.isDown ? "text-[#fca5a5] bg-[#7f1d1d]" : "text-[#6ee7b7] bg-[#064e3b]"
         )}
       >
-        {data.isDown ? <TrendingDown size={14} /> : <TrendingUp size={14} />}
+        {data.isDown ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
         <span>{data.changeValue} ({data.changePercent})</span>
       </div>
 
@@ -161,7 +163,7 @@ export default function ActualniCeny() {
         <div className="flex flex-col md:flex-row justify-between items-start gap-6 mb-12">
           <div className="flex flex-col md:flex-row md:items-end gap-6">
             <h2 className="text-[#C9B067] text-[30px] font-medium leading-tight">Aktuální ceny</h2>
-            <p className="text-zinc-500 text-[12px] font-bold">Aktualizováno: 15. 2. 2023 20.30</p>
+            <p className="text-zinc-200 text-[12px] font-bold">Aktualizováno: 15. 2. 2023 20.30</p>
           </div>
 
           <div ref={dropdownRef} className="flex gap-3">
@@ -176,7 +178,7 @@ export default function ActualniCeny() {
               {openDropdown === "currency" && (
                 <div className="absolute mt-1 bg-[#111] border border-zinc-800 w-full rounded-sm z-50 shadow-xl">
                   {currencies.map((c) => (
-                    <div key={c} onClick={() => { setCurrency(c); setOpenDropdown(null); }} className="px-4 py-2 text-sm text-white hover:bg-zinc-900 cursor-pointer">{c}</div>
+                    <div key={c} onClick={() => { setCurrency(c); setOpenDropdown(null); }} className="px-4 py-2 text-sm text-black bg-white hover:bg-[#C9B067] hover:text-white cursor-pointer">{c}</div>
                   ))}
                 </div>
               )}
@@ -193,7 +195,7 @@ export default function ActualniCeny() {
               {openDropdown === "unit" && (
                 <div className="absolute mt-1 bg-[#111] border border-zinc-800 w-full rounded-sm z-50 shadow-xl">
                   {units.map((u) => (
-                    <div key={u} onClick={() => { setUnit(u); setOpenDropdown(null); }} className="px-4 py-2 text-sm text-white hover:bg-zinc-900 cursor-pointer">{u}</div>
+                    <div key={u} onClick={() => { setUnit(u); setOpenDropdown(null); }} className="px-4 py-2 text-sm text-black bg-white hover:bg-[#C9B067] hover:text-white cursor-pointer">{u}</div>
                   ))}
                 </div>
               )}
