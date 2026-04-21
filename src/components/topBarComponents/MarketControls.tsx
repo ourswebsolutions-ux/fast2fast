@@ -27,14 +27,14 @@ export default function MarketControls() {
   const [activeTab, setActiveTab] = useState("Graf");
   const [currency, setCurrency] = useState("USD $");
   const [timeOfDay, setTimeOfDay] = useState("AM – Dopolední cena");
+  const [selectedYear, setSelectedYear] = useState("2023");
+  
+  // Naya state time filter buttons ke liye
+  const [activeTimeFilter, setActiveTimeFilter] = useState("1 den");
 
   const currencies = ["USD $", "GBP £", "EUR €", "CZK Kč", "PLN zł"];
   const timeFilters = ["1 den", "Týden", "Měsíc", "Rok", "Celá historie"];
-  // Ye arrays ke paas rakhein
   const years = ["2026", "2025", "2024", "2023", "2022", "2021", "2020"];
-
-  // Ye component ke andar, baki states ke sath rakhein
-  const [selectedYear, setSelectedYear] = useState("2023");
 
   const tableData = [
     { date: "16-02-2023", usd: "1837,30", gbp: "1522,94", eur: "1715,67", czk: "1522,94", pln: "1715,67" },
@@ -53,9 +53,8 @@ export default function MarketControls() {
     <div className="w-full bg-black p-4 sm:p-6 font-sans select-none text-white overflow-hidden">
       <div className="max-w-[1350px] mx-auto">
 
-        {/* TABS - Updated with Right Side Dropdown from Image */}
+        {/* TABS */}
         <div className="flex justify-between items-center border-b border-zinc-800 mb-6">
-          {/* Left Side: Tabs */}
           <div className="flex gap-6 sm:gap-8">
             <button
               onClick={() => setActiveTab("Graf")}
@@ -77,20 +76,19 @@ export default function MarketControls() {
             </button>
           </div>
 
-          {/* Right Side: LBMA Gold prices Dropdown (as seen in image_af0fe9) */}
           <div className="hidden sm:flex items-center gap-2 text-white text-[12px] font-bold cursor-pointer group">
-            {/* Image wala circle/target icon */}
-            <div className="relative w-4 h-4 flex items-center justify-center  bg-[#00A5AD]">
+            <div className="relative w-4 h-4 flex items-center justify-center bg-[#00A5AD]">
               <div className="w-3 h-3 rounded-full border border-white" />
               <div className="absolute w-1 h-1 rounded-full bg-white" />
             </div>
-            <span className="group-hover:text-[#C4B06D] transition-colors  tracking-tight">
+            <span className="group-hover:text-[#C4B06D] transition-colors tracking-tight">
               LBMA Gold prices
             </span>
             <ChevronDown size={14} className="text-zinc-200" />
           </div>
         </div>
-        {/* CONTROLS - exact same as your second code (other design untouched) */}
+
+        {/* CONTROLS */}
         <div className="flex flex-col lg:grid lg:grid-cols-12 gap-4 items-center mb-8">
           <div className="w-full lg:col-span-3 flex gap-2">
             <div className="relative flex-1">
@@ -162,7 +160,7 @@ export default function MarketControls() {
           </div>
         </div>
 
-        {/* GRAPH + FILTERS - exactly same as your first component (graph area only changed) */}
+        {/* GRAPH + FILTERS */}
         {activeTab === "Graf" ? (
           <div className="animate-in fade-in duration-500">
             <div className="w-full h-[300px] sm:h-[480px] relative mb-12">
@@ -204,23 +202,26 @@ export default function MarketControls() {
               />
             </div>
 
-            {/* Time Filter Buttons - same as first */}
-            <div className="flex flex-wrap gap-2">
-              {timeFilters.map((f) => (
+            {/* Time Filter Buttons - Fix applied here */}
+            <div className="flex flex-wrap gap-2 mt-8">
+              {timeFilters.map((timeFrame) => (
                 <button
-                  key={f}
+                  key={timeFrame}
+                  onClick={() => setActiveTimeFilter(timeFrame)}
                   className={cn(
-                    "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
-                    f === "Celá historie" ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]" : "bg-black text-white border-zinc-800 hover:border-zinc-500"
+                    "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center ",
+                    activeTimeFilter === timeFrame
+                      ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]"
+                      : "bg-black text-white border-zinc-800 hover:border-zinc-500"
                   )}
                 >
-                  {f}
+                  {timeFrame}
                 </button>
               ))}
             </div>
           </div>
         ) : (
-          /* TABLE - exact same as your second code */
+          /* TABLE */
           <div className="w-full overflow-x-auto bg-black p-1">
             <table className="min-w-[700px] w-full text-left border-collapse">
               <thead>

@@ -261,7 +261,7 @@ export default function ExtendedChart() {
               className={cn(
                 "px-4 sm:px-5 py-2 text-[11px] sm:text-[12px] font-bold rounded-sm border transition-all active:scale-95 flex-grow sm:flex-grow-0 text-center",
                 activeFilter === filter
-                  ? "bg-[rgb(199,177,93)] text-black border-[#C9B067]"
+                  ? "bg-[rgb(199,177,93)] text-white border-[#C9B067]"
                   : "bg-black text-white border-zinc-800 hover:border-zinc-500"
               )}
             >
