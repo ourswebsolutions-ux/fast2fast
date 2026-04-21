@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const days = ["Po", "Út", "St", "Čt", "Pá", "So", "Ne"];
@@ -10,6 +10,8 @@ const monthNames = [
   "Leden", "Únor", "Březen", "Duben", "Květen", "Červen",
   "Červenec", "Srpen", "Září", "Říjen", "Listopad", "Prosinec"
 ];
+
+const years = Array.from({ length: 2026 - 2000 + 1 }, (_, i) => 2026 - i);
 
 const DoubleCalendar = ({
   onCancel,
@@ -38,6 +40,22 @@ const DoubleCalendar = ({
     const newDate = new Date(date);
     newDate.setMonth(newDate.getMonth() + count);
     return newDate;
+  };
+
+  const handleYearChange = (year: number) => {
+    const newDate = new Date(currentDate);
+    newDate.setFullYear(year);
+    setCurrentDate(newDate);
+  };
+
+  const handleMonthChange = (monthIdx: number, isRight: boolean) => {
+    const newDate = new Date(currentDate);
+    if (isRight) {
+      newDate.setMonth(monthIdx - 1);
+    } else {
+      newDate.setMonth(monthIdx);
+    }
+    setCurrentDate(newDate);
   };
 
   const handleDateClick = (date: Date) => {
@@ -114,36 +132,78 @@ const DoubleCalendar = ({
   const rightDate = addMonths(currentDate, 1);
 
   return (
-    <div className="absolute z-[100] bg-white text-black p-4 sm:p-6 shadow-2xl border border-zinc-200 mt-1 w-[92vw] sm:w-[680px] -left-4 sm:left-0 top-[110%] rounded-md overflow-hidden">
+    <div className="absolute z-[100] bg-white text-black p-4 sm:p-6 shadow-2xl border border-zinc-200 mt-1 w-[92vw] sm:w-[680px] -left-4 sm:left-0 top-[110%] rounded-md">
       
-      {/* Scroll indicator for mobile only */}
-      <div className="sm:hidden text-center text-[10px] text-zinc-400 mb-3 font-bold uppercase tracking-widest">
-        ← Swipe for next month →
-      </div>
-
-      {/* Scroller: Only active on mobile (overflow-x-auto), desktop is normal (sm:overflow-visible) */}
-      <div className="flex overflow-x-auto sm:overflow-visible snap-x snap-mandatory scrollbar-hide gap-4 sm:gap-10">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-10">
         
-        {/* Month 1 */}
-        <div className="min-w-full sm:min-w-0 flex-1 snap-center">
-          <div className="flex justify-between items-center mb-4 px-1">
-            <ChevronLeft size={20} onClick={() => setCurrentDate(addMonths(currentDate, -1))} className="cursor-pointer text-zinc-400 hover:text-black hover:bg-zinc-100 rounded-full transition-colors" />
-            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase">
+        {/* Left Month Section */}
+        <div className="flex-1">
+          {/* Dropdown Section Left */}
+          <div className="flex gap-6 mb-4 border-b border-zinc-100 pb-2">
+            <div className="relative flex items-center group">
+              <select 
+                value={leftDate.getMonth()} 
+                onChange={(e) => handleMonthChange(Number(e.target.value), false)} 
+                className="appearance-none bg-transparent text-[15px] font-medium outline-none cursor-pointer pr-5 z-10"
+              >
+                {monthNames.map((name, i) => <option key={i} value={i}>{name}</option>)}
+              </select>
+              <ChevronDown size={14} className="text-zinc-400 absolute right-0 pointer-events-none group-hover:text-black transition-colors" />
+            </div>
+
+            <div className="relative flex items-center group">
+              <select 
+                value={leftDate.getFullYear()} 
+                onChange={(e) => handleYearChange(Number(e.target.value))} 
+                className="appearance-none bg-transparent text-[15px] font-medium outline-none cursor-pointer pr-5 z-10"
+              >
+                {years.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
+              <ChevronDown size={14} className="text-zinc-400 absolute right-0 pointer-events-none group-hover:text-black transition-colors" />
+            </div>
+          </div>
+
+          <div className="relative flex items-center justify-center mb-4">
+            <ChevronLeft size={20} onClick={() => setCurrentDate(addMonths(currentDate, -1))} className="absolute left-0 cursor-pointer text-zinc-400 hover:text-black" />
+            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase text-center">
               {monthNames[leftDate.getMonth()]} {leftDate.getFullYear()}
             </span>
-            <div className="w-5 sm:hidden" /> 
           </div>
           {renderMonth(leftDate)}
         </div>
 
-        {/* Month 2 */}
-        <div className="min-w-full sm:min-w-0 flex-1 snap-center sm:border-l sm:border-zinc-100 sm:pl-10 border-t sm:border-t-0 mt-4 sm:mt-0 pt-4 sm:pt-0">
-          <div className="flex justify-between items-center mb-4 px-1">
-            <div className="w-5 sm:hidden" />
-            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase">
+        {/* Right Month Section */}
+        <div className="flex-1 sm:border-l sm:border-zinc-100 sm:pl-10">
+          {/* Dropdown Section Right-Aligned */}
+          <div className="flex justify-end gap-6 mb-4 border-b border-zinc-100 pb-2">
+            <div className="relative flex items-center group">
+              <select 
+                value={rightDate.getMonth()} 
+                onChange={(e) => handleMonthChange(Number(e.target.value), true)} 
+                className="appearance-none bg-transparent text-[15px] font-medium outline-none cursor-pointer pr-5 z-10"
+              >
+                {monthNames.map((name, i) => <option key={i} value={i}>{name}</option>)}
+              </select>
+              <ChevronDown size={14} className="text-zinc-400 absolute right-0 pointer-events-none group-hover:text-black transition-colors" />
+            </div>
+
+            <div className="relative flex items-center group">
+              <select 
+                value={rightDate.getFullYear()} 
+                onChange={(e) => handleYearChange(Number(e.target.value))} 
+                className="appearance-none bg-transparent text-[15px] font-medium outline-none cursor-pointer pr-5 z-10"
+              >
+                {years.map(y => <option key={y} value={y}>{y}</option>)}
+              </select>
+              <ChevronDown size={14} className="text-zinc-400 absolute right-0 pointer-events-none group-hover:text-black transition-colors" />
+            </div>
+          </div>
+
+          <div className="relative flex items-center justify-center mb-4">
+            <span className="font-bold text-[13px] sm:text-[14px] tracking-wider text-zinc-800 uppercase text-center">
               {monthNames[rightDate.getMonth()]} {rightDate.getFullYear()}
             </span>
-            <ChevronRight size={20} onClick={() => setCurrentDate(addMonths(currentDate, 1))} className="cursor-pointer text-zinc-400 hover:text-black hover:bg-zinc-100 rounded-full transition-colors" />
+            <ChevronRight size={20} onClick={() => setCurrentDate(addMonths(currentDate, 1))} className="absolute right-0 cursor-pointer text-zinc-400 hover:text-black" />
           </div>
           {renderMonth(rightDate)}
         </div>
@@ -153,7 +213,7 @@ const DoubleCalendar = ({
         <button onClick={onCancel} className="text-[13px] sm:text-[14px] font-bold text-zinc-800 underline underline-offset-4 hover:text-black order-2 sm:order-1">
           Zrušit výběr
         </button>
-        <button onClick={() => onConfirm(range)} className="w-full sm:w-auto bg-[#C4B06D] text-white px-8 py-3 text-[13px] sm:text-[14px] font-bold hover:bg-[#b3a05f] transition-colors rounded-sm shadow-sm order-1 sm:order-2">
+        <button onClick={() => onConfirm(range)} className="w-full sm:w-auto bg-[#C4B06D] text-white px-8 py-3 text-[13px] sm:text-[14px] font-bold hover:bg-[#b3a05f] transition-colors rounded-sm order-1 sm:order-2 shadow-sm">
           Potvrdit výběr
         </button>
       </div>

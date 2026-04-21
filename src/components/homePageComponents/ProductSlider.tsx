@@ -11,6 +11,7 @@ const productsData = [
   { id: 4, title: "American eagle silver", price: "od 867 Kč", badges: ["Tip"], image: "/imgcoin432.svg", rating: 5 },
 ];
 
+
 const ProductSlider = () => {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [quantities, setQuantities] = useState<Record<number, number>>({});
@@ -18,6 +19,14 @@ const ProductSlider = () => {
     { loop: true, align: 'start' },
     [Autoplay({ delay: 3000, stopOnInteraction: false })]
   );
+
+  const [active, setActive] = useState(0);
+
+const buttons = [
+  "Nejnovější výrobky",
+  "Investiční příležitosti",
+  "Oblíbené dárky"
+];
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -43,11 +52,21 @@ const ProductSlider = () => {
         <div className="text-center mb-10">
           <h2 className="text-4xl text-gray-800 font-light mb-10">Vybrali jsme pro Vás</h2>
 
-          {/* Top Buttons - Full Width (1350px) with Gap */}
-          <div className="flex flex-col md:flex-row justify-between gap-4 w-full">
-            <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm tracking-wider outline hover:bg-[rgb(199,177,93)] transition-all">Nejnovější výrobky</button>
-            <button className="flex-1 bg-white text-gray-600 border border-[rgb(199,177,93)] py-3.5 text-sm tracking-wider hover:bg-[rgb(199,177,93)] hover:text-white transition-all"> Investiční příležitosti</button>           
-             <button className="flex-1 bg-[rgb(199,177,93)] text-white py-3.5 text-sm  tracking-wider hover:bg-[rgb(199,177,93)] transition-all">Oblíbené dárky</button>
+          <div className="flex flex-col md:flex-row justify-between gap-4 w-full max-w-[1350px] mx-auto px-4 mt-10">
+            {buttons.map((text, index) => (
+              <button
+                key={index}
+                // Click karne par index update ho jata hai
+                onClick={() => setActive(index)}
+                className={`flex-1 py-3.5 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] 
+            ${active === index
+                    ? "bg-[#C7B15D] text-white hover:bg-[#b59f52]" // Jo Clicked hai uska style
+                    : "bg-white text-gray-600 hover:bg-[#C7B15D] hover:text-white" // Jo Clicked nahi hai uska style
+                  }`}
+              >
+                {text}
+              </button>
+            ))}
           </div>
         </div>
 

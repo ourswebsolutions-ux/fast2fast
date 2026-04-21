@@ -47,7 +47,7 @@ const GuldenHeroSection: React.FC = () => {
                             <li
                                 key={i}
                                 className={`flex items-center justify-between px-3 md:px-4 py-3 md:py-4 border-b border-gray-800 cursor-pointer
-                ${item.active ? 'bg-[rgb(199,177,93)] text-black' : 'hover:bg-[rgb(199,177,93)]'}`}
+                ${item.active ? 'bg-[rgb(199,177,93)] text-white' : 'hover:bg-[rgb(199,177,93)]'}`}
                             >
                                 <div className="flex items-center gap-2 md:gap-3">
                                     {item.icon && (

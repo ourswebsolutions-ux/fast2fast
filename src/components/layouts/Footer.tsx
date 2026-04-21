@@ -35,20 +35,23 @@ const Footer = () => {
 
                         </div>
 
-                        {/* Content */}
-                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between  text-center lg:text-left">
-                            <div className="lg:w-1/2  sm:m-2  text-3xl md:text-3xl lg:text-4xl font-serif text-white leading-tight lg:pr-10">
+                        {/* Content - Původní styl, fixnutý pro small screens */}
+                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-8">
+
+                            {/* Text - Vráceno původní text-3xl a 4xl, fixnuto pro small screen přes md:w-auto */}
+                            <div className="w-full md:w-auto flex-1 text-3xl md:text-3xl lg:text-4xl font-serif text-white leading-tight md:pr-10">
                                 Nezmeškejte žádné novinky či slevy!
                             </div>
 
-                            <div className="w-full lg:w-1/2  flex justify-center lg:justify-start">
-                                <div className="flex flex-col sm:flex-row gap-4 items-center w-full max-w-md lg:max-w-none">
+                            {/* Input Box - Původní barvy a paddingy */}
+                            <div className="w-full md:w-auto flex justify-center md:justify-start">
+                                <div className="flex flex-col sm:flex-row gap-4 items-center w-full max-w-md md:max-w-none">
                                     <input
                                         type="email"
                                         placeholder="Napište Váš e-mail"
                                         className="bg-black/20 border-none px-6 py-4.5 w-full sm:w-64 lg:w-70 text-white placeholder:text-white/80 outline-none focus:bg-black/30 transition-all text-sm "
                                     />
-                                    <button className="bg-[rgb(199,177,93)]  text-white px-6 py-4.5  font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
+                                    <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(167,145,75)] text-white px-6 py-4.5 font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
                                         Přihlásit k odběru
                                     </button>
                                 </div>

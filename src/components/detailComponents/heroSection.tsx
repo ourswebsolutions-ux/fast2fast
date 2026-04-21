@@ -61,6 +61,8 @@ const HeroSection: React.FC = () => {
         ));
     };
 
+    const [selectedImage, setSelectedImage] = useState(null);
+
     const toggleCheckbox = (index: number) => {
         setSelectedAccs(prev =>
             prev.includes(index) ? prev.filter(i => i !== index) : [...prev, index]
@@ -108,8 +110,24 @@ const HeroSection: React.FC = () => {
                         </div>
                         <div className="flex gap-2 mt-4 overflow-x-auto no-scrollbar">
                             {images.map((img, i) => (
-                                <div key={i} className={`min-w-[64px] w-16 h-16 md:w-20 md:h-20 border p-1 cursor-pointer ${i === 0 ? 'border-[rgb(199,177,93)]' : 'border-gray-300'}`}>
-                                    <img src={img} alt="thumb" className="w-full h-full object-contain" />
+                                <div
+                                    key={i}
+                                    onClick={() => setSelectedImage(i)} // Click karne par border golden hoga
+                                    className={`
+            min-w-[64px] w-16 h-16 md:w-20 md:h-20 
+            border p-1 cursor-pointer transition-all duration-200
+            /* Default sab gray border honge, sirf selected wala golden hoga */
+            ${selectedImage === i
+                                            ? 'border-[rgb(199,177,93)] border-2'
+                                            : 'border-gray-300 hover:border-[rgb(199,177,93)]'
+                                        }
+          `}
+                                >
+                                    <img
+                                        src={img}
+                                        alt="thumb"
+                                        className="w-full h-full object-contain"
+                                    />
                                 </div>
                             ))}
                         </div>
@@ -120,10 +138,10 @@ const HeroSection: React.FC = () => {
                         <h1 className="text-xl md:text-3xl font-medium text-[#292929]">
                             Kanada 50$ 2018 Maple Leaf 1 oz 999,9/1000 Au
                         </h1>
-                        
+
                         {/* Description Text - Font Size adjusted for Image matching */}
                         <p className="text-[#3b3a3a] text-[12px] md:text-[13.5px] mt-4 leading-relaxed max-w-[500px]">
-                            Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené ve zlatých dolech v Kanadě. 
+                            Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené ve zlatých dolech v Kanadě.
                             <span className="text-[rgb(199,177,93)] border-b border-[rgb(199,177,93)] cursor-pointer ml-1 font-medium whitespace-nowrap hover:text-[#b38f4d]">Více informací</span>
                         </p>
 
@@ -172,8 +190,8 @@ const HeroSection: React.FC = () => {
                                 <div className="w-10 h-full border border-gray-200 flex items-center justify-center bg-white text-sm font-bold text-[#333]">{quantity}</div>
                                 <button onClick={() => setQuantity(q => q + 1)} className="w-10 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={14} /></button>
                             </div>
-                            <button 
-                                onClick={() => (sellOption === 'Chci prodat' || sellOption === 'Na prodejně') && setIsPopupOpen(true)} 
+                            <button
+                                onClick={() => (sellOption === 'Chci prodat' || sellOption === 'Na prodejně') && setIsPopupOpen(true)}
                                 className="flex-1 bg-[#00A651] hover:bg-[#008d44] transition-colors text-white text-[12px] md:text-[13px] font-bold tracking-wider"
                             >
                                 {currentData.buttonLabel}
