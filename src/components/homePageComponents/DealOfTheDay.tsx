@@ -109,21 +109,21 @@ const DealOfTheDay = () => {
 
                 <span className="text-lg text-gray-800 block">
                   Běžná cena:
-                  <span className="text-sm lg:text-xl md:text-xl text-gray-400 font-sans ml-1">
+                  <span className="text-sm lg:text-xl md:text-xl text-gray-400 font-sans ml-5">
                     42 895 Kč
                   </span>
                 </span>
 
                 <span className="text-lg text-gray-800 block">
                   Cena dnes:
-                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-3xl md:text-lg font-sans ml-2">
+                  <span className="text-sm  text-[rgb(199,177,93)] lg:text-3xl md:text-lg font-sans ml-6">
                     34 316 Kč
                   </span>
                 </span>
 
                 <span className="text-lg text-gray-800 ml-8 block">
                   Sleva:
-                  <span className="text-sm  text-[#FF0000] lg:text-xl md:text-lg font-sans ml-2">
+                  <span className="text-sm  text-[#FF0000] lg:text-xl  md:text-lg font-sans ml-5">
                     – 8 579 Kč
                   </span>
                 </span>
@@ -131,7 +131,7 @@ const DealOfTheDay = () => {
 
               </div>
               <a href="./details">
-                <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white lg:ml-20 lg:md-20  py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">
+                <button className="w-full md:w-auto bg-[rgb(199,177,93)] hover:bg-[#b39e55] text-white lg:ml-24 lg:md-24  py-4 px-12 transition-all duration-300 text-sm font-medium rounded-sm">
                   Zobrazit detail
                 </button>
               </a>
