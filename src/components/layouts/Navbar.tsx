@@ -211,9 +211,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center border gap-6">
-          <div className="hidden lg:flex items-center">
-            <div className="px-4 text-center cursor-pointer text-white group">
+        <div className="flex items-center border   -right-4">
+          <div className="hidden lg:flex items-center gap-5">
+            <div className="px- text-center cursor-pointer text-white group">
               <Heart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="text-[13px]">Oblíbené</span>
             </div>
@@ -221,7 +221,7 @@ export default function Navbar() {
               <User size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="text-[13px]">Přihlášení</span>
             </div>
-            <div className="px-4 text-center cursor-pointer text-white relative group">
+            <div className="px- text-center cursor-pointer text-white relative group">
               <ShoppingCart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="absolute top-[-5px] right-3 bg-[rgb(199,177,93)] text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center">9</span>
               <span className="text-[13px]">Košík</span>
