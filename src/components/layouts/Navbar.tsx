@@ -192,7 +192,7 @@ export default function Navbar() {
 
       {/* 2. MAIN NAVBAR CONTENT */}
       <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1412px] mx-auto justify-between relative z-50 bg-black">
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-3 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
           <p className="text-white lg:text-3xl md:text-3xl sm:text-2xl  ">GULDEN</p>
@@ -203,7 +203,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-15">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
-            <span className="text-white text-lg font-bold">800 01 02 03</span>
+            <span className="text-white text-medium font-bold">800 01 02 03</span>
           </div>
           <div className="flex flex-1 max-w-[500px] h-[45px]">
             <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
