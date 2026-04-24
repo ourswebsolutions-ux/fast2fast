@@ -28,7 +28,7 @@ import ExtendedChart from "../topBarComponents/ExtendedChart";
 const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
   <div
     className={cn(
-      "flex items-center gap-1 whitespace-nowrap shrink-0 group transition-colors",
+      "flex items-center gap-0.5 whitespace-nowrap shrink-0 group transition-colors",
       hasDropdown ? "cursor-pointer" : "cursor-default",
       active ? "text-[rgb(199,177,93)]" : "text-white"
     )}
@@ -38,7 +38,7 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     <span className={cn("font-bold text-[12.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
+    {price && <span className="text-[11.5px] ml-0.5">{price}</span>}
     <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
