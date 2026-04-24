@@ -35,7 +35,7 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[12.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[12px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
     {price && <span className="text-[11.5px] ml-0.5">{price}</span>}
@@ -151,12 +151,12 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-6 shrink-0 ml-auto">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
-              <span className="text-white text-[12.5px] font-bold">Česky</span>
+              <span className="text-white text-[12px] font-bold">Česky</span>
               <ChevronDown size={14} className="text-white" />
             </div>
             <div className="flex items-center gap-2 cursor-pointer">
               <Database size={16} className="text-white" strokeWidth={2.5} />
-              <span className="text-white text-[13px] font-bold">CZK / Kč</span>
+              <span className="text-white text-[12px] font-bold">CZK / Kč</span>
               <ChevronDown size={14} className="text-white" />
             </div>
           </div>
