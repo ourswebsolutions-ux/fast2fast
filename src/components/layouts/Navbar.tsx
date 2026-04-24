@@ -28,7 +28,7 @@ import ExtendedChart from "../topBarComponents/ExtendedChart";
 const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
   <div
     className={cn(
-      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
+      "flex items-center gap-1 whitespace-nowrap shrink-0 group transition-colors",
       hasDropdown ? "cursor-pointer" : "cursor-default",
       active ? "text-[rgb(199,177,93)]" : "text-white"
     )}
