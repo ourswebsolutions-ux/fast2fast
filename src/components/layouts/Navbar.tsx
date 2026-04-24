@@ -43,14 +43,15 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
     </div>
-   {showIcon && (
+ {showIcon && (
   <div
     className={cn(
       "ml-0.5 transition-transform duration-300",
-      active && "rotate-90" // ya rotate-180 agar neeche/uppar flip chahiye
+      active && "rotate-180"
     )}
   >
-    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[6px] border-l-white"></div>
+    {/* Down arrow by default */}
+    <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-white"></div>
   </div>
 )}
   </div>
