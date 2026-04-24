@@ -28,17 +28,17 @@ import ExtendedChart from "../topBarComponents/ExtendedChart";
 const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
   <div
     className={cn(
-      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
+      "flex items-center gap-1 whitespace-nowrap shrink-0 group transition-colors",
       hasDropdown ? "cursor-pointer" : "cursor-default",
       active ? "text-[rgb(199,177,93)]" : "text-white"
     )}
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[12.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[10px] ml-0.5">{price}</span>}
+    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
     <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1350px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
 
-          <div className="flex items-center gap-7 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
+          <div className="flex items-center gap-6 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
             {/* Market Trigger */}
             <PriceItem
               label="Zlato" price="1249,3 USD/oz" change="0,06 $" isDown={true}
