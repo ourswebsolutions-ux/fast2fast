@@ -200,7 +200,7 @@ export default function Navbar() {
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-8 flex-1 justify-center px-10">
+        <div className="hidden lg:flex-start items-center gap-8 border flex-1 justify-center px-0">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Phone size={18} className="text-white group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-lg font-bold">800 01 02 03</span>
