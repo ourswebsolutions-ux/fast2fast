@@ -28,32 +28,24 @@ import ExtendedChart from "../topBarComponents/ExtendedChart";
 const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
   <div
     className={cn(
-      "flex items-center gap-0.5 whitespace-nowrap shrink-0 group transition-colors",
+      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
       hasDropdown ? "cursor-pointer" : "cursor-default",
       active ? "text-[rgb(199,177,93)]" : "text-white"
     )}
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[11.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[11.5px] ml-0.5">{price}</span>}
+    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
     <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
     </div>
- {showIcon && (
-  <div
-    className={cn(
-      "ml-1 transition-transform duration-300",
-      active && "rotate-180"
+    {showIcon && (
+      <ChevronDown size={14} className={cn("ml-0.5 font-bold transition-transform duration-300", active && "rotate-180")} />
     )}
-  >
-    {/* Down arrow by default */}
-    <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent mt-1 border-t-[5px] border-t-white"></div>
-  </div>
-)}
   </div>
 );
 
@@ -109,7 +101,7 @@ export default function Navbar() {
               onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
               onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
             >
-              <LineChart size={16} className="transform scale-x-[-1]" />
+              <LineChart size={16} />
               <span className="text-[13.5px] font-bold">Aktuální ceny</span>
               <ChevronDown size={14} className={cn("transition-transform duration-300", (pricesOpen || pricesPinned) && "rotate-180")} />
             </div>
