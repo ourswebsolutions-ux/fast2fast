@@ -82,7 +82,7 @@ export default function Navbar() {
         className="h-[40px] flex items-center border-b border-zinc-400 w-full relative z-[60]"
         onMouseLeave={handleMouseLeaveTopBar}
       >
-        <div className="max-w-[1350px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
+        <div className="max-w-[1450px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
 
           <div className="flex items-center gap-8 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
             {/* Market Trigger */}
