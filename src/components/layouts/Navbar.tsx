@@ -192,12 +192,12 @@ export default function Navbar() {
 
       {/* 2. MAIN NAVBAR CONTENT */}
       <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1412px] mx-auto justify-between relative z-50 bg-black">
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <p className="text-white text-4xl sm:text-4xl  ">GULDEN</p>
+          <p className="text-white lg:text-3xl md:text-3xl sm:text-2xl  ">GULDEN</p>
           </a>
-          <div className="w-2 h-2 bg-zinc-500 rotate-45"></div>
+          <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
         <div className="hidden lg:flex items-center gap-8 flex-1 justify-center px-10">
