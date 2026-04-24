@@ -111,7 +111,12 @@ export default function Navbar() {
             >
           <LineChart size={16} className="transform scale-x-[-1]" />
               <span className="text-[13.5px] font-bold">Aktuální ceny</span>
-              <ChevronDown size={14} className={cn("transition-transform duration-300", (pricesOpen || pricesPinned) && "rotate-180")} />
+           <div
+  className={cn(
+    "w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] mt-0.5 border-r-transparent border-t-[6px] border-t-white transition-transform duration-300",
+    (pricesOpen || pricesPinned) && "rotate-180"
+  )}
+/>
             </div>
 
             {/* Currency Chart Trigger */}
