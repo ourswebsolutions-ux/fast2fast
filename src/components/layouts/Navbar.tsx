@@ -35,7 +35,7 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[12.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[11.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
     {price && <span className="text-[11.5px] ml-0.5">{price}</span>}
