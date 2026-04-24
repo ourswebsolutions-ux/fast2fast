@@ -28,7 +28,7 @@ import ExtendedChart from "../topBarComponents/ExtendedChart";
 const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active, hasDropdown, showIcon = true }: any) => (
   <div
     className={cn(
-      "flex items-center gap-1 whitespace-nowrap shrink-0 group transition-colors",
+      "flex items-center gap-1.5 whitespace-nowrap shrink-0 group transition-colors",
       hasDropdown ? "cursor-pointer" : "cursor-default",
       active ? "text-[rgb(199,177,93)]" : "text-white"
     )}
@@ -200,7 +200,7 @@ export default function Navbar() {
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-16">
+        <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-15">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-lg font-bold">800 01 02 03</span>
