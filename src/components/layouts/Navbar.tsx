@@ -109,7 +109,7 @@ export default function Navbar() {
               onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
               onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
             >
-              <LineChart size={16} />
+          <LineChart size={16} className="transform scale-x-[-1]" />
               <span className="text-[13.5px] font-bold">Aktuální ceny</span>
               <ChevronDown size={14} className={cn("transition-transform duration-300", (pricesOpen || pricesPinned) && "rotate-180")} />
             </div>
