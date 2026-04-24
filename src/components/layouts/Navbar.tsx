@@ -38,8 +38,8 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
-    <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
+    {price && <span className="text-[13.5px] ">{price}</span>}
+    <div className={`flex items-center text-[13.5px] m font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
     </div>
@@ -195,7 +195,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <p className="text-white lg:text-3xl md:text-3xl sm:text-2xl  ">GULDEN</p>
+          <p className="text-white lg:text-2xl md:text-3xl sm:text-2xl  ">GULDEN</p>
           </a>
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
