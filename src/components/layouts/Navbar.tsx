@@ -44,7 +44,8 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
       <span>({change})</span>
     </div>
     {showIcon && (
-      <ChevronDown size={14} className={cn("ml-0.5 font-bold transition-transform duration-300", active && "rotate-180")} />
+                          <div className="w-0 h-0 border-t-[5px] border-t-transparent border-b-[5px] border-b-transparent border-l-[6px] border-l-white"></div>
+
     )}
   </div>
 );
