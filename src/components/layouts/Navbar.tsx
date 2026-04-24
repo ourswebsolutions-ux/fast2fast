@@ -46,12 +46,12 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
  {showIcon && (
   <div
     className={cn(
-      "ml-0.5 transition-transform duration-300",
+      "ml-1 transition-transform duration-300",
       active && "rotate-180"
     )}
   >
     {/* Down arrow by default */}
-    <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent border-t-[6px] border-t-white"></div>
+    <div className="w-0 h-0 border-l-[4px] border-l-transparent border-r-[4px] border-r-transparent mt-1 border-t-[5px] border-t-white"></div>
   </div>
 )}
   </div>
