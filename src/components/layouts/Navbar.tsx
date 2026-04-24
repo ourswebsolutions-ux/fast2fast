@@ -191,7 +191,7 @@ export default function Navbar() {
       </div>
 
       {/* 2. MAIN NAVBAR CONTENT */}
-      <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1412px] mx-auto justify-between relative z-50 bg-black">
+      <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1442px] mx-auto justify-between relative z-50 bg-black">
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
