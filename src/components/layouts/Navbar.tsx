@@ -148,7 +148,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop Selectors (Visible on LG) */}
-          <div className="hidden lg:flex items-center gap-6 ml- shrink-0">
+          <div className="hidden lg:flex items-center border border-red-3 gap-6 ml-6 shrink-">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
               <span className="text-white text-[13px] font-bold">Česky</span>
