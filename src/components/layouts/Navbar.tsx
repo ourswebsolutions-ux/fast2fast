@@ -35,10 +35,10 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[12px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[11.5px] ml-0.5">{price}</span>}
+    {price && <span className="text-[13.5px] ml-0.5">{price}</span>}
     <div className={`flex items-center text-[13.5px] ml-0.5 font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
@@ -151,12 +151,12 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-6 shrink-0 ml-auto">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
-              <span className="text-white text-[12px] font-bold">Česky</span>
+              <span className="text-white text-[13px] font-bold">Česky</span>
               <ChevronDown size={14} className="text-white" />
             </div>
             <div className="flex items-center gap-2 cursor-pointer">
               <Database size={16} className="text-white" strokeWidth={2.5} />
-              <span className="text-white text-[12px] font-bold">CZK / Kč</span>
+              <span className="text-white text-[13px] font-bold">CZK / Kč</span>
               <ChevronDown size={14} className="text-white" />
             </div>
           </div>
@@ -200,20 +200,20 @@ export default function Navbar() {
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-8  flex-1 justify-cent px-15">
+        <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-15">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-medium font-">800 01 02 03</span>
           </div>
           <div className="flex flex-1 max-w-[644px] px-1 h-[45px]">
             <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
-            <button className="w-[112px] bg-[rgb(199,177,93)] flex items-center justify-center hover:bg-[#b39e55]"><Search className="text-white" size={24} /></button>
+            <button className="w-[110px] bg-[rgb(199,177,93)] flex items-center justify-center hover:bg-[#b39e55]"><Search className="text-white" size={24} /></button>
           </div>
         </div>
 
-        <div className="flex items-center border   border-red-200 lg:ml-auto">
-          <div className="hidden lg:flex items-center gap-5">
-            <div className="px- text-center cursor-pointer text-white group">
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex items-center">
+            <div className="px-4 text-center cursor-pointer text-white group">
               <Heart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="text-[13px]">Oblíbené</span>
             </div>
@@ -221,7 +221,7 @@ export default function Navbar() {
               <User size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="text-[13px]">Přihlášení</span>
             </div>
-            <div className="px-1 text-center cursor-pointer text-white relative group">
+            <div className="px-4 text-center cursor-pointer text-white relative group">
               <ShoppingCart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="absolute top-[-5px] right-3 bg-[rgb(199,177,93)] text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center">9</span>
               <span className="text-[13px]">Košík</span>
