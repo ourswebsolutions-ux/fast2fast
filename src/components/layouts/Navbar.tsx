@@ -195,7 +195,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <p className="text-white lg:text-2xl md:text-3xl sm:text-2xl  ">GULDEN</p>
+          <p className="text-white lg:text-[26px] md:text-3xl sm:text-2xl  ">GULDEN</p>
           </a>
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
@@ -205,7 +205,7 @@ export default function Navbar() {
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-medium font-">800 01 02 03</span>
           </div>
-          <div className="flex flex-1 max-w-[696px] px-1 h-[45px]">
+          <div className="flex flex-1 max-w-[696px] px-2 h-[45px]">
             <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
             <button className="w-[110px] bg-[rgb(199,177,93)] flex items-center justify-center hover:bg-[#b39e55]"><Search className="text-white" size={24} /></button>
           </div>
