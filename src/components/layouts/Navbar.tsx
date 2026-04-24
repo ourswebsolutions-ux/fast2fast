@@ -76,7 +76,7 @@ export default function Navbar() {
       >
         <div className="max-w-[1350px] mx-auto w-full flex items-center justify-between px-4 overflow-hidden">
 
-          <div className="flex items-center gap-6 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
+          <div className="flex items-center gap-8 overflow-x-auto no-scrollbar py-2 w-full lg:w-auto">
             {/* Market Trigger */}
             <PriceItem
               label="Zlato" price="1249,3 USD/oz" change="0,06 $" isDown={true}
