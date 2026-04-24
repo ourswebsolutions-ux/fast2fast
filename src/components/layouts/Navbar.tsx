@@ -203,9 +203,9 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-15">
           <div className="flex items-center gap-3 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
-            <span className="text-white text-medium font-bold">800 01 02 03</span>
+            <span className="text-white text-medium font-">800 01 02 03</span>
           </div>
-          <div className="flex flex-1 max-w-[500px] h-[45px]">
+          <div className="flex flex-1 max-w-[500px] px-1 h-[45px]">
             <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
             <button className="w-[60px] bg-[rgb(199,177,93)] flex items-center justify-center hover:bg-[#b39e55]"><Search className="text-white" size={24} /></button>
           </div>
