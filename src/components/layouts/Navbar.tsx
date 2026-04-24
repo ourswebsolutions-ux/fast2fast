@@ -51,7 +51,7 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     )}
   >
     {/* Down arrow by default */}
-    <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent mt-0.5 border-t-[6px] border-t-white"></div>
+    <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
   </div>
 )}
   </div>
