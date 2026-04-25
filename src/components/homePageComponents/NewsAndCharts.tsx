@@ -89,7 +89,7 @@ const NewsAndCharts = () => {
                 <thead>
                   <tr className="bg-black text-white text-xs ">
                     {['Rok', 'Nominál', 'Název', 'Provedení', 'Materiál', 'Cena', 'Emisní den', 'Dostupnost', 'Objednat / rezervovat'].map((head) => (
-                      <th key={head} className="p-4 font-normal border-r border-gray-800 last:border-0">
+                      <th key={head} className="p-4 font-['Libre_Caslon_Text'] border-r border-gray-800 last:border-0">
                         <div className="flex items-center justify-between">
                           {head} {head !== 'Objednat / rezervovat' && <ChevronDown className="ml-2 text-white/600 w-3.5 h-3.5 sm:w-4 sm:h-4" />}
                         </div>
