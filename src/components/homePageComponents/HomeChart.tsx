@@ -193,7 +193,7 @@ const PriceChart = () => {
                             <div className="flex w-full mb-6 sm:mb-10 gap-2">
                                 <button
                                     onClick={() => setMetalToggle("zlato")}
-                                    className={`flex-1 py-2 text-[11px] font-bold ${metalToggle === "zlato"
+                                    className={`flex-1 py-2.5 text-[11px] font-bold ${metalToggle === "zlato"
                                         ? "bg-[rgb(199,177,93)] text-white"
                                         : "text-gray-400 bg-white border border-gray-200"
                                         }`}
