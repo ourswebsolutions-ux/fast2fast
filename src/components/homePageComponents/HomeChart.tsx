@@ -153,6 +153,10 @@ const PriceChart = () => {
                     unit: "month",
                     displayFormats: {
                         month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
+                    },
+                     unit: "year",
+                    displayFormats: {
+                        month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
                     }
                 },
                 ticks: {
