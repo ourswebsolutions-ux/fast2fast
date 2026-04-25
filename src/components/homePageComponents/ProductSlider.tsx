@@ -80,6 +80,7 @@ const ProductSlider = () => {
     -left-1 sm:-left-3 
     top-1/2 -translate-y-1/2
     z-20
+    lg:-mt-18
     lg:-left-10
     w-8 h-12 sm:w-10 sm:h-12 lg:w-12 lg:h-15
     bg-[rgb(199,177,93)]
@@ -102,6 +103,7 @@ const ProductSlider = () => {
     absolute 
     -right-1 sm:-right-5 lg:-right-10
     top-1/2 -translate-y-1/2
+    lg:-mt-18
     z-20
     w-8 h-12 sm:w-12 sm:h-10 lg:w-12 lg:h-15
     bg-[rgb(199,177,93)]
@@ -181,20 +183,20 @@ const ProductSlider = () => {
                       />
                       <Heart
                         size={20}
-                        className={`absolute bottom-0 right-0 -mb-4  cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
+                        className={`absolute bottom-0 right-0 -mb-6  cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
                           }`}
                       />
                     </div>
 
                     {/* Rating Section - Fixed height to prevent shift */}
-                    <div className="flex justify-center gap-0.5 mb-1 mt-4 h-4">
+                    <div className="flex justify-center gap-0.5 mb- mt-6 h-4">
                       {product.rating > 0 && [...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
                       ))}
                     </div>
 
                     {/* Title & Price */}
-                    <div className="text-center mb-5">
+                    <div className="text-center mb-8">
                       <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1">
                         {product.title}
                       </h3>
