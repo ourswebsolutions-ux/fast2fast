@@ -21,18 +21,18 @@ const Testimonials = () => {
   ];
 
   return (
-    <section className="bg-white w-full  overflow-hidden pb-20 md:pb-29">
-      <div className="mx-auto w-full max-w-[1350px] px-4 sm:px-6 lg:px-4">
+  <section className="bg-white w-full mt-5  overflow-hidden pb-20 md:pb-34">
+      <div className="mx-auto w-full max-w-[1412px]  px-4 sm:px-6 lg:px-4">
         
         {/* HEADER */}
-        <div className="flex flex-col items-center mb-10 md:mb-14">
-          <div className="flex gap-1.5 mb-4 md:mb-5">
+        <div className="flex flex-col items-center mb-10   md:mb-10">
+          <div className="flex gap-1.5 mb-4 md:mb-4">
             <span className="w-1.5 h-1.5 bg-zinc-200 rotate-45" />
             <span className="w-2 h-2 bg-zinc-200 rotate-45" />
             <span className="w-1.5 h-1.5 bg-zinc-200 rotate-45" />
           </div>
 
-          <h2 className="text-[22px] sm:text-[28px] md:text-[42px] font-serif text-[#1a1a1a] mb-6 md:mb-8 text-center tracking-tight leading-tight">
+          <h2 className="text-[22px] sm:text-[28px] md:text-[42px] font-serif text-[#1a1a1a] mb-6 md:mb-4 text-center tracking-tight leading-tight">
             Hodnocení od zákazníků
           </h2>
 
@@ -44,11 +44,11 @@ const Testimonials = () => {
         </div>
 
         {/* CARDS GRID */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-4 gap-4 sm:gap-6">
           {reviews.map((item, index) => (
             <div
               key={index}
-              className="relative border border-zinc-100 px-5 sm:px-6 py-8 md:py-10 flex flex-col items-center text-center bg-white shadow-[0_4px_20px_-5px_rgba(0,0,0,0.08)] hover:shadow-xl transition-all duration-500 group"
+              className="relative border border-zinc-100 px-5 sm:px-6 py-8 md:py-5.5 flex flex-col items-center text-center bg-white shadow-[0_4px_20px_-5px_rgba(0,0,0,0.08)] hover:shadow-xl transition-all duration-500 group"
             >
               {/* STARS */}
               <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 bg-white px-3 flex gap-0.5 z-10">
@@ -79,8 +79,8 @@ const Testimonials = () => {
         </div>
 
         {/* BUTTON */}
-        <div className="flex justify-center mr-3 mt-10 md:mt-14">
-          <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-5 sm:px-6 py-3 sm:py-4 text-[10px] font-bold  tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 w-full sm:w-auto max-w-[260px]">
+        <div className="flex justify-center mr-3 mt-4 md:mt-6">
+          <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-5 md:px-3.5 sm:px-6 py-3 md:py-4 sm:py-4 text-[10px] md:text-[14px] font-bold  tracking-[2px] transition-all duration-300 shadow-md hover:shadow-lg active:scale-95 w-full sm:w-auto max-w-[260px]">
             Další 23 hodnocení
           </button>
         </div>

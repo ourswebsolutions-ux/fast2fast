@@ -136,12 +136,12 @@ const NewsAndCharts = () => {
 
           {/* TAB 2: NEWS GRID */}
           {activeTab === 'news' && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1409px] mx-auto font-['Libre_Caslon_Text']">
+            <div className="grid grid-cols-1 md:grid-cols-4 lg:h-[496px]  gap-6 max-w-[1409px] mx-auto font-['Libre_Caslon_Text']">
               {newsData.map((item) => (
-                <div key={item.id} className="bg-white p-9 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
+                <div key={item.id} className="bg-white p-4 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
 
                   {/* Image Area */}
-                  <div className="w-full aspect-[3/] overflow-hidden mb-5 bg-gray-50 border border-gray-50">
+                  <div className="w-full h-[230px] p-4 overflow-hidden mb-5  ">
                     <img
                       src={item.img}
                       alt="news"
@@ -153,12 +153,12 @@ const NewsAndCharts = () => {
                   <p className="text-[11px] text-black-400 font-['Libre_Caslon_Text'] mb-3">{item.date}</p>
 
                   {/* Title */}
-                  <h4 className="text-[15px] text-[#C5B367] underline underline-offset-4 decoration-[#e5d9a5] leading-snug mb-4 font-light min-h-[40px]">
+                  <h4 className="text-[15px] text-[#C5B367] underline tracking-wider underline-offset-4 decoration-[#e5d9a5]  mb-4 font-['Libre_Caslon_Text'] min-h-[40px]">
                     {item.title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-[13px] text-gray-500 leading-relaxed line-clamp-4 font-light">
+                  <p className="text-[16px] text-black-500 leading-relaxed line-clamp-4 font-light">
                     {item.desc}
                   </p>
 
@@ -175,7 +175,7 @@ const NewsAndCharts = () => {
           {/* Load More Button */}
           {(activeTab === 'plan' || activeTab === 'news') && (
             <div className="mt-12 text-center">
-              <button className="bg-[rgb(199,177,93)] text-white py-3 px-10 text-sm hover:bg-[#b5a256] transition-colors">
+              <button className="bg-[rgb(199,177,93)] text-white py-3 px-10  lg:py-4 lg:px-13 text-sm hover:bg-[#b5a256] transition-colors">
                 Zobrazit další
               </button>
             </div>
