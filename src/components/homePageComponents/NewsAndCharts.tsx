@@ -51,7 +51,7 @@ const NewsAndCharts = () => {
   return (
     <div className="bg-white py-12 px-4 font-serif">
       {/* Container aligned to 1350px */}
-      <div className="max-w-[1412px] mx-auto">
+      <div className="max-w-[1409px] mx-auto">
 
         {/* Section Header */}
         <div className="text-center mb-10">
