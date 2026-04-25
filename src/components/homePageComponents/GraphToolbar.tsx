@@ -120,9 +120,9 @@ const GraphToolbar: React.FC<Props> = ({
       </div>
 
       {/* SNAPSHOT/CAMERA */}
-      <div className="ml-auto flex items-center border-gray-200 h-full px-2 flex-shrink-0">
+      <div className="ml-auto flex items-center border-gray-200 h-full  flex-shrink-0">
         <div 
-          className=" rounded-sm cursor-pointer text-gray-600 p-1"
+          className=" rounded-sm cursor-pointer text-gray-600 "
           onClick={downloadChart}
         >
           <Camera size={20} strokeWidth={1.5} />
