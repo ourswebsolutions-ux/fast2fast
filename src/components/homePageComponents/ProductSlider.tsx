@@ -105,7 +105,7 @@ const ProductSlider = () => {
     top-1/2 -translate-y-1/2
     lg:-mt-18
     z-20
-    w-8 h-12 sm:w-12 sm:h-10 lg:w-12 lg:h-15
+    w-8 h-12 sm:w-12 sm:h-10 lg:w-15 lg:h-15
     bg-[rgb(199,177,93)]
     flex items-center justify-center
     text-white
