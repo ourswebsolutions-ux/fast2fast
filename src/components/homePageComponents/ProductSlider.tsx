@@ -175,7 +175,7 @@ const ProductSlider = () => {
                       })}
                     </div>
                     {/* Image Wrapper - Center Aligned */}
-                    <div className="h-62 flex flex-col items-center -mt-6  justify-center relative mb-6">
+                    <div className="h-62 flex flex-col items-center -mt-8  justify-center relative mb-6">
                       <img
                         src={product.image}
                         alt={product.title}
