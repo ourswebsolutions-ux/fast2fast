@@ -109,7 +109,7 @@ const NewsAndCharts = () => {
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
                       <td className="p-4 border-r border-gray-100 font-sans">2016</td>
                       <td className="p-4 border-r border-gray-100 font-sans">{row.nominal}</td>
-                      <td className="p-4 border-r border border-gray-100  decoration-gray-300">{row.name}</td>
+                      <td className="p-4 border-r border border-gray-100 w-[200px] decoration-gray-300">{row.name}</td>
                       <td className="p-4 border-r border-gray-100">{row.quality}</td>
                       <td className="p-4 border-r border-gray-100">{row.material}</td>
                       <td className="p-4 border-r border-gray-100 font-sans">299.99 Kč</td>
