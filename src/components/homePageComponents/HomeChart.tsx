@@ -184,8 +184,8 @@ const PriceChart = () => {
 
     return (
         <div className="w-full overflow-x-hidden">
-            <div className="mx-auto">
-                <div className="min-h-[550px]">
+            <div className="mx-auto border">
+                <div className="min-h-[550px] border">
                     <div className="flex flex-col lg:flex-row gap-5 items-stretch">
 
                         {/* SIDEBAR - Restored Padding and Width */}
