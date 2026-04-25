@@ -50,7 +50,7 @@ const ProductSlider = () => {
         </div>
 
         <div className="text-center mb-10">
-          <h2 className="text-4xl text-gray-800 font-light mb-10">Vybrali jsme pro Vás</h2>
+          <h2 className="text-4xl text-gray-800 font-ligh font-['Libre_Caslon_Text']t mb-10">Vybrali jsme pro Vás</h2>
 
           <div className="flex flex-col md:flex-row justify-between gap-4 w-full max-w-[1412px] mx-auto px-2 mt-10">
             {buttons.map((text, index) => (
