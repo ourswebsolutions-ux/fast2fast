@@ -235,7 +235,7 @@ const PriceChart = () => {
 
                             <div className="flex-1 px-2 pb-4 pt-4 relative">
                                 {/* CHART FULL - Responsive Height preserved */}
-                                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[480px] relative">
+                                <div className="w-full h-[320px] sm:h-[380px] md:h-[420px] lg:h-[520px] relative">
                                     <Chart
                                         ref={chartRef}
                                         type={chartType }
