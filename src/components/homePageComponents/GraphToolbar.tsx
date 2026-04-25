@@ -40,7 +40,7 @@ const GraphToolbar: React.FC<Props> = ({
 }) => {
   return (
     /* Added overflow-x-auto, no-scrollbar, and whitespace-nowrap for mobile scroll */
-    <div className="flex items-center h-[45px] border-b border-gray-200 px-3 gap-1 bg-white text-[13px] select-none overflow-x-auto no-scrollbar whitespace-nowrap">
+    <div className="flex items-center h-[38px] border-b border-gray-200 px-3 gap-1 bg-white text-[13px] select-none overflow-x-auto no-scrollbar whitespace-nowrap">
       
       {/* ASSET NAME */}
       <div className="flex items-center pr-3  border-gray-100 h-full flex-shrink-0">
