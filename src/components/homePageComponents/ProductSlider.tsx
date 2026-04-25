@@ -22,11 +22,11 @@ const ProductSlider = () => {
 
   const [active, setActive] = useState(0);
 
-const buttons = [
-  "Nejnovější výrobky",
-  "Investiční příležitosti",
-  "Oblíbené dárky"
-];
+  const buttons = [
+    "Nejnovější výrobky",
+    "Investiční příležitosti",
+    "Oblíbené dárky"
+  ];
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
@@ -40,7 +40,7 @@ const buttons = [
 
   return (
     <div className="  px-4 font-serif">
-      <div className="max-w-[1350px] mx-auto">
+      <div className="max-w-[1412px] mx-auto">
 
         {/* Diamond Icons Top Center */}
         <div className="flex justify-center items-center gap-1.5 mb-4">
@@ -52,13 +52,13 @@ const buttons = [
         <div className="text-center mb-10">
           <h2 className="text-4xl text-gray-800 font-light mb-10">Vybrali jsme pro Vás</h2>
 
-          <div className="flex flex-col md:flex-row justify-between gap-4 w-full max-w-[1350px] mx-auto px-4 mt-10">
+          <div className="flex flex-col md:flex-row justify-between gap-4 w-full max-w-[1412px] mx-auto px-2 mt-10">
             {buttons.map((text, index) => (
               <button
                 key={index}
                 // Click karne par index update ho jata hai
                 onClick={() => setActive(index)}
-                className={`flex-1 py-3.5 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] 
+                className={`flex-1 py-2 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] 
             ${active === index
                     ? "bg-[#C7B15D] text-white hover:bg-[#b59f52]" // Jo Clicked hai uska style
                     : "bg-white text-gray-600 hover:bg-[#C7B15D] hover:text-white" // Jo Clicked nahi hai uska style
@@ -80,7 +80,8 @@ const buttons = [
     -left-1 sm:-left-3 
     top-1/2 -translate-y-1/2
     z-20
-    w-8 h-12 sm:w-10 sm:h-12 lg:w-8 lg:h-12
+    lg:-left-10
+    w-8 h-12 sm:w-10 sm:h-12 lg:w-12 lg:h-15
     bg-[rgb(199,177,93)]
     flex items-center justify-center
     text-white
@@ -99,10 +100,10 @@ const buttons = [
             onClick={scrollNext}
             className="
     absolute 
-    -right-1 sm:-right-5 lg:-right-3
+    -right-1 sm:-right-5 lg:-right-10
     top-1/2 -translate-y-1/2
     z-20
-    w-8 h-12 sm:w-12 sm:h-10 lg:w-8 lg:h-12
+    w-8 h-12 sm:w-12 sm:h-10 lg:w-12 lg:h-15
     bg-[rgb(199,177,93)]
     flex items-center justify-center
     text-white
@@ -116,12 +117,12 @@ const buttons = [
             <ChevronRight size={18} className="sm:size-5 lg:size-6" />
           </button>
 
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex">
+          <div className="overflow-hidden -mx-3 max-w-[1412px] " ref={emblaRef}>
+            <div className="flex max-w-[1412px]">
               {productsData.map((product) => (
-                <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
+                <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] justify-between lg:flex-[0_0_25%] min-w-0 px-2 ">
                   <div
-                    className={`bg-white p-6 border-2 border-gray-300 h-full flex flex-col relative transition-all duration-300  hover:border-[#C5B367] 
+                    className={`bg-white p-6  border-2 border-gray-100 lg:h-[540px]   flex flex-col relative transition-all duration-300  hover:border-[#C5B367] 
                       } ${selectedId === product.id ? 'shadow-lg' : ''}`}
                     onClick={() => setSelectedId(product.id)}
                   >
@@ -133,7 +134,7 @@ const buttons = [
                         return isNew ? (
                           <div
                             key={badge}
-                            className="inline-block w-fit p-[1px] bg-gray-300"
+                            className="inline-block -ml-2 w-fit p-[1px] bg-gray-300"
                             style={{
                               WebkitMask: `
             radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
@@ -146,7 +147,7 @@ const buttons = [
                             }}
                           >
                             <span
-                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
+                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-black-700"
                               style={{
                                 WebkitMask: `
               radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
@@ -164,7 +165,7 @@ const buttons = [
                         ) : (
                           <span
                             key={badge}
-                            className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full"
+                            className="w-fit text-[10px] bg-black-50 border border-gray-200 px-2 py-0.5 text-black-400 font-sans rounded-full"
                           >
                             {badge}
                           </span>
@@ -172,28 +173,28 @@ const buttons = [
                       })}
                     </div>
                     {/* Image Wrapper - Center Aligned */}
-                    <div className="h-52 flex flex-col items-center justify-center relative mb-4">
+                    <div className="h-62 flex flex-col items-center -mt-8  justify-center relative mb-6">
                       <img
                         src={product.image}
                         alt={product.title}
-                        className="max-h-full max-w-[180px] object-contain transition-transform hover:scale-105"
+                        className="max-h-full max-w-[300px] object-contain transition-transform hover:scale-105"
                       />
                       <Heart
                         size={20}
-                        className={`absolute bottom-0 right-0 cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
+                        className={`absolute bottom-0 right-0 -mb-4  cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
                           }`}
                       />
                     </div>
 
                     {/* Rating Section - Fixed height to prevent shift */}
-                    <div className="flex justify-center gap-0.5 mb-4 h-4">
+                    <div className="flex justify-center gap-0.5 mb-1 mt-4 h-4">
                       {product.rating > 0 && [...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
                       ))}
                     </div>
 
                     {/* Title & Price */}
-                    <div className="text-center mb-6">
+                    <div className="text-center mb-5">
                       <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1">
                         {product.title}
                       </h3>
@@ -201,13 +202,36 @@ const buttons = [
                     </div>
 
                     {/* Footer Actions */}
-                    <div className="flex items-stretch gap-2 h-10 mt-auto" onClick={(e) => e.stopPropagation()}>
-                      <div className="flex border border-gray-200 items-center bg-white">
-                        <button onClick={() => handleQuantity(product.id, 'dec')} className="px-3 text-red-400 text-xl">−</button>
-                        <input type="text" value={quantities[product.id] ?? 1} readOnly className="w-8 text-center text-sm outline-none" />
-                        <button onClick={() => handleQuantity(product.id, 'inc')} className="px-3 text-green-500 text-xl">+</button>
+                    <div
+                      className="flex items-stretch gap-3 justify-center h-10 "
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {/* Quantity box (smaller) */}
+                      <div className="flex border border-gray-200 items-center bg-white  h-[50px] w-[80px]">
+                        <button
+                          onClick={() => handleQuantity(product.id, 'dec')}
+                          className="w-8 text-red-400 text-lg"
+                        >
+                          −
+                        </button>
+
+                        <input
+                          type="text"
+                          value={quantities[product.id] ?? 1}
+                          readOnly
+                          className="w-6 text-center text-sm outline-none"
+                        />
+
+                        <button
+                          onClick={() => handleQuantity(product.id, 'inc')}
+                          className="w-8 text-green-500 text-lg"
+                        >
+                          +
+                        </button>
                       </div>
-                      <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bd  tracking-wider transition-colors">
+
+                      {/* Add to cart button (bigger) */}
+                      <button className="bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-medium tracking-wider transition-colors px-3 h-[50px] w-[180px]">
                         Přidat do košíku
                       </button>
                     </div>

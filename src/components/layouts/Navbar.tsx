@@ -35,10 +35,10 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font- text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[13.5px] ">{price}</span>}
+    {price && <span className="text-[12.5px] ">{price}</span>}
     <div className={`flex items-center text-[13.5px] m font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
@@ -109,8 +109,9 @@ export default function Navbar() {
               onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
               onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
             >
-          <LineChart size={16} className="transform scale-x-[-1]" />
-              <span className="text-[13.5px] font-bold">Aktuální ceny</span>
+                                      <div className="relative w-5 h-3.5"><Image src="CZAktuální cen.svg" alt="CZ" fill  /></div>
+
+              <span className="text-[13.5px] font-">Aktuální ceny</span>
            <div
   className={cn(
     "w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] mt-0.5 border-r-transparent border-t-[6px] border-t-white transition-transform duration-300",
@@ -151,13 +152,16 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center gap-6 shrink-0 ml-auto">
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
-              <span className="text-white text-[13px] font-bold">Česky</span>
-              <ChevronDown size={14} className="text-white" />
+              <span className="text-white text-[13px] font">Česky</span>
+                  <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
+
             </div>
             <div className="flex items-center gap-2 cursor-pointer">
-              <Database size={16} className="text-white" strokeWidth={2.5} />
-              <span className="text-white text-[13px] font-bold">CZK / Kč</span>
-              <ChevronDown size={14} className="text-white" />
+                            <div className="relative w-5 h-3.5"><Image src="end.svg" alt="CZ" fill className="object-cover" /></div>
+
+              <span className="text-white text-[13px] font-">CZK / Kč</span>
+    <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
+
             </div>
           </div>
         </div>
@@ -195,13 +199,13 @@ export default function Navbar() {
         <div className="flex items-center gap-3 shrink-0">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <p className="text-white lg:text-[26px] md:text-3xl sm:text-2xl  ">GULDEN</p>
+          <p className="font-['Montserrat'] text-white lg:text-[26px] md:text-3xl sm:text-2xl  ">GULDEN</p>
           </a>
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-8 border flex-1 justify-cent px-15">
-          <div className="flex items-center gap-3 group cursor-pointer">
+        <div className="hidden lg:flex items-center gap-8  flex-1 justify-cent px-14">
+          <div className="flex items-center gap-2 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-medium font-">800 01 02 03</span>
           </div>
@@ -211,8 +215,8 @@ export default function Navbar() {
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden lg:flex items-center">
+        <div className="flex items-start gap-6">
+          <div className="hidden lg:flex items-center gap-6">
             <div className="px-4 text-center cursor-pointer text-white group">
               <Heart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
               <span className="text-[13px]">Oblíbené</span>

@@ -2,21 +2,21 @@ import React from 'react';
 
 const BenefitsSection = () => {
   const features = [
-    { icon: <img src="/3d.svg" className="w-12 h-12" />, title: "Doprava zdarma " , sub: "nad 5 000 Kč" },
+    { icon: <img src="/3d.svg" className="w-10 h-10" />, title: "Doprava zdarma " , sub: "nad 5 000 Kč" },
     { icon: <img src="/star.svg" className="w-13 h-13" />, title: "Nejlepší výkupní", sub: "ceny" },
-    { icon: <img src="/phone.svg" className="w-12 h-12" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
-    { icon: <img src="/arrow.svg" className="w-12 h-12 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
+    { icon: <img src="/phone.svg" className="w-10 h-10" />, title: "Jsme tu pro vás,", sub: "rádi poradíme" },
+    { icon: <img src="/arrow.svg" className="w-10 h-10 text-yellow-500" />, title: "Odeslání zboží", sub: "do 24h" },
   ];
 
   return (
-    <section className="relative w-full ">
+    <section className="relative w-full  ">
       {/* Background Split */}
       <div className="absolute inset-0 flex flex-col pointer-events-none">
-        <div className="flex-1 bg-gray-100 pb-27 " />
+        <div className="flex-1 bg-gray-100 pb-30 " />
         <div className="flex-1 bg-white " />
       </div>
 
-      <div className="relative max-w-[1500px] mx-auto px-4 pt-22 md:pt-16  md:pb-20 flex flex-col items-center">
+      <div className="relative max-w-[1412px] mx-auto px-4 pt-22 md:pt-1  md:pb- flex flex-col items-center">
         {/* Title */}
         <div className="flex flex-col items-center mb-16 md:mb-24">
           <div className="flex items-center gap-1.5 mb-4 md:mb-6">
@@ -25,27 +25,29 @@ const BenefitsSection = () => {
             <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
           </div>
 
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-[#1A1A1A] font-light text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-[37px] font-['Libre_Caslon_Text'] text-[#1A1A1A] font-light  text-center">
             V čem jsme dobří
           </h2>
         </div>
 
         {/* Diamonds Grid */}
         <div className="
+        font-['Libre_Caslon_Text']
           grid grid-cols-2 md:flex 
           justify-center items-center
-          gap-x-12 gap-y-12 md:gap-24 lg:gap-32
+          gap-x-14 gap-y-12 md:gap-26 lg:gap-42
           w-full max-w-[400px] md:max-w-none
-          translate-y-[25%] md:translate-y-[50%]
-          -mt-[50px] md:-mt-[112px]
+          translate-y-[25%] md:translate-y-[54%]
+          -mt-[50px] md:-mt-[110px]
         ">
           {features.map((feature, i) => (
             <div
               key={i}
               className="
+              
                 relative
                 w-full aspect-square
-                md:w-56 md:h-56
+                md:w-48 md:h-48
                 flex items-center justify-center
                 /* Niche walay cards ko upar lane ke liye negative margin */
                 [&:nth-child(n+3)]:-mt-6 md:[&:nth-child(n+3)]:mt-0
@@ -62,11 +64,11 @@ const BenefitsSection = () => {
     {feature.icon}
   </div>
 
-  <h3 className="text-[12px] md:text-[20px] text-[#1A1A1A]  leading-tight">
+  <h3 className="text-[12px] md:text-[18px] font-['Libre_Caslon_Text']   leading-tight">
     {feature.title}
   </h3>
 
-  <p className="text-[12px] md:text-[20px] text-[#1A1A1A]  leading-tight">
+  <p className="text-[12px] md:text-[18px] font-['Libre_Caslon_Text']   leading-tight">
     {feature.sub}
   </p>
 </div>

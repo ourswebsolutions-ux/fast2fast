@@ -37,11 +37,11 @@ const GuldenHeroSection: React.FC = () => {
     ];
 
     return (
-        <section className="py-6 md:py-10 px-3 md:px-4 bg-gray-100 ">
-            <div className="max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-9">
+        <section className="py-6 md:py-10 px-3  md:px-4 bg-gray-100 ">
+            <div className="md:max-w-[1412px] max-w-[1350px] mx-auto grid grid-cols-12 gap-4 md:gap-12">
 
               {/* Sidebar */}
-<div className="col-span-12 md:col-span-3 bg-black text-white">
+<div className="col-span-12 md:col-span-3 bg-black text-white font-['Libre_Caslon_Text'] md:w-[96%]">
     <ul className="flex flex-col">
         {navItems.map((item, i) => (
             <li
@@ -78,24 +78,24 @@ const GuldenHeroSection: React.FC = () => {
 </div>
 
                 {/* Hero */}
-                <div className="col-span-12 md:col-span-9 bg-gray-200 p-5 sm:p-6 md:p-12 relative">
-                    <div className="grid grid-cols-12 gap-6 md:gap-8 items-center">
+                <div className="col-span-12 md:col-span-9 bg-gray-200 p-5 sm:p-6 md:p-10  md:-ml-5 relative">
+                    <div className="grid grid-cols-12 gap-6 md:gap-6 items-center">
 
                         {/* Text */}
-                        <div className="col-span-12 md:col-span-5 text-center md:text-left">
-                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif text-gray-800">
+                        <div className="col-span-12 md:col-span-4  md:ml-11 md:mb-13 text-center md:text-left">
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-['Libre_Caslon_Text'] text-gray-800">
                                 Investiční zlato
                             </h2>
-                            <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-8 text-sm md:text-base">
+                            <p className="text-gray-600 mt-2 md:mt-3 mb-5 md:mb-4 text-sm md:text-base">
                                 Zlato, které ochrání vaše úspory.
                             </p>
-                            <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white px-4 md:px-6 py-2 md:py-2.5 text-xs md:text-sm font-medium rounded-none">
+                            <button className="bg-[rgb(199,177,93)] font-['Libre_Caslon_Text'] hover:bg-[rgb(199,177,93)] text-white ml-2.5 px-4 md:px-14 py-2 md:py-3.5 text-xs md:text-sm font-medium rounded-none">
                                 Prohlédnout
                             </button>
                         </div>
 
                         {/* Images */}
-                        <div className="col-span-12 md:col-span-4 flex justify-center relative mt-6 md:mt-0">
+                        <div className="col-span-12 md:col-span-4  md:-right-6  flex justify-center relative mt-6 md:mt-0">
                             <img
                                 src="/produkty.png"
                                 alt="Gold Bar"
@@ -105,11 +105,11 @@ const GuldenHeroSection: React.FC = () => {
                         </div>
 
                         {/* Banners */}
-                        <div className="col-span-12 md:col-span-3 flex flex-col gap-2 mt-6 md:mt-0 md:pl-4">
+                        <div className="col-span-12 md:col-span-4 flex flex-col  font-['Libre_Caslon_Text'] md:ml-20 gap-2 mt-6 md:mt-0  md:w-[78%]">
                             {banners.map((banner, i) => (
                                 <button
                                     key={i}
-                                    className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-bold  tracking-wider transition-all duration-300 rounded-none
+                                    className={`group relative w-full py-3 md:py-4 px-4 md:px-6 text-left text-[10px] md:text-xs font-b  tracking-wider transition-all duration-300 rounded-none
                   ${banner.active
                                             ? 'bg-[rgb(199,177,93)] hover:bg-[rgb(199,177,93)] text-white shadow-lg'
                                             : 'bg-black text-white hover:bg-[rgb(199,177,93)] hover:text-black'}`}
