@@ -77,7 +77,7 @@ const ProductSlider = () => {
             onClick={scrollPrev}
             className="
     absolute 
-    -left-1 sm:-left-3 
+    -left-4 sm:-left-3 
     top-1/2 -translate-y-1/2
     z-20
     lg:-mt-18
@@ -101,7 +101,7 @@ const ProductSlider = () => {
             onClick={scrollNext}
             className="
     absolute 
-    -right-1 sm:-right-5 lg:-right-8
+    -right-4 sm:-right-8 lg:-right-8
     top-1/2 -translate-y-1/2
     lg:-mt-18
     z-20
@@ -189,7 +189,7 @@ const ProductSlider = () => {
                     </div>
 
                     {/* Rating Section - Fixed height to prevent shift */}
-                    <div className="flex justify-center gap-0.5 mb- mt-8 h-4">
+                    <div className="flex justify-center gap-0.5 mb-3 mt-6 h-4">
                       {product.rating > 0 && [...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
                       ))}
