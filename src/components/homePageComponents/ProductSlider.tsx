@@ -90,10 +90,10 @@ const ProductSlider = () => {
     transition-all
   "
             style={{
-              clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 35% 100%, 0% 50%)'
+              clipPath: 'polygon(44% 0%, 100% 0%, 100% 100%, 44% 100%, 0% 50%)'
             }}
           >
-            <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
+            <ChevronLeft size={20} className="sm:size-5 lg:size-6" />
           </button>
 
           {/* RIGHT ARROW */}
@@ -113,7 +113,7 @@ const ProductSlider = () => {
     transition-all
   "
             style={{
-              clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)'
+              clipPath: 'polygon(0% 0%, 44% 0%, 100% 50%, 44% 100%, 0% 100%)'
             }}
           >
             <ChevronRight size={18} className="sm:size-5 lg:size-6" />
