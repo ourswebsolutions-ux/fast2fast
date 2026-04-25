@@ -49,9 +49,9 @@ const Footer = () => {
                                     <input
                                         type="email"
                                         placeholder="Napište Váš e-mail"
-                                        className="bg-black/20 border-none px-6 py-4 md:py-5.5 w-full sm:w-64 lg:w-83 text-white placeholder:text-white/80 outline-none focus:bg-black/30 transition-all text-sm "
+                                        className="bg-black/20 border-none px-4 py-4 md:py-5 w-full sm:w-64 lg:w-83 text-white placeholder:text-white font-bold outline-none  transition-all text-sm "
                                     />
-                                    <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(167,145,75)] w-full  text-white px-6 lg:w-43 py-4.5 md:py-5.5 font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
+                                    <button className="bg-[rgb(199,177,93)] hover:bg-[rgb(167,145,75)] w-full  text-white px-6 lg:w-48 py-4.5 md:py-5.5 font-bold text-[11px] tracking-[2px] transition-all whitespace-nowrap shadow-inner ">
                                         Přihlásit k odběru
                                     </button>
                                 </div>
