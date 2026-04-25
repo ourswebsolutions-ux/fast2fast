@@ -136,7 +136,7 @@ const NewsAndCharts = () => {
 
           {/* TAB 2: NEWS GRID */}
           {activeTab === 'news' && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1350px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1409px] mx-auto">
               {newsData.map((item) => (
                 <div key={item.id} className="bg-white p-4 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
 
