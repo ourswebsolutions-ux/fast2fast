@@ -138,7 +138,7 @@ const NewsAndCharts = () => {
           {activeTab === 'news' && (
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1409px] mx-auto font-['Libre_Caslon_Text']">
               {newsData.map((item) => (
-                <div key={item.id} className="bg-white p-8 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
+                <div key={item.id} className="bg-white p-9 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
 
                   {/* Image Area */}
                   <div className="w-full aspect-[3/] overflow-hidden mb-5 bg-gray-50 border border-gray-50">
