@@ -179,11 +179,7 @@ const ProductSlider = () => {
                         alt={product.title}
                         className="max-h-full max-w-[300px] object-contain transition-transform hover:scale-105"
                       />
-                      <Heart
-                        size={20}
-                        className={`absolute bottom-0 right-0 -mb-4  cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
-                          }`}
-                      />
+                     
                     </div>
 
                     {/* Rating Section - Fixed height to prevent shift */}
