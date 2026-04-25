@@ -216,7 +216,7 @@ const PriceChart = () => {
                                     Aktuální hodnota :
                                 </h3>
                                 <div className="bg-[#f23645] text-white text-[22px] lg:py-2 lg:px-15 py-1 px-6 font-sans">
-                                    {metalToggle === "zlato" ? "1907.06" : "25.32"}
+                                    {metalToggle === "zlato" ? "1907.06" : "2500.32"}
                                 </div>
                             </div>
                         </div>
