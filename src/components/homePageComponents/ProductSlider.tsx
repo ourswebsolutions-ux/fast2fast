@@ -58,7 +58,7 @@ const ProductSlider = () => {
                 key={index}
                 // Click karne par index update ho jata hai
                 onClick={() => setActive(index)}
-                className={`flex-1 py-2 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] 
+                className={`flex-1 py-2 text-sm tracking-wider font-sans transition-all duration-300 border border-[#C7B15D] 
             ${active === index
                     ? "bg-[#C7B15D] text-white hover:bg-[#b59f52]" // Jo Clicked hai uska style
                     : "bg-white text-gray-600 hover:bg-[#C7B15D] hover:text-white" // Jo Clicked nahi hai uska style
@@ -197,7 +197,7 @@ const ProductSlider = () => {
 
                     {/* Title & Price */}
                     <div className="text-center mb-9">
-                      <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1">
+                      <h3 className="text-[13px] text-black-500 underline  underline-offset-4 mb-2 line-clamp-1">
                         {product.title}
                       </h3>
                       <p className="text-xl text-[rgb(199,177,93)] font-medium tracking-tight  font-sans">{product.price}</p>
