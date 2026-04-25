@@ -183,7 +183,13 @@ const ProductSlider = () => {
                     </div>
 
                     {/* Rating Section - Fixed height to prevent shift */}
+                     
                     <div className="flex justify-center gap-0.5 mb-1 mt-4 h-4">
+<Heart
+                        size={20}
+                        className={`absolute bottom-0 right-0 -mb-4  cursor-pointer transition-colors ${product.id === 2 || product.id === 3 ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
+                          }`}
+                      />
                       {product.rating > 0 && [...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
                       ))}
