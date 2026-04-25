@@ -122,7 +122,7 @@ const NewsAndCharts = () => {
                       </td>
                       <td className="p-4 bg-gray-100 text-center">
                         <div className="flex justify-center items-center h-full">
-                          <button className="w-[120px] bg-[rgb(199,177,93)] text-white text-xs py-2 hover:bg-[#b5a256] transition-colors">
+                          <button className="w-[115px] bg-[rgb(199,177,93)] text-white text-xs py-2.5 hover:bg-[#b5a256] transition-colors">
                             {i === 1 || i === 3 ? 'Objednat' : 'Koupit'}
                           </button>
                         </div>
