@@ -189,7 +189,7 @@ const PriceChart = () => {
                     <div className="flex flex-col lg:flex-row gap-5 items-stretch">
 
                         {/* SIDEBAR - Restored Padding and Width */}
-                        <div className="lg:w-[336px] w-full flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
+                        <div className="lg:w-[333px]  w-full lg:h-[563px]  flex flex-col p-6 sm:p-10 bg-[#fafafa] border border-gray-200 rounded-sm shadow-sm">
                             <div className="flex w-full mb-6 sm:mb-10 gap-2">
                                 <button
                                     onClick={() => setMetalToggle("zlato")}
