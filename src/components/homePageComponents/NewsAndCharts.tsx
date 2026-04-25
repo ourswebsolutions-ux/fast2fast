@@ -51,7 +51,7 @@ const NewsAndCharts = () => {
   return (
     <div className="bg-white py-12 px-4 font-serif">
       {/* Container aligned to 1350px */}
-      <div className="max-w-[1350px] mx-auto">
+      <div className="max-w-[1412px] mx-auto">
 
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -60,7 +60,7 @@ const NewsAndCharts = () => {
             <div className="w-2 h-2 bg-[#D1D1D1] rotate-45" />
             <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
           </div>
-          <h2 className="text-4xl text-gray-800 font-light mb-8">Sledujte aktuální dění</h2>
+          <h2 className="text-4xl text-gray-800 font-light mb-8 font-['Libre_Caslon_Text']">Sledujte aktuální dění</h2>
 
           {/* Main Tabs Navigation */}
           <div className="flex flex-col md:flex-row gap-4 w-full mb-10">
@@ -68,7 +68,7 @@ const NewsAndCharts = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 py-4 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] font-serif ${activeTab === tab.id
+                className={`flex-1 py-2 text-sm tracking-wider transition-all duration-300 border border-[#C7B15D] font-serif ${activeTab === tab.id
                     ? "bg-[#C7B15D] text-white"
                     : "bg-white text-gray-600 hover:bg-[#C7B15D] hover:text-white"
                   }`}
