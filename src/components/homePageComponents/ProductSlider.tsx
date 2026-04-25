@@ -197,10 +197,10 @@ const ProductSlider = () => {
 
                     {/* Title & Price */}
                     <div className="text-center mb-9">
-                      <h3 className="text-[13px] text-black-500 underline  underline-offset-4 mb-2 line-clamp-1">
+                      <h3 className="text-[13px] text-black-500 underline cursor-pointer  font-['Libre_Caslon_Text'] underline-offset-4 mb-2 line-clamp-1">
                         {product.title}
                       </h3>
-                      <p className="text-xl text-[rgb(199,177,93)] font-medium tracking-tight  font-sans">{product.price}</p>
+                      <p className="text-xl text-[rgb(199,177,93)] font-medium tracking-tight  font-['Libre_Caslon_Text']">{product.price}</p>
                     </div>
 
                     {/* Footer Actions */}
