@@ -101,7 +101,7 @@ const Footer = () => {
                     </div>
 
                     {/* Column 4 */}
-                    <div className="lg:pr-10">
+                    <div className="lg:pr-10 ">
                         <h3 className="text-[rgb(199,177,93)] font-serif text-xl mb-6">Kontaktujte nás</h3>
                         <div className="flex flex-col gap-6">
                             <div className="flex border-b border-zinc-800 items-start pb-3 gap-4 group cursor-pointer">
@@ -110,7 +110,7 @@ const Footer = () => {
                                 </div>
                                 <div className=" pb-3 max-w-[150px] w-full transition-colors group-hover:border-[rgb(199,177,93)]">
                                     <p className="text-[20px] font- tracking-wider text-white-400 mb-0.5  group-hover:text-[rgb(199,177,93)]">Infolinka</p>
-                                    <p className="text-[18px] text-white group-hover:text-[rgb(199,177,93)]">+420 800 01 02 03</p>
+                                    <p className="text-[16px] text-white group-hover:text-[rgb(199,177,93)]">+420 800 01 02 03</p>
                                 </div>
                             </div>
 
