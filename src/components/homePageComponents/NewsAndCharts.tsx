@@ -136,7 +136,7 @@ const NewsAndCharts = () => {
 
           {/* TAB 2: NEWS GRID */}
           {activeTab === 'news' && (
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1409px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-[1409px] mx-auto font-['Libre_Caslon_Text']">
               {newsData.map((item) => (
                 <div key={item.id} className="bg-white p-4 border border-gray-100 shadow-sm group cursor-pointer flex flex-col items-center text-center">
 
@@ -150,7 +150,7 @@ const NewsAndCharts = () => {
                   </div>
 
                   {/* Date */}
-                  <p className="text-[11px] text-gray-400 font-sans mb-3">{item.date}</p>
+                  <p className="text-[11px] text-black-400 font-['Libre_Caslon_Text'] mb-3">{item.date}</p>
 
                   {/* Title */}
                   <h4 className="text-[15px] text-[#C5B367] underline underline-offset-4 decoration-[#e5d9a5] leading-snug mb-4 font-light min-h-[40px]">
