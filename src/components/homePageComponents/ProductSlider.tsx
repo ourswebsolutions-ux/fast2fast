@@ -81,8 +81,8 @@ const ProductSlider = () => {
     top-1/2 -translate-y-1/2
     z-20
     lg:-mt-18
-    lg:-left-10
-    w-8 h-12 sm:w-10 sm:h-12 lg:w-12 lg:h-15
+    lg:-left-8
+    w-8 h-12 sm:w-10 sm:h-12 lg:w-10 lg:h-18
     bg-[rgb(199,177,93)]
     flex items-center justify-center
     text-white
@@ -90,7 +90,7 @@ const ProductSlider = () => {
     transition-all
   "
             style={{
-              clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)'
+              clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 35% 100%, 0% 50%)'
             }}
           >
             <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
@@ -101,11 +101,11 @@ const ProductSlider = () => {
             onClick={scrollNext}
             className="
     absolute 
-    -right-1 sm:-right-5 lg:-right-10
+    -right-1 sm:-right-5 lg:-right-8
     top-1/2 -translate-y-1/2
     lg:-mt-18
     z-20
-    w-8 h-12 sm:w-12 sm:h-10 lg:w-15 lg:h-15
+    w-8 h-12 sm:w-12 sm:h-10 lg:w-10 lg:h-18
     bg-[rgb(199,177,93)]
     flex items-center justify-center
     text-white
