@@ -152,12 +152,10 @@ const PriceChart = () => {
                 time: {
                     unit: "month",
                     displayFormats: {
-                        month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
-                    },
-                     unit: "year",
-                    displayFormats: {
-                        month: "MMM" // 'Jul', 'Aug', 'Sep' format ke liye
+                        month: "MMM", // 'Jul', 'Aug', 'Sep' format ke liye
+                        year: "yyyy"
                     }
+                    
                 },
                 ticks: {
                     color: "#787b86",
