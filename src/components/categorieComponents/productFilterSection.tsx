@@ -59,19 +59,19 @@ const ProductFilterSection = () => {
 
   return (
     <div className="w-full bg-white">
-      <div className="max-w-[1350px] mx-auto font-sans px-4">
+      <div className="max-w-[1412px] mx-auto font-sans ">
         <FilterModal
           isOpen={isFilterOpen}
           onClose={() => setIsFilterOpen(false)}
         />
         {/* SECTION 1: Filters Area */}
-        <div className="bg-[#F3F3F3] p-4 sm:p-6 md:p-8">
+        <div className="bg-[#F3F3F3] p-4 s ">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
             {Object.keys(filters).map((category) => (
               <div key={category} className="relative">
                 <button
                   onClick={() => setOpenDropdown(openDropdown === category ? null : category)}
-                  className={`w-full bg-white h-12 px-4 flex items-center justify-between border transition-all text-[14px]
+                  className={`w-full bg-white lg:h-14 h-12 px-4 flex items-center justify-between border transition-all text-[14px]
                     ${openDropdown === category ? 'border-[#C5A059]' : 'border-gray-200 hover:border-[#C5A059]'}`}
                 >
                   <span className="text-[#333]">{category}</span>
@@ -81,8 +81,8 @@ const ProductFilterSection = () => {
                 {openDropdown === category && (
                   <>
                     <div className="fixed inset-0 z-40" onClick={() => setOpenDropdown(null)}></div>
-                    <div className="absolute left-0 top-[50px] w-full bg-white border border-gray-300 shadow-xl z-50 p-4 min-w-[220px]">
-                      <div className="flex flex-col gap-3 max-h-[250px] overflow-y-auto no-scrollbar">
+                    <div className="absolute left-0 border border-gray-200 top-[50px] w-full bg-white border border-gray-300 shadow-xl z-50 p-4 min-w-[220px]">
+                      <div className="flex flex-col  gap-3 max-h-[250px] overflow-y-auto no-scrollbar">
                         {filters[category].map((item: any, idx: number) => (
                           <div
                             key={idx}
@@ -119,12 +119,12 @@ const ProductFilterSection = () => {
 
           {/* DYNAMIC TAGS */}
           {activeFilters.length > 0 && (
-            <div className="flex items-center gap-2 mt-6 overflow-hidden">
+            <div className="flex items-center gap-2 mt-6   overflow-hidden">
               <div className="flex flex-nowrap md:flex-wrap items-center gap-2 overflow-x-auto no-scrollbar">
                 {activeFilters.map((tag, i) => (
                   <div
                     key={i}
-                    className="flex items-center bg-[#D1B870] text-white px-3 h-9 gap-4 flex-shrink-0"
+                    className="flex items-center bg-[#D1B870] text-white px-3 h-7 gap-4 flex-shrink-0"
                   >
                     <span className="text-[13px] font-medium whitespace-nowrap">{tag.label}</span>
                     <X
@@ -159,7 +159,7 @@ const ProductFilterSection = () => {
           min-w-[49.5%] md:min-w-0 
           flex-shrink-0 
           md:w-full 
-          py-4 
+          py-2.5 
           text-[14px] 
           font-medium 
           transition-all 

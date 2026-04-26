@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Heart, Star, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import ProductCard from '../ProductCard';
 const productsData = [
     { id: 1, title: "31.1g investiční zlatý slitek Argor Heraeus SA", price: "42 505 Kč", badge: "Novinka", rating: 5, img: "/card-1.svg" },
     { id: 2, title: "Investiční zlato - slitek 500 g - Pamp fortuna", price: "665 342 Kč", badge: "Novinka", rating: 5, img: "/imgcoin23.svg" },
@@ -42,95 +42,44 @@ const ProductGrid = () => {
     };
 
     return (
-        <div className="bg-white pb-10 px-4 font-serif">
-            <div className="max-w-[1350px] mx-auto">
+        <div className="bg-white pb-10 px- font-serif">
+            <div className="max-w-[1412px] mx-auto">
 
                 {/* Product Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10">
-                    {productsData.map((product) => (
-                        <div
-                            key={product.id}
-                            className="bg-white flex flex-col border border-gray-100 hover:border-[#C5B367] p-6 transition-all duration-300 relative group h-full"
-                        >
-                            {/* Badge Container */}
-                            <div className="h-12 flex items-start">
-                                {product.badge === "Novinka" ? (
-                                    <div
-                                        className="inline-block w-fit p-[1px] bg-gray-300"
-                                        style={{
-                                            WebkitMask: `radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0, radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0, radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%, radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%`,
-                                            WebkitMaskSize: "51% 51%", WebkitMaskRepeat: "no-repeat",
-                                        }}
-                                    >
-                                        <span className="block bg-white text-[11px] px-3 py-1 font-semibold text-gray-700"
-                                            style={{
-                                                WebkitMask: `radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0, radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0, radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%, radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%`,
-                                                WebkitMaskSize: "51% 51%", WebkitMaskRepeat: "no-repeat",
-                                            }}>
-                                            {product.badge}
-                                        </span>
-                                    </div>
-                                ) : (
-                                    <span className="w-fit text-[10px] bg-gray-50 border border-gray-200 px-3 py-0.5 text-gray-400 font-sans rounded-full">
-                                        {product.badge}
-                                    </span>
-                                )}
-                            </div>
+                   {productsData.map((product) => (
+  <div key={product.id} className="h-full">
 
-                          {/* Image & Heart Section */}
-<div className="relative h-52 flex items-center justify-center mb-4">
-    <img
-        src={product.img}
-        alt={product.title}
-        className="max-h-full max-w-[180px] object-contain group-hover:scale-105 transition-transform"
+    <ProductCard
+      product={{
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.img,
+        badges: [product.badge],
+        rating: product.rating,
+      }}
+
+      selectedId={null}
+      setSelectedId={() => {}}
+
+      quantity={quantities[product.id] ?? 1}
+      onInc={() => handleQuantity(product.id, "inc")}
+      onDec={() => handleQuantity(product.id, "dec")}
+
+      isFavorite={favorites[product.id]}
+      onToggleFavorite={() => toggleFavorite(product.id)}
     />
-    {/* Posunuto o kousek níže pomocí bottom-[-8px] */}
-    <Heart
-        size={20}
-        onClick={() => toggleFavorite(product.id)}
-        className={`absolute bottom-[-8px] right-0 cursor-pointer transition-colors ${
-            favorites[product.id] ? "fill-[#C5B367] text-[#C5B367]" : "text-gray-200 hover:text-[#C5B367]"
-        }`}
-    />
-</div>
 
-                            {/* Rating */}
-                            <div className="flex justify-center gap-0.5 mb-4 h-4">
-                                {[...Array(5)].map((_, i) => (
-                                    <Star key={i} size={14} className="fill-[#FACC15] text-[#FACC15]" />
-                                ))}
-                            </div>
-
-                            {/* Title & Price */}
-                            <div className="text-center mb-6">
-                                <h3 className="text-[13px] text-gray-500 underline underline-offset-4 mb-2 line-clamp-1 hover:text-black transition-colors">
-                                    {product.title}
-                                </h3>
-                                <p className="text-xl text-[rgb(199,177,93)] font-medium tracking-tight font-sans">
-                                    {product.price}
-                                </p>
-                            </div>
-
-                            {/* Footer Actions */}
-                            <div className="flex items-stretch gap-2 h-10 mt-auto">
-                                <div className="flex border border-gray-200 items-center bg-white">
-                                    <button onClick={() => handleQuantity(product.id, 'dec')} className="px-3 text-red-400 text-xl">−</button>
-                                    <input type="text" value={quantities[product.id] ?? 1} readOnly className="w-8 text-center text-sm outline-none" />
-                                    <button onClick={() => handleQuantity(product.id, 'inc')} className="px-3 text-green-500 text-xl">+</button>
-                                </div>
-                                <button className="flex-grow bg-[#00A651] hover:bg-[#008d44] text-white text-[11px] font-bold tracking-wider transition-colors ">
-                                    Přidat do košíku
-                                </button>
-                            </div>
-                        </div>
-                    ))}
+  </div>
+))}
                 </div>
 
                 {/* Pagination Section */}
                 <div className="grid grid-cols-1 md:grid-cols-3 items-center mt-16 mb-8 gap-6 w-full">
                     <div className="hidden md:block"></div>
                     <div className="flex justify-center">
-                        <button className="bg-[#C5B367] text-white px-10 py-3 text-[14px] hover:bg-[#b5a256] transition-all">
+                        <button className="bg-[#C5B367] text-white px-12 lg:px-13 py-3.5 text-[14px] hover:bg-[#b5a256] transition-all">
                             Další produkty
                         </button>
                     </div>
