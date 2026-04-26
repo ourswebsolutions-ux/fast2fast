@@ -17,7 +17,7 @@ const Footer = () => {
             <div className="mx-auto w-full max-w-[1412px] px-4">
 
                 {/* Newsletter Box - Fixed spacing & shape */}
-                <div className="relative mb-16">
+                <div className="relative mb-16 md:border-4 lg:border-none border-red-400 ">
                     <div className="relative md:-mt-24 -mt-28 overflow-hidden bg-[rgb(168,155,101,255)] py-6 lg:py-16 px-6 md:px-10 lg:px-12 shadow-2xl ">
 
                         {/* Background shapes */}
@@ -39,7 +39,7 @@ const Footer = () => {
                         <div className="relative z-10 flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-8">
 
                             {/* Text - Vráceno původní text-3xl a 4xl, fixnuto pro small screen přes md:w-auto */}
-                            <div className="w-full md:w-auto flex-1 md:text-end  text-xl md:tracking-wide md:text-3xl lg:text-4xl font-serif text-white leading-tight md:pr-10">
+                            <div className="w-full md:w-auto flex-1 md:text-end  text-xl md:tracking-wide md:text-2xl lg:text-4xl font-serif text-white leading-tight md:pr-10">
                                 Nezmeškejte žádné novinky či slevy!
                             </div>
 
