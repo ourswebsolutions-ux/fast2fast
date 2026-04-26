@@ -66,8 +66,8 @@ const Testimonials = () => {
               </div>
 
               {/* TEXT */}
-              <p className="text-[13px] sm:text-[14px] md:text-[15px] leading-relaxed text-[#1a1a1a] font-bold mb-6 md:mb-8 italic px-1">
-                "{item.text}"
+              <p className="text-[13px] font-['Libre_Caslon_Text'] sm:text-[14px] md:text-[15px] tracking-wider leading-relaxed text-[#1a1a1a] font-bold mb-6 md:mb-8 = px-1">
+                {item.text}
               </p>
 
               {/* AUTHOR */}
