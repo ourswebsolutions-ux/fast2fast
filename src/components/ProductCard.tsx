@@ -39,33 +39,51 @@ const ProductCard: React.FC<Props> = ({
       onClick={() => setSelectedId?.(product.id)}
     >
       {/* BADGES (SAME) */}
-     <div className="flex flex-col gap-1.5 h-14">
-  {product.badges.map((badge: string) => {
-    const isNew = badge === "Novinka";
+   <div className="flex flex-col gap-1.5 h-14">
+                      {product.badges.map((badge) => {
+                        const isNew = badge === "Novinka";
 
-    return isNew ? (
-      <div
-        key={badge}
-        className="inline-block -ml-2 w-fit p-[1px] bg-gray-300"
-        style={{
-          clipPath:
-            "polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px)",
-        }}
-      >
-        <span className="block bg-white text-[11px] px-3 py-1 font-semibold text-black-700">
-          {badge}
-        </span>
-      </div>
-    ) : (
-      <span
-        key={badge}
-        className="w-fit text-[10px] bg-black-50 border border-gray-200 px-2 py-0.5 text-black-400 font-sans rounded-full"
-      >
-        {badge}
-      </span>
-    );
-  })}
-</div>
+                        return isNew ? (
+                          <div
+                            key={badge}
+                            className="inline-block -ml-2 w-fit p-[1px] bg-gray-300"
+                            style={{
+                              WebkitMask: `
+            radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+            radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+            radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+            radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+          `,
+                              WebkitMaskSize: "51% 51%",
+                              WebkitMaskRepeat: "no-repeat",
+                            }}
+                          >
+                            <span
+                              className="block bg-white text-[11px] px-3 py-1 font-semibold text-black-700"
+                              style={{
+                                WebkitMask: `
+              radial-gradient(circle at 0 0, transparent 4px, black 0) 0 0,
+              radial-gradient(circle at 100% 0, transparent 4px, black 0) 100% 0,
+              radial-gradient(circle at 0 100%, transparent 4px, black 0) 0 100%,
+              radial-gradient(circle at 100% 100%, transparent 4px, black 0) 100% 100%
+            `,
+                                WebkitMaskSize: "51% 51%",
+                                WebkitMaskRepeat: "no-repeat",
+                              }}
+                            >
+                              {badge}
+                            </span>
+                          </div>
+                        ) : (
+                          <span
+                            key={badge}
+                            className="w-fit text-[10px] bg-black-50 border border-gray-200 px-2 py-0.5 text-black-400 font-sans rounded-full"
+                          >
+                            {badge}
+                          </span>
+                        );
+                      })}
+                    </div>
 
       {/* IMAGE */}
       <div className="h-62 flex flex-col items-center -mt-8 justify-center relative mb-6">
