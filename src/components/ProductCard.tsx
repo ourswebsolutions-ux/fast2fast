@@ -40,7 +40,7 @@ const ProductCard: React.FC<Props> = ({
     >
       {/* BADGES (SAME) */}
    <div className="flex flex-col gap-1.5 h-14">
-                      {product.badges.map((badge) => {
+                      {product.badges.map((badge : string) => {
                         const isNew = badge === "Novinka";
 
                         return isNew ? (
