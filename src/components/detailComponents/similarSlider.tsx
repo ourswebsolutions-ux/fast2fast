@@ -43,7 +43,7 @@ const SimilarProductsSlider = () => {
         </div>
 
         {/* Title */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-[34px] text-[#333333] font-light tracking-wide">Podobné produkty</h2>
         </div>
 
@@ -52,7 +52,7 @@ const SimilarProductsSlider = () => {
           {/* Navigation Buttons */}
           <button
             onClick={scrollPrev}
-            className="absolute -left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-10 sm:h-12 lg:w-8 lg:h-12 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
+            className="absolute -left-1 sm:-left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-10 sm:h-12 lg:w-10 lg:h-18 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
             style={{ clipPath: 'polygon(30% 0%, 100% 0%, 100% 100%, 30% 100%, 0% 50%)' }}
           >
             <ChevronLeft size={18} className="sm:size-5 lg:size-6" />
@@ -60,7 +60,7 @@ const SimilarProductsSlider = () => {
 
           <button
             onClick={scrollNext}
-            className="absolute -right-1 sm:-right-5 lg:-right-3 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-12 sm:h-10 lg:w-8 lg:h-12 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
+            className="absolute -right-1 sm:-right-5 lg:-right-5 top-1/2 -translate-y-1/2 z-20 w-8 h-12 sm:w-12 sm:h-10 lg:w-10 lg:h-18 bg-[rgb(199,177,93)] flex items-center justify-center text-white hover:bg-[#b5a256] transition-all"
             style={{ clipPath: 'polygon(0% 0%, 65% 0%, 100% 50%, 65% 100%, 0% 100%)' }}
           >
             <ChevronRight size={18} className="sm:size-5 lg:size-6" />
@@ -71,7 +71,7 @@ const SimilarProductsSlider = () => {
             <div className="flex">
               {productsData.map((product) => (
                 <div key={product.id} className="flex-[0_0_100%] sm:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 px-2">
-                  <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-[rgb(199,177,93)] hover:shadow-lg group/card">
+                  <div className="bg-white p-6 border border-gray-100 h-full flex flex-col relative transition-all duration-300 hover:border-2 hover:border-[rgb(199,177,93)] hover:shadow-lg group/card">
                     
                     {/* Badge Container */}
                     <div className="flex flex-col gap-1.5 h-14">
@@ -120,7 +120,7 @@ const SimilarProductsSlider = () => {
                     </div>
 
                     {/* Product Image & Favorite */}
-                    <div className="h-52 flex flex-col items-center justify-center relative mb-6">
+                    <div className="h-44 flex flex-col items-center justify-center relative mb-6">
                       <img 
                         src={product.image} 
                         alt={product.title} 
@@ -129,12 +129,12 @@ const SimilarProductsSlider = () => {
                       <Heart
                         size={20}
                         onClick={(e) => { e.stopPropagation(); toggleFavorite(product.id); }}
-                        className={`absolute bottom-0 right-0 cursor-pointer transition-all duration-300 ${favorites[product.id] ? "fill-[rgb(199,177,93)] text-[rgb(199,177,93)] scale-110" : "text-gray-200 hover:text-[rgb(199,177,93)]"}`}
+                        className={`absolute bottom-0 right-0 md:-mb-14 cursor-pointer transition-all duration-300 ${favorites[product.id] ? "fill-[rgb(199,177,93)] text-[rgb(199,177,93)] scale-110" : "text-gray-200 hover:text-[rgb(199,177,93)]"}`}
                       />
                     </div>
 
                     {/* Rating Stars */}
-                    <div className="flex justify-center gap-0.5 mb-6">
+                    <div className="flex justify-center gap-0.5 md:mb-2 md:mt-12 mb-6">
                       {[...Array(5)].map((_, i) => (
                         <Star key={i} size={14} className={i < product.rating ? "fill-[#FACC15] text-[#FACC15]" : "text-gray-100"} />
                       ))}

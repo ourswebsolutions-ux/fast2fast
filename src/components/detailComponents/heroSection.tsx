@@ -71,7 +71,7 @@ const HeroSection: React.FC = () => {
 
     return (
         <section className="py-4 md:py-10 px-3 md:px-4 bg-gray-50 font-sans overflow-x-hidden">
-            <div className="max-w-[1350px] mx-auto">
+            <div className="max-w-[1412px] mx-auto">
                 {/* Breadcrumbs */}
                 <div className="flex items-center mb-6 md:mb-8 overflow-x-auto no-scrollbar gap-0.5 pb-2">
                     <Link href="/" className="h-9 md:h-10 px-4 md:px-6 bg-[#f2f2f2] flex-shrink-0 flex items-center justify-center text-[#777]">
@@ -93,9 +93,9 @@ const HeroSection: React.FC = () => {
                 <div className="grid grid-cols-12 gap-6 lg:gap-18">
                     {/* Left: Images */}
                     <div className="col-span-12 md:col-span-5 lg:col-span-7">
-                        <div className="relative bg-white border border-gray-100 p-4 pt-16 md:pt-10 md:p-8 flex flex-col justify-center items-center min-h-[320px] md:min-h-[550px]">
+                        <div className="relative md:w-172 bg-white border border-gray-100 p-4 pt-16 md:pt-10 md:p-8 flex flex-col justify-center items-center min-h-[320px] md:min-h-[550px]">
                             <div className="absolute top-4 left-4 md:top-6 md:left-6 flex flex-col gap-1.5 z-10">
-                                <div className="inline-block w-fit p-[1px] bg-[#e5e7eb] custom-scallop">
+                                <div className="inline-block w-fit p-[2px] bg-[#e5e7eb] custom-scallop">
                                     <span className="block bg-white text-black text-[10px] md:text-[11px] px-2 md:px-3 py-1 font-semibold custom-scallop">Novinka</span>
                                 </div>
                                 <span className="w-fit bg-black text-white text-[10px] md:text-[11px] px-2 md:px-3 py-1 font-semibold custom-scallop">Množstevní slevy %</span>
@@ -133,22 +133,22 @@ const HeroSection: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Right: Info */}
-                    <div className="col-span-12 md:col-span-7 lg:col-span-5">
-                        <h1 className="text-xl md:text-3xl font-medium text-[#292929]">
+                    {/* Right: Info */} 
+                    <div className="col-span-12 md:col-span-7 tracking-wid lg:col-span-5 ">
+                        <h1 className="text-xl md:text-[33px] font-['Libre_Caslon_Text'] f text-[#292929]md:w-[105%] md:-ml-[4%]">
                             Kanada 50$ 2018 Maple Leaf 1 oz 999,9/1000 Au
                         </h1>
 
                         {/* Description Text - Font Size adjusted for Image matching */}
-                        <p className="text-[#3b3a3a] text-[12px] md:text-[13.5px] mt-4 leading-relaxed max-w-[500px]">
+                        <p className="text-[#3b3a3a] text-[12px] md:text-[14.5px]  mt-4 tracking-wid leading-relaxed  md:w-[105%] md:-ml-[4%]">
                             Kanadská královská mincovna razí investiční mince Maple Leaf (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott. Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené ve zlatých dolech v Kanadě.
                             <span className="text-[rgb(199,177,93)] border-b border-[rgb(199,177,93)] cursor-pointer ml-1 font-medium whitespace-nowrap hover:text-[#b38f4d]">Více informací</span>
                         </p>
 
-                        <div className="flex flex-row gap-2 mt-6 md:mt-8">
-                            <button className={`flex-1 md:flex-none md:w-[140px] py-3 font-bold text-sm border ${sellOption !== 'Chci prodat' || isDropdownOpen ? 'bg-white text-black border-gray-300' : 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]'}`}>Chci koupit</button>
+                        <div className="flex flex-row gap-2 mt-6 md:mt-8 md:w-[105%] md:-ml-[4%]">
+                            <button className={`flex-1 md:flex-none md:w-[189px] py-3 md:py-4 font-bold text-sm border ${sellOption !== 'Chci prodat' || isDropdownOpen ? 'bg-white text-black border-gray-300' : 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]'}`}>Chci koupit</button>
                             <div className="relative flex-1 md:flex-none md:w-[160px]">
-                                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className={`w-full border flex items-center justify-between px-3 md:px-4 py-3 text-sm font-medium ${isDropdownOpen || sellOption !== 'Chci prodat' ? 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]' : 'bg-white text-[#333] border-gray-300'}`}>
+                                <button onClick={() => setIsDropdownOpen(!isDropdownOpen)} className={`w-full border flex items-center justify-between md:w-[189px] md:py-4 px-3 md:px-4 py-3 text-sm font-medium ${isDropdownOpen || sellOption !== 'Chci prodat' ? 'bg-[rgb(199,177,93)] text-white border-[rgb(199,177,93)]' : 'bg-white text-[#333] border-gray-300'}`}>
                                     <span className="truncate">{sellOption}</span>
                                     <ChevronDown size={18} />
                                 </button>
@@ -163,20 +163,20 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         {/* Price Section - Correct Alignment */}
-                        <div className="mt-6 md:mt-8">
-                            {sellOption === 'Chci prodat' && <div className="text-[#E54B4B] text-sm line-through font-medium">46 003 Kč</div>}
+                        <div className="mt-6 md:mt-8 md:w-[105%] md:-ml-[4%] font-['Libre_Caslon_Text']">
+                            {sellOption === 'Chci prodat' && <div className="text-[#E54B4B] text-medium line-through font-medium">46 003 Kč</div>}
                             <div className="flex items-baseline gap-4 mt-1">
-                                <span className="text-2xl md:text-4xl font-medium text-[#00A651]">45 703 Kč</span>
+                                <span className="text-2xl md:text-4xl font-bold text-[#00A651]">45 703 Kč</span>
                                 <span className="text-[rgb(199,177,93)] text-[10px] md:text-[11px] underline cursor-pointer font-bold tracking-wider  self-end mb-1">Hlídat cenu</span>
                             </div>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-6 gap-y-3 mt-6 text-[12px] md:text-[13px]">
+                        <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-x-6 gap-y-3 mt-6 text-[12px] md:text-[15px] md:w-[105%] md:-ml-[4%]">
                             <div className="flex items-center gap-1.5 text-[#666] font-bold">
                                 {currentData.icon} {currentData.statusText}
                             </div>
                             {currentData.date && (
-                                <div className="text-[#00A651]">
+                                <div className="text-[#00A651] ">
                                     {currentData.deliveryText} <span className="font-bold">{currentData.date}</span>
                                 </div>
                             )}
@@ -184,11 +184,11 @@ const HeroSection: React.FC = () => {
                         </div>
 
                         {/* Counter Buttons Design */}
-                        <div className="flex flex-row gap-2 mt-8 md:h-12">
+                        <div className="flex flex-row gap-2 mt-8 md:h-12 md:w-[105%] md:-ml-[4%]">
                             <div className="flex items-center gap-0.5 h-12 md:h-full">
-                                <button onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)} className="w-10 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={14} /></button>
-                                <div className="w-10 h-full border border-gray-200 flex items-center justify-center bg-white text-sm font-bold text-[#333]">{quantity}</div>
-                                <button onClick={() => setQuantity(q => q + 1)} className="w-10 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={14} /></button>
+                                <button onClick={() => setQuantity(q => q > 1 ? q - 1 : 1)} className="w-14 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Minus size={14} /></button>
+                                <div className="w-14 h-full border border-gray-200 flex items-center justify-center bg-white text-sm font-bold text-[#333]">{quantity}</div>
+                                <button onClick={() => setQuantity(q => q + 1)} className="w-14 h-full bg-[rgb(199,177,93)] text-white flex items-center justify-center hover:bg-[#b38f4d]"><Plus size={14} /></button>
                             </div>
                             <button
                                 onClick={() => (sellOption === 'Chci prodat' || sellOption === 'Na prodejně') && setIsPopupOpen(true)}
@@ -201,14 +201,14 @@ const HeroSection: React.FC = () => {
                         <SalesPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />
 
                         {/* Table 1 */}
-                        <div className="mt-10 border border-gray-200 bg-white overflow-x-auto no-scrollbar">
-                            <table className="min-w-[420px] md:w-full text-left text-[12px] md:text-[13px]">
-                                <thead className="bg-[#EEEEEE] text-[#333] font-bold border-b border-gray-200">
+                        <div className="mt-10 border border-gray-200 bg-white overflow-x-auto no-scrollbar md:w-[105%] md:-ml-[4%]">
+                            <table className="min-w-[420px] md:w-full text-left text-[12px] md:text-[15px]">
+                                <thead className="bg-[#EEEEEE] text-black font-bold border-b border-gray-200">
                                     <tr>
-                                        <th className="px-3 md:px-4 py-3">Množství</th>
-                                        <th className="px-3 md:px-4 py-3">Cena</th>
-                                        <th className="px-3 md:px-4 py-3">Fixace ceny</th>
-                                        <th className="px-3 md:px-4 py-3">Platba kartou</th>
+                                        <th className="px-3 md:px-4 tracking-wider font-['Libre_Caslon_Text']  py-4">Množství</th>
+                                        <th className="px-3 md:px-4 tracking-wider font-['Libre_Caslon_Text'] py-4">Cena</th>
+                                        <th className="px-3 md:px-4 tracking-wider font-['Libre_Caslon_Text'] py-4">Fixace ceny</th>
+                                        <th className="px-3 md:px-4 tracking-wider font-['Libre_Caslon_Text'] py-4">Platba kartou</th>
                                     </tr>
                                 </thead>
                                 <tbody className="text-[#292828] divide-y divide-gray-200">
@@ -219,10 +219,10 @@ const HeroSection: React.FC = () => {
                                         { q: '500+', p: '42 703 Kč', f: 'Po zaplacení', c: 'Ne' }
                                     ].map((row, i) => (
                                         <tr key={i} className="hover:bg-gray-50">
-                                            <td className="px-3 md:px-4 py-3">{row.q}</td>
-                                            <td className="px-3 md:px-4 py-3 text-[#333] font-medium">{row.p}</td>
-                                            <td className="px-3 md:px-4 py-3">{row.f}</td>
-                                            <td className="px-3 md:px-4 py-3">{row.c}</td>
+                                            <td className="px-3 md:px-4 py-4">{row.q}</td>
+                                            <td className="px-3 md:px-4 py-4 text-[#333] font-medium">{row.p}</td>
+                                            <td className="px-3 md:px-4 py-4">{row.f}</td>
+                                            <td className="px-3 md:px-4 py-4">{row.c}</td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -231,7 +231,7 @@ const HeroSection: React.FC = () => {
 
                         {/* Table 2: Accessories */}
                         {currentData.showAccessories && (
-                            <div className="mt-8 border border-gray-200 bg-white">
+                            <div className="mt-8 border border-gray-200 bg-white  w-full md:w-[105%] md:-ml-[4%]">
                                 <div className="bg-[#EEEEEE] p-4 border-b border-gray-300">
                                     <h3 className="text-[13px] font-bold text-[#333]">Příslušenství k tomuto produktu</h3>
                                 </div>

@@ -13,8 +13,8 @@ const ProductInfoSection: React.FC = () => {
     ];
 
     return (
-        <section className="mt-16 py-12 px-4 font-sans bg-white">
-            <div className="max-w-[1350px] mx-auto">
+        <section className="mt-4 py-12 px-4 font-sans bg-white">
+            <div className="max-w-[1412px] mx-auto">
 
                 {/* Section Title */}
                 <div className="text-center mb-10">
@@ -23,7 +23,7 @@ const ProductInfoSection: React.FC = () => {
                         <div className="w-2 h-2 bg-[#D1D1D1] rotate-45" />
                         <div className="w-1.5 h-1.5 bg-[#D1D1D1] rotate-45" />
                     </div>
-                    <h2 className="text-4xl font-serif text-[#333333]">Informace o produktu</h2>
+                    <h2 className="text-4xl font-['Libre_Caslon_Text'] font text-[#333333]">Informace o produktu</h2>
                 </div>
 
                 {/* Navigation Tabs - Desktop Grid / Mobile Scroll */}
@@ -36,7 +36,7 @@ const ProductInfoSection: React.FC = () => {
                                 key={tab.name}
                                 onClick={() => setActiveTab(tab.name)}
                                 // Mobile ke liye flex-shrink-0 aur min-w-[calc(50%-4px)] add kiya hai
-                                className={`py-3.5 px-2 text-[13px] font-bold tracking-wider transition-all border whitespace-nowrap
+                                className={`py-2.5 cursor-pointer cursor-white      px-2 text-[13px] font-bold text-black tracking-wider transition-all border whitespace-nowrap
                     flex-shrink-0 min-w-[calc(50%-4px)] md:min-w-0
                     ${isActive
                                         ? 'bg-[rgb(199,177,93)] text-white border-[#f8c66e] hover:bg-[rgb(199,177,93)] hover:border-[#d4a855]'
@@ -53,13 +53,13 @@ const ProductInfoSection: React.FC = () => {
                 <div className="bg-white border border-gray-100 p-6 md:p-16 lg:p-24 shadow-[0_10px_50px_rgba(0,0,0,0.05)] rounded-sm">
 
                     {/* First Block - Image Right, Text Left (Desktop) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mb-16 lg:mb-32">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:-mt-3 lg:gap-16 items-center mb-16 lg:mb-32">
                         <div className="lg:col-span-7 lg:text-right order-2 lg:order-1 flex flex-col lg:items-end">
-                            <h3 className="text-[19px] font-serif text-[#333333] mb-2">Investiční zlatá mince</h3>
-                            <h2 className="text-3xl md:text-[38px] font-serif text-[#111111] mb-8 leading-tight">
+                            <h3 className="text-[19px] font-['Libre_Caslon_Text'] text-[#333333] mb-2">Investiční zlatá mince</h3>
+                            <h2 className="text-3xl md:text-[40px] font-['Libre_Caslon_Text'] text-[#111111] mb-8 leading-tight">
                                 Maple Leaf <span className='font-sans '>1 oz 999,9/1000</span> Au
                             </h2>
-                            <p className="text-[#3a3a3a] text-[15px] leading-[1.8] lg:max-w-[550px]">
+                            <p className="text-black text-[18px] leading-[1.8] lg:max-w-[550px]">
                                 Kanadská královská mincovna razí investiční mince Maple Leaf<br className="hidden lg:block" />
                                 (javorový list) již od roku 1979. Tvůrcem návrhu mince je Walter Ott.<br className="hidden lg:block" />
                                 Mince neobsahují žádné jiné kovy, jen čisté zlato vytěžené
@@ -69,18 +69,18 @@ const ProductInfoSection: React.FC = () => {
                                 indikací váhy a nominální hodnoty.
                             </p>
                         </div>
-                        <div className="lg:col-span-5 flex justify-center order-1 lg:order-2">
+                        <div className="lg:col-span-5 flex justify-center md:-ml-6  order-1 lg:order-2">
                             <img
                                 src="/can-img.png"
                                 alt="Maple Leaf Gold"
-                                className="w-[180px] md:w-[250px] lg:w-[320px] drop-shadow-2xl"
+                                className="w-[180px] md:w-[250px] lg:w-[322px] "
                             />
                         </div>
                     </div>
 
                     {/* Second Block - Image Left, Text Right (Desktop) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-                        <div className="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 md:-mt-3    gap-10 lg:gap-16 items-center">
+                        <div className="lg:col-span-5 flex justify-center md:ml-12 lg:justify-center">
                             <img
                                 src="/box-coin.png"
                                 alt="Mince a pouzdro"
@@ -89,13 +89,13 @@ const ProductInfoSection: React.FC = () => {
                         </div>
 
                         <div className="lg:col-span-7 flex flex-col items-start text-left">
-                            <h3 className="text-[19px] font-serif text-[#111111] mb-3">
+                            <h3 className="text-[19px] font-['Libre_Caslon_Text'] text-[#111111] mb-3">
                                 Krátká specifikace
                             </h3>
-                            <h2 className="text-3xl md:text-[38px] font-serif text-[#111111] mb-8 leading-tight">
+                            <h2 className="text-3xl md:text-[38px] font-['Libre_Caslon_Text'] text-[#111111] mb-6 leading-tight">
                                 Proč investiční zlatou minci?
                             </h2>
-                            <div className="text-[15px] leading-[1.8] text-[#333333] lg:max-w-[560px]">
+                            <div className="text-[18px] leading-[1.8] text-black text-[#333333] lg:max-w-[560px]">
                                 <p className="mb-0">Emitent: Kanada</p>
                                 <p className="mb-0">
                                     Líc: Královna Alžběta II. hledící vpravo text "ELIZABETH II 50
