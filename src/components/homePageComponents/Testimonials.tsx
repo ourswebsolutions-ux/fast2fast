@@ -32,7 +32,7 @@ const Testimonials = () => {
             <span className="w-1.5 h-1.5 bg-zinc-200 rotate-45" />
           </div>
 
-          <h2 className="text-[22px] sm:text-[28px] md:text-[42px] font-serif text-[#1a1a1a] mb-6 md:mb-4 text-center tracking-tight leading-tight">
+          <h2 className="text-[22px] font-['Libre_Caslon_Text'] sm:text-[28px] md:text-[36px]  text-black mb-6 md:mb-4 text-center ">
             Hodnocení od zákazníků
           </h2>
 
