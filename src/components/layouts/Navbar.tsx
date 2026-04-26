@@ -35,25 +35,25 @@ const PriceItem = ({ label, price, change, isDown, onMouseEnter, onClick, active
     onMouseEnter={hasDropdown ? onMouseEnter : undefined}
     onClick={hasDropdown ? onClick : undefined}
   >
-    <span className={cn("font- text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
+    <span className={cn("font-bold text-[13.5px]", (hasDropdown && !active) && "group-hover:text-[#C9B067]")}>
       {label}
     </span>
-    {price && <span className="text-[12.5px] ">{price}</span>}
+    {price && <span className="text-[12px] ">{price}</span>}
     <div className={`flex items-center text-[13.5px] m font-medium ${isDown ? "text-[#FF4D4D]" : "text-[#00E676]"}`}>
       {isDown ? <ArrowDown size={14} className="mr-0.5" /> : <ArrowUp size={14} className="mr-0.5" />}
       <span>({change})</span>
     </div>
-   {showIcon && (
-  <div
-    className={cn(
-      "ml-0.5 transition-transform duration-300",
-      active && "rotate-180"
+    {showIcon && (
+      <div
+        className={cn(
+          "ml-0.5 transition-transform duration-300",
+          active && "rotate-180"
+        )}
+      >
+        {/* Down arrow by default */}
+        <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
+      </div>
     )}
-  >
-    {/* Down arrow by default */}
-    <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
-  </div>
-)}
   </div>
 );
 
@@ -109,15 +109,15 @@ export default function Navbar() {
               onMouseEnter={() => { setPricesOpen(true); setMarketOpen(false); setChartOpen(false); }}
               onClick={() => { setPricesPinned(!pricesPinned); setPricesOpen(!pricesPinned); }}
             >
-                                      <div className="relative w-5 h-3.5"><Image src="CZAktuální cen.svg" alt="CZ" fill  /></div>
+              <div className="relative w-5 h-3.5"><Image src="CZAktuální cen.svg" alt="CZ" fill /></div>
 
               <span className="text-[13.5px] font-">Aktuální ceny</span>
-           <div
-  className={cn(
-    "w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] mt-0.5 border-r-transparent border-t-[6px] border-t-white transition-transform duration-300",
-    (pricesOpen || pricesPinned) && "rotate-180"
-  )}
-/>
+              <div
+                className={cn(
+                  "w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] mt-0.5 border-r-transparent border-t-[6px] border-t-white transition-transform duration-300",
+                  (pricesOpen || pricesPinned) && "rotate-180"
+                )}
+              />
             </div>
 
             {/* Currency Chart Trigger */}
@@ -153,14 +153,14 @@ export default function Navbar() {
             <div className="flex items-center gap-2 cursor-pointer">
               <div className="relative w-5 h-3.5"><Image src="https://flagcdn.com/cz.svg" alt="CZ" fill className="object-cover" /></div>
               <span className="text-white text-[13px] font">Česky</span>
-                  <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
+              <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
 
             </div>
             <div className="flex items-center gap-2 cursor-pointer">
-                            <div className="relative w-5 h-3.5"><Image src="end.svg" alt="CZ" fill className="object-cover" /></div>
+              <div className="relative w-5 h-3.5"><Image src="end.svg" alt="CZ" fill className="object-cover" /></div>
 
               <span className="text-white text-[13px] font-">CZK / Kč</span>
-    <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
+              <div className="w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent  border-t-[6px] border-t-white"></div>
 
             </div>
           </div>
@@ -196,39 +196,40 @@ export default function Navbar() {
 
       {/* 2. MAIN NAVBAR CONTENT */}
       <div className="h-[80px] lg:h-[100px] flex items-center px-4 max-w-[1442px] mx-auto justify-between relative z-50 bg-black">
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-1.5 shrink-0 ">
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
           <a href="./">
-          <p className="font-['Montserrat'] text-white lg:text-[26px] md:text-3xl sm:text-2xl  ">GULDEN</p>
+            <p className="font-['Montserrat'] font-semibold text-white lg:text-[26px] md:text-3xl sm:text-2xl  ">GULDEN</p>
           </a>
           <div className="w-1 h-1 bg-zinc-500 rotate-45"></div>
         </div>
 
         <div className="hidden lg:flex items-center gap-8  flex-1 justify-cent px-14">
-          <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="flex items-center gap-2 md:-ml-1 group cursor-pointer">
             <Phone size={18} className="text-gray-200 group-hover:text-[#C9B067]" strokeWidth={2.5} />
             <span className="text-white text-medium font-">800 01 02 03</span>
           </div>
-          <div className="flex flex-1 max-w-[696px] px-1 h-[45px]">
+          <div className="flex flex-1 max-w-[706px] px-1 h-[45px]">
             <input type="text" placeholder="Napište co hledáte" className="flex-1 bg-white px-6 text-zinc-500 text-[15px] outline-none" />
             <button className="w-[110px] bg-[rgb(199,177,93)] flex items-center justify-center hover:bg-[#b39e55]"><Search className="text-white" size={24} /></button>
           </div>
         </div>
 
-        <div className="flex items-start gap-6">
+        <div className="flex items-center gap-6 justify-between   md:-mr-2">
           <div className="hidden lg:flex items-center gap-6">
             <div className="px-4 text-center cursor-pointer text-white group">
-              <Heart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
-              <span className="text-[13px]">Oblíbené</span>
+              <img src="/srdce.svg" className="mx-auto " />
+              <span className="text-[13px] group-hover:text-[rgb(199,177,93)]">Oblíbené</span>
             </div>
             <div className="px-4 text-center cursor-pointer text-white group">
-              <User size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
-              <span className="text-[13px]">Přihlášení</span>
+              <img src="/prihlaseni.svg" className="mx-auto " />
+              <span className="text-[13px] group-hover:text-[rgb(199,177,93)]">Přihlášení</span>
             </div>
             <div className="px-4 text-center cursor-pointer text-white relative group">
-              <ShoppingCart size={24} strokeWidth={1.5} className="mx-auto group-hover:text-[rgb(199,177,93)]" />
-              <span className="absolute top-[-5px] right-3 bg-[rgb(199,177,93)] text-white text-[10px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center">9</span>
-              <span className="text-[13px]">Košík</span>
+              <img src="/kosik.svg" className="mx-auto " />
+
+              <span className="absolute top-[-5px] right-2 bg-[rgb(199,177,93)] text-white text-[11px] font-bold rounded-full w-[18px] h-[18px] flex items-center justify-center">9</span>
+              <span className="text-[13px] group-hover:text-[rgb(199,177,93)]">Košík</span>
             </div>
           </div>
 
