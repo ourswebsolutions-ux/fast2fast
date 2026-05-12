@@ -1,5 +1,4 @@
-import Navbar from "@/components/layouts/Navbar";
-import Footer from "@/components/layouts/Footer"; // Footer yahan import ho gaya
+
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -7,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="flex min-h-screen flex-col font-sans antialiased bg-white">
         {/* Navbar hamesha top par rahega */}
-        <Navbar /> 
+        
         
         {/* Main page content center mein space lega */}
         <main className="flex-grow">
@@ -15,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
 
         {/* Footer hamesha bottom par rahega */}
-        <Footer />
+        
       </body>
     </html>
   );
