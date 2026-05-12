@@ -66,9 +66,9 @@ const Footer = () => {
         </div>
 
         {/* QR */}
-        <div className="md:col-span-1 flex flex-col items-center md:items-end gap-4">
+        <div className="">
 
-          <div className="bg-white p-2 rounded shadow-md">
+          <div className="">
             <img
               src="/qr.png"
               alt="QR Code"
@@ -76,9 +76,6 @@ const Footer = () => {
             />
           </div>
 
-          <button className="bg-[#AF1E23] text-white px-5 py-2 text-sm font-bold rounded hover:bg-yellow-400 transition">
-            Get Quote
-          </button>
 
         </div>
       </div>

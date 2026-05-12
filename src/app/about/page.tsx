@@ -18,7 +18,7 @@ export default function Page() {
 <SuperiorServices/>
 <WhyChooseUs/>
 <AboutSafetySection/>
-<Footer/>
+{/* <Footer/> */}
       </div>
     </>
   );

@@ -29,7 +29,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between py-4">
 
           {/* Logo */}
-          <div className="w-44">
+          <div className="w-4">
             <img src="/logo.png" alt="Logo" className="h-auto w-full" />
           </div>
 
