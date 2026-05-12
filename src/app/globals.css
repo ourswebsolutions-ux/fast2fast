@@ -2,10 +2,10 @@
 
 @import "tailwindcss";
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --brand: #AF1E23;
   color-scheme: light;
 }
 
@@ -17,7 +17,17 @@ body {
   padding: 0;
   background-color: var(--background);
   color: var(--foreground);
+  font-family: 'Libre Caslon Text', serif;
 }
+
 .bg-primary {
-  background-color: rgb(199,177,93);
+  background-color: rgb(199, 177, 93);
+}
+
+.text-brand {
+  color: var(--brand);
+}
+
+.bg-brand {
+  background-color: var(--brand);
 }

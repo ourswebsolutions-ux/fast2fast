@@ -1,4 +1,4 @@
-
+import Navbar from "@/components/layouts/Navbar";
 import "./globals.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex min-h-screen flex-col font-sans antialiased bg-white">
         {/* Navbar hamesha top par rahega */}
         
-        
+        <Navbar/>
         {/* Main page content center mein space lega */}
         <main className="flex-grow">
           {children}
